@@ -7,11 +7,16 @@ class SessionsController < ApplicationController
 
     unless user
       flash[:error] = 'Incorrect email or password'
-      return redirect_to new_session_path
+      return redirect_to new_sessions_path
     end
 
     session[:user_id] = user.id
 
+    redirect_to root_path
+  end
+
+  def destroy
+    session.delete(:user_id)
     redirect_to root_path
   end
 

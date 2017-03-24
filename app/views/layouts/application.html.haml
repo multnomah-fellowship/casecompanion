@@ -12,13 +12,14 @@
 
   %body
     .mdl-layout.mdl-layout--no-drawer-button
-      .mdl-layout__header
+      %header.mdl-layout__header
         .mdl-layout__header-row
           = link_to 'MyAdvocate', root_url, class: 'mdl-layout-title app-title'
-        .mdl-layout-spacer
-        - if current_user
-          .mdl-navigation
-            = current_user.email
+          .mdl-layout-spacer
+          - if current_user
+            .mdl-navigation
+              = current_user.email
+              = link_to 'Log Out', sessions_path, method: :delete
 
       .mdl-layout__content.app-container
         - if flash[:error]

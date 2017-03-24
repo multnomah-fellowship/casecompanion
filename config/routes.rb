@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :sessions, only: %i[new create]
+  resource :sessions, only: %i[new create destroy]
+
   root to: 'home#index'
 end
