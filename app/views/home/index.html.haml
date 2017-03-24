@@ -1,8 +1,13 @@
 .mdl-grid
-  .mdl-cell.mdl-cell--12-col
-    %p Welcome to MyAdvocate. We're here to help you navigate the criminal justice system.
-    %p What can we help you with today?
-    %p= link_to 'Advocate Login', new_sessions_path
+  - if current_user
+    .mdl-cell
+      %p Hello #{current_user.email}
+      %p= link_to 'New Notification', new_notification_path
+  - else
+    .mdl-cell.mdl-cell--12-col
+      %p Welcome to MyAdvocate. We're here to help you navigate the criminal justice system.
+      %p What can we help you with today?
+      %p= link_to 'Advocate Login', new_sessions_path
 
 .mdl-grid
   .mdl-cell.mdl-cell--4-col
