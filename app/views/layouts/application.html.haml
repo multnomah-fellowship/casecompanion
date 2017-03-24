@@ -18,8 +18,8 @@
           .mdl-layout-spacer
           - if current_user
             .mdl-navigation
-              = current_user.email
-              = link_to 'Log Out', sessions_path, method: :delete
+              .mdl-navigation__link= current_user.email
+              = link_to 'Log Out', sessions_path, method: :delete, class: 'mdl-navigation__link'
 
       .mdl-layout__content.app-container
         - if flash[:error]
