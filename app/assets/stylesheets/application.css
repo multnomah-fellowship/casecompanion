@@ -15,6 +15,10 @@
  *= require_self
  */
 
+body, html {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
 .app-title {
   color: #fff;
   text-decoration: none;
@@ -22,4 +26,15 @@
 
 .app-container {
   max-width: 960px;
+}
+
+.app-list__item--white-background {
+  background-color: #fff;
+}
+
+@media(max-width: 480px) {
+  .app-list__item--full-bleed {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }

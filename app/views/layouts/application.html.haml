@@ -6,24 +6,27 @@
 
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
     %link{ href: '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet' }
+    %link{ href: '//fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    .mdl-layout.mdl-layout--no-drawer-button
+    .mdl-layout.mdl-layout--no-drawer-button.mdl-layout--fixed-header
       %header.mdl-layout__header
         .mdl-layout__header-row
-          = link_to 'MyAdvocate', root_url, class: 'mdl-layout-title app-title'
+          %h1= link_to 'MyAdvocate', root_url, class: 'mdl-layout-title app-title'
+
           .mdl-layout-spacer
           - if current_user
             .mdl-navigation
               .mdl-navigation__link= current_user.email
               = link_to 'Log Out', sessions_path, method: :delete, class: 'mdl-navigation__link'
 
-      .mdl-layout__content.app-container
+      %main.mdl-layout__content.app-container
         - if flash[:info]
           = flash[:info]
         - if flash[:error]
           = flash[:error]
+
         = yield
