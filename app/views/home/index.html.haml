@@ -15,7 +15,7 @@
           What's the offender status?
           %span.mdl-list__item-sub-title Information &amp; Contacts
         %span.mdl-list__item-secondary-action
-          = link_to '#todo' do
+          = link_to offender_path(OffendersController::OFFENDERS[0][:sid]) do
             %i.material-icons keyboard_arrow_right
 
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
