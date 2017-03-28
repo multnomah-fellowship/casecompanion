@@ -46,6 +46,15 @@ body, html {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.app-list__item--expansion .mdl-list__item-primary-content {
+  align-items: left;
+  flex-direction: column;
+}
+
+.app-list__item--hidden {
+  display: none;
+}
+
 @media(max-width: 480px) {
   .app-list__item--full-bleed {
     margin-left: -16px;

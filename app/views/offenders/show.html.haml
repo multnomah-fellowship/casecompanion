@@ -24,11 +24,14 @@
           %span.mdl-list__item-sub-title Earliest Release Date (Not Finalized)
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          How might these dates change?
+        = link_to '#expand-how-dates-change', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            How might these dates change?
         %span.mdl-list__item-secondary-action
           = link_to '#expandy' do
             %i.material-icons keyboard_arrow_down
+      %li#expand-how-dates-change.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        Copy TBD
 
   .mdl-cell.mdl-cell--8-col.mdl-cell--4-col-desktop.mdl-cell--1-offset-desktop
     %h2.mdl-typography--subhead Who can I call?
@@ -41,18 +44,33 @@
           %span.mdl-list__item-sub-title Victims' Specialist, Parole Board
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          Contact Robyn
+        = link_to '#expand-contact-robyn', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            Contact Robyn
         %span.mdl-list__item-secondary-action
-          = link_to '#expandy' do
+          = link_to '#expand-contact-robyn' do
             %i.material-icons keyboard_arrow_down
+      %li#expand-contact-robyn.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        %span.mdl-list__item-primary-content
+          %p By Phone: #{link_to '(503) 945-0907', 'tel:503-945-0907'}
+          %p By Email: #{link_to 'DLParoleBoardVictimNotify@doc.state.or.us', 'mailto:DLParoleBoardVictimNotify@doc.state.or.us'}
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          What can I talk to Robyn about?
+        = link_to '#expand-what-robyn', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            What can I talk to Robyn about?
         %span.mdl-list__item-secondary-action
-          = link_to '#expandy' do
+          = link_to '#expand-what-robyn' do
             %i.material-icons keyboard_arrow_down
+      %li#expand-what-robyn.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        %span.mdl-list__item-primary-content
+          %p How to stay informed
+          %p What these notifications mean
+          %p Why the release date changes
+          %p Will there be a parole hearing I can speak at
+          %p Release plans and safety planning
+          %p Discuss terms of supervision and no contact orders
+          %p When and where an offender will be released
 
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
@@ -61,15 +79,24 @@
           %span.mdl-list__item-sub-title Counselor, OSCI
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          Contact Frank
+        = link_to '#expand-contact-counselor', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            Contact Frank
         %span.mdl-list__item-secondary-action
-          = link_to '#expandy' do
+          = link_to '#expand-contact-counselor' do
             %i.material-icons keyboard_arrow_down
+      %li#expand-contact-counselor.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        %span.mdl-list__item-primary-content
+          %p By Phone: TODO
+          %p By Email: TODO
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          What can I talk to Frank about?
+        = link_to '#expand-what-counselor', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            What can I talk to Frank about?
         %span.mdl-list__item-secondary-action
-          = link_to '#expandy' do
+          = link_to '#expand-what-counselor' do
             %i.material-icons keyboard_arrow_down
+      %li#expand-what-counselor.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        %span.mdl-list__item-primary-content
+          %p Stopping unwanted contact from an inmate
