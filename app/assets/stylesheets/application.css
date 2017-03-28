@@ -28,6 +28,19 @@ body, html {
   max-width: 960px;
 }
 
+.app-list__item-link {
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-weight: inherit;
+  text-decoration: inherit;
+  width: 100%;
+}
+
+.app-list__item-secondary-link {
+  color: inherit;
+}
+
 .app-list__item--white-background {
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.1);

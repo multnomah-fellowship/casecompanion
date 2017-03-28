@@ -11,19 +11,22 @@
   .mdl-cell.mdl-cell--8-col
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          What's the offender status?
-          %span.mdl-list__item-sub-title Information &amp; Contacts
-        %span.mdl-list__item-secondary-action
-          = link_to offender_path(OffendersController::OFFENDERS[0][:sid]) do
+        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            What's the offender status?
+            %span.mdl-list__item-sub-title Information &amp; Contacts
+
+        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-secondary-link' do
+          %span.mdl-list__item-secondary-action
             %i.material-icons keyboard_arrow_right
 
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
-        %span.mdl-list__item-primary-content
-          How can I get notified?
-          %span.mdl-list__item-sub-title View Notification Options
-        %span.mdl-list__item-secondary-action
-          = link_to notification_systems_path do
+        = link_to notification_systems_path, class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            How can I get notified?
+            %span.mdl-list__item-sub-title View Notification Options
+        = link_to notification_systems_path, class: 'app-list__item-secondary-link' do
+          %span.mdl-list__item-secondary-action
             %i.material-icons keyboard_arrow_right
 
   .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
