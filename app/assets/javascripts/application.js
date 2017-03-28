@@ -18,8 +18,8 @@
 
 window.App = (function() {
   const handleToggle = function(e) {
-    const $targetLink = $(e.target).parent('a');
-    const $listItem = $targetLink.parent('li');
+    const $targetLink = $(e.target).closest('a');
+    const $listItem = $targetLink.parents('li');
     const $icon = $listItem.find('.mdl-list__item-secondary-action i');
     const $hiddenListItem = $($targetLink.attr('href'));
 
