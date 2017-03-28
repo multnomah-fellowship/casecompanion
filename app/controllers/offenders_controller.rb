@@ -1,9 +1,12 @@
 class OffendersController < ApplicationController
-  OFFENDERS = [
-    { sid: '1234' }
-  ]
+  def index
+  end
 
   def show
-    @offender = params[:id]
+    @offender = OffenderScraper.offender_details(params[:id])
+  end
+
+  def search
+    redirect_to offender_path(params[:offender][:sid])
   end
 end

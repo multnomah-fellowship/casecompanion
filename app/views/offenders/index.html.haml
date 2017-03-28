@@ -1,0 +1,12 @@
+= form_for :offender, url: search_offenders_path do |f|
+  .mdl-grid
+    .mdl-cell.mdl-cell--12-col
+      %h2.mdl-typography--headline Preview an Offender Page
+
+      .mdl-textfield.mdl-js-textfield
+        = f.text_field :sid, class: 'mdl-textfield__input'
+        = f.label :sid, class: 'mdl-textfield__label' do
+          SID
+
+    .mdl-cell.mdl-cell--12-col
+      = f.submit 'Preview', class: 'mdl-button mdl-js-button mdl-button--raised'

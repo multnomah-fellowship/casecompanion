@@ -5,28 +5,28 @@
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
-          %span 1234
+          %span= @offender[:sid]
           %span.mdl-list__item-sub-title SID
 
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
-          %span Convicted
+          %span= @offender[:status]
           %span.mdl-list__item-sub-title Status
 
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
-          %span Oregon State Correctional Institution
+          %span= @offender[:location]
           %span.mdl-list__item-sub-title Location
 
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
-          %span 08/17/2017
+          %span= @offender[:earliest_release_date]
           %span.mdl-list__item-sub-title Earliest Release Date (Not Finalized)
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-how-dates-change', class: 'app-list__item-link' do
           %span.mdl-list__item-primary-content
-            How might these dates change?
+            How might this date change?
         %span.mdl-list__item-secondary-action
           = link_to '#expand-how-dates-change' do
             %i.material-icons keyboard_arrow_down
