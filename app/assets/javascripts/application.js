@@ -50,3 +50,11 @@ window.App = (function() {
 })();
 
 document.addEventListener('turbolinks:load', window.App.init);
+
+// Re-initialize the Material Design Lite text fields and such after a
+// turbolinks load.
+// I think this will slowly memory-leak due to the fact that there is not
+// an equivalent "downgradeDom" method.
+document.addEventListener('turbolinks:load', function() {
+  componentHandler.upgradeDom();
+});
