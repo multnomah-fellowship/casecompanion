@@ -1,14 +1,16 @@
-.mdl-grid
-  .mdl-cell.mdl-cell--12-col
-    = form_for :session, url: sessions_path do |f|
+= form_for :session, url: sessions_path do |f|
+  .mdl-grid
+    .mdl-cell.mdl-cell--12-col
       .mdl-textfield.mdl-js-textfield
         = f.text_field :email, class: 'mdl-textfield__input'
         = f.label :email, class: 'mdl-textfield__label' do
           Email
 
+    .mdl-cell.mdl-cell--12-col
       .mdl-textfield.mdl-js-textfield
         = f.password_field :password, class: 'mdl-textfield__input'
         = f.label :password, class: 'mdl-textfield__label' do
           Password
 
+    .mdl-cell.mdl-cell--12-col
       = f.submit 'Login', class: 'mdl-button mdl-js-button mdl-button--raised'
