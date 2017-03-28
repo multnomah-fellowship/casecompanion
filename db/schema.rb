@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324223422) do
+ActiveRecord::Schema.define(version: 20170328232309) do
 
   create_table "notifications", force: :cascade do |t|
     t.string   "phone_number"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20170324223422) do
     t.string   "offender_sid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "offender_search_caches", force: :cascade do |t|
+    t.integer  "offender_sid"
+    t.text     "data"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["offender_sid"], name: "index_offender_search_caches_on_offender_sid", unique: true
   end
 
   create_table "users", force: :cascade do |t|

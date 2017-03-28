@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 gem 'material_design_lite-rails'
+gem 'mechanize'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
