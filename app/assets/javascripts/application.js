@@ -17,34 +17,36 @@
 //= require_tree .
 
 window.App = (function() {
+  const handleToggle = function(e) {
+    const $targetLink = $(e.target).parent('a');
+    const $listItem = $targetLink.parent('li');
+    const $icon = $listItem.find('.mdl-list__item-secondary-action i');
+    const $hiddenListItem = $($targetLink.attr('href'));
+
+    if ($hiddenListItem.is(':visible')) {
+      // hide it!
+      $hiddenListItem.attr('style', 'display: none');
+      $icon.text('keyboard_arrow_down');
+    } else {
+      // show it!
+      $hiddenListItem.attr('style', 'display: block');
+      $icon.text('keyboard_arrow_up');
+    }
+
+    return false;
+  };
+
   const initializeToggles = function() {
-    const handleToggle = function(e) {
-      const $targetLink = $(e.target).parent('a');
-      const $listItem = $targetLink.parent('li');
-      const $icon = $listItem.find('.mdl-list__item-secondary-action i');
-      const $hiddenListItem = $($targetLink.attr('href'));
-
-      if ($hiddenListItem.is(':visible')) {
-        // hide it!
-        $hiddenListItem.attr('style', 'display: none');
-        $icon.text('keyboard_arrow_down');
-      } else {
-        // show it!
-        $hiddenListItem.attr('style', 'display: block');
-        $icon.text('keyboard_arrow_up');
-      }
-
-      return false;
-    };
-
-    $('a[href^="#expand-"]').on('click', handleToggle);
+    $(document).on('click', 'a[href^="#expand-"]', handleToggle);
   };
 
   return {
     init: function() {
+      // Beware: This will be called multiple times because of turbolinks, so
+      // everything in here should be idempotent
       initializeToggles();
     },
   };
 })();
 
-$(window.App.init);
+document.addEventListener('turbolinks:load', window.App.init);
