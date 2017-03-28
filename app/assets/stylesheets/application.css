@@ -61,3 +61,8 @@ body, html {
     margin-right: -16px;
   }
 }
+
+.app-card--notification-method {
+  min-height: 0;
+  width: 100%;
+}
