@@ -16,7 +16,7 @@
 //= require material
 //= require_tree .
 
-const App = (function() {
+window.App = (function() {
   const initializeToggles = function() {
     const handleToggle = function(e) {
       const $targetLink = $(e.target).parent('a');
@@ -47,4 +47,4 @@ const App = (function() {
   };
 })();
 
-$(App.init);
+$(window.App.init);
