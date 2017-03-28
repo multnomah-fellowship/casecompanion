@@ -1,0 +1,28 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
+    %h2.mdl-typography--subhead Helping victims navigate the criminal justice system
+    %h3.mdl-typography--title What can we help you with today?
+
+  .mdl-cell.mdl-cell--8-col
+    %ul.mdl-list.app-list
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
+        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            What's the offender status?
+            %span.mdl-list__item-sub-title Information &amp; Contacts
+
+        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-secondary-link' do
+          %span.mdl-list__item-secondary-action
+            %i.material-icons keyboard_arrow_right
+
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
+        = link_to notification_systems_path, class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            How can I get notified?
+            %span.mdl-list__item-sub-title View Notification Options
+        = link_to notification_systems_path, class: 'app-list__item-secondary-link' do
+          %span.mdl-list__item-secondary-action
+            %i.material-icons keyboard_arrow_right
+
+  .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
+    %p= link_to 'Advocate Login', new_sessions_path

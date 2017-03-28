@@ -1,0 +1,18 @@
+.mdl-grid
+  .mdl-cell.mdl-cell--12-col
+    %h2.mdl-typography--headline Hello #{current_user.email}
+    %p
+      You are logged in as an advocate. From here you can invite users to the
+      platform.
+
+  .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
+    %ul.mdl-list.app-list
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
+        = link_to new_notification_path, class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            Send Invitation
+            %span.mdl-list__item-sub-title Send a text message to a victim
+
+        = link_to new_notification_path, class: 'app-list__item-secondary-link' do
+          %span.mdl-list__item-secondary-action
+            %i.material-icons keyboard_arrow_right
