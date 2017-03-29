@@ -16,7 +16,7 @@
  */
 
 body, html {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: #eaeaea;
 }
 
 .app-title {
@@ -25,9 +25,16 @@ body, html {
 }
 
 /*
- * APP CONTAINER
+ * APP CONTAINERS
  */
+.app-outer-container {
+  min-height: 100vh;
+}
+
 .app-container {
+  background-color: #f2f2f2;
+  border-left: 1px solid #dadada;
+  border-right: 1px solid #dadada;
   max-width: 640px;
 }
 
@@ -85,11 +92,9 @@ body, html {
   display: none;
 }
 
-@media(max-width: 640px) {
-  .app-list__item--full-bleed {
-    margin-left: -16px;
-    margin-right: -16px;
-  }
+.app-list__item--full-bleed {
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .app-card--notification-method {
