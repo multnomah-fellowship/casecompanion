@@ -6,12 +6,12 @@
   .mdl-cell.mdl-cell--8-col
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
-        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-link' do
+        = link_to offenders_path, class: 'app-list__item-link' do
           %span.mdl-list__item-primary-content
             What's the offender status?
             %span.mdl-list__item-sub-title Information &amp; Contacts
 
-        = link_to offender_path(OffendersController::OFFENDERS[0][:sid]), class: 'app-list__item-secondary-link' do
+        = link_to offenders_path, class: 'app-list__item-secondary-link' do
           %span.mdl-list__item-secondary-action
             %i.material-icons keyboard_arrow_right
 

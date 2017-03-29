@@ -1,7 +1,7 @@
 = form_for :offender, url: search_offenders_path do |f|
   .mdl-grid
     .mdl-cell.mdl-cell--12-col
-      %h2.mdl-typography--headline Preview an Offender Page
+      %h2.mdl-typography--headline Search for an Offender
 
       .mdl-textfield.mdl-js-textfield
         = f.text_field :sid, class: 'mdl-textfield__input'
@@ -9,4 +9,4 @@
           SID
 
     .mdl-cell.mdl-cell--12-col
-      = f.submit 'Preview', class: 'mdl-button mdl-js-button mdl-button--raised'
+      = f.submit 'Search', class: 'mdl-button mdl-js-button mdl-button--raised'
