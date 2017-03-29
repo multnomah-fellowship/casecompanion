@@ -33,6 +33,13 @@ a {
   color: map-get($colors, primary);
 }
 
+.app-button-link {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .app-typography--subheader {
   color: #009789;
   font-size: 14px;
@@ -40,6 +47,18 @@ a {
   letter-spacing: 0.2px;
   line-height: 2;
   margin: 0 0 1em;
+}
+
+.app-footer {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.app-footer__powered-by {
+  margin-top: 64px;
+
+  a {
+    color: inherit;
+  }
 }
 
 /**

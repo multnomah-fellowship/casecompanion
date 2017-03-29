@@ -106,3 +106,15 @@
       %li#expand-what-counselor.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
         %span.mdl-list__item-primary-content
           %p Stopping unwanted contact from an inmate
+
+  .mdl-cell.mdl-cell--12-col.app-footer
+    %h3.app-typography--subheader Other Questions?
+    %p Would you like help tracking down any other information?
+    = link_to 'Text (123) 456-7890', 'sms:+330-336-6372', class: 'app-button-link'
+
+    %p.mdl-typography--body-1.app-footer__powered-by
+      Powered by
+      %br
+      = link_to 'Code For America', 'https://www.codeforamerica.org', target: '_blank'
+      &middot;
+      = link_to 'Multnomah County', 'https://multco.us', target: '_blank'
