@@ -19,9 +19,29 @@ body, html {
   background-color: #eaeaea;
 }
 
+$colors: (
+  primary: #4990e2,
+);
+
+a {
+  color: map-get($colors, primary);
+}
+
+.app-color-primary {
+  color: map-get($colors, primary);
+}
+
 .app-title {
   color: #fff;
   text-decoration: none;
+}
+
+/**
+ * GLOBAL MATERIAL OVERRIDES
+ */
+.mdl-button .material-icons {
+  // TODO: can we import the material design source file and override this
+  font-size: 14px;
 }
 
 /*
@@ -74,10 +94,6 @@ body, html {
   width: 100%;
 }
 
-.app-list__item-secondary-link {
-  color: inherit;
-}
-
 .app-list__item--white-background {
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -97,7 +113,19 @@ body, html {
   margin-right: -16px;
 }
 
+/*
+ * CUSTOM CARD VARIANTS
+ */
+
 .app-card--notification-method {
   min-height: 0;
-  width: 100%;
+  background-color: white;
+  margin-left: -16px;
+  width: calc(100% + 32px);
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.app-card--notification-method .mdl-card__title {
+  padding: 28px 16px 0;
 }
