@@ -75,13 +75,13 @@
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
           %i.material-icons.mdl-list__item-icon person
-          %span Frank Ferris
+          %span= name_reorderer(@offender[:caseload_name])
           %span.mdl-list__item-sub-title Counselor, OSCI
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-contact-counselor', class: 'app-list__item-link' do
           %span.mdl-list__item-primary-content
-            Contact Frank
+            Contact #{first_name(@offender[:caseload_name])}
         %span.mdl-list__item-secondary-action
           = link_to '#expand-contact-counselor' do
             %i.material-icons keyboard_arrow_down
@@ -93,7 +93,7 @@
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-what-counselor', class: 'app-list__item-link' do
           %span.mdl-list__item-primary-content
-            What can I talk to Frank about?
+            What can I talk to #{first_name(@offender[:caseload_name])} about?
         %span.mdl-list__item-secondary-action
           = link_to '#expand-what-counselor' do
             %i.material-icons keyboard_arrow_down
