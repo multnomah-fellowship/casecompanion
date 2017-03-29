@@ -33,9 +33,13 @@ a {
   color: map-get($colors, primary);
 }
 
-.app-title {
-  color: #fff;
-  text-decoration: none;
+.app-typography--subheader {
+  color: #009789;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 2;
+  margin: 0 0 1em;
 }
 
 /**
@@ -67,6 +71,14 @@ a {
   }
 }
 
+.app-header {
+  background-color: white;
+}
+
+.app-title {
+  color: map-get($colors, grey-dark);
+  text-decoration: none;
+}
 
 /*
  * APP HERO
@@ -101,6 +113,10 @@ a {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.app-list__item--expanded .mdl-list__item-primary-content {
+  color: map-get($colors, primary);
+}
+
 .app-list__item--expansion .mdl-list__item-primary-content {
   align-items: left;
   flex-direction: column;
@@ -108,6 +124,10 @@ a {
 
 .app-list__item--hidden {
   display: none;
+}
+
+.app-list__item--no-side-padding {
+  padding: 16px 0;
 }
 
 .app-list__item--full-bleed {

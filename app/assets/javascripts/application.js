@@ -25,10 +25,12 @@ window.App = (function() {
 
     if ($hiddenListItem.is(':visible')) {
       // hide it!
+      $listItem.removeClass('app-list__item--expanded');
       $hiddenListItem.attr('style', 'display: none');
       $icon.text('keyboard_arrow_down');
     } else {
       // show it!
+      $listItem.addClass('app-list__item--expanded');
       $hiddenListItem.attr('style', 'display: block');
       $icon.text('keyboard_arrow_up');
     }

@@ -1,24 +1,24 @@
 .mdl-grid
   .mdl-cell.mdl-cell--12-col
-    %h2.mdl-typography--headline Offender Public Information
+    %h2.app-typography--subheader Offender Public Information
 
     %ul.mdl-list.app-list
-      %li.mdl-list__item.mdl-list__item--two-line
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
         %span.mdl-list__item-primary-content
           %span= @offender[:sid]
           %span.mdl-list__item-sub-title SID
 
-      %li.mdl-list__item.mdl-list__item--two-line
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
         %span.mdl-list__item-primary-content
           %span= @offender[:status]
           %span.mdl-list__item-sub-title Status
 
-      %li.mdl-list__item.mdl-list__item--two-line
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
         %span.mdl-list__item-primary-content
           %span= @offender[:location]
           %span.mdl-list__item-sub-title Location
 
-      %li.mdl-list__item.mdl-list__item--two-line
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
         %span.mdl-list__item-primary-content
           %span= @offender[:earliest_release_date]
           %span.mdl-list__item-sub-title Earliest Release Date (Not Finalized)
@@ -37,7 +37,7 @@
         Copy TBD
 
   .mdl-cell.mdl-cell--12-col
-    %h2.mdl-typography--headline Who can I call?
+    %h2.app-typography--subheader Who can I call?
 
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line
