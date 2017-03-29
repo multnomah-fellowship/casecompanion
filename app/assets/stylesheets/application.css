@@ -24,16 +24,39 @@ body, html {
   text-decoration: none;
 }
 
+/*
+ * APP CONTAINER
+ */
 .app-container {
-  max-width: 960px;
+  max-width: 640px;
 }
 
-@media(min-width: 1024px) {
+@media(min-width: 640px) {
   .app-container {
     margin: auto;
-    min-width: 960px;
+    min-width: 640px;
   }
 }
+
+
+/*
+ * APP HERO
+ */
+.app-hero {
+  margin: 72px 72px 36px;
+}
+
+.app-hero :first-child {
+  margin-bottom: 12px;
+}
+
+.app-hero :last-child {
+  margin-top: 12px;
+}
+
+/*
+ * LIST EXTENSION STYLES
+ */
 
 .app-list__item-link {
   color: inherit;
@@ -62,7 +85,7 @@ body, html {
   display: none;
 }
 
-@media(max-width: 480px) {
+@media(max-width: 640px) {
   .app-list__item--full-bleed {
     margin-left: -16px;
     margin-right: -16px;

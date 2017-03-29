@@ -1,5 +1,5 @@
 .mdl-grid
-  .mdl-cell.mdl-cell--8-col.mdl-cell--7-col-desktop
+  .mdl-cell.mdl-cell--12-col
     %h2.mdl-typography--headline Offender Public Information
 
     %ul.mdl-list.app-list
@@ -23,6 +23,9 @@
           %span= @offender[:earliest_release_date]
           %span.mdl-list__item-sub-title Earliest Release Date (Not Finalized)
 
+      %li.mdl-list__item
+        -# spacer
+
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-how-dates-change', class: 'app-list__item-link' do
           %span.mdl-list__item-primary-content
@@ -33,7 +36,7 @@
       %li#expand-how-dates-change.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
         Copy TBD
 
-  .mdl-cell.mdl-cell--8-col.mdl-cell--4-col-desktop.mdl-cell--1-offset-desktop
+  .mdl-cell.mdl-cell--12-col
     %h2.mdl-typography--headline Who can I call?
 
     %ul.mdl-list.app-list
