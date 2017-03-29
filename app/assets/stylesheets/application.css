@@ -28,6 +28,13 @@ body, html {
   max-width: 960px;
 }
 
+@media(min-width: 1024px) {
+  .app-container {
+    margin: auto;
+    min-width: 960px;
+  }
+}
+
 .app-list__item-link {
   color: inherit;
   cursor: pointer;
