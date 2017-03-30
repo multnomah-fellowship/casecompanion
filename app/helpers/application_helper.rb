@@ -12,7 +12,7 @@ module ApplicationHelper
 
     last, first = full_name.split(',', 2)
 
-    "#{first} #{last}".chomp
+    "#{first} #{last}".chomp.strip
   end
 
   # Names are hard, this method assumes western naming conventions, that the
