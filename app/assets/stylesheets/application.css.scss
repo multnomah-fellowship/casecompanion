@@ -130,10 +130,20 @@ a {
 .app-list__item--white-background {
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  & ~ & {
+    // remove the duplicate border top when two of these are next to each other
+    border-top: none;
+  }
 }
 
-.app-list__item--expanded .mdl-list__item-primary-content {
-  color: map-get($colors, primary);
+.app-list__item--expanded {
+  border-bottom: none;
+
+  .mdl-list__item-primary-content {
+    color: map-get($colors, primary);
+  }
 }
 
 .app-list__item--expansion .mdl-list__item-primary-content {
