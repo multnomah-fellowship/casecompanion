@@ -110,7 +110,7 @@
   .mdl-cell.mdl-cell--12-col.app-footer
     %h3.app-typography--subheader Other Questions?
     %p Would you like help tracking down any other information?
-    = link_to 'Text (123) 456-7890', 'sms:+330-336-6372', class: 'app-button-link'
+    = link_to "Text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'
 
     %p.mdl-typography--body-1.app-footer__powered-by
       Powered by
