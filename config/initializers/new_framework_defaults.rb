@@ -7,8 +7,9 @@
 # Enable per-form CSRF tokens. Previous versions had false.
 Rails.application.config.action_controller.per_form_csrf_tokens = true
 
-# Enable origin-checking CSRF mitigation. Previous versions had false.
-Rails.application.config.action_controller.forgery_protection_origin_check = true
+# Enable origin-checking CSRF mitigation. By default this is true now, but since
+# we are behind cloudflare I think this isn't being introspected properly.
+Rails.application.config.action_controller.forgery_protection_origin_check = false
 
 # Make Ruby 2.4 preserve the timezone of the receiver when calling `to_time`.
 # Previous versions had false.
