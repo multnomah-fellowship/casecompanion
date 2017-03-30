@@ -3,16 +3,34 @@ class NotificationsController < ApplicationController
     @notification = Notification.new
   end
 
+  # a user clicking on a notification:
+  def show
+    @notification = Notification.find(params[:id])
+
+    # if the URL doesn't quite line up properly, e.g. the notification was
+    # generated for a different offender
+    if @notification.offender_sid.to_i != params[:o].to_i
+      flash[:info] = 'Please search for your offender again'
+    else
+      session[:notification_id] = @notification.id
+    end
+
+    redirect_to root_url
+  end
+
   def create
     @notification = Notification.create(notification_params)
 
     client = FrontClient.new
 
+    session_link =
+      "https://#{Rails.application.config.app_domain}/n/#{@notification.id}?o=#{@notification.offender_sid}"
+
     channel = client.list_channels.detect { |c| c.type == 'twilio' }
     client.send_message(channel.id, to: [@notification.phone_number], body: <<-MESSAGE.strip_heredoc)
       Hi #{@notification.first_name}, Libby has invited you to a new website to stay informed on your case.
 
-      Feel free to visit https://myadvocate.TODO/special-link-here to see offender status and what notifications you can sign up for.
+      Feel free to visit #{session_link} to see offender status and what notifications you can sign up for.
 
       Questions or concerns? Just reply here. We'll help you track down the right information.
 

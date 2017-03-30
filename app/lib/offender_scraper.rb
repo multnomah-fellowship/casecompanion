@@ -10,7 +10,9 @@ class OffenderScraper
       cached.data.symbolize_keys
     else
       self.scrape!(sid).tap do |data|
-        OffenderSearchCache.create(offender_sid: sid, data: data)
+        OffenderSearchCache
+          .where(offender_sid: sid)
+          .first_or_create(data: data)
       end
     end
   end
