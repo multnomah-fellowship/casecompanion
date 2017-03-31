@@ -60,9 +60,17 @@
           = link_to '#expand-contact-robyn' do
             %i.material-icons keyboard_arrow_down
       %li#expand-contact-robyn.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
-        %span.mdl-list__item-primary-content
-          %p By Phone: #{link_to '(503) 945-0907', 'tel:503-945-0907'}
-          %p By Email: #{link_to 'DLParoleBoardVictimNotify@doc.state.or.us', 'mailto:DLParoleBoardVictimNotify@doc.state.or.us'}
+        %ul.app-contact-list
+          %li
+            = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
+              %i.material-icons.app-contact-list__icon phone
+              %span.app-contact-list__primary-description
+                (503) 945-0907
+          %li
+            = link_to 'mailto:DLParoleBoardVictimNotify@doc.state.or.us', class: 'app-contact-list__link' do
+              %i.material-icons.app-contact-list__icon email
+              %span.app-contact-list__primary-description
+                DLParoleBoardVictimNotify@doc.state.or.us
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-what-robyn', class: 'app-list__item-link' do

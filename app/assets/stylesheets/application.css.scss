@@ -22,6 +22,7 @@ body, html {
 $colors: (
   primary: #4990e2,
   accent: #009789,
+  grey-light: rgba(0, 0, 0, 0.1),
   grey-dark: #9b9b9b,
 );
 
@@ -129,8 +130,8 @@ a {
 
 .app-list__item--white-background {
   background-color: #fff;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid map-get($colors, grey-light);
+  border-bottom: 1px solid map-get($colors, grey-light);
 
   & ~ & {
     // remove the duplicate border top when two of these are next to each other
@@ -139,8 +140,6 @@ a {
 }
 
 .app-list__item--expanded {
-  border-bottom: none;
-
   .mdl-list__item-primary-content {
     color: map-get($colors, primary);
   }
@@ -162,6 +161,40 @@ a {
 .app-list__item--full-bleed {
   margin-left: -16px;
   margin-right: -16px;
+}
+
+/*
+ * CUSTOM LIST STYLING
+ */
+// Contact list is a first stab at a component to abstract a list-in-a-list-item
+// pattern. The inner list has icons and clickable text, e.g. for the multiple
+// modes of contact.
+.app-contact-list {
+  list-style: none;
+  margin: -16px;
+  padding: 0;
+
+  > li {
+    padding-left: 30px;
+  }
+}
+
+.app-contact-list__link {
+  display: block;
+  text-decoration: none;
+}
+
+.app-contact-list__icon {
+  vertical-align: middle;
+}
+
+.app-contact-list__primary-description {
+  margin-left: 12px;
+  line-height: 48px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid map-get($colors, grey-light);
+  }
 }
 
 /*
