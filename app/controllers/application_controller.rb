@@ -7,5 +7,6 @@ class ApplicationController < ActionController::Base
 
   def set_variables
     @phone_number = ENV['TWILIO_PHONE_NUMBER']
+    @mixpanel_token = Rails.application.config.mixpanel_token
   end
 end

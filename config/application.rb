@@ -14,5 +14,7 @@ module MyAdvocate
     config.autoload_paths += [Rails.root.join('app/lib')]
 
     config.app_domain = ENV['APP_DOMAIN']
+
+    config.mixpanel_token = ENV['MIXPANEL_TOKEN']
   end
 end
