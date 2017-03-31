@@ -16,6 +16,12 @@
 //= require material
 //= require_tree .
 
+const analytics = {
+  trackView() {
+    mixpanel.track('pageview');
+  }
+}
+
 window.App = (function() {
   const handleToggle = function(e) {
     const $targetLink = $(e.target).closest('a');
@@ -51,6 +57,7 @@ window.App = (function() {
   };
 })();
 
+document.addEventListener('turbolinks:load', analytics.trackView);
 document.addEventListener('turbolinks:load', window.App.init);
 
 // Re-initialize the Material Design Lite text fields and such after a
