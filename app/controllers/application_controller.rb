@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
   def set_variables
     @phone_number = ENV['TWILIO_PHONE_NUMBER']
     @mixpanel_token = Rails.application.config.mixpanel_token
+    @notification = Notification.find(session[:notification_id]) if session[:notification_id]
   end
 end
