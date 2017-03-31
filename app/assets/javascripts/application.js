@@ -17,7 +17,7 @@
 //= require_tree .
 
 const analytics = {
-  trackView() {
+  trackView: function() {
     mixpanel.track('pageview');
   }
 }
