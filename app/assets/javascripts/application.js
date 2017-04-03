@@ -19,6 +19,10 @@
 const analytics = {
   trackView: function() {
     mixpanel.track('pageview');
+  },
+
+  trackExpand: function(caption) {
+    mixpanel.track('expand', { caption: caption });
   }
 }
 
@@ -39,6 +43,10 @@ window.App = (function() {
       $listItem.addClass('app-list__item--expanded');
       $hiddenListItem.attr('style', 'display: block');
       $icon.text('keyboard_arrow_up');
+
+      // track mixpanel
+      const text = $listItem.find('.mdl-list__item-primary-content').text();
+      analytics.trackExpand(text);
     }
 
     return false;
