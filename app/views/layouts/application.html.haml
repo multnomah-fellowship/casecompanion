@@ -21,8 +21,8 @@
           .mdl-layout-spacer
           - if current_user
             .mdl-navigation
-              .mdl-navigation__link= current_user.email
-              = link_to 'Log Out', sessions_path, method: :delete, class: 'mdl-navigation__link'
+              .mdl-navigation__link.app-title= current_user.email
+              = link_to 'Log Out', sessions_path, method: :delete, class: 'mdl-navigation__link app-title'
 
       %main.mdl-layout__content.app-container
         - if flash[:info]

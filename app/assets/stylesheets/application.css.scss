@@ -95,7 +95,7 @@ a {
   background-color: white;
 }
 
-.app-title {
+.app-title, .mdl-navigation__link.app-title {
   color: map-get($colors, grey-dark);
   text-decoration: none;
 }
