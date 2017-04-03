@@ -2,15 +2,15 @@ require 'mechanize'
 require 'json'
 
 class OffenderScraper
-  AGE_LIMIT = 1.day
-
   def self.offender_details(sid)
-    cached = OffenderSearchCache.where('offender_sid = ? AND updated_at > ?', sid, AGE_LIMIT.ago).first
+    cached = OffenderSearchCache.find_by(offender_sid: sid)
+
     if cached
       cached.data.symbolize_keys
     else
       self.scrape!(sid).tap do |data|
         OffenderSearchCache
+          .unscoped
           .where(offender_sid: sid)
           .first_or_create(data: data)
       end
