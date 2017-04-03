@@ -5,6 +5,11 @@
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
         %span.mdl-list__item-primary-content
+          %span= @offender[:name]
+          %span.mdl-list__item-sub-title Offender Name
+
+      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
+        %span.mdl-list__item-primary-content
           %span= @offender[:sid]
           %span.mdl-list__item-sub-title SID
 
