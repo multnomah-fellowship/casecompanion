@@ -31,6 +31,7 @@ class OffenderScraper
 
       return {
         sid: results_page.css('[id="offensesForm:out_SID"]').text,
+        name: results_page.css('[id="offensesForm:name"]').text,
 
         age: results_page.css('[id="offensesForm:age"]').text,
         gender: results_page.css('[id="offensesForm:sex"]').text,
