@@ -12,7 +12,8 @@ class OffenderScraper
         OffenderSearchCache
           .unscoped
           .where(offender_sid: sid)
-          .first_or_create(data: data)
+          .first_or_create
+          .update_attributes(data: data)
       end
     end
   end
