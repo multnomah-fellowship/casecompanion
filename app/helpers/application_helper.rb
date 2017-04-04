@@ -36,4 +36,22 @@ module ApplicationHelper
 
     offender_path(notification.offender_sid)
   end
+
+  # surround "\n\n" chunks with a <p>, that's it.
+  def simpler_format(error)
+    sanitize(error).split("\n\n").map { |chunk| content_tag(:p, chunk) }
+      .join
+      .html_safe
+  end
+
+  # track a message in mixpanel
+  # "level" is something like :info or :error
+  def mixpanel_track_message(level, message)
+    first_line = message.split("\n\n", 2).first
+    event_data = { level: level, message: message, first_line: first_line }
+
+    content_tag(:script, <<-SCRIPT.strip_heredoc.html_safe)
+      mixpanel.track('message-seen', #{JSON.generate(event_data)});
+    SCRIPT
+  end
 end

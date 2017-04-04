@@ -15,6 +15,20 @@ describe OffenderScraper do
         expect(OffenderScraper.offender_details(fake_data[:sid]))
           .to eq(fake_data)
       end
+
+      describe 'with a nonexistent (nil) record' do
+        let(:fake_data) { nil }
+
+        it 'returns nil without caching the data' do
+          expect(OffenderScraper).to receive(:scrape!).exactly(2).times
+          expect do
+            expect(OffenderScraper.offender_details('NONEXISTENT_SID'))
+              .to be_nil
+            expect(OffenderScraper.offender_details('NONEXISTENT_SID'))
+              .to be_nil
+          end.not_to change { OffenderSearchCache.count }
+        end
+      end
     end
 
     context 'with multiple scrapes' do

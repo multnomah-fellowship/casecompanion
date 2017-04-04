@@ -9,6 +9,8 @@ class OffenderScraper
       cached.data.symbolize_keys
     else
       self.scrape!(sid).tap do |data|
+        return nil if data.nil?
+
         OffenderSearchCache
           .unscoped
           .where(offender_sid: sid)
@@ -29,6 +31,9 @@ class OffenderScraper
       end.click_button
 
       offenses = results_page.css('[id="offensesForm:offensesTable"] tbody tr:nth-child(2n+1)')
+
+      return nil if results_page.css('#errorMessages').text =~ /invalid characters detected/i
+      return nil if results_page.css('#errorMessages').text =~ /no matching records/i
 
       return {
         sid: results_page.css('[id="offensesForm:out_SID"]').text,
