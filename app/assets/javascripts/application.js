@@ -66,7 +66,7 @@ window.App = (function() {
 })();
 
 document.addEventListener('turbolinks:load', analytics.trackView);
-document.addEventListener('turbolinks:load', window.App.init);
+document.addEventListener('turbolinks:render', window.App.init);
 
 // Re-initialize the Material Design Lite text fields and such after a
 // turbolinks load.
