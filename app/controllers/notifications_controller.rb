@@ -28,7 +28,7 @@ class NotificationsController < ApplicationController
 
     channel = client.list_channels.detect { |c| c.type == 'twilio' }
     client.send_message(channel.id, to: [@notification.phone_number], body: <<-MESSAGE.strip_heredoc)
-      Hi #{@notification.first_name}, Libby has invited you to a new website to stay informed on your case.
+      Hi #{@notification.first_name}, Pam has invited you to a new website to stay informed on your case.
 
       Feel free to visit #{session_link} to see offender status and what notifications you can sign up for.
 
