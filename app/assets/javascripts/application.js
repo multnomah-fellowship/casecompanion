@@ -66,6 +66,10 @@ window.App = (function() {
 })();
 
 document.addEventListener('turbolinks:load', analytics.trackView);
+
+// "load" covers the first page load, and "turbolinks:render" is called after
+// subsequent navigations via turbolinks.
+window.addEventListener('load', window.App.init);
 document.addEventListener('turbolinks:render', window.App.init);
 
 // Re-initialize the Material Design Lite text fields and such after a
