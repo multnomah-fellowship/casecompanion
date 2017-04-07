@@ -88,4 +88,16 @@ describe ApplicationHelper do
       HTML
     end
   end
+
+  describe '#short_counselor_title' do
+    it 'returns the right value for an existing prison' do
+      expect(helper.short_counselor_title('Oregon State Penitentiary'))
+        .to eq('Counselor, OSP')
+    end
+
+    it 'does not include an acronym when the prison is unknown' do
+      expect(helper.short_counselor_title('Some Unknown Prison'))
+        .to eq('Counselor')
+    end
+  end
 end

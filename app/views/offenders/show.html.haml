@@ -126,7 +126,7 @@
         %span.mdl-list__item-primary-content
           %i.material-icons.mdl-list__item-icon person
           %span= name_reorderer(@offender[:caseload_name])
-          %span.mdl-list__item-sub-title Counselor, OSCI
+          %span.mdl-list__item-sub-title= short_counselor_title(@offender[:location])
 
       %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
         = link_to '#expand-contact-counselor', class: 'app-list__item-link' do

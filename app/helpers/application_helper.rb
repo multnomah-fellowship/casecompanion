@@ -54,4 +54,39 @@ module ApplicationHelper
       mixpanel.track('message-seen', #{JSON.generate(event_data)});
     SCRIPT
   end
+
+  # Keys found with:
+  #   cat scraped/statuses-2017-03-30.json | jq -r .location | sort | uniq
+  # Values found in: https://www.oregon.gov/doc/docs/pdf/doc_acronyms.pdf
+  INSTITUTION_ACRONYMS = {
+    'Cccf Minimum'                                   => 'CCCM',
+    'Coffee Creek Correctional Facility'             => 'CCCF',
+    'Coffee Creek Intake Center'                     => 'CCIC',
+    'Columbia River Correctional Institution'        => 'CRCI',
+    'Drci Minimum'                                   => 'DRCM',
+    'Eastern Oregon Correctional Institution'        => 'EOCI',
+    'Ibro Location For Offenders Escaped From Leave' => '',
+    'Mill Creek Correctional Facility'               => 'MCCF',
+    'Oregon State Correctional Institution'          => 'OSCI',
+    'Oregon State Penitentiary'                      => 'OSP',
+    'Powder River Correctional Facility'             => 'PRCF',
+    'Santiam Correctional Institution'               => 'SCI',
+    'Shutter Creek Correctional Institution'         => 'SCCI',
+    'Snake River Correctional Institution'           => 'SRCI',
+    'South Fork Forest Camp'                         => 'SFFC',
+    'Srci Minimum'                                   => 'SRCM',
+    'Trci Minimum'                                   => 'TRCM',
+    'Two Rivers Correctional Institution'            => 'TRCI',
+    'Warner Creek Correctional Facility'             => 'WCCF',
+  }
+
+  # Given a counselor and a full institution name, produce a shortened title for
+  # that counselor, like "Counselor, OSCI"
+  def short_counselor_title(institution_name)
+    if acronym = INSTITUTION_ACRONYMS[institution_name].presence
+      "Counselor, #{acronym}"
+    else
+      'Counselor'
+    end
+  end
 end
