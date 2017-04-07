@@ -10,7 +10,7 @@
           VINE is an automated notification system. For example, VINE will call,
           text, and/or email you if there is a change in custody status.
       .mdl-card__actions.mdl-card--border
-        = link_to 'https://www.vinelink.com/#/home/site/38000', target: '_blank', class: 'mdl-button mdl-js-button app-color-primary' do
+        = link_to vine_path(@sid), id: 'vine-link', target: '_blank', class: 'mdl-button mdl-js-button app-color-primary' do
           VINE Website
           %i.material-icons open_in_new
 

@@ -56,5 +56,18 @@ describe HomeController do
       subject
       expect(response).to be_success
     end
+
+    describe 'when given a offender_id' do
+      let(:sid) { '123456' }
+      subject { get :notification_systems, params: { offender_id: sid } }
+
+      it 'gives a contextual vine link' do
+        subject
+        expect(response).to be_success
+
+        link = Nokogiri::HTML(response.body).css("a#vine-link[href*=\"#{sid}\"]")
+        expect(link).to be_present
+      end
+    end
   end
 end

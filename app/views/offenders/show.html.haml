@@ -72,6 +72,20 @@
           they will be released earlier in addition to earned time.  To learn more
           check out #{link_to 'this summary by Crime Victims United', 'http://www.crimevictimsunited.org/issues/corrections/aip.htm'}.
 
+      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
+        = link_to '#expand-how-stay-notified', class: 'app-list__item-link' do
+          %span.mdl-list__item-primary-content
+            How can I stay informed about where the offender is?
+        %span.mdl-list__item-secondary-action
+          = link_to '#expand-how-dates-change' do
+            %i.material-icons keyboard_arrow_down
+      %li#expand-how-stay-notified.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+        %p
+          You can register with the state of Oregon to be notified in changes in the offender's status.
+        %p
+          = link_to offender_notification_systems_path(@offender[:sid]) do
+            Click here to learn about programs of how to stay notified
+
   .mdl-cell.mdl-cell--12-col
     %h2.app-typography--subheader Who can I call?
 

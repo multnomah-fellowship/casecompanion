@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   end
 
   def notification_systems
+    @sid = params[:offender_id]
   end
 end
