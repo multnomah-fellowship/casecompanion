@@ -4,6 +4,9 @@
 
 .mdl-grid
   .mdl-cell.mdl-cell--12-col
+    - if @notification
+      %h1.app-typography--subheader Regarding offender SID ##{@notification.offender_sid}
+
     %ul.mdl-list.app-list
       %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
         = link_to link_path_for_offender_or_search(@notification), class: 'app-list__item-link' do
