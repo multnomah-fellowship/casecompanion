@@ -28,13 +28,13 @@ class NotificationsController < ApplicationController
 
     channel = client.list_channels.detect { |c| c.type == 'twilio' }
     client.send_message(channel.id, to: [@notification.phone_number], body: <<-MESSAGE.strip_heredoc)
-      Hi #{@notification.first_name}, Pam has invited you to a new website to stay informed on your case.
+      Hi #{@notification.first_name}, as I mentioned there's a tool we have that allows you to look up offender info and answer some frequently asked questions for you.
 
       Feel free to visit #{session_link} to see offender status and what notifications you can sign up for.
 
-      Questions or concerns? Just reply here. We'll help you track down the right information.
+      Questions or concerns? Just reply here. I'll help you track down the right information.
 
-      -Team MyAdvocate
+      -Pam
     MESSAGE
 
     if @notification.persisted?
