@@ -111,5 +111,19 @@ describe ApplicationHelper do
       doc = Nokogiri::HTML(subject)
       expect(doc.css('li.mdl-list__item').length).to eq(2)
     end
+
+    it 'does not raise an error if there are two different items' do
+      expect do
+        helper.app_dropdown(title, &body)
+        helper.app_dropdown(title + 'foo', &body)
+      end.not_to raise_error
+    end
+
+    it 'raises an error if there are two of the same list items' do
+      expect do
+        helper.app_dropdown(title, &body)
+        helper.app_dropdown(title, &body)
+      end.to raise_error(StandardError)
+    end
   end
 end

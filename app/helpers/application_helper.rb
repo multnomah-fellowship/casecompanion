@@ -99,7 +99,14 @@ module ApplicationHelper
   end
 
   def app_dropdown(title, &block)
-    url_snippet = title.downcase.scan(/\w+/).first(5).join('-')
+    url_snippet = title.downcase.scan(/\w+/).join('-')
+
+    @_page_dropdowns ||= []
+    if @_page_dropdowns.include?(url_snippet)
+      raise "Two dropdowns with the same title: #{title}"
+    end
+    @_page_dropdowns << url_snippet
+
     expanded_classes = 'mdl-list__item app-list__item--full-bleed
       app-list__item--white-background app-list__item--expansion
       app-list__item--hidden'
