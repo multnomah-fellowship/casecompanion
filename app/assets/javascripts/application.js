@@ -58,8 +58,10 @@ window.App = (function() {
 
   return {
     init: function() {
-      // Beware: This will be called multiple times because of turbolinks, so
-      // everything in here should be idempotent
+      // Beware: This is only called once on initial page load, and subsequent
+      // turbolinks navigations will not call this method again. All event
+      // handlers registered in here should use [Event
+      // Delegation](https://learn.jquery.com/events/event-delegation/)
       initializeToggles();
     },
   };
@@ -67,10 +69,8 @@ window.App = (function() {
 
 document.addEventListener('turbolinks:load', analytics.trackView);
 
-// "load" covers the first page load, and "turbolinks:render" is called after
-// subsequent navigations via turbolinks.
+// Initialize the app on the first load only.
 window.addEventListener('load', window.App.init);
-document.addEventListener('turbolinks:render', window.App.init);
 
 // Re-initialize the Material Design Lite text fields and such after a
 // turbolinks load.
