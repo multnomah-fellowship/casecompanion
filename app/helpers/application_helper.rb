@@ -97,4 +97,23 @@ module ApplicationHelper
       'https://www.vinelink.com/#/home/site/38000'
     end
   end
+
+  def app_dropdown(title, &block)
+    url_snippet = title.downcase.scan(/\w+/).first(5).join('-')
+    expanded_classes = 'mdl-list__item app-list__item--full-bleed
+      app-list__item--white-background app-list__item--expansion
+      app-list__item--hidden'
+
+    content_tag(:li, class: 'mdl-list__item app-list__item--full-bleed app-list__item--white-background') do
+      link_to("#expand-#{url_snippet}", class: 'app-list__item-link') do
+        content_tag(:span, title, class: 'mdl-list__item-primary-content')
+      end +
+      content_tag(:span, class: 'mdl-list__item-secondary-action') do
+        link_to("#expand-#{url_snippet}") do
+          content_tag(:i, 'keyboard_arrow_down', class: 'material-icons')
+        end
+      end
+    end +
+    content_tag(:li, id: "expand-#{url_snippet}", class: expanded_classes, &block)
+  end
 end

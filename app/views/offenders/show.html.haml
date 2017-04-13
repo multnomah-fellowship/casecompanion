@@ -31,14 +31,7 @@
       %li.mdl-list__item
         -# spacer
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-how-dates-change', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            How might this date change?
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-how-dates-change' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-how-dates-change.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown 'How might this date change?' do
         %p
           Earliest Release Date is not firm until closer to release. It gets
           updated periodically by counselors. The closer to release, the more
@@ -72,14 +65,7 @@
           they will be released earlier in addition to earned time.  To learn more
           check out #{link_to 'this summary by Crime Victims United', 'http://www.crimevictimsunited.org/issues/corrections/aip.htm'}.
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-how-stay-notified', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            How can I stay informed about where the offender is?
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-how-stay-notified' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-how-stay-notified.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown 'How can I stay informed about where the offender is?' do
         %p
           You can register with the state of Oregon to be notified in changes in the offender's status.
         %p
@@ -96,14 +82,7 @@
           %span Robyn Masella
           %span.mdl-list__item-sub-title Victims' Specialist, Parole Board
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-contact-robyn', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            Contact Robyn
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-contact-robyn' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-contact-robyn.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown 'Contact Robyn' do
         %ul.app-contact-list
           %li
             = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
@@ -116,14 +95,7 @@
               %span.app-contact-list__primary-description
                 DLParoleBoardVictimNotify@doc.state.or.us
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-what-robyn', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            What can I talk to Robyn about?
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-what-robyn' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-what-robyn.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown 'What can I talk to Robyn about?' do
         %span.mdl-list__item-primary-content
           %p How to stay informed
           %p What these notifications mean
@@ -142,26 +114,12 @@
           %span= name_reorderer(@offender[:caseload_name])
           %span.mdl-list__item-sub-title= short_counselor_title(@offender[:location])
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-contact-counselor', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            Contact #{first_name(@offender[:caseload_name])}
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-contact-counselor' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-contact-counselor.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown "Contact #{first_name(@offender[:caseload_name])}" do
         %span.mdl-list__item-primary-content
           %p By Phone: TODO
           %p By Email: TODO
 
-      %li.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background
-        = link_to '#expand-what-counselor', class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            What can I talk to #{first_name(@offender[:caseload_name])} about?
-        %span.mdl-list__item-secondary-action
-          = link_to '#expand-what-counselor' do
-            %i.material-icons keyboard_arrow_down
-      %li#expand-what-counselor.mdl-list__item.app-list__item--full-bleed.app-list__item--white-background.app-list__item--expansion.app-list__item--hidden
+      = app_dropdown "What can I talk to #{first_name(@offender[:caseload_name])} about?" do
         %span.mdl-list__item-primary-content
           %p General information about what sentence-reduction programs a prison offers
           %p General questions about the information on this page

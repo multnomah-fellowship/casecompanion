@@ -100,4 +100,16 @@ describe ApplicationHelper do
         .to eq('Counselor')
     end
   end
+
+  describe '#app_dropdown' do
+    let(:body) { proc { "body here" } }
+    let(:title) { 'Title here' }
+
+    subject { helper.app_dropdown(title, &body) }
+
+    it 'returns two <li> list items' do
+      doc = Nokogiri::HTML(subject)
+      expect(doc.css('li.mdl-list__item').length).to eq(2)
+    end
+  end
 end
