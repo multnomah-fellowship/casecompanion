@@ -72,7 +72,7 @@ a {
 }
 
 /*
- * APP CONTAINERS
+ * APP CONTAINERS / LAYOUT
  */
 .app-outer-container {
   min-height: 100vh;
@@ -100,6 +100,16 @@ a {
 .app-cell--error {
   background-color: #ffffe0;
   padding: 1em;
+}
+
+.app-vertical-spacer {
+  height: 80px;
+}
+
+@media(min-width: 640px) {
+  .app-vertical-spacer {
+    height: 160px;
+  }
 }
 
 /*
@@ -197,6 +207,15 @@ a {
   &:not(:last-child) {
     border-bottom: 1px solid map-get($colors, grey-light);
   }
+}
+
+/*
+ * CUSTOM FORM FIELD STYLING
+ */
+.app-textfield__help {
+  margin-top: -12px;
+  margin-bottom: 16px;
+  color: map-get($colors, grey-dark);
 }
 
 /*

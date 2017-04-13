@@ -1,12 +1,17 @@
 = form_for :offender, url: search_offenders_path do |f|
   .mdl-grid
     .mdl-cell.mdl-cell--12-col
-      %h2.mdl-typography--headline Search for an Offender
+      %h2.mdl-typography--headline= t('offender_search.title')
 
-      .mdl-textfield.mdl-js-textfield
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
         = f.text_field :sid, class: 'mdl-textfield__input'
-        = f.label :sid, class: 'mdl-textfield__label' do
-          SID
+        = f.label :sid, t('offender_search.sid.label'), class: 'mdl-textfield__label'
+      .app-textfield__help.mdl-typography--caption= t('offender_search.sid.help')
 
     .mdl-cell.mdl-cell--12-col
-      = f.submit 'Search', class: 'mdl-button mdl-js-button mdl-button--raised'
+      = f.submit 'Search', class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+
+    .mdl-cell.app-vertical-spacer
+      -# extra spacing to push down the footer
+
+    = render 'layouts/footer'

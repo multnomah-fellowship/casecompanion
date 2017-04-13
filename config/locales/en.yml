@@ -21,3 +21,9 @@ en:
     cfa: Code for America
     multco: Multnomah County
     textus: Text us at %{phone_number}
+
+  offender_search:
+    title: Start by looking up an offender
+    sid:
+      label: Offender State ID (SID)
+      help: Currently we only support lookup of offenders in prison.
