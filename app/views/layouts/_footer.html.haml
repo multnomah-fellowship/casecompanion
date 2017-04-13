@@ -1,0 +1,11 @@
+.mdl-cell.mdl-cell--12-col.app-footer
+  %h3.app-typography--subheader Other Questions?
+  %p Would you like help tracking down any other information?
+  = link_to "Text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'
+
+  %p.mdl-typography--body-1.app-footer__powered-by
+    Powered by
+    %br
+    = link_to 'Code For America', 'https://www.codeforamerica.org', target: '_blank'
+    &middot;
+    = link_to 'Multnomah County', 'https://multco.us', target: '_blank'
