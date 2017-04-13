@@ -1,11 +1,30 @@
 .mdl-cell.mdl-cell--12-col.app-footer
-  %h3.app-typography--subheader Other Questions?
-  %p Would you like help tracking down any other information?
-  = link_to "Text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'
+  %h3.app-typography--subheader= t('footer.title')
+  %p= t('footer.body')
+
+  = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}", class: 'app-button-link'
+
+.mdl-cell.mdl-cell--12-col.app-footer
+  %h3.app-typography--subheader= t('footer.second_title')
+  %p= t('footer.second_body')
+
+  %ul.mdl-list
+    %li.mdl-list__item.mdl-list__item--two-line
+      %span.mdl-list__item-primary-content
+        = image_tag 'pam.jpg', class: 'mdl-list__item-avatar'
+        Pam
+        %span.mdl-list__item-sub-title
+          Fellow, Code for America
+    %li.mdl-list__item.mdl-list__item--two-line
+      %span.mdl-list__item-primary-content
+        = image_tag 'tom.jpg', class: 'mdl-list__item-avatar'
+        Tom
+        %span.mdl-list__item-sub-title
+          Fellow, Code for America
 
   %p.mdl-typography--body-1.app-footer__powered-by
-    Powered by
+    = t('footer.powered_by')
     %br
-    = link_to 'Code For America', 'https://www.codeforamerica.org', target: '_blank'
+    = link_to t('footer.cfa'), 'https://www.codeforamerica.org', target: '_blank'
     &middot;
-    = link_to 'Multnomah County', 'https://multco.us', target: '_blank'
+    = link_to t('footer.multco'), 'https://multco.us', target: '_blank'
