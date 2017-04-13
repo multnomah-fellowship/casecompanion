@@ -57,7 +57,7 @@ class OffenderScraper
       caseload_number: results_page.css('[id="offensesForm:caseloadNumber"]').text,
       caseload_name: results_page.css('[id="offensesForm:caseloadMgrsTable"]').text.strip,
 
-      location: results_page.css('[id="offensesForm:locationBlock"] a').text,
+      location: results_page.css('[id="offensesForm:locationBlock"] td:nth-child(2)').text,
       status: results_page.css('[id="offensesForm:status"]').text,
       admission_date: results_page.css('[id="offensesForm:admitDate"]').text,
       earliest_release_date: results_page.css('[id="offensesForm:relDate"]').text,
