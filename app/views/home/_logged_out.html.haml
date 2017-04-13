@@ -1,23 +1,11 @@
 .app-hero
-  %h2.mdl-typography--subhead Helping victims navigate the criminal justice system
-  %h3.mdl-typography--headline What can we help you with today?
+  %h2.mdl-typography--headline= t('home.headline')
+  %h3.mdl-typography--subhead= t('home.subhead')
+
+  = link_to offenders_path, class: 'mdl-button mdl-button--raised mdl-button--colored' do
+    = t('home.cta')
+    %i.material-icons arrow_forward
 
 .mdl-grid
   .mdl-cell.mdl-cell--12-col
-    - if @notification
-      %h1.app-typography--subheader Regarding offender SID ##{@notification.offender_sid}
-
-    %ul.mdl-list.app-list
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--full-bleed.app-list__item--white-background
-        = link_to link_path_for_offender_or_search(@notification), class: 'app-list__item-link' do
-          %span.mdl-list__item-primary-content
-            What's the offender status?
-            %span.mdl-list__item-sub-title Information &amp; Contacts
-
-        = link_to link_path_for_offender_or_search(@notification), class: 'app-list__item-secondary-link' do
-          %span.mdl-list__item-secondary-action
-            %i.material-icons keyboard_arrow_right
-
-  -#
-    .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
-      %p= link_to 'Advocate Login', new_sessions_path
+    %p.mdl-typography--body-1= t('home.description')
