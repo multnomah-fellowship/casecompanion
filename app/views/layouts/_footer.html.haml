@@ -4,10 +4,6 @@
 
   = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}", class: 'app-button-link'
 
-.mdl-cell.mdl-cell--12-col.app-footer
-  %h3.app-typography--subheader= t('footer.second_title')
-  %p= t('footer.second_body')
-
   %ul.mdl-list
     %li.mdl-list__item.mdl-list__item--two-line
       %span.mdl-list__item-primary-content
@@ -21,6 +17,8 @@
         Tom
         %span.mdl-list__item-sub-title
           Fellow, Code for America
+
+  %p= t('footer.second_body')
 
   %p.mdl-typography--body-1.app-footer__powered-by
     = t('footer.powered_by')
