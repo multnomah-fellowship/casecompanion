@@ -96,14 +96,13 @@
                 DLParoleBoardVictimNotify@doc.state.or.us
 
       = app_dropdown 'What can I talk to Robyn about?' do
-        %span.mdl-list__item-primary-content
-          %p How to stay informed
-          %p What these notifications mean
-          %p Why the release date changes
-          %p Will there be a parole hearing I can speak at
-          %p Release plans and safety planning
-          %p Discuss terms of supervision and no contact orders
-          %p When and where an offender will be released
+        %p How to stay informed
+        %p What these notifications mean
+        %p Why the release date changes
+        %p Will there be a parole hearing I can speak at
+        %p Release plans and safety planning
+        %p Discuss terms of supervision and no contact orders
+        %p When and where an offender will be released
 
       %li.mdl-list__item
         -# This space left intentionally blank.
@@ -115,15 +114,13 @@
           %span.mdl-list__item-sub-title= short_counselor_title(@offender[:location])
 
       = app_dropdown "Contact #{first_name(@offender[:caseload_name])}" do
-        %span.mdl-list__item-primary-content
-          %p By Phone: TODO
-          %p By Email: TODO
+        %p By Phone: TODO
+        %p By Email: TODO
 
       = app_dropdown "What can I talk to #{first_name(@offender[:caseload_name])} about?" do
-        %span.mdl-list__item-primary-content
-          %p General information about what sentence-reduction programs a prison offers
-          %p General questions about the information on this page
-          %p Stopping unwanted contact from an inmate
+        %p General information about what sentence-reduction programs a prison offers
+        %p General questions about the information on this page
+        %p Stopping unwanted contact from an inmate
 
   .mdl-cell.mdl-cell--12-col.app-footer
     %h3.app-typography--subheader Other Questions?
