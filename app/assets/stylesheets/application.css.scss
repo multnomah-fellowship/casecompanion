@@ -91,12 +91,8 @@ a {
   }
 }
 
-.app-header {
-  background-color: white;
-}
-
 .app-title, .mdl-navigation__link.app-title {
-  color: map-get($colors, grey-dark);
+  color: #fff;
   text-decoration: none;
 }
 
