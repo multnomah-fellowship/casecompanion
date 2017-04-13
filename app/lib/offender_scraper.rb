@@ -8,15 +8,17 @@ class OffenderScraper
     if cached
       cached.data.symbolize_keys
     else
-      self.scrape!(sid).tap do |data|
-        return nil if data.nil?
+      data = self.scrape!(sid)
 
-        OffenderSearchCache
-          .unscoped
-          .where(offender_sid: sid)
-          .first_or_create
-          .update_attributes(data: data)
-      end
+      return nil if data.nil?
+
+      OffenderSearchCache
+        .unscoped
+        .where(offender_sid: sid)
+        .first_or_create
+        .update_attributes(data: data)
+
+      data
     end
   end
 
