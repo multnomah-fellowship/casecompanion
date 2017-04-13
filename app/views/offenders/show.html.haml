@@ -124,14 +124,15 @@
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
           %i.material-icons.mdl-list__item-icon person
-          %span= name_reorderer(@offender[:caseload_name])
-          %span.mdl-list__item-sub-title= short_counselor_title(@offender[:location])
+          %span Saydyie DeRosa
+          %span.mdl-list__item-sub-title
+            Victim Program Specialist, Department of Corrections
 
-      = app_dropdown "Contact #{first_name(@offender[:caseload_name])}" do
+      = app_dropdown 'Contact Saydyie' do
         %p By Phone: TODO
         %p By Email: TODO
 
-      = app_dropdown "What can I talk to #{first_name(@offender[:caseload_name])} about?" do
+      = app_dropdown 'What can I talk to Saydyie about?' do
         %p General information about what sentence-reduction programs a prison offers
         %p General questions about the information on this page
         %p Stopping unwanted contact from an inmate
