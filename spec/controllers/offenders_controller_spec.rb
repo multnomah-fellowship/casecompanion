@@ -61,5 +61,14 @@ RSpec.describe OffendersController do
       subject
       expect(response.body).to include(OFFENDER_FIXTURE[:sid])
     end
+
+    it 'gives a contextual vine link' do
+      subject
+      expect(response).to be_success
+      sid = OFFENDER_FIXTURE[:sid]
+
+      link = Nokogiri::HTML(response.body).css("a#vine-link[href*=\"#{sid}\"]")
+      expect(link).to be_present
+    end
   end
 end

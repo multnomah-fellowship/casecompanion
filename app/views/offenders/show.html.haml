@@ -66,11 +66,24 @@
           check out #{link_to 'this summary by Crime Victims United', 'http://www.crimevictimsunited.org/issues/corrections/aip.htm'}.
 
       = app_dropdown 'How can I stay informed about where the offender is?' do
-        %p
-          You can register with the state of Oregon to be notified in changes in the offender's status.
-        %p
-          = link_to offender_notification_systems_path(@offender[:sid]) do
-            Click here to learn about programs of how to stay notified
+        .app--notification-method
+          %p.mdl-typography--subhead Oregon VINE
+          %p.mdl-typography--body-1
+            VINE is an automated notification system. For example, VINE will call,
+            text, and/or email you if there is a change in custody status.
+          = link_to vine_path(@offender[:sid]), id: 'vine-link', class: 'mdl-button mdl-js-button app-color-primary app-list-button' do
+            VINE website
+            %i.material-icons open_in_new
+
+        .app--notification-method
+          %p.mdl-typography--subhead Oregon Prison Release Notification
+          %p.mdl-typography--body-1
+            The Oregon Parole Board can notify you 90 days prior to an inmate's
+            release and help you get a No Contact order added to an inmate's
+            conditions of Post-Prison Supervision.
+          = link_to 'https://www.oregon.gov/BOPPPS/docs/Fillable%20Forms/Victim%20Request%20for%20Notification.pdf', class: 'mdl-button mdl-js-button app-color-primary app-list-button' do
+            Sign Up Form
+            %i.material-icons open_in_new
 
   .mdl-cell.mdl-cell--12-col
     %h2.app-typography--subheader Who can I call?

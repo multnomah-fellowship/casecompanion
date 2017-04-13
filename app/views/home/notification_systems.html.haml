@@ -2,27 +2,5 @@
   .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
     %h2.app-typography--subheader Offender Public Information
 
-    .app-card--notification-method.mdl-card
-      .mdl-card__title
-        VINE
-      .mdl-card__supporting-text
-        %span.mdl-typography--body-1
-          VINE is an automated notification system. For example, VINE will call,
-          text, and/or email you if there is a change in custody status.
-      .mdl-card__actions.mdl-card--border
-        = link_to vine_path(@sid), id: 'vine-link', target: '_blank', class: 'mdl-button mdl-js-button app-color-primary' do
-          VINE Website
-          %i.material-icons open_in_new
 
   .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-desktop
-    .app-card--notification-method.mdl-card
-      .mdl-card__title Parole Board Notification
-      .mdl-card__supporting-text
-        %span.mdl-typography--body-1
-          The Board can notify you prior to any type of hearing or release via a
-          mail letter. This notification will include advance notice of
-          Transitional Leave.
-      .mdl-card__actions.mdl-card--border
-        = link_to 'https://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx', target: '_blank', class: 'mdl-button mdl-js-button app-color-primary' do
-          Parole Board Website
-          %i.material-icons open_in_new
