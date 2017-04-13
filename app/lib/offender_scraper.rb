@@ -29,7 +29,7 @@ class OffenderScraper
     scraper = Mechanize.new
     scraper.get('http://docpub.state.or.us/OOS/intro.jsf') do |page|
       search_page = scraper.click 'I Agree'
-      search_page.form_with(id: 'mainBodyForm') do |f|
+      return search_page.form_with(id: 'mainBodyForm') do |f|
         f['mainBodyForm:SidNumber'] = sid
       end.click_button
     end
