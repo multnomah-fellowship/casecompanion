@@ -3,19 +3,8 @@ class NotificationsController < ApplicationController
     @notification = Notification.new
   end
 
-  # a user clicking on a notification:
   def show
-    @notification = Notification.find(params[:id])
-
-    # if the URL doesn't quite line up properly, e.g. the notification was
-    # generated for a different offender
-    if @notification.offender_sid.to_i != params[:o].to_i
-      flash[:info] = 'Please search for your offender again'
-    else
-      session[:notification_id] = @notification.id
-    end
-
-    redirect_to root_url
+    redirect_to offender_path(params[:o])
   end
 
   def create

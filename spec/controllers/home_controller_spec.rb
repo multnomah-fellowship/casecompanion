@@ -18,26 +18,6 @@ describe HomeController do
       end
     end
 
-    describe 'with a notification_id in the session' do
-      let(:offender_sid) { (Random.rand * 100_000_000).floor }
-      let(:notification) do
-        Notification.create!(
-          first_name: 'Tom',
-          offender_sid: offender_sid,
-          phone_number: '123-456-7890'
-        )
-      end
-
-      it 'renders a link directly to that offender show page' do
-        session[:notification_id] = notification.id
-        subject
-        expect(response).to be_success
-        doc = Nokogiri::HTML(response.body)
-        link = doc.css("a[href=\"/offenders/#{offender_sid}\"]")
-        expect(link).to be_present
-      end
-    end
-
     describe 'when logged out' do
       it 'renders a link to the offender search page' do
         subject
