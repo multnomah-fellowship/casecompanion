@@ -15,7 +15,7 @@
         = f.label :first_name, t('offender_search.last_name.label'), class: 'mdl-textfield__label'
 
       - if @results.present?
-        %table.mdl-data-table
+        %table.mdl-data-table.app-table--rows-clickable
           %thead
             %tr
               %th SID
@@ -25,7 +25,7 @@
               %th DOB
           %tbody
             - @results.each do |result|
-              %tr
+              %tr{ data: { href: offender_path(result[:sid]) } }
                 %td= link_to result[:sid], offender_path(result[:sid])
                 %td= result[:first]
                 %td= result[:middle]

@@ -238,3 +238,12 @@ a {
     padding: 0;
   }
 }
+
+/*
+ * CUSTOM TABLE STYLES
+ */
+.app-table--rows-clickable {
+  > tbody > tr:hover {
+    cursor: pointer;
+  }
+}

@@ -52,8 +52,16 @@ window.App = (function() {
     return false;
   };
 
+  const handleTableClick = function(e) {
+    const $el = $(e.target);
+    const $tr = $el.closest('tr');
+
+    Turbolinks.visit($tr.attr('data-href'));
+  };
+
   const initializeToggles = function() {
     $(document).on('click', 'a[href^="#expand-"]', handleToggle);
+    $(document).on('click', 'tr[data-href]', handleTableClick);
   };
 
   return {
