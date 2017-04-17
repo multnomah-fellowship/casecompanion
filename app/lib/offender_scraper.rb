@@ -1,15 +1,24 @@
-require 'mechanize'
+require 'oos_mechanizer'
 require 'json'
 
-class OffenderScraper
+module OffenderScraper
+  # @return Array<Hash> Array of hashes with information from the search results
+  #   table. This search is not cached because it's assumed that this is used on
+  #   a search results page that can take a couple seconds to load.
+  def self.search_by_name(first_name, last_name)
+    searcher = OosMechanizer::Searcher.new
+    searcher.each_result(first_name: first_name, last_name: last_name).to_a
+  end
+
+  # @return Hash? Information about the offender, if found. This method is
+  #   cached for a day since it's kind of slow.
   def self.offender_details(sid)
     cached = OffenderSearchCache.find_by(offender_sid: sid)
 
     if cached
       cached.data.symbolize_keys
     else
-      results_page = self.fetch_results_page(sid)
-      data = self.process_page(results_page)
+      data = self.fetch_offender_details(sid)
 
       return nil if data.nil?
 
@@ -25,45 +34,8 @@ class OffenderScraper
 
   private
 
-  def self.fetch_results_page(sid)
-    scraper = Mechanize.new
-    scraper.get('http://docpub.state.or.us/OOS/intro.jsf') do |page|
-      search_page = scraper.click 'I Agree'
-      return search_page.form_with(id: 'mainBodyForm') do |f|
-        f['mainBodyForm:SidNumber'] = sid
-      end.click_button
-    end
-  end
-
-  def self.process_page(results_page)
-    offenses = results_page.css('[id="offensesForm:offensesTable"] tbody tr:nth-child(2n+1)')
-
-    return nil if results_page.css('#errorMessages').text =~ /invalid characters detected/i
-    return nil if results_page.css('#errorMessages').text =~ /no matching records/i
-
-    return {
-      sid: results_page.css('[id="offensesForm:out_SID"]').text,
-      name: results_page.css('[id="offensesForm:name"]').text,
-
-      age: results_page.css('[id="offensesForm:age"]').text,
-      gender: results_page.css('[id="offensesForm:sex"]').text,
-      height: results_page.css('[id="offensesForm:height"]').text,
-      weight: results_page.css('[id="offensesForm:weight"]').text,
-      dob: results_page.css('[id="offensesForm:dob"]').text,
-      race: results_page.css('[id="offensesForm:race"]').text,
-      hair: results_page.css('[id="offensesForm:hair"]').text,
-      eyes: results_page.css('[id="offensesForm:eyes"]').text,
-
-      caseload_number: results_page.css('[id="offensesForm:caseloadNumber"]').text,
-      caseload_name: results_page.css('[id="offensesForm:caseloadMgrsTable"]').text.strip,
-
-      location: results_page.css('[id="offensesForm:locationBlock"] td:nth-child(2)').text,
-      status: results_page.css('[id="offensesForm:status"]').text,
-      admission_date: results_page.css('[id="offensesForm:admitDate"]').text,
-      earliest_release_date: results_page.css('[id="offensesForm:relDate"]').text,
-
-      offenses: offenses.map {|o| o.text.strip.gsub(/\s+/, ',') },
-      num_offenses: offenses.length,
-    }
+  def self.fetch_offender_details(sid)
+    searcher = OosMechanizer::Searcher.new
+    searcher.offender_details(sid)
   end
 end

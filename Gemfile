@@ -35,7 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 gem 'material_design_lite-rails'
-gem 'mechanize'
+
+gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
