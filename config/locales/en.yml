@@ -22,10 +22,11 @@ en:
     textus: Text us at %{phone_number}
 
   offender_search:
-    title: Start by looking up an offender
-    description: Currently we only support lookup of offenders in prison.
+    title: Start by looking up an inmate
+    description: Searching Oregon Prisons
     by_name: 'Search by Name:'
-    by_sid: 'Or, search by SID (Oregon State ID):'
+    by_sid: 'Search by SID (Oregon State ID):'
+    search: Search
     sid:
       label: Offender State ID (SID)
     first_name:
