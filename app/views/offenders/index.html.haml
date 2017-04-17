@@ -14,7 +14,32 @@
         = f.text_field :last_name, value: search_params[:last_name], class: 'mdl-textfield__input'
         = f.label :first_name, t('offender_search.last_name.label'), class: 'mdl-textfield__label'
 
-      - if @results.present?
+    - if @results.present?
+      - @results.each do |result|
+        .mdl-cell.mdl-cell--6-col.mdl-cell--8-col-tablet.mdl-cell--hide-desktop
+          = link_to offender_path(result[:sid]), class: 'app-card--result' do
+            %ul
+              %li
+                %span.app-card--result__label.mdl-typography--caption SID
+                = result[:sid]
+              %li
+                %span.app-card--result__label.mdl-typography--caption First
+                = result[:first]
+              %li
+                %span.app-card--result__label.mdl-typography--caption Middle
+                = result[:middle]
+              %li
+                %span.app-card--result__label.mdl-typography--caption Last
+                = result[:last]
+              %li
+                %span.app-card--result__label.mdl-typography--caption DOB
+                = result[:dob]
+            %span.mdl-button.mdl-button--raised
+              View offender
+              %i.material-icons keyboard_arrow_right
+
+
+      .mdl-cell.mdl-cell--12-col.mdl-cell--hide-tablet.mdl-cell--hide-phone
         %table.mdl-data-table.app-table--rows-clickable
           %thead
             %tr
