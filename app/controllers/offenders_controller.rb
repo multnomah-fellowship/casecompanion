@@ -3,10 +3,15 @@ class OffendersController < ApplicationController
     if offender_params[:sid].present?
       redirect_to offender_path(offender_params[:sid])
     elsif offender_params[:first_name].present? || offender_params[:last_name].present?
-      @results = OffenderScraper.search_by_name(
-        offender_params[:first_name],
-        offender_params[:last_name]
-      )
+      begin
+        @results = OffenderScraper.search_by_name(
+          offender_params[:first_name],
+          offender_params[:last_name]
+        )
+      rescue OosMechanizer::Searcher::TooManyResultsError
+        @results = []
+        flash.now[:error] = I18n.t('offender_search.error_too_many_results')
+      end
     end
 
     if params[:error] == 'no_offender_found'

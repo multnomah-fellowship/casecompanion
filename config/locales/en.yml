@@ -48,3 +48,7 @@ en:
       We currently only have information on offenders in the prison system–if
       the offender you searched for (%{first_name} %{last_name}) is not
       currently in a state prison then we will not have their information.
+
+    error_too_many_results: |
+      Your search returned too many results. You may want to check that you are
+      searching with both the first name and the last name.
