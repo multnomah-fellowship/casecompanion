@@ -29,22 +29,45 @@ RSpec.describe OffendersController do
   render_views
 
   describe 'GET /index' do
-    subject { get :index }
+    let(:params) { {} }
+
+    subject { get :index, params: params }
 
     it 'renders successfully' do
       subject
       expect(response).to be_success
     end
-  end
 
-  describe 'POST /search' do
-    let(:params) { { offender: { sid: '1234' } } }
+    describe 'with search by SID parameters' do
+      let(:params) { { offender: { sid: '1234' } } }
 
-    subject { post :search, params: params }
+      it 'redirects to the offender show page' do
+        subject
+        expect(response).to redirect_to(offender_path(params[:offender][:sid]))
+      end
+    end
 
-    it 'redirects to the offender show page' do
-      subject
-      expect(response).to redirect_to(offender_path(params[:offender][:sid]))
+    describe 'with search by name' do
+      let(:params) { { offender: { first_name: 'Tom', last_name: 'Dooner' } } }
+      let(:results) { [{ sid: 123456, first: 'Tom', last: 'Dooner' }] }
+
+      before do
+        allow(OffenderScraper).to receive(:search_by_name).and_return(results)
+      end
+
+      it 'renders the results' do
+        subject
+        expect(response.body).to include(results[0][:sid].to_s)
+      end
+
+      describe 'when there are no results' do
+        let(:results) { [] }
+
+        it 'gives an error' do
+          subject
+          expect(response.body).to include("We couldn't find that offender.")
+        end
+      end
     end
   end
 

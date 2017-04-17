@@ -23,6 +23,27 @@ en:
 
   offender_search:
     title: Start by looking up an offender
+    description: Currently we only support lookup of offenders in prison.
+    by_name: 'Search by Name:'
+    by_sid: 'Or, search by SID (Oregon State ID):'
     sid:
       label: Offender State ID (SID)
-      help: Currently we only support lookup of offenders in prison.
+    first_name:
+      label: First Name
+    last_name:
+      label: Last Name
+    error_no_results: |
+      We couldn't find that offender. You may want to double-check the SID you
+      used to search.
+
+      We currently only have information on offenders in the prison system–if
+      the offender with SID %{search_sid} is not currently in a state prison
+      then we will not have their information.
+
+    error_no_results_by_name: |
+      We couldn't find that offender. You may want to double-check the spelling
+      of the names you used to search.
+
+      We currently only have information on offenders in the prison system–if
+      the offender you searched for (%{first_name} %{last_name}) is not
+      currently in a state prison then we will not have their information.

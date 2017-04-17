@@ -1,25 +1,39 @@
 class OffendersController < ApplicationController
   def index
+    if offender_params[:sid].present?
+      redirect_to offender_path(offender_params[:sid])
+    elsif offender_params[:first_name].present? || offender_params[:last_name].present?
+      @results = OffenderScraper.search_by_name(
+        offender_params[:first_name],
+        offender_params[:last_name]
+      )
+    end
+
+    if params[:error] == 'no_offender_found'
+      flash.now[:error] = I18n.t(
+        'offender_search.error_no_results',
+        search_sid: params[:error_sid]
+      )
+    elsif @results && @results.empty?
+      flash.now[:error] = I18n.t(
+        'offender_search.error_no_results_by_name',
+        first_name: offender_params[:first_name],
+        last_name: offender_params[:last_name]
+      )
+    end
   end
 
   def show
     @offender = OffenderScraper.offender_details(params[:id])
 
     if @offender.nil?
-      flash[:error] = <<-ERROR.strip_heredoc
-        We couldn't find that offender. You may want to double-check the SID you
-        used to search.
-
-        We currently only have information on offenders in the prison system–if
-        the offender with SID #{params[:id]} is not currently in a state prison
-        then we will not have their information.
-      ERROR
-
-      redirect_to offenders_path
+      redirect_to offenders_path(error: 'no_offender_found', error_sid: params[:id])
     end
   end
 
-  def search
-    redirect_to offender_path(params[:offender][:sid])
+  private
+
+  def offender_params
+    params.fetch(:offender, {})
   end
 end
