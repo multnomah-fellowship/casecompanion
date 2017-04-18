@@ -22,9 +22,5 @@ module MyAdvocate
     config.app_domain = ENV['APP_DOMAIN']
 
     config.mixpanel_token = ENV['MIXPANEL_TOKEN']
-
-    # For style guide:
-    config.assets.paths << Rails.root.join('app', 'assets', 'components')
-    ActionController::Base.append_view_path(Rails.root.join('app', 'assets', 'components'))
   end
 end
