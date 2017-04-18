@@ -1,0 +1,45 @@
+@import "colors";
+
+.app-list__item-link {
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-weight: inherit;
+  text-decoration: inherit;
+  width: 100%;
+}
+
+.app-list__item--white-background {
+  background-color: #fff;
+  border-top: 1px solid map-get($colors, grey-light);
+  border-bottom: 1px solid map-get($colors, grey-light);
+
+  & ~ & {
+    // remove the duplicate border top when two of these are next to each other
+    border-top: none;
+  }
+}
+
+.app-list__item--expanded {
+  .mdl-list__item-primary-content {
+    color: map-get($colors, primary);
+  }
+}
+
+.app-list__item--expansion .mdl-list__item-primary-content {
+  align-items: left;
+  flex-direction: column;
+}
+
+.mdl-list__item.app-list__item--hidden {
+  display: none;
+}
+
+.app-list__item--no-side-padding {
+  padding: 16px 0;
+}
+
+.app-list__item--full-bleed {
+  margin-left: -16px;
+  margin-right: -16px;
+}

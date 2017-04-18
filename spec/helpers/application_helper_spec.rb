@@ -101,29 +101,20 @@ describe ApplicationHelper do
     end
   end
 
-  describe '#app_dropdown' do
+  describe '#render_component with a dropdown' do
     let(:body) { proc { "body here" } }
     let(:title) { 'Title here' }
 
-    subject { helper.app_dropdown(title, &body) }
+    subject { helper.render_component('dropdown', title: title, &body) }
 
     it 'returns two <li> list items' do
       doc = Nokogiri::HTML(subject)
       expect(doc.css('li.mdl-list__item').length).to eq(2)
     end
 
-    it 'does not raise an error if there are two different items' do
-      expect do
-        helper.app_dropdown(title, &body)
-        helper.app_dropdown(title + 'foo', &body)
-      end.not_to raise_error
-    end
-
-    it 'raises an error if there are two of the same list items' do
-      expect do
-        helper.app_dropdown(title, &body)
-        helper.app_dropdown(title, &body)
-      end.to raise_error(StandardError)
+    it 'passes the title and body to the component' do
+      expect(subject).to include(title)
+      expect(subject).to include(body.call)
     end
   end
 end

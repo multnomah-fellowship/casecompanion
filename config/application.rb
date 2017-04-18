@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 Raven.configure do |config|
   config.dsn = 'https://4868f5b344c44a8193359627f70d408b:9c295067a1bb4abc8a514b0ca84199fe@sentry.io/159399'
   config.environments = ['production']
+  config.silence_ready = Rails.env.development? || Rails.env.test?
 end
 
 module MyAdvocate
@@ -21,5 +22,9 @@ module MyAdvocate
     config.app_domain = ENV['APP_DOMAIN']
 
     config.mixpanel_token = ENV['MIXPANEL_TOKEN']
+
+    # For style guide:
+    config.assets.paths << Rails.root.join('app', 'assets', 'components')
+    ActionController::Base.append_view_path(Rails.root.join('app', 'assets', 'components'))
   end
 end

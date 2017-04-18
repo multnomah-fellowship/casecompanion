@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title MyAdvocate
+    = csrf_meta_tags
+
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    %link{ href: '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet' }
+    %link{ href: '//fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'layouts/analytics_js'
+
+  %body
+    = yield

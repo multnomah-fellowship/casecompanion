@@ -31,7 +31,7 @@
       %li.mdl-list__item
         -# spacer
 
-      = app_dropdown 'How might this date change?' do
+      = render_component 'dropdown', title: 'How might this date change?' do
         %p
           Earliest Release Date is not firm until closer to release. It gets
           updated periodically by counselors. The closer to release, the more
@@ -65,7 +65,7 @@
           they will be released earlier in addition to earned time.  To learn more
           check out #{link_to 'this summary by Crime Victims United', 'http://www.crimevictimsunited.org/issues/corrections/aip.htm'}.
 
-      = app_dropdown 'How can I stay informed about where the offender is?' do
+      = render_component 'dropdown', title: 'How can I stay informed about where the offender is?' do
         .app--notification-method
           %p.mdl-typography--subhead Oregon VINE
           %p.mdl-typography--body-1
@@ -95,7 +95,7 @@
           %span Robyn Masella
           %span.mdl-list__item-sub-title Victims' Specialist, Parole Board
 
-      = app_dropdown 'Contact Robyn' do
+      = render_component 'dropdown', title: 'Contact Robyn' do
         %ul.app-contact-list
           %li
             = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
@@ -108,7 +108,7 @@
               %span.app-contact-list__primary-description
                 DLParoleBoardVictimNotify@doc.state.or.us
 
-      = app_dropdown 'What can I talk to Robyn about?' do
+      = render_component 'dropdown', title: 'What can I talk to Robyn about?' do
         %p How to stay informed
         %p What these notifications mean
         %p Why the release date changes
@@ -129,11 +129,11 @@
             %span.mdl-list__item-sub-title
               Victim Program Specialist, Department of Corrections
 
-        = app_dropdown 'Contact Saydyie' do
+        = render_component 'dropdown', title: 'Contact Saydyie' do
           %p By Phone: TODO
           %p By Email: TODO
 
-        = app_dropdown 'What can I talk to Saydyie about?' do
+        = render_component 'dropdown', title: 'What can I talk to Saydyie about?' do
           %p General information about what sentence-reduction programs a prison offers
           %p General questions about the information on this page
           %p Stopping unwanted contact from an inmate

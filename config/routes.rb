@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :styleguide, only: %i[show]
+
   resource :sessions, only: %i[new create destroy]
 
   resources :notifications, only: %i[new create]

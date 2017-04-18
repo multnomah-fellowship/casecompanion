@@ -98,29 +98,11 @@ module ApplicationHelper
     end
   end
 
-  def app_dropdown(title, &block)
-    url_snippet = title.downcase.scan(/\w+/).join('-')
-
-    @_page_dropdowns ||= []
-    if @_page_dropdowns.include?(url_snippet)
-      raise "Two dropdowns with the same title: #{title}"
-    end
-    @_page_dropdowns << url_snippet
-
-    expanded_classes = 'mdl-list__item app-list__item--full-bleed
-      app-list__item--white-background app-list__item--expansion
-      app-list__item--hidden'
-
-    content_tag(:li, class: 'mdl-list__item app-list__item--full-bleed app-list__item--white-background') do
-      link_to("#expand-#{url_snippet}", class: 'app-list__item-link') do
-        content_tag(:span, title, class: 'mdl-list__item-primary-content')
-      end +
-      content_tag(:span, class: 'mdl-list__item-secondary-action') do
-        link_to("#expand-#{url_snippet}") do
-          content_tag(:i, 'keyboard_arrow_down', class: 'material-icons')
-        end
-      end
-    end +
-    content_tag(:li, id: "expand-#{url_snippet}", class: expanded_classes, &block)
+  def render_component(name, options = {}, &block)
+    render(
+      layout: "#{name}/index",
+      locals: { options: options },
+      &block
+    )
   end
 end

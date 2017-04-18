@@ -10,22 +10,21 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ * COMPONENTS
+ *= require dropdown
+
+ * OTHER STYLE DEPENDENCIES
  *= require material
  *= require_tree .
  *= require_self
  */
 
+@import "colors";
+
 body, html {
   background-color: #eaeaea;
   min-width: 360px;
 }
-
-$colors: (
-  primary: #4990e2,
-  accent: #009789,
-  grey-light: rgba(0, 0, 0, 0.1),
-  grey-dark: #9b9b9b,
-);
 
 a {
   color: map-get($colors, primary);
@@ -131,50 +130,6 @@ a {
  * LIST EXTENSION STYLES
  */
 
-.app-list__item-link {
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font-weight: inherit;
-  text-decoration: inherit;
-  width: 100%;
-}
-
-.app-list__item--white-background {
-  background-color: #fff;
-  border-top: 1px solid map-get($colors, grey-light);
-  border-bottom: 1px solid map-get($colors, grey-light);
-
-  & ~ & {
-    // remove the duplicate border top when two of these are next to each other
-    border-top: none;
-  }
-}
-
-.app-list__item--expanded {
-  .mdl-list__item-primary-content {
-    color: map-get($colors, primary);
-  }
-}
-
-.app-list__item--expansion .mdl-list__item-primary-content {
-  align-items: left;
-  flex-direction: column;
-}
-
-.app-list__item--hidden {
-  display: none;
-}
-
-.app-list__item--no-side-padding {
-  padding: 16px 0;
-}
-
-.app-list__item--full-bleed {
-  margin-left: -16px;
-  margin-right: -16px;
-}
-
 /*
  * CUSTOM LIST STYLING
  */
@@ -221,7 +176,6 @@ a {
 /*
  * CUSTOM CARD VARIANTS
  */
-
 .app--notification-method {
   background-color: white;
   margin: 0 0 0 -16px;
