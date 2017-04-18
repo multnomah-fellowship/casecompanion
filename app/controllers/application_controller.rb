@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_variables
   before_action :clear_notification_id
+  before_action :set_raven_context
 
   private
 
@@ -15,5 +16,15 @@ class ApplicationController < ActionController::Base
   # using the magic links anymore.
   def clear_notification_id
     session.delete(:notification_id)
+  end
+
+  def set_raven_context
+    Raven.user_context(
+      distinct_id: session[:distinct_id]
+    )
+
+    Raven.extra_context(
+      url: request.url
+    )
   end
 end

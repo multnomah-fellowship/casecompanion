@@ -6,6 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Raven.configure do |config|
+  config.dsn = 'https://4868f5b344c44a8193359627f70d408b:9c295067a1bb4abc8a514b0ca84199fe@sentry.io/159399'
+  config.environments = ['production']
+end
+
 module MyAdvocate
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

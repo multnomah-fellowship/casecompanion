@@ -38,6 +38,8 @@ gem 'material_design_lite-rails'
 
 gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
 
+gem 'sentry-raven'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
