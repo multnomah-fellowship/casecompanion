@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: %i[new create]
   get '/n/:id', to: 'notifications#show'
+  get '/t/:tracking_id', to: 'home#set_tracking'
 
   root to: 'home#index'
 end
