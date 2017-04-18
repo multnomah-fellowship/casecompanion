@@ -5,7 +5,7 @@ module Haml::Filters::Styleguide
     parsed = Haml::Parser.new(<<-EXAMPLE, compiler.options).parse
 %pre.styleguide-example
   :plain
-    #{text}
+    #{Haml::Helpers.preserve(text)}
 #{text}
     EXAMPLE
     compiler.compile(parsed)
