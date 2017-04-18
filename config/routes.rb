@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   get '/n/:id', to: 'notifications#show'
   get '/t/:tracking_id', to: 'home#set_tracking'
 
+  get '/trigger-error', to: 'home#trigger_error'
+
   root to: 'home#index'
 end

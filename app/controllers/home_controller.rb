@@ -6,4 +6,8 @@ class HomeController < ApplicationController
     session[:distinct_id] = params[:tracking_id].to_i
     redirect_to root_path
   end
+
+  def trigger_error
+    raise 'Sentry testing error!'
+  end
 end
