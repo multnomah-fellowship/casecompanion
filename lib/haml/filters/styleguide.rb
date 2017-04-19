@@ -2,12 +2,16 @@ module Haml::Filters::Styleguide
   include Haml::Filters::Base
 
   def compile(compiler, text)
-    parsed = Haml::Parser.new(<<-EXAMPLE, compiler.options).parse
-%pre.styleguide-example
-  :plain
-    #{Haml::Helpers.preserve(text)}
-#{text}
-    EXAMPLE
+    code = <<-EXAMPLE
+%div.styleguide-variant
+  %pre.styleguide-code
+    :plain
+      #{Haml::Helpers.preserve(text)}
+  %div.styleguide-example
+#{text.indent(4)}
+EXAMPLE
+
+    parsed = Haml::Parser.new(code.strip, compiler.options).parse
     compiler.compile(parsed)
   end
 end
