@@ -1,0 +1,21 @@
+@import "colors";
+@import "typography";
+
+.app-button {
+  @extend %app-typography--body-2;
+
+  border: 1px solid $color-button;
+  border-radius: 40px;
+  color: $color-button;
+  display: inline-block;
+  padding: 16px 40px;
+  text-decoration: none;
+}
+
+.app-button--solid {
+  @extend .app-button;
+
+  background-color: $color-button-solid;
+  border: none;
+  color: #fff;
+}
