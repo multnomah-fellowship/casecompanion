@@ -20,6 +20,7 @@
  */
 
 @import "colors";
+@import "typography";
 
 body, html {
   background-color: #eaeaea;
@@ -41,84 +42,28 @@ a {
   text-decoration: none;
 }
 
-// This list comes from
-// https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
-// and includes system fonts on iOS/OSX (-apple-system and Helvetica Neue),
-// Windows (Segoe UI) and Android (Roboto).
-$system-sans-serif: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
-
 .app-typography--display-1 {
-  font-family: $system-sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  line-height: 48px;
-  margin-bottom: 24px;
+  @extend %app-typography--display-1;
 }
 
 .app-typography--header-1 {
-  font-family: $system-sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 30px;
-  margin-bottom: 16px;
+  @extend %app-typography--header-1;
 }
 
 .app-typography--header-2 {
-  font-family: $system-sans-serif;
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 24px;
-  margin-bottom: 16px;
+  @extend %app-typography--header-2;
 }
 
 .app-typography--header-3 {
-  font-family: $system-sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin-bottom: 16px;
-  color: $color-header-3;
+  @extend %app-typography--header-3;
 }
 
 .app-typography--body-1 {
-  font-family: $system-sans-serif;
-  font-size: 19px;
-  line-height: 28px;
+  @extend %app-typography--body-1;
 }
 
 .app-typography--body-2 {
-  font-family: $system-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.app-typography--subheader {
-  color: #009789;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  line-height: 2;
-  margin: 0 0 1em;
-}
-
-.app-button {
-  @extend .app-typography--body-2;
-  border: 1px solid $color-button;
-  border-radius: 40px;
-  color: $color-button;
-  display: inline-block;
-  padding: 16px 40px;
-  text-decoration: none;
-}
-
-.app-button--solid {
-  @extend .app-button;
-
-  background-color: $color-button-solid;
-  border: none;
-  color: #fff;
+  @extend %app-typography--body-2;
 }
 
 .app-footer {

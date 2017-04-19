@@ -1,5 +1,5 @@
 .mdl-cell.mdl-cell--12-col.app-footer
-  %h3.app-typography--subheader= t('footer.title')
+  %h3.app-typography--header-3= t('footer.title')
   %p= t('footer.body')
 
   = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}", class: 'app-button-link'
