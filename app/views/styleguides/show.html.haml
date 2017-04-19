@@ -14,7 +14,19 @@
   Body 2
 
 %h1 Components
+
 %h2 Dropdown
 :styleguide
   = render_component 'dropdown', title: 'Dropdown Title' do
     Body here!
+
+%h2 Button
+%p Here is a default button:
+:styleguide
+  = render_component 'button' do
+    Search
+
+%p Here is a button with a solid background:
+:styleguide
+  = render_component 'button', solid: true do
+    Look Up Status &rarr;

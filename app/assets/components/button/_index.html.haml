@@ -1,0 +1,7 @@
+- classes = ['app-button']
+- classes << 'app-button--solid' if options[:solid]
+
+- to = options.fetch(:to, '#')
+
+= link_to(to, class: classes) do
+  = yield

@@ -103,6 +103,24 @@ $system-sans-serif: -apple-system, BlinkMacSystemFont,
   margin: 0 0 1em;
 }
 
+.app-button {
+  @extend .app-typography--body-2;
+  border: 1px solid $color-button;
+  border-radius: 40px;
+  color: $color-button;
+  display: inline-block;
+  padding: 16px 40px;
+  text-decoration: none;
+}
+
+.app-button--solid {
+  @extend .app-button;
+
+  background-color: $color-button-solid;
+  border: none;
+  color: #fff;
+}
+
 .app-footer {
   color: rgba(0, 0, 0, 0.54);
 }

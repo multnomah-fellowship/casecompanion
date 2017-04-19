@@ -10,3 +10,5 @@ $colors: (
 );
 
 $color-header-3: map-get($colors, green-dark);
+$color-button: map-get($colors, green-dark);
+$color-button-solid: map-get($colors, green-light);
