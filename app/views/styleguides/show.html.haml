@@ -30,3 +30,8 @@
 :styleguide
   = render_component 'button', solid: true do
     Look Up Status &rarr;
+
+%h2 Avatar List Item
+:styleguide
+  = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
+  = render_component 'avatar_list_item', image: image_url('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'

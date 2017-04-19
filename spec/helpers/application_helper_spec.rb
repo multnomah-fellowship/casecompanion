@@ -101,6 +101,7 @@ describe ApplicationHelper do
     end
   end
 
+  # this tests the nested-layout flow.
   describe '#render_component with a dropdown' do
     let(:body) { proc { "body here" } }
     let(:title) { 'Title here' }
@@ -115,6 +116,18 @@ describe ApplicationHelper do
     it 'passes the title and body to the component' do
       expect(subject).to include(title)
       expect(subject).to include(body.call)
+    end
+  end
+
+  # this tests the partial based flow - the non-nested layout flow.
+  describe '#render_component with an avatar_list_item' do
+    let(:options) { { image: 'foo.jpg', name: 'Foo', caption: 'Bar bar baz' } }
+
+    subject { helper.render_component('avatar_list_item', options) }
+
+    it 'renders a component with the name and caption' do
+      expect(subject).to include(options[:name])
+      expect(subject).to include(options[:caption])
     end
   end
 end

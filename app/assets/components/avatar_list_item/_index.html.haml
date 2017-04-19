@@ -1,0 +1,11 @@
+- image = options[:image]
+- name = options[:name]
+- caption = options[:caption]
+
+.app-avatar-list-item
+  = image_tag image, class: 'app-avatar-list-item__image'
+  .app-avatar-list-item__text
+    .app-avatar-list-item__name
+      = name
+    .app-avatar-list-item__caption
+      = caption

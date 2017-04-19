@@ -99,10 +99,17 @@ module ApplicationHelper
   end
 
   def render_component(name, options = {}, &block)
-    render(
-      layout: "#{name}/index",
-      locals: { options: options },
-      &block
-    )
+    if block
+      render(
+        layout: "#{name}/index",
+        locals: { options: options },
+        &block
+      )
+    else
+      render(partial: "#{name}/index", locals: { options: options })
+    end
+  rescue => ex
+    require 'pry'; binding.pry
+    raise StandardError.new("Error rendering component #{name}: #{ex.message}")
   end
 end

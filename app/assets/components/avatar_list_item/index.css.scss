@@ -1,0 +1,31 @@
+@import "typography";
+
+.app-avatar-list-item {
+  clear: both;
+  overflow: auto;
+  margin-bottom: 16px;
+}
+
+.app-avatar-list-item__image {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-radius: 60px;
+  height: 60px;
+  float: left;
+  margin-right: 20px;
+  width: 60px;
+}
+
+.app-avatar-list-item__text {
+  float: left;
+  margin-top: 8px;
+}
+
+.app-avatar-list-item__name {
+  @extend %app-typography--body-2;
+
+  font-weight: 500;
+}
+
+.app-avatar-list-item__caption {
+  @extend %app-typography--caption;
+}
