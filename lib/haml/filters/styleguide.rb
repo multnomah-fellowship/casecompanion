@@ -6,7 +6,7 @@ module Haml::Filters::Styleguide
 %div.styleguide-variant
   %pre.styleguide-code
     :plain
-      #{Haml::Helpers.preserve(text)}
+      #{Haml::Helpers.preserve(Haml::Helpers.html_escape(text))}
   %div.styleguide-example
 #{text.indent(4)}
 EXAMPLE
