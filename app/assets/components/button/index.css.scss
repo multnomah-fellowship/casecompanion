@@ -4,6 +4,7 @@
 .app-button {
   @extend %app-typography--body-2;
 
+  background-color: #fff;
   border: 1px solid $color-button;
   border-radius: 40px;
   color: $color-button;
