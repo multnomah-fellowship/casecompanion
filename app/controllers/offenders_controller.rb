@@ -12,10 +12,10 @@ class OffendersController < ApplicationController
         @results = []
         flash.now[:error] = I18n.t('offender_search.error_too_many_results')
       end
-    end
 
-    @grouped_results = OffenderGrouper.new(@results).each_group
-    @name_highlighter = OffenderNameHighlighter.new(offender_params)
+      @grouped_results = OffenderGrouper.new(@results).each_group
+      @name_highlighter = OffenderNameHighlighter.new(offender_params)
+    end
 
     if params[:error] == 'no_offender_found'
       flash.now[:error] = I18n.t(
