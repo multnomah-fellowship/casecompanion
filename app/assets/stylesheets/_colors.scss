@@ -2,7 +2,8 @@ $colors: (
   primary: #4990e2,
   accent: #009789,
 
-  grey-light: rgba(0, 0, 0, 0.1),
+  grey-lighter: #f9f9f9,
+  grey-light: #f5f5f5,
   grey-dark: #182e45,
   grey-dark-translucent: rgba(#182e45, 0.5),
 
@@ -19,3 +20,5 @@ $color-text-caption: map-get($colors, grey-dark-translucent);
 $color-header-3: map-get($colors, green-dark);
 $color-button: map-get($colors, green-dark);
 $color-button-solid: map-get($colors, green-light);
+$color-footer: map-get($colors, grey-light);
+$color-footer-border: #dedede;

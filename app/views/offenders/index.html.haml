@@ -1,23 +1,27 @@
 - search_params = params.fetch(:offender, {}).slice(:first_name, :last_name)
 
 = form_for :offender, url: offenders_path, method: :get do |f|
-  .mdl-grid
-    .mdl-cell.mdl-cell--12-col
-      %h2.mdl-typography--headline= t('offender_search.title')
+  .row
+    .col.s10.offset-s1
+      %h2.app-typography--header-1= t('offender_search.title')
 
-      %h3.app-typography--header-3= t('offender_search.by_name')
-      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-        = f.text_field :first_name, value: search_params[:first_name], class: 'mdl-textfield__input'
-        = f.label :first_name, t('offender_search.first_name.label'), class: 'mdl-textfield__label'
+      %h3.app-typography--header-2= t('offender_search.by_name')
 
-      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-        = f.text_field :last_name, value: search_params[:last_name], class: 'mdl-textfield__input'
-        = f.label :first_name, t('offender_search.last_name.label'), class: 'mdl-textfield__label'
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :first_name, value: search_params[:first_name]
+        = f.label :first_name, t('offender_search.first_name.label')
+
+    .col.s10.offset-s1.m5
+      .input-field
+        = f.text_field :last_name, value: search_params[:last_name]
+        = f.label :last_name, t('offender_search.last_name.label')
 
     - if @results.present?
       - @results.each do |result|
-        .mdl-cell.mdl-cell--6-col.mdl-cell--8-col-tablet.mdl-cell--hide-desktop
-          = link_to offender_path(result[:sid]), class: 'app-card--result' do
+        .col.s10.offset-s1.hide-on-large-only
+          %div.app-card--result
             %ul
               %li
                 %span.app-card--result__label.mdl-typography--caption SID
@@ -34,12 +38,12 @@
               %li
                 %span.app-card--result__label.mdl-typography--caption DOB
                 = result[:dob]
-            %span.mdl-button.mdl-button--raised
+            = render_component 'button', to: offender_path(result[:sid]) do
               View offender
               %i.material-icons keyboard_arrow_right
 
 
-      .mdl-cell.mdl-cell--12-col.mdl-cell--hide-tablet.mdl-cell--hide-phone
+      .col.s10.offset-s1.hide-on-med-and-down
         %table.mdl-data-table.app-table--rows-clickable
           %thead
             %tr
@@ -57,20 +61,17 @@
                 %td= result[:last]
                 %td= result[:dob]
 
-    .mdl-cell.mdl-cell--12-col
-      %h3.app-typography--header-3= t('offender_search.by_sid')
-      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-        = f.text_field :sid, class: 'mdl-textfield__input'
-        = f.label :sid, t('offender_search.sid.label'), class: 'mdl-textfield__label'
+  .row
+    .col.s10.offset-s1
+      %h3.app-typography--header-2= t('offender_search.by_sid')
 
-    .mdl-cell.mdl-cell--12-col
-      = f.submit t('offender_search.search'), class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+  .row
+    .col.s5.offset-s1
+      .input-field
+        = f.text_field :sid
+        = f.label :sid, t('offender_search.sid.label')
 
-    .mdl-cell.mdl-cell--12-col
-      %p= t('offender_search.description')
-
-
-    .mdl-cell.app-vertical-spacer
-      -# extra spacing to push down the footer
-
-    = render 'layouts/footer'
+  .row
+    .col.s5.offset-s1
+      = render_component 'button', submit: f do
+        = t('offender_search.search')

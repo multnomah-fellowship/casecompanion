@@ -1,31 +1,30 @@
 en:
+  product_name: My Advocate
+
   home:
-    headline: Get help navigating the criminal justice system
-    subhead: Next steps for victims of crime
+    headline: "Navigating the criminal justice system\u00a0post\u2011conviction"
+    subhead: "Find status information, answers to frequently asked questions,\u00a0and
+      contact\u00a0information."
     cta: Search for Offender
     description: |
-      My Advocate is a public website enabling victims of crime to find answers
-      to questions, look up offender status, and get connected with specialists
-      who are there to help.
+      My Advocate is a public website for victims of crime in Multnomah County,
+      built by %{cfa_link} in collaboration with government and community
+      partners.
 
   footer:
     title: Other Questions?
+    who_receiving: Who's receiving my questions?
     body: |
-      We're here to help. Feel free to text us and we'll track down the right
-      information or the right person.
-    second_body: |
-      We are working with advocates in Multnomah County and we will get back to
-      you during business hours. For urgent safety concerns, call 9-1-1.
-    powered_by: Powered By
-    cfa: Code for America
-    multco: Multnomah County
+      We're here to help M-F 9-5. We'll do our best to track down answers or the right person to talk to and circle back.
+
+      We will respond during business hours. For urgent safety concerns, call 9-1-1.
+    powered_by: My Advocate Beta is built by Code for America in collaboration with government and community partners for victims of crime in Multnomah County.
     textus: Text us at %{phone_number}
 
   offender_search:
-    title: Start by looking up an inmate
-    description: Searching Oregon Prisons
-    by_name: 'Search by Name:'
-    by_sid: 'Search by SID (Oregon State ID):'
+    title: Look up an offender (in prison)
+    by_name: 'By Name:'
+    by_sid: 'Or by SID number (Oregon State ID):'
     search: Search
     sid:
       label: Offender State ID (SID)

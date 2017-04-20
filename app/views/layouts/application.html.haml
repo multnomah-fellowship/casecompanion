@@ -5,7 +5,6 @@
     = csrf_meta_tags
 
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    %link{ href: '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet' }
     %link{ href: '//fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -13,31 +12,29 @@
     = render 'layouts/analytics_js'
 
   %body
-    .mdl-layout.mdl-layout--no-drawer-button.mdl-layout--fixed-header.app-outer-container
-      %header.mdl-layout__header
-        .mdl-layout__header-row
-          %h1= link_to 'MyAdvocate', root_path, class: 'mdl-layout-title app-title'
+    %header.app-header
+      .app-container
+        .row
+          .col.s10.offset-s1
+            = link_to root_path, class: 'app-header__title' do
+              %h1= render_component 'logo'
 
-          .mdl-layout-spacer
-          - if current_user
-            .mdl-navigation
-              .mdl-navigation__link.app-title= current_user.email
-              = link_to 'Log Out', sessions_path, method: :delete, class: 'mdl-navigation__link app-title'
+    %main.app-container
+      - if flash[:info]
+        .row
+          .col.s12
+            = simpler_format flash[:info]
+            = mixpanel_track_message :info, flash[:info]
 
-      %main.mdl-layout__content.app-container
-        - if flash[:info]
-          .mdl-grid
-            .mdl-cell.mdl-cell--12-col
-              = simpler_format flash[:info]
-              = mixpanel_track_message :info, flash[:info]
+      - if flash[:error]
+        .row
+          .col.s12.app-cell--error
+            = simpler_format flash[:error]
+            = mixpanel_track_message :error, flash[:error]
+            %span
+              Confused? Ask us a question:
+              #{link_to "text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'}.
 
-        - if flash[:error]
-          .mdl-grid
-            .mdl-cell.mdl-cell--12-col.app-cell--error
-              = simpler_format flash[:error]
-              = mixpanel_track_message :error, flash[:error]
-              %span
-                Confused? Ask us a question:
-                #{link_to "text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'}.
+      = yield
 
-        = yield
+    = render 'layouts/footer'

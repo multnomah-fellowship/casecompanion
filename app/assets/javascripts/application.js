@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require material
+//= require materialize/initial
+//= require materialize/global
+//= require materialize/forms
 //= require_tree .
 
 const analytics = {
@@ -79,11 +81,3 @@ document.addEventListener('turbolinks:load', analytics.trackView);
 
 // Initialize the app on the first load only.
 window.addEventListener('load', window.App.init);
-
-// Re-initialize the Material Design Lite text fields and such after a
-// turbolinks load.
-// I think this will slowly memory-leak due to the fact that there is not
-// an equivalent "downgradeDom" method.
-document.addEventListener('turbolinks:load', function() {
-  componentHandler.upgradeDom();
-});

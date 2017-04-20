@@ -11,6 +11,11 @@
   display: inline-block;
   padding: 16px 40px;
   text-decoration: none;
+
+  > .material-icons {
+    font-size: inherit;
+    vertical-align: text-bottom;
+  }
 }
 
 .app-button--solid {

@@ -12,6 +12,8 @@
   Body 1
 %p.app-typography--body-2{ contenteditable: true }
   Body 2
+.app-typography--caption{ contenteditable: true }
+  Caption
 
 %h1 Components
 
@@ -38,6 +40,12 @@
   = form_for :something, method: :get do |f|
     = render_component 'button', submit: f do
       Button text here
+
+%p Button with a material icon:
+:styleguide
+  = render_component 'button' do
+    Button
+    %i.material-icons keyboard_arrow_right
 
 %h2 Avatar List Item
 :styleguide

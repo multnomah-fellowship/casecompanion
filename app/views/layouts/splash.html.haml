@@ -1,0 +1,63 @@
+!!! 5
+%html
+  %head
+    %title MyAdvocate
+    = csrf_meta_tags
+
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    %link{ href: '//fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel: 'stylesheet' }
+    %link{ href: '//fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'layouts/analytics_js'
+
+  %body
+    %header.app-header.app-header--hero
+      .app-container
+        .row
+          .col.s10.offset-s1
+            = link_to root_path, class: 'app-header__title' do
+              %h1= render_component 'logo', variant: :translucent
+
+      .app-container
+        .row
+          .col.s10.offset-s1
+            %h2.app-header__headline= t('home.headline')
+            %h3.app-header__subhead= t('home.subhead')
+
+        .row
+          .col.s10.offset-s1
+            = render_component 'button', to: offenders_path, solid: true do
+              = t('home.cta')
+              &rarr;
+
+    .app-container.app-header--subhero
+      .row
+        .col.s10.offset-s1.m5.offset-m1
+          %p.app-typography--body-1
+            - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org')
+            = raw(t('home.description', cfa_link: cfa_link))
+
+        .col.s10.offset-s1.m5
+          = image_tag 'partner_logos.png', class: 'app-header__logos'
+
+    %main.app-container
+      - if flash[:info]
+        .row
+          .col.s12
+            = simpler_format flash[:info]
+            = mixpanel_track_message :info, flash[:info]
+
+      - if flash[:error]
+        .row
+          .col.s12.app-cell--error
+            = simpler_format flash[:error]
+            = mixpanel_track_message :error, flash[:error]
+            %span
+              Confused? Ask us a question:
+              #{link_to "text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'}.
+
+      = yield
+
+    = render 'layouts/footer'

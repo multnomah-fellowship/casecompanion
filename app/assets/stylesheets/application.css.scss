@@ -17,16 +17,22 @@
  *= require logo
 
  * OTHER STYLE DEPENDENCIES
- *= require material
  *= require_tree .
  *= require_self
  */
+
+@import "materialize/components/color";
+@import "materialize/components/variables";
+@import "materialize/components/global";
+@import "materialize/components/grid";
+@import "materialize/components/typography";
+@import "materialize/components/forms/forms";
 
 @import "colors";
 @import "typography";
 
 body, html {
-  background-color: #eaeaea;
+  margin: 0;
   min-width: 360px;
 }
 
@@ -70,37 +76,16 @@ a {
 }
 
 .app-footer {
-  color: rgba(0, 0, 0, 0.54);
-}
+  @extend %app-typography--body-2;
 
-.app-footer__powered-by {
-  margin-top: 64px;
-
-  a {
-    color: inherit;
-  }
-}
-
-/**
- * GLOBAL MATERIAL OVERRIDES
- */
-.mdl-button .material-icons {
-  // TODO: can we import the material design source file and override this
-  font-size: 14px;
-}
-
-/*
- * APP CONTAINERS / LAYOUT
- */
-.app-outer-container {
-  min-height: 100vh;
+  border-top: 1px solid $color-footer-border;
+  background-color: $color-footer;
+  overflow: auto;
+  padding-top: 60px;
 }
 
 .app-container {
-  background-color: #f2f2f2;
-  border-left: 1px solid #dadada;
-  border-right: 1px solid #dadada;
-  max-width: 640px;
+  max-width: 940px;
 }
 
 @media(min-width: 640px) {
@@ -110,9 +95,58 @@ a {
   }
 }
 
-.app-title, .mdl-navigation__link.app-title {
+.app-header--hero {
+  background-image: image-url('hero_road.jpg');
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 100px;
+  position: relative;
+
+  &::after {
+    background-color: #fff;
+    width: calc(100% + 20px);
+    content: '';
+    height: 100px;
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    transform: rotate(-2.78deg);
+  }
+}
+
+.app-header--subhero {
+  padding-bottom: 36px;
+}
+
+.app-header__title > h1 {
+  @extend %app-typography--caption;
+
   color: #fff;
+  margin: 30px 0 0 0;
   text-decoration: none;
+}
+
+.app-header__headline {
+  @extend %app-typography--display-1;
+
+  color: #fff;
+  margin-top: 120px;
+}
+
+.app-header__subhead {
+  @extend %app-typography--body-1;
+
+  color: #fff;
+  margin-top: 40px;
+}
+
+.app-header__logos {
+  width: 100%;
+  max-width: 230px;
+  margin: auto;
+  display: block;
 }
 
 .app-cell--error {

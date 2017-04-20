@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    render layout: 'splash'
   end
 
   def set_tracking

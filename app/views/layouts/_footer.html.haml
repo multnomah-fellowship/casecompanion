@@ -1,28 +1,17 @@
-.mdl-cell.mdl-cell--12-col.app-footer
-  %h3.app-typography--header-3= t('footer.title')
-  %p= t('footer.body')
+%section.app-footer
+  .app-container
+    .row
+      .col.s10.l5.offset-s1.offset-l1
+        %h3.app-typography--header-3= t('footer.title')
+        %p= simple_format t('footer.body')
 
-  = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}", class: 'app-button-link'
+        = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}"
 
-  %ul.mdl-list
-    %li.mdl-list__item.mdl-list__item--two-line
-      %span.mdl-list__item-primary-content
-        = image_tag 'pam.jpg', class: 'mdl-list__item-avatar'
-        Pam
-        %span.mdl-list__item-sub-title
-          Fellow, Code for America
-    %li.mdl-list__item.mdl-list__item--two-line
-      %span.mdl-list__item-primary-content
-        = image_tag 'tom.jpg', class: 'mdl-list__item-avatar'
-        Tom
-        %span.mdl-list__item-sub-title
-          Fellow, Code for America
+      .col.s10.l5.offset-s1.offset-l1
+        %h3.app-typography--header-3= t('footer.who_receiving')
+        = render_component 'avatar_list_item', image: image_path('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
+        = render_component 'avatar_list_item', image: image_path('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'
 
-  %p= t('footer.second_body')
-
-  %p.mdl-typography--body-1.app-footer__powered-by
-    = t('footer.powered_by')
-    %br
-    = link_to t('footer.cfa'), 'https://www.codeforamerica.org', target: '_blank'
-    &middot;
-    = link_to t('footer.multco'), 'https://multco.us', target: '_blank'
+    .row
+      .col.s10.offset-s1
+        %p= t('footer.powered_by')

@@ -1,35 +1,27 @@
-.mdl-grid
-  .mdl-cell.mdl-cell--12-col
+.row
+  .col.s10.offset-s1
     %h2.app-typography--header-3 Offender Public Information
 
-    %ul.mdl-list.app-list
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
-        %span.mdl-list__item-primary-content
-          %span= @offender[:name]
-          %span.mdl-list__item-sub-title Offender Name
+    %ul
+      %li
+        %span.app-typography--header-2= @offender[:name]
+        %div.app-typography--caption Offender Name
 
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
-        %span.mdl-list__item-primary-content
-          %span= @offender[:sid]
-          %span.mdl-list__item-sub-title SID
+      %li
+        %span.app-typography--header-2= @offender[:sid]
+        %div.app-typography--caption SID
 
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
-        %span.mdl-list__item-primary-content
-          %span= @offender[:status]
-          %span.mdl-list__item-sub-title Status
+      %li
+        %span.app-typography--header-2= @offender[:status]
+        %div.app-typography--caption Status
 
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
-        %span.mdl-list__item-primary-content
-          %span= @offender[:location]
-          %span.mdl-list__item-sub-title Location
+      %li
+        %span.app-typography--header-2= @offender[:location]
+        %div.app-typography--caption Location
 
-      %li.mdl-list__item.mdl-list__item--two-line.app-list__item--no-side-padding
-        %span.mdl-list__item-primary-content
-          %span= @offender[:earliest_release_date]
-          %span.mdl-list__item-sub-title Earliest Release Date (Not Finalized)
-
-      %li.mdl-list__item
-        -# spacer
+      %li
+        %span.app-typography--header-2= @offender[:earliest_release_date]
+        %div.app-typography--caption Earliest Release Date (Not Finalized)
 
       = render_component 'dropdown', title: 'How might this date change?' do
         %p
@@ -37,19 +29,19 @@
           updated periodically by counselors. The closer to release, the more
           predictable this date becomes.
 
-        %p.mdl-typography--body-2
+        %p.app-typography--body-2
           What does Earliest Release Date include?
         %p
           Earliest Release Date includes the sentence minus 20% Earned Time.
 
-        %p.mdl-typography--body-2
+        %p.app-typography--body-2
           What is Earned Time?
         %p
           Earned Time is 20% credited at the beginning of the sentence. Earned
           time can be lost due to infractions and counselors update earned time
           periodically.
 
-        %p.mdl-typography--body-2
+        %p.app-typography--body-2
           What are some other programs that may move the date earlier than that?
         %p
           Short Term Transitional Leave can subtract up to 90 days in addition to
@@ -85,7 +77,7 @@
             Sign Up Form
             %i.material-icons open_in_new
 
-  .mdl-cell.mdl-cell--12-col
+  .col.s10.offset-s1
     %h2.app-typography--header-3 Who can I call?
 
     %ul.mdl-list.app-list
@@ -118,9 +110,6 @@
         %p When and where an offender will be released
         %p And more…
 
-      %li.mdl-list__item
-        -# This space left intentionally blank.
-
       -#
         %li.mdl-list__item.mdl-list__item--two-line
           %span.mdl-list__item-primary-content
@@ -134,11 +123,12 @@
           %p By Email: TODO
 
         = render_component 'dropdown', title: 'What can I talk to Saydyie about?' do
-          %p General information about what sentence-reduction programs a prison offers
-          %p General questions about the information on this page
-          %p Stopping unwanted contact from an inmate
-
-  .mdl-cell.mdl-cell--12-col.app-vertical-spacer
-    -# extra spacing to push down the footer
+          %p General public information about the offender
+          %p General information regarding misconducts the offender has received
+          %p Programs offered and general information on if the inmate is participating in programming
+          %p Location and institution movement of the offender
+          %p Resources for victims and victim family members
+          %p The victim service programs offered by the Oregon Department of Corrections
+          %p Questions about VINE
 
   = render 'layouts/footer'
