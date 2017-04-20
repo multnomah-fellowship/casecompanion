@@ -63,7 +63,6 @@ window.App = (function() {
 
   const initializeToggles = function() {
     $(document).on('click', 'a[href^="#expand-"]', handleToggle);
-    $(document).on('click', 'tr[data-href]', handleTableClick);
   };
 
   return {
@@ -73,6 +72,8 @@ window.App = (function() {
       // handlers registered in here should use [Event
       // Delegation](https://learn.jquery.com/events/event-delegation/)
       initializeToggles();
+
+      $(document).on('click', 'tr[data-href]', handleTableClick);
     },
   };
 })();
