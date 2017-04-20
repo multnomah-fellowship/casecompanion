@@ -13,6 +13,7 @@ $colors: (
   blue-light: #1481ef,
 );
 
+$color-logo: map-get($colors, blue-multnomah);
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
 $color-header-3: map-get($colors, green-dark);

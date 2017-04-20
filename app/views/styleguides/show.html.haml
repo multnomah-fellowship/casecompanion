@@ -43,3 +43,10 @@
 :styleguide
   = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
   = render_component 'avatar_list_item', image: image_url('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'
+
+%h2 Logo
+:styleguide
+  %div
+    = render_component 'logo'
+  %div{ style: 'background-color: #2f6296' }
+    = render_component 'logo', variant: :translucent
