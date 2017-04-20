@@ -12,13 +12,20 @@ $colors: (
 
   blue-multnomah: #2f6296,
   blue-light: #1481ef,
+  blue-lighter: #f1f8fe,
 );
 
 $color-logo: map-get($colors, blue-multnomah);
+
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
 $color-header-3: map-get($colors, green-dark);
+
 $color-button: map-get($colors, green-dark);
 $color-button-solid: map-get($colors, green-light);
+
 $color-footer: map-get($colors, grey-light);
 $color-footer-border: #dedede;
+
+$color-table-hover: map-get($colors, blue-lighter);
+$color-divider: map-get($colors, grey-light);

@@ -270,6 +270,49 @@ a {
 /*
  * CUSTOM TABLE STYLES
  */
+$table-gutter: unquote("calc(" + (100 / $num-cols) + "% + " +
+  ($gutter-width / 2)+ ")");
+
+.app-table {
+  border-top: 4px solid $color-divider;
+  border-collapse: collapse;
+
+  th:first-child, td:first-child {
+    padding-left: $table-gutter;
+  }
+
+  th:last-child, td:last-child {
+    padding-right: $table-gutter;
+  }
+
+  thead th {
+    @extend %app-typography--caption;
+    font-weight: normal;
+  }
+
+  thead tr {
+    border-bottom: 2px solid $color-divider;
+  }
+
+  tbody:hover {
+    background-color: $color-table-hover;
+  }
+
+  tr[data-href] {
+    cursor: pointer;
+  }
+}
+
+.app-table__row--bordered {
+  border-top: 2px solid $color-divider;
+  border-bottom: 2px solid $color-divider;
+}
+
+.app-table--full-bleed {
+  margin-left: -($gutter-width / 2);
+  margin-right: -($gutter-width / 2);
+}
+
 .app-table--rows-clickable {
   > tbody > tr:hover {
     cursor: pointer;

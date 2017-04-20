@@ -14,6 +14,9 @@ class OffendersController < ApplicationController
       end
     end
 
+    @grouped_results = OffenderGrouper.new(@results).each_group
+    @name_highlighter = OffenderNameHighlighter.new(offender_params)
+
     if params[:error] == 'no_offender_found'
       flash.now[:error] = I18n.t(
         'offender_search.error_no_results',
