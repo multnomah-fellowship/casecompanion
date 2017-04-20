@@ -3,5 +3,11 @@
 
 - to = options.fetch(:to, '#')
 
-= link_to(to, class: classes) do
-  = yield
+- submit_form = options.fetch(:submit, nil)
+
+- if submit_form
+  - button_text = yield.strip
+  = submit_form.submit(button_text, class: classes)
+- else
+  = link_to(to, class: classes) do
+    = yield

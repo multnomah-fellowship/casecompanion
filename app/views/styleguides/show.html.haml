@@ -31,6 +31,14 @@
   = render_component 'button', solid: true do
     Look Up Status &rarr;
 
+%p
+  Pass the form helper as the "submit" option to make the button submit the
+  form:
+:styleguide
+  = form_for :something, method: :get do |f|
+    = render_component 'button', submit: f do
+      Button text here
+
 %h2 Avatar List Item
 :styleguide
   = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
