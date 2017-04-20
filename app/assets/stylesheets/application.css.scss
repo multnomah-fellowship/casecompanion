@@ -75,6 +75,10 @@ a {
   @extend %app-typography--body-2;
 }
 
+strong {
+  font-weight: 800;
+}
+
 .app-footer {
   @extend %app-typography--body-2;
 
