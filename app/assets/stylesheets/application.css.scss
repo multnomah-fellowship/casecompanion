@@ -280,6 +280,7 @@ $table-gutter: unquote("calc(" + (100 / $num-cols) + "% + " +
 .app-table {
   @extend %app-typography--body-2;
 
+  margin-top: 20px;
   border-top: 4px solid $color-divider;
   border-collapse: collapse;
 

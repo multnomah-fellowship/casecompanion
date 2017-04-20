@@ -18,9 +18,31 @@
         = f.text_field :last_name, value: search_params[:last_name]
         = f.label :last_name, t('offender_search.last_name.label')
 
+  .row
+    .col.s10.offset-s1
+      %h3.app-typography--header-2= t('offender_search.by_sid')
+
+  .row
+    .col.s5.offset-s1
+      .input-field
+        = f.text_field :sid
+        = f.label :sid, t('offender_search.sid.label')
+
+  .row
+    .col.s5.offset-s1
+      = render_component 'button', submit: f do
+        = t('offender_search.search')
+
+  .row
     - if @results.present?
-      - @results.each do |result|
-        .col.s10.offset-s1.hide-on-large-only
+      - query = "#{search_params[:first_name]} #{search_params[:last_name]}"
+      - bold_query = content_tag(:strong, query)
+
+      .col.s10.offset-s1.hide-on-large-only
+        %p.app-typography--body-2
+          = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
+
+        - @results.each do |result|
           %div.app-card--result
             %ul
               %li
@@ -42,6 +64,10 @@
               View offender
               %i.material-icons keyboard_arrow_right
 
+
+      .col.s10.offset-s1.hide-on-med-and-down
+        %p.app-typography--body-2
+          = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
 
       .col.s12.hide-on-med-and-down
         %table.app-table.app-table--full-bleed
@@ -67,17 +93,3 @@
                   %td
                   %td
 
-  .row
-    .col.s10.offset-s1
-      %h3.app-typography--header-2= t('offender_search.by_sid')
-
-  .row
-    .col.s5.offset-s1
-      .input-field
-        = f.text_field :sid
-        = f.label :sid, t('offender_search.sid.label')
-
-  .row
-    .col.s5.offset-s1
-      = render_component 'button', submit: f do
-        = t('offender_search.search')

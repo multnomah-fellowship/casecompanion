@@ -26,6 +26,7 @@ en:
     by_name: 'By Name:'
     by_sid: 'Or by SID number (Oregon State ID):'
     search: Search
+    num_results: '%{num} results matching %{name}'
     sid:
       label: Offender State ID (SID)
     first_name:
