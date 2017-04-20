@@ -18,6 +18,11 @@
   }
 }
 
+.app-button--short {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .app-button--solid {
   @extend .app-button;
 
