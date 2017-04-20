@@ -109,7 +109,6 @@ module ApplicationHelper
       render(partial: "#{name}/index", locals: { options: options })
     end
   rescue => ex
-    require 'pry'; binding.pry
     raise StandardError.new("Error rendering component #{name}: #{ex.message}")
   end
 end
