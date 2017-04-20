@@ -32,15 +32,16 @@
               = t('home.cta')
               &rarr;
 
-    .app-container.app-header--subhero
-      .row
-        .col.s10.offset-s1.m5.offset-m1
-          %p.app-typography--body-1
-            - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org')
-            = raw(t('home.description', cfa_link: cfa_link))
+    .app-header--subhero
+      .app-container
+        .row
+          .col.s10.offset-s1.m5.offset-m1
+            %p.app-typography--body-1
+              - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org')
+              = raw(t('home.description', cfa_link: cfa_link))
 
-        .col.s10.offset-s1.m5
-          = image_tag 'partner_logos.png', class: 'app-header__logos'
+          .col.s10.offset-s1.m5
+            = image_tag 'partner_logos.png', class: 'app-header__logos'
 
     %main.app-container
       - if flash[:info]

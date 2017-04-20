@@ -15,11 +15,11 @@
     %header.app-header
       .app-container
         .row
-          .col.s10.offset-s1
+          .col.s12
             = link_to root_path, class: 'app-header__title' do
               %h1= render_component 'logo'
 
-    %main.app-container
+    %main.app-container--main
       - if flash[:info]
         .row
           .col.s12
