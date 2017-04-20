@@ -11,12 +11,14 @@
     .col.s10.offset-s1.m5.offset-m1
       .input-field
         = f.text_field :first_name, value: search_params[:first_name]
-        = f.label :first_name, t('offender_search.first_name.label')
+        = f.label :first_name, t('offender_search.first_name.label'),
+          class: ('active' if search_params[:first_name].present?)
 
     .col.s10.offset-s1.m5
       .input-field
         = f.text_field :last_name, value: search_params[:last_name]
-        = f.label :last_name, t('offender_search.last_name.label')
+        = f.label :last_name, t('offender_search.last_name.label'),
+          class: ('active' if search_params[:last_name].present?)
 
   .row
     .col.s10.offset-s1
