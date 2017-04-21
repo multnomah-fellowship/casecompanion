@@ -3,15 +3,13 @@
 
 - url_snippet = options[:title].downcase.scan(/\w+/).join('-')
 
-- classes = ['mdl-list__item']
+- classes = ['app-dropdown']
 
-- expanded_classes = classes + %w[app-list__item--expansion app-list__item--hidden]
+- expanded_classes = classes + %w[app-dropdown__hidden]
 
-%li{ class: classes }
-  = link_to "#expand-#{url_snippet}", class: 'app-list__item-link' do
-    %span.mdl-list__item-primary-content= title
-  %span.mdl-list__item-secondary-action
-    = link_to "#expand-#{url_snippet}" do
-      %i.material-icons keyboard_arrow_down
-%li{ id: "expand-#{url_snippet}", class: expanded_classes }
+= link_to "#expand-#{url_snippet}", class: classes do
+  %i +
+  %span= title
+
+%div{ id: "expand-#{url_snippet}", class: expanded_classes }
   = yield

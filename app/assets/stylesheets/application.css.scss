@@ -76,6 +76,16 @@ a {
   @extend %app-typography--body-2;
 }
 
+.app-typography--caption {
+  @extend %app-typography--caption;
+}
+
+.app-typography--caption-above {
+  @extend %app-typography--caption;
+
+  margin-bottom: 4px;
+}
+
 strong {
   font-weight: 800;
 }
@@ -205,10 +215,6 @@ strong {
 }
 
 /*
- * LIST EXTENSION STYLES
- */
-
-/*
  * CUSTOM LIST STYLING
  */
 // Contact list is a first stab at a component to abstract a list-in-a-list-item
@@ -240,6 +246,10 @@ strong {
   &:not(:last-child) {
     border-bottom: 1px solid map-get($colors, grey-light);
   }
+}
+
+.app-row-divider {
+  border-top: 4px solid $color-divider;
 }
 
 /*

@@ -31,23 +31,21 @@ const analytics = {
 window.App = (function() {
   const handleToggle = function(e) {
     const $targetLink = $(e.target).closest('a');
-    const $listItem = $targetLink.parents('li');
-    const $icon = $listItem.find('.mdl-list__item-secondary-action i');
-    const $hiddenListItem = $($targetLink.attr('href'));
+    const $dropdown = $targetLink.closest('.app-dropdown');
+    const $icon = $dropdown.find('i');
+    const $hiddenDiv = $($targetLink.attr('href'));
 
-    if ($hiddenListItem.is(':visible')) {
+    if ($hiddenDiv.is(':visible')) {
       // hide it!
-      $listItem.removeClass('app-list__item--expanded');
-      $hiddenListItem.attr('style', 'display: none');
-      $icon.text('keyboard_arrow_down');
+      $hiddenDiv.attr('style', 'display: none');
+      $icon.text('+');
     } else {
       // show it!
-      $listItem.addClass('app-list__item--expanded');
-      $hiddenListItem.attr('style', 'display: block');
-      $icon.text('keyboard_arrow_up');
+      $hiddenDiv.attr('style', 'display: block');
+      $icon.text('-');
 
       // track mixpanel
-      const text = $listItem.find('.mdl-list__item-primary-content').text();
+      const text = $dropdown.find('span').text();
       analytics.trackExpand(text);
     }
 

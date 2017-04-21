@@ -21,6 +21,14 @@ en:
     powered_by: My Advocate Beta is built by Code for America in collaboration with government and community partners for victims of crime in Multnomah County.
     textus: Text us at %{phone_number}
 
+  offender:
+    contact_info: "%{name}'s contact information"
+    what_talk_about: 'What can I talk to %{name} about?'
+    robyn: 'Robyn Masella'
+    robyn_title: 'Victims Specialist, Board of Parole & Post-Prison Supervision'
+    saydyie: 'Saydyie DeRosia'
+    saydyie_title: 'Victim Services Coordinator, Oregon Department of Corrections'
+
   offender_search:
     title: Look up an offender (in prison)
     by_name: 'By Name:'
