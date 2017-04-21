@@ -42,7 +42,7 @@ window.App = (function() {
     } else {
       // show it!
       $hiddenDiv.attr('style', 'display: block');
-      $icon.text('-');
+      $icon.text('–');
 
       // track mixpanel
       const text = $dropdown.find('span').text();

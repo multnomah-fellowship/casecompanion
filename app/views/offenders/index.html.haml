@@ -20,7 +20,7 @@
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
 
-  .row
+  .row.app-row-divider
     .col.s10.offset-s1
       %h3.app-typography--header-2= t('offender_search.by_sid')
 
@@ -62,6 +62,9 @@
               %li
                 %span.app-card--result__label.mdl-typography--caption DOB
                 = result[:dob]
+            = render_component 'button', to: offender_path(result[:sid]) do
+              View offender
+              %i.material-icons keyboard_arrow_right
 
 
       .col.s10.offset-s1.hide-on-med-and-down

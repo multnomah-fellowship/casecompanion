@@ -87,7 +87,7 @@ a {
 }
 
 strong {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .app-footer {
@@ -222,12 +222,8 @@ strong {
 // modes of contact.
 .app-contact-list {
   list-style: none;
-  margin: -16px;
+  margin: 0;
   padding: 0;
-
-  > li {
-    padding-left: 30px;
-  }
 }
 
 .app-contact-list__link {
@@ -236,11 +232,12 @@ strong {
 }
 
 .app-contact-list__icon {
+  display: inline-block;
   vertical-align: middle;
 }
 
 .app-contact-list__primary-description {
-  margin-left: 12px;
+  margin-left: 32px;
   line-height: 48px;
 
   &:not(:last-child) {
@@ -264,23 +261,6 @@ strong {
 /*
  * CUSTOM CARD VARIANTS
  */
-.app--notification-method {
-  background-color: white;
-  margin: 0 0 0 -16px;
-  padding: 0 16px 0;
-  width: 100%;
-
-  &:not(:last-child) {
-    border-bottom: 1px solid map-get($colors, grey-light);
-    margin-bottom: 1em;
-    padding-bottom: 16px;
-  }
-
-  > .mdl-button {
-    padding: 0;
-  }
-}
-
 .app-card--result {
   background-color: white;
   display: block;

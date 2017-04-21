@@ -29,6 +29,8 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2 Who can I talk to?
 
+.row
+  .col.s10.offset-s1
     = render_component 'avatar_list_item', image: image_path('tom.jpg'), caption: t('offender.robyn_title'), name: t('offender.robyn')
 
     = render_component 'dropdown', title: t('offender.contact_info', name: 'Robyn') do
@@ -54,6 +56,8 @@
       %p When and where an offender will be released
       %p And more…
 
+.row
+  .col.s10.offset-s1
     = render_component 'avatar_list_item', image: image_path('tom.jpg'), caption: t('offender.saydyie_title'), name: t('offender.saydyie')
 
     = render_component 'dropdown', title: t('offender.contact_info', name: 'Saydyie') do
@@ -88,73 +92,53 @@
         updated periodically by counselors. The closer to release, the more
         predictable this date becomes.
 
-      %p.app-typography--body-2
-        What does Earliest Release Date include?
+      %h3.app-typography--body-2
+        %strong What does Earliest Release Date include?
       %p
         Earliest Release Date includes the sentence minus 20% Earned Time.
 
-      %p.app-typography--body-2
-        What is Earned Time?
+      %h3.app-typography--body-2
+        %strong What is Earned Time?
       %p
         Earned Time is 20% credited at the beginning of the sentence. Earned
         time can be lost due to infractions and counselors update earned time
         periodically.
 
-      %p.app-typography--body-2
-        What are some other programs that may move the date earlier than that?
+      %h3.app-typography--body-2
+        %strong
+          What are some other programs that may move the date
+          earlier than that?
       %p
         Short Term Transitional Leave can subtract up to 90 days in addition to
         earned time for certain offenders. To learn more visit the #{link_to 'DOC FAQs', "http://www.oregon.gov/doc/OMR/Pages/religious_services/victims_services/victim_issues.aspx#Crime_Victims'_FAQ's"}.
 
-      %p.mdl-typography--body-2
-        Are there other programs that may allow the offender to spend time in
-        the community?
+      %h3.app-typography--body-2
+        %strong
+          Are there other programs that may allow the offender to
+          spend time in the community?
       %p
         There are Alternative Incarceration Programs available in three
         institutions in Oregon that allow a small number of offenders to undergo
         treatment in the community. If they graduate these programs successfully
-        they will be released earlier in addition to earned time.  To learn more
-        check out #{link_to 'this summary by Crime Victims United', 'http://www.crimevictimsunited.org/issues/corrections/aip.htm'}.
+        they will be released earlier in addition to earned time.
 
     = render_component 'dropdown', title: 'How can I stay informed about where the offender is?' do
-      .app--notification-method
-        %p.mdl-typography--subhead Oregon VINE
-        %p.mdl-typography--body-1
-          VINE is an automated notification system. For example, VINE will call,
-          text, and/or email you if there is a change in custody status.
-        = link_to vine_path(@offender[:sid]), id: 'vine-link', class: 'mdl-button mdl-js-button app-color-primary app-list-button' do
-          VINE website
-          %i.material-icons open_in_new
+      %h3.app-typography--body-1
+        %strong Oregon VINE
+      %p
+        VINE is an automated notification system. For example, VINE will call,
+        text, and/or email you if there is a change in custody status.
+      = render_component 'button', to: vine_path(@offender[:sid]) do
+        VINE website
+        %i.material-icons open_in_new
 
-      .app--notification-method
-        %p.mdl-typography--subhead Oregon Prison Release Notification
-        %p.mdl-typography--body-1
-          The Oregon Parole Board can notify you 90 days prior to an inmate's
-          release and help you get a No Contact order added to an inmate's
-          conditions of Post-Prison Supervision.
-        = link_to 'https://www.oregon.gov/BOPPPS/docs/Fillable%20Forms/Victim%20Request%20for%20Notification.pdf', class: 'mdl-button mdl-js-button app-color-primary app-list-button' do
-          Sign Up Form
-          %i.material-icons open_in_new
-
--# .row
-  .col.s10.offset-s1
-    %ul.mdl-list.app-list
-      %li.mdl-list__item.mdl-list__item--two-line
-        %span.mdl-list__item-primary-content
-          %i.material-icons.mdl-list__item-icon person
-          %span Robyn Masella
-          %span.mdl-list__item-sub-title Victims' Specialist, Parole Board
-
-      -#
-        %li.mdl-list__item.mdl-list__item--two-line
-          %span.mdl-list__item-primary-content
-            %i.material-icons.mdl-list__item-icon person
-            %span Saydyie DeRosa
-            %span.mdl-list__item-sub-title
-              Victim Program Specialist, Department of Corrections
-
-        = render_component 'dropdown', title: 'Contact Saydyie' do
-          %p By Phone: TODO
-          %p By Email: TODO
-
-        = render_component 'dropdown', title: 'What can I talk to Saydyie about?' do
+      %h3.app-typography--body-1
+        %strong Oregon Prison Release Notification
+      %p
+        The Oregon Parole Board can notify you 90 days prior to an inmate's
+        release and help you get a No Contact order added to an inmate's
+        conditions of Post-Prison Supervision.
+      - pps_form = 'https://www.oregon.gov/BOPPPS/docs/Fillable%20Forms/Victim%20Request%20for%20Notification.pdf'
+      = render_component 'button', to: pps_form do
+        Sign Up Form
+        %i.material-icons open_in_new
