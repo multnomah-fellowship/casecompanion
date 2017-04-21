@@ -2,26 +2,43 @@
   .col.s10.offset-s1
     %h2.app-typography--header-1 Offender Public Information
 
-.row
-  .col.s10.offset-s1.m5.offset-m1
+.row.hide-on-med-and-down
+  .col.m5.offset-m1
     .app-typography--caption-above SID
     %span.app-typography--body-1= @offender[:sid]
-
-  .col.s10.offset-s1.m5.offset-m1
+  .col.m5.offset-m1
     .app-typography--caption-above Offender Name
     %span.app-typography--body-1= @offender[:name]
-
-.row
-  .col.s10.offset-s1.m5.offset-m1
+.row.hide-on-med-and-down
+  .col.m5.offset-m1
     .app-typography--caption-above Status
     %span.app-typography--body-1= @offender[:status]
-
-  .col.s10.offset-s1.m5.offset-m1
+  .col.m5.offset-m1
     .app-typography--caption-above Location
     %span.app-typography--body-1= @offender[:location]
+.row.hide-on-med-and-down
+  .col.m5.offset-m1
+    .app-typography--caption-above Earliest Release Date (Not Finalized)
+    %span.app-typography--body-1= @offender[:earliest_release_date]
 
-.row
-  .col.s10.offset-s1.m5.offset-m1
+.row.hide-on-large-only
+  .col.s10.offset-s1
+    .app-typography--caption-above SID
+    %span.app-typography--body-1= @offender[:sid]
+.row.hide-on-large-only
+  .col.s10.offset-s1
+    .app-typography--caption-above Offender Name
+    %span.app-typography--body-1= @offender[:name]
+.row.hide-on-large-only
+  .col.s10.offset-s1
+    .app-typography--caption-above Status
+    %span.app-typography--body-1= @offender[:status]
+.row.hide-on-large-only
+  .col.s10.offset-s1
+    .app-typography--caption-above Location
+    %span.app-typography--body-1= @offender[:location]
+.row.hide-on-large-only
+  .col.s10.offset-s1
     .app-typography--caption-above Earliest Release Date (Not Finalized)
     %span.app-typography--body-1= @offender[:earliest_release_date]
 
