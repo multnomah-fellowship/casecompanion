@@ -19,6 +19,7 @@ $colors: (
 $color-page-background: map-get($colors, grey-lighter);
 $color-page-border: map-get($colors, grey-lightish);
 $color-logo: map-get($colors, blue-multnomah);
+$color-hover: map-get($colors, blue-lighter);
 
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
@@ -30,5 +31,5 @@ $color-button-solid: map-get($colors, green-light);
 $color-footer: map-get($colors, grey-light);
 $color-footer-border: #dedede;
 
-$color-table-hover: map-get($colors, blue-lighter);
+$color-table-hover: $color-hover;
 $color-divider: map-get($colors, grey-light);
