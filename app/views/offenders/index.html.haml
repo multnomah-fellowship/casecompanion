@@ -62,9 +62,6 @@
               %li
                 %span.app-card--result__label.mdl-typography--caption DOB
                 = result[:dob]
-            = render_component 'button', to: offender_path(result[:sid]) do
-              View offender
-              %i.material-icons keyboard_arrow_right
 
 
       .col.s10.offset-s1.hide-on-med-and-down
@@ -78,20 +75,15 @@
               %th SID
               %th Known Aliases
               %th DOB
-              %th View Details
           - @grouped_results.each do |group|
             %tbody
               %tr.app-table__row--bordered{ data: { href: offender_path(group[:sid]) } }
                 %td= link_to group[:sid], offender_path(group[:sid])
                 %td= @name_highlighter.highlight(group[:full_name])
                 %td= group[:dob]
-                %td
-                  = render_component 'button', to: offender_path(group[:sid]), short: true do
-                    View
               - group[:aliases].each do |name|
                 %tr{ data: { href: offender_path(group[:sid]) } }
                   %td
                   %td= @name_highlighter.highlight(name)
-                  %td
                   %td
 
