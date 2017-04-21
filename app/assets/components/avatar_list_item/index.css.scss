@@ -1,5 +1,7 @@
 @import "typography";
 
+$border-color: rgba(0, 0, 0, 0.2);
+
 .app-avatar-list-item {
   clear: both;
   overflow: auto;
@@ -7,12 +9,19 @@
 }
 
 .app-avatar-list-item__image {
-  border: 4px solid rgba(0, 0, 0, 0.2);
+  border: 4px solid $border-color;
   border-radius: 60px;
   height: 60px;
   float: left;
   margin-right: 20px;
   width: 60px;
+}
+
+.app-avatar-list-item__icon {
+  font-size: 36px;
+  padding-top: 8px;
+  padding-left: 8px;
+  color: $border-color;
 }
 
 .app-avatar-list-item__text {

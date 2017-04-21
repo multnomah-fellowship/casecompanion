@@ -3,7 +3,10 @@
 - caption = options[:caption]
 
 .app-avatar-list-item
-  = image_tag image, class: 'app-avatar-list-item__image'
+  - if image
+    = image_tag image, class: 'app-avatar-list-item__image'
+  - else
+    %i.material-icons.app-avatar-list-item__image.app-avatar-list-item__icon person
   .app-avatar-list-item__text
     .app-avatar-list-item__name
       = name
