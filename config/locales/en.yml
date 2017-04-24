@@ -8,7 +8,8 @@ en:
     cta: Look up Status
     description: |
       My Advocate is a public website for victims of crime in Multnomah County,
-      built by %{cfa_link} in collaboration with government and community\u00a0partners.
+      built by %{cfa_link} in collaboration with government and
+      community&nbsp;partners.
 
   footer:
     title: Not finding what you're looking for?
