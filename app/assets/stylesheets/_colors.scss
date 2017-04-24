@@ -16,20 +16,26 @@ $colors: (
   blue-lighter: #f1f8fe,
 );
 
+// layout colors
 $color-page-background: map-get($colors, grey-lighter);
 $color-page-border: map-get($colors, grey-lightish);
 $color-logo: map-get($colors, blue-multnomah);
 $color-hover: map-get($colors, blue-lighter);
+$color-table-hover: $color-hover;
+$color-divider: map-get($colors, grey-light);
 
+// typography colors
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
 $color-header-3: map-get($colors, green-dark);
 
+// button component
 $color-button: map-get($colors, green-dark);
 $color-button-solid: map-get($colors, green-light);
 
+// footer partial
 $color-footer: map-get($colors, grey-light);
 $color-footer-border: #dedede;
 
-$color-table-hover: $color-hover;
-$color-divider: map-get($colors, grey-light);
+// materialize overrides
+$secondary-color: map-get($colors, blue-multnomah);

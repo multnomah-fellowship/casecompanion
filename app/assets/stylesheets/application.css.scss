@@ -21,15 +21,15 @@
  *= require_self
  */
 
+@import "colors";
+@import "typography";
+
 @import "materialize/components/color";
 @import "materialize/components/variables";
 @import "materialize/components/global";
 @import "materialize/components/grid";
 @import "materialize/components/typography";
 @import "materialize/components/forms/forms";
-
-@import "colors";
-@import "typography";
 
 body, html {
   background-color: $color-page-background;
