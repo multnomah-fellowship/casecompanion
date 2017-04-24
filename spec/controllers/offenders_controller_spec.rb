@@ -90,7 +90,7 @@ RSpec.describe OffendersController do
       expect(response).to be_success
       sid = OFFENDER_FIXTURE[:sid]
 
-      link = Nokogiri::HTML(response.body).css("a#vine-link[href*=\"#{sid}\"]")
+      link = Nokogiri::HTML(response.body).css("a[href*=\"#{sid}\"]:contains(\"VINE\")")
       expect(link).to be_present
     end
   end

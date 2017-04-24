@@ -108,9 +108,10 @@ describe ApplicationHelper do
 
     subject { helper.render_component('dropdown', title: title, &body) }
 
-    it 'returns two <li> list items' do
+    it 'returns an <a> linking to a corresponding <div>' do
       doc = Nokogiri::HTML(subject)
-      expect(doc.css('li.mdl-list__item').length).to eq(2)
+      expand_id = doc.css('body > a').attr('href').value.gsub('#', '')
+      expect(doc.css("body > div##{expand_id}")).to be_present
     end
 
     it 'passes the title and body to the component' do
