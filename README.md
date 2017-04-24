@@ -1,5 +1,8 @@
-# myadvocate (name pending)
-WIP prototype for CfA multnomah fellowship
+# myadvocate
+Prototype for CfA multnomah fellowship
+
+[View Live Site](https://myadvocateoregon.org)
+[View Staging Site](https://staging.myadvocateoregon.org)
 
 ## configuration
 Make sure to export the following environment variables:
