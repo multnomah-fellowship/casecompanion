@@ -6,6 +6,7 @@
 // Windows (Segoe UI) and Android (Roboto).
 $system-sans-serif: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+$typography-size-body-1: 19px;
 
 %app-typography--display-1 {
   color: $color-text;
@@ -48,7 +49,7 @@ $system-sans-serif: -apple-system, BlinkMacSystemFont,
 %app-typography--body-1 {
   color: $color-text;
   font-family: $system-sans-serif;
-  font-size: 19px;
+  font-size: $typography-size-body-1;
   line-height: 28px;
 }
 
