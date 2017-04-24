@@ -48,6 +48,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
 
+  # Needed by travis-ci:
+  gem 'rake'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
