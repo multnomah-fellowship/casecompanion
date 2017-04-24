@@ -255,10 +255,6 @@ strong {
   }
 }
 
-.app-row-divider {
-  border-top: 4px solid $color-divider;
-}
-
 /*
  * CUSTOM FORM FIELD STYLING
  */
@@ -350,6 +346,8 @@ $table-gutter: unquote("calc(" + (100 / $num-cols) + "% + " +
 /**
  * MATERIALIZE OVERRIDES
  */
-.row {
-  margin-bottom: 40px;
+// Use <section class="row"> to get a top-border and extra top spacing.
+section.row:not(:first-of-type) {
+  margin-top: 40px;
+  border-top: 4px solid $color-divider;
 }

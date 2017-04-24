@@ -20,7 +20,7 @@
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
 
-  .row.app-row-divider
+  %section.row
     .col.s10.offset-s1
       %h3.app-typography--header-2= t('offender_search.by_sid')
 
