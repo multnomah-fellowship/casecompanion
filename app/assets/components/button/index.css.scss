@@ -11,18 +11,13 @@
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
-  padding: 16px 40px;
+  padding: 12px 40px;
   text-decoration: none;
 
   > .material-icons {
     font-size: inherit;
     vertical-align: text-bottom;
   }
-}
-
-.app-button--short {
-  padding-top: 8px;
-  padding-bottom: 8px;
 }
 
 .app-button--solid {
