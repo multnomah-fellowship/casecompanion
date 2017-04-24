@@ -99,6 +99,10 @@ strong {
   padding-top: 60px;
 }
 
+.app-footer__powered-by {
+  @extend %app-typography--caption;
+}
+
 .app-container {
   max-width: 940px;
 }
