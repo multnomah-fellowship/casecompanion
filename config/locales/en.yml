@@ -4,7 +4,7 @@ en:
   home:
     headline: "Navigating the criminal justice system\u00a0post\u2011conviction"
     subhead: "Find status information, answers to frequently asked questions,\u00a0and
-      contact\u00a0information."
+      contact\u00a0information"
     cta: Look up Status
     description: |
       My Advocate is a public website for victims of crime in Multnomah County,
@@ -27,11 +27,12 @@ en:
     robyn_title: 'Victims Specialist, Board of Parole & Post-Prison Supervision'
     saydyie: 'Saydyie DeRosia'
     saydyie_title: 'Victim Services Coordinator, Oregon Department of Corrections'
+    how_date_change: 'How might the release date date change?'
 
   offender_search:
     title: Look up an offender (in prison)
     by_name: 'By Name:'
-    by_sid: 'Or by SID number (Oregon State ID):'
+    by_sid: 'Or by SID number:'
     search: Search
     num_results: '%{num} results matching %{name}'
     sid:
