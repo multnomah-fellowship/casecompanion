@@ -3,3 +3,5 @@ cache: bundler
 rvm:
 - 2.4.0
 script: bundle exec rspec
+env:
+  - TWILIO_PHONE_NUMBER=+14155555555
