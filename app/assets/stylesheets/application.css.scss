@@ -41,6 +41,11 @@ a {
   color: map-get($colors, primary);
 }
 
+input, label {
+  @extend %app-typography--body-2;
+  line-height: 1.5;
+}
+
 .app-color-primary {
   color: map-get($colors, primary);
 }
