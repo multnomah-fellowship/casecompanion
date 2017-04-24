@@ -46,6 +46,10 @@ input, label {
   line-height: 1.5;
 }
 
+strong {
+  font-weight: 700;
+}
+
 .app-color-primary {
   color: map-get($colors, primary);
 }
@@ -89,10 +93,6 @@ input, label {
   @extend %app-typography--caption;
 
   margin-bottom: 4px;
-}
-
-strong {
-  font-weight: 700;
 }
 
 .app-footer {
@@ -345,4 +345,11 @@ $table-gutter: unquote("calc(" + (100 / $num-cols) + "% + " +
   > tbody > tr:hover {
     cursor: pointer;
   }
+}
+
+/**
+ * MATERIALIZE OVERRIDES
+ */
+.row {
+  margin-bottom: 40px;
 }
