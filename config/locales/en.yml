@@ -84,16 +84,39 @@ en:
         item_3: All points of contact
 
     before_trial:
-      Stuff 1
+      header: |
+        The time between arrest and prosecution can be hectic. Here’s what to expect and where to get support:
 
-    prison_jail:
-      Stuff 2
+        Within 48 - 72 hrs of reporting a crime
+        Prosecutors will review evidence and make a charging decision.
+
+        Within 3 days of reporting the crime
+        You’ll receive a call from an advocate about a scheduled arraignment. An arraignment is a hearing for the District Attorney to officially press charges. As a victim, you have the right to attend but can choose not to.
+
+        Within 7 days of reporting the crime
+        In felony cases, a Grand Jury will be scheduled. You may receive a subpoena to testify as a witness, which shows the date, time, and location in our office where they are expected to appear and testify.
+
+        Within about 30 days of reporting the crime
+        Trial is scheduled. You may be subpoenaed to testify as a witness through mail.
+
+        <a href="http://mcda.us/index.php/appearing-in-court/trial-process/">What to expect from the trial process</a>
+        <a href="http://mcda.us/index.php/appearing-in-court/witness-information/">What to expect as a witness</a>
+
+    prison_jail: {} # TODO
 
     community_supervision:
-      Stuff 3
+      header: |
+        You may hear many confusing technical and legal terms that describe an offender’s supervision.
 
-    financial_assistance:
-      Stuff 4
+        Although there are differences, all types of community supervision have two things in common.  First, each offender has conditions he or she must follow.  Second, the offender is supervised by a parole/probation officer all of whom work for our Department.
 
-    privacy_protection:
-      Stuff 5
+      dropdowns:
+      - title: What are the different types of supervision?
+        body: |
+          <strong>Post-Prison Supervision*</strong> is the current legal term for supervision after prison and <strong>Probation</strong> is the term for supervision instead of prison.
+
+          *Prior to 1989, Post-Prison Supervision was called Parole.  Parole is still used today if the offender was sentenced to prison prior to 1989. It is the same as Post-Prison Supervision in that the offender has to follow conditions of supervision set by the Oregon Board of Parole and Post-Prison Supervision.
+
+    financial_assistance: {} # TODO
+
+    privacy_protection: {} # TODO

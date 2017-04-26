@@ -15,6 +15,14 @@
               %li.app-menu__link{ class: ('app-menu__link--selected' if selected) }
                 = link_to item[:text], faq_path(faq_slug(item))
 
-  .col.s5
+  .col.s7
     - if @faq_item
-      = t("faqs.#{@faq_item[:faq]}")
+      - header_key = "faqs.#{@faq_item[:faq]}.header"
+      - if I18n.exists?(header_key)
+        = raw(simple_format(t(header_key)))
+
+      - dropdowns_key = "faqs.#{@faq_item[:faq]}.dropdowns"
+      - if I18n.exists?(dropdowns_key)
+        - I18n.t(dropdowns_key).each do |dropdown|
+          = render_component 'dropdown', title: dropdown[:title] do
+            = raw(simple_format(dropdown[:body]))
