@@ -61,3 +61,39 @@ en:
     error_too_many_results: |
       Your search returned too many results. You may want to check that you are
       searching with both the first name and the last name.
+
+  faqs:
+    title: Navigating the criminal justice system
+    subtitle: |
+      We know there are many questions victims have as they navigate the
+      criminal justice system. Right now, what would you like more information
+      about?
+
+    menu:
+      header_1: What to expect
+      section_1:
+        item_1: Questions before trial
+        item_2: Questions about prison/jail
+        item_3: Questions about community supervision
+        item_4: Questions about financial assistance
+        item_5: Questions about privacy and protection
+      header_2: Directories
+      section_2:
+        item_1: All victim rights
+        item_2: All community services
+        item_3: All points of contact
+
+    before_trial:
+      Stuff 1
+
+    prison_jail:
+      Stuff 2
+
+    community_supervision:
+      Stuff 3
+
+    financial_assistance:
+      Stuff 4
+
+    privacy_protection:
+      Stuff 5

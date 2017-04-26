@@ -46,6 +46,13 @@ $typography-size-body-1: 19px;
   color: $color-header-3;
 }
 
+%app-typography--header-4 {
+  color: $color-text-caption;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 %app-typography--body-1 {
   color: $color-text;
   font-family: $system-sans-serif;

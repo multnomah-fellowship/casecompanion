@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :faqs, only: %i[show index]
+
   resource :styleguide, only: %i[show]
 
   resource :sessions, only: %i[new create destroy]

@@ -1,0 +1,20 @@
+.row
+  .col.s10.offset-s1
+    %h1.app-typography--header-1= t('faqs.title')
+    %p.app-typography--body-1= t('faqs.subtitle')
+
+.row
+  .col.s5
+    %nav.app-menu
+      - @faq_menu.each do |section|
+        %section
+          .app-menu__header= section[:header][:text]
+          %ul
+            - section[:items].each do |item|
+              - selected = @faq_item == item
+              %li.app-menu__link{ class: ('app-menu__link--selected' if selected) }
+                = link_to item[:text], faq_path(faq_slug(item))
+
+  .col.s5
+    - if @faq_item
+      = t("faqs.#{@faq_item[:faq]}")
