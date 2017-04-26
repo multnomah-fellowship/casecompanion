@@ -19,9 +19,9 @@ class FaqsController < ApplicationController
     {
       header: { text: helpers.t('faqs.menu.header_2') },
       items: [
-        { text: helpers.t('faqs.menu.section_2.item_1') },
-        { text: helpers.t('faqs.menu.section_2.item_2') },
-        { text: helpers.t('faqs.menu.section_2.item_3') },
+        { text: helpers.t('faqs.menu.section_2.item_1'), faq: :all_rights },
+        { text: helpers.t('faqs.menu.section_2.item_2'), faq: :all_services },
+        { text: helpers.t('faqs.menu.section_2.item_3'), faq: :all_pocs },
       ],
     },
   ]

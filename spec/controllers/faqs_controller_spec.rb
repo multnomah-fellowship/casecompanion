@@ -22,6 +22,16 @@ RSpec.describe FaqsController, type: :controller do
         end
       end
     end
+
+    it 'all I18n dropdowns are objects of proper form' do
+      subject.each do |section|
+        section[:items].each do |item|
+          key = "faqs.#{item[:faq]}"
+
+          expect(I18n.t(key)).to be_a(Hash)
+        end
+      end
+    end
   end
 
   describe '#index' do
