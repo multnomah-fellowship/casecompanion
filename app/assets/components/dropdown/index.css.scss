@@ -7,7 +7,7 @@
   border: 1px solid $color-page-border;
   color: $color-text;
   display: block;
-  line-height: 48px;
+  padding: 8px 0;
   width: 100%;
 
   &:not(.app-dropdown__hidden):hover {
@@ -16,10 +16,16 @@
 
   > i {
     display: inline-block;
+    float: left;
     font-style: initial;
     margin-left: 24px;
     margin-right: 36px;
     width: 14px;
+  }
+
+  > span {
+    display: block;
+    margin-left: 74px; // total with of the <i> element
   }
 
   & ~ & {

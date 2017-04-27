@@ -19,8 +19,14 @@
 
 %h2 Dropdown
 :styleguide
-  = render_component 'dropdown', title: 'Dropdown Title' do
-    Body here!
+  .row
+    .col.s6
+      = render_component 'dropdown', title: 'Dropdown Title' do
+        Body here!
+      = render_component 'dropdown', title: 'Dropdown Title' do
+        Body here!
+      = render_component 'dropdown', title: 'This is a dropdown with a very very long Title lorem ipsum dolor sit amet' do
+        Body here!
 
 %h2 Button
 %p Here is a default button:
