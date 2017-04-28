@@ -1,13 +1,34 @@
 class OffendersController < ApplicationController
   def index
     if offender_params[:sid].present?
+      # when searching for a SID, just go to /offenders/<sid> and let that page
+      # do the search
       redirect_to offender_path(offender_params[:sid])
+    elsif params[:error]
+      # if this page has an "error" query param then don't attempt a search and
+      # just show that error
+      case params[:error]
+      when 'no_offender_found'
+        flash.now[:error] = I18n.t('offender_search.error_no_results',
+                                   search_sid: params[:error_sid])
+      when 'error_connection_failed'
+        flash.now[:error] = I18n.t('offender_search.error_connection_failed')
+      end
     elsif offender_params[:first_name].present? || offender_params[:last_name].present?
+      # otherwise, time to search by name!
       begin
         @results = OffenderScraper.search_by_name(
           offender_params[:first_name],
           offender_params[:last_name]
         )
+
+        if @results.empty?
+          flash.now[:error] = I18n.t(
+            'offender_search.error_no_results_by_name',
+            first_name: offender_params[:first_name],
+            last_name: offender_params[:last_name]
+          )
+        end
       rescue OosMechanizer::Searcher::ConnectionFailed
         @results = []
         flash.now[:error] = I18n.t('offender_search.error_connection_failed')
@@ -19,19 +40,6 @@ class OffendersController < ApplicationController
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
     end
-
-    if params[:error] == 'no_offender_found'
-      flash.now[:error] = I18n.t(
-        'offender_search.error_no_results',
-        search_sid: params[:error_sid]
-      )
-    elsif @results && @results.empty?
-      flash.now[:error] = I18n.t(
-        'offender_search.error_no_results_by_name',
-        first_name: offender_params[:first_name],
-        last_name: offender_params[:last_name]
-      )
-    end
   end
 
   def show
@@ -41,8 +49,7 @@ class OffendersController < ApplicationController
       redirect_to offenders_path(error: 'no_offender_found', error_sid: params[:id])
     end
   rescue OosMechanizer::Searcher::ConnectionFailed
-    flash[:error] = I18n.t('offender_search.error_connection_failed')
-    redirect_to offenders_path
+    redirect_to offenders_path(error: 'error_connection_failed')
   end
 
   private
