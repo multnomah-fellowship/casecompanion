@@ -22,16 +22,16 @@
     %main.app-container--main
       - if flash[:info]
         .row
-          .col.s12
+          .col.s10.offset-s1
             = simpler_format flash[:info]
             = mixpanel_track_message :info, flash[:info]
 
       - if flash[:error]
         .row
-          .col.s12.app-cell--error
+          .col.s10.offset-s1.app-cell--error
             = simpler_format flash[:error]
             = mixpanel_track_message :error, flash[:error]
-            %span
+            %p
               Confused? Ask us a question:
               #{link_to "text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'}.
 
