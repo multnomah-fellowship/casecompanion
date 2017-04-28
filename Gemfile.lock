@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/tdooner/oos-mechanizer.git
-  revision: ca0bfe88ab4159b407166e73a973a87bf0648992
+  revision: 39de5a27fdbc90d85b1a9402cb05f005bdf15802
   specs:
-    oos_mechanizer (0.1.0)
+    oos_mechanizer (0.1.1)
       mechanize (~> 2.7.5)
 
 GEM
@@ -205,7 +205,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.3)
+    unf_ext (0.0.7.4)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)

@@ -8,6 +8,9 @@ class OffendersController < ApplicationController
           offender_params[:first_name],
           offender_params[:last_name]
         )
+      rescue OosMechanizer::Searcher::ConnectionFailed
+        @results = []
+        flash.now[:error] = I18n.t('offender_search.error_connection_failed')
       rescue OosMechanizer::Searcher::TooManyResultsError
         @results = []
         flash.now[:error] = I18n.t('offender_search.error_too_many_results')
@@ -37,6 +40,9 @@ class OffendersController < ApplicationController
     if @offender.nil?
       redirect_to offenders_path(error: 'no_offender_found', error_sid: params[:id])
     end
+  rescue OosMechanizer::Searcher::ConnectionFailed
+    flash[:error] = I18n.t('offender_search.error_connection_failed')
+    redirect_to offenders_path
   end
 
   private

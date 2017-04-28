@@ -62,6 +62,10 @@ en:
       Your search returned too many results. You may want to check that you are
       searching with both the first name and the last name.
 
+    error_connection_failed: |
+      We're having trouble performing your search right now. It might help to
+      retry your search in a few minutes.
+
   faqs:
     title: Navigating the criminal justice system
     subtitle: |
