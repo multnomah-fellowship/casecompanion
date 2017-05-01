@@ -102,6 +102,8 @@ en:
         <strong>Within 7 days of reporting the crime</strong>
         In felony cases, a Grand Jury will be scheduled. You may receive a subpoena to testify as a witness, which shows the date, time, and location in our office where they are expected to appear and testify.
 
+        The offender will not be present at the grand jury. It will be you along with the prosecutor and any other witnesses in the case.
+
         <strong>Within about 30 days of reporting the crime</strong>
         Trial is scheduled. You may be subpoenaed to testify as a witness through mail.
 
@@ -279,7 +281,7 @@ en:
               <li><strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender</li>
               <li><strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program</li>
               <li>Victims of domestic violence may be eligible for financial help from the Department of Human Services</li>
-              <li>Restitution is ordered by the judge and is an automatic right. <a href="TODO">Contact the local courthouse.</a></li>
+              <li>Restitution is ordered by the judge and is an automatic right. <a href="tel:503-988-3269">Call the local courthouse at (503) 988-3269.</a></li>
             </ul>
 
             <a href="TODO">Check availability for Crime Victims’ Compensation</a>
@@ -292,7 +294,9 @@ en:
       dropdowns:
         - title: What if I’m being harassed by an offender on supervision?
           body: |
-            Call the PO. The PO will investigate to determine if there has been a violation. If the activity continues, contact the police.
+            First, call 9-1-1 if you are in danger or to report a new crime.
+
+            For less urgent concerns, you can call the offender's PO. The PO will investigate to determine if there has been a violation.
 
             If being harassed by a youth offender or the youth’s family, contact the police to file a report, report the incident to juvenile’s assigned court counselor or notify the Victim’s Advocate in the District Attorney’s Office at Juvenile Court.
         - title: How do I get a restraining order?
@@ -301,7 +305,16 @@ en:
           # is a one-stop-shop. Also I'm pretty sure these forms are available
           # online?
           body: |
+            A restraining order is a court order which requires someone else to stop an undesirable behavior such as contacting you, being near you, or living with you.
+
+            Depending on who you are looking to file the restraining order against (the “respondent”), there are different qualifications, and the respondent will have a chance to contest the restraining order in front of a judge.
+
             A restraining order can be obtained in one day, if you begin in the morning. The process usually takes several hours.
+
+            The best way to get a restraining order in Portland for intimate partner violence is to go to the <a href="https://www.portlandoregon.gov/gatewaycenter/article/307964">Gateway Center</a> at:
+
+            10305 East Burnside Street
+            Portland, OR 97216
 
             Pick up a free set of blank Restraining Order forms at the:
             Family Law Clerk
