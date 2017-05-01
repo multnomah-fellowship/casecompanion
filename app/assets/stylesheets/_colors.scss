@@ -37,5 +37,18 @@ $color-button-solid: map-get($colors, green-light);
 $color-footer: map-get($colors, grey-light);
 $color-footer-border: #dedede;
 
-// materialize overrides
-$secondary-color: map-get($colors, blue-multnomah);
+// materialize definitions so we don't have to import the colors rules:
+$primary-color: map-get($colors, blue-multnomah);
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: $primary-color;
+$success-color: #f00; // TODO is this used anywhere?
+$error-color: #f00; // TODO is this used anywhere?
+$link-color: map-get($colors, blue-multnomah);
+
+$card-link-color: $link-color;
+$input-border-color: $color-text;
+$slider-bg-color: #f00; // TODO is this used anywhere?
+$slider-bg-color-light: #f00; // TODO is this used anywhere?
+$slider-indicator-color: #f00; // TODO is this used anywhere?

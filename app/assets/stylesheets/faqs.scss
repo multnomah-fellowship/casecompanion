@@ -1,12 +1,17 @@
 // Place all the styles related to the faqs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "colors";
 @import "typography";
+@import "colors";
+@import "materialize/components/variables"; // include after the other mixins have overridden variables
 
 .app-menu {
   background-color: $color-hover;
   padding: 32px 40px;
+}
+
+.app-menu--full-bleed {
+  margin-left: -($gutter-width / 2);
 }
 
 .app-menu__header {

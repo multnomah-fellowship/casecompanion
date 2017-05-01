@@ -21,11 +21,10 @@
  *= require_self
  */
 
-@import "colors";
 @import "typography";
+@import "colors";
+@import "materialize/components/variables"; // include after the other mixins have overridden variables
 
-@import "materialize/components/color";
-@import "materialize/components/variables";
 @import "materialize/components/global";
 @import "materialize/components/grid";
 @import "materialize/components/typography";
