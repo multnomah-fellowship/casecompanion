@@ -30,5 +30,21 @@ RSpec.describe FaqsHelper, type: :helper do
         expect(subject).to be_html_safe
       end
     end
+
+    context 'with an item with HTML in it' do
+      let(:item) { <<-ITEM.strip_heredoc }
+      This is my item.
+
+      <ul>
+        <li>Foo Bar</li>
+        <li>Baz</li>
+      </ul>
+      ITEM
+
+      it 'does not include <br>s between HTML tags' do
+        doc = Nokogiri::HTML(subject)
+        expect(doc.css('ul > br').length).to eq(0)
+      end
+    end
   end
 end

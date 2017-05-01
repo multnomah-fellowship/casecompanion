@@ -112,10 +112,12 @@ en:
         - title: What can I be notified of? How can I request notifications?
           body: |
             You have the right to be notified of:
-              <ul>
-                <li>critical stage hearings in advance</li>
-                <li>release hearings in advance</li>
-              </ul>
+
+            <ul>
+              <li>critical stage hearings in advance</li>
+              <li>release hearings in advance</li>
+            </ul>
+
             Talk to your advocate about notifications. <a href="TODO">Contact the
             District Attorney Victim Services</a>.
         - title: Can I be present at the trial? Do I have to be?

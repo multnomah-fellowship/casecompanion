@@ -16,6 +16,7 @@ module FaqsHelper
   # @param body A trusted string, from I18n locale file
   # @return String An html_safe string to output.
   def faq_format(body)
-    raw(simple_format(body))
+    body_without_whitespace = body.gsub(/>\s+</, '><')
+    raw(simple_format(body_without_whitespace, {}, sanitize: false))
   end
 end

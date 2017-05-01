@@ -25,3 +25,12 @@
 .app-menu__link--selected {
   font-weight: bold;
 }
+
+div.app-faq-item {
+  ul li {
+    // This selector needs to be very precise to override materialize
+    list-style-type: disc;
+    padding-left: 12px;
+    margin-left: 20px;
+  }
+}
