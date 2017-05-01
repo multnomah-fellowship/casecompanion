@@ -184,10 +184,10 @@ en:
             <strong>Prison</strong>
             After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
 
-            <a href="TODO">Look up offender status</a>
+            <a href="http://docpub.state.or.us/OOS/intro.jsf">Look up offender status</a>
         - title: What’s the earliest release date?
           body: |
-            <a href="TODO">Look up offender status</a> to see the projected earliest release date.
+            <a href="http://docpub.state.or.us/OOS/intro.jsf">Look up offender status</a> to see the projected earliest release date.
 
         - title: How might the earliest release date change?
           body: |
@@ -200,15 +200,15 @@ en:
             Earned Time is 20% credited at the beginning of the sentence. Earned time can be lost due to infractions and counselors update earned time periodically.
 
             What are some other programs that may move the date earlier than that?
-            Short Term Transitional Leave can subtract up to 90 days in addition to earned time for certain offenders. To learn more visit the <a href="TODO">DOC FAQs</a>.
+            Short Term Transitional Leave can subtract up to 90 days in addition to earned time for certain offenders. To learn more visit the <a href="http://www.oregon.gov/doc/OPS/PRISON/pages/prisons_faq.aspx#Why_do_inmates_get_out_of_prison_early_">DOC FAQs</a>.
 
             Are there other programs that may allow the offender to spend time in the community?
             There are Alternative Incarceration Programs available in three institutions in Oregon that allow a small number of offenders to undergo treatment in the community. If they graduate these programs successfully they will be released earlier in addition to earned time.
 
         - title: How can I be notified about changes or release?
           body: |
-            <a href="TODO">Register with VINE</a>
-            <a href="TODO">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
+            <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE</a>
+            <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
 
         - title: How can I find out about parole hearings and decisions?
           body: |
@@ -238,7 +238,7 @@ en:
 
             <a href="https://multco.us/dcj-adult/ppo-lookup">Find the Parole/Probation Officer</a>
 
-            There are also <a href="TODO (there is a page on multco.us with this already)">general conditions that apply to almost every offender</a>.
+            There are also <a href="https://multco.us/dcj-adult/probation-parole-and-post-prison-supervision/standard-conditions-adult-probation-parole">general conditions that apply to almost every offender</a>.
         - title: Who is the Parole-Probation Officer, and how can I contact him/her?
           body:
             <a href="https://multco.us/dcj-adult/ppo-lookup">Find the Parole/Probation Officer</a>
@@ -253,16 +253,15 @@ en:
               <li>The person’s compliance with conditions of supervision and what the PO has ordered</li>
             </ul>
         - title: Can I affect the terms of supervision?
+          # TODO: <a href="TODO">Go here to learn more</a>
           body: |
             For victims under 18 at the time of the crime, they have the right to request special post-prison conditions.
-
-            <a href="TODO">Go here to learn more</a>
         - title: How can I be notified about changes or violations of supervision?
           body: |
             You have the right to be notified about probation/parole violation hearings and changes to supervision.
 
-            <a href="TODO">Register with the Department of Community Justice for notifications</a>
-            <a href="TODO">Register with VINE for custody change notifications</a>
+            <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification">Register with the Department of Community Justice for notifications</a>
+            <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE for custody change notifications</a>
         - title: What do I do if I witness the terms of supervision being violated?
           body: |
             Call the PO. The PO will investigate to determine if there has been a violation. If the activity continues, contact the police.
@@ -281,11 +280,11 @@ en:
               <li><strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender</li>
               <li><strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program</li>
               <li>Victims of domestic violence may be eligible for financial help from the Department of Human Services</li>
-              <li>Restitution is ordered by the judge and is an automatic right. <a href="tel:503-988-3269">Call the local courthouse at (503) 988-3269.</a></li>
             </ul>
 
-            <a href="TODO">Check availability for Crime Victims’ Compensation</a>
-            <a href="TODO">Apply for Crime Victims’ Compensation</a>
+            Restitution is ordered by the judge and is an automatic right. <a href="tel:503-988-3269">Call the local courthouse at (503) 988-3269.</a>
+
+            <a href="http://www.doj.state.or.us/victims/compensation.shtml">Check availability for Crime Victims’ Compensation</a>
 
 
     ###########################################################################
@@ -300,10 +299,6 @@ en:
 
             If being harassed by a youth offender or the youth’s family, contact the police to file a report, report the incident to juvenile’s assigned court counselor or notify the Victim’s Advocate in the District Attorney’s Office at Juvenile Court.
         - title: How do I get a restraining order?
-          # TODO: This should mention the gateway center since they are
-          # responsible for like half of all MultCo's restraining orders and it
-          # is a one-stop-shop. Also I'm pretty sure these forms are available
-          # online?
           body: |
             A restraining order is a court order which requires someone else to stop an undesirable behavior such as contacting you, being near you, or living with you.
 
