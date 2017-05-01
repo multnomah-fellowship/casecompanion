@@ -118,8 +118,7 @@ en:
               <li>release hearings in advance</li>
             </ul>
 
-            Talk to your advocate about notifications. <a href="TODO">Contact the
-            District Attorney Victim Services</a>.
+            Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
         - title: Can I be present at the trial? Do I have to be?
           body: |
             You have the right to participate in prosecution and:
@@ -131,8 +130,7 @@ en:
               <li>participate in mediation or a restorative conference (all parties willing)</li>
             </ul>
 
-            Talk to your advocate about notifications. <a href="TODO">Contact the
-            District Attorney Victim Services</a>.
+            Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
         - title: How can I maintain privacy?
           body: |
             You have the right to to privacy and protection during the trial process including:
@@ -145,7 +143,7 @@ en:
         - title: What is a victim impact statement, and how can I make one?
           body: |
             Talk to your advocate about making a Victim Impact Statement.
-            <a href="TODO">Contact the District Attorney Victim Services</a>.
+            Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
         - title: How do I get a copy of my police report?
           # TODO: Should there be more contacts here?
           body: |
@@ -170,7 +168,8 @@ en:
           body: |
             If you are involved in a violent felony case, you have the right to be consulted regarding plea bargaining and negotiations.
 
-            Talk to your advocate about your right to be consulted. <a href="TODO">Contact the District Attorney Victim Services</a>.
+            Talk to your advocate about your right to be consulted.
+            Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
 
     ###########################################################################
 
