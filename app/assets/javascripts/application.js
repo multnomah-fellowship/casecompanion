@@ -29,7 +29,7 @@ const analytics = {
 }
 
 window.App = (function() {
-  const toggleDropdown = function(id, visible = true) {
+  const toggleDropdown = function(id, visible) {
     const $hiddenDiv = $('#expand-' + id.replace('#', ''));
     const $targetLink = $('[href="' + id + '"]');
     const $dropdown = $hiddenDiv.closest('.app-dropdown');
