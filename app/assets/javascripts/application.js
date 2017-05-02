@@ -29,25 +29,36 @@ const analytics = {
 }
 
 window.App = (function() {
-  const handleToggle = function(e) {
-    const $targetLink = $(e.target).closest('a');
-    const $dropdown = $targetLink.closest('.app-dropdown');
-    const $icon = $dropdown.find('i');
-    const $hiddenDiv = $($targetLink.attr('href'));
+  const toggleDropdown = function(id, visible = true) {
+    const $hiddenDiv = $('#expand-' + id.replace('#', ''));
+    const $targetLink = $('[href="' + id + '"]');
+    const $dropdown = $hiddenDiv.closest('.app-dropdown');
+    const $icon = $targetLink.find('i');
 
-    if ($hiddenDiv.is(':visible')) {
-      // hide it!
-      $hiddenDiv.attr('style', 'display: none');
-      $icon.text('+');
-    } else {
+    if (visible) {
       // show it!
       $hiddenDiv.attr('style', 'display: block');
       $icon.text('–');
 
+      // store the location in the URL
+      const newLocation = window.location.pathname + id
+      history.replaceState({}, "My Advocate", newLocation);
+
       // track mixpanel
       const text = $dropdown.find('span').text();
       analytics.trackExpand(text);
+    } else {
+      // hide it!
+      $hiddenDiv.attr('style', 'display: none');
+      $icon.text('+');
     }
+  };
+
+  const handleToggle = function(e) {
+    const $targetLink = $(e.target).closest('a');
+    const $hiddenDiv = $("#expand-" + $targetLink.attr('href').replace('#', ''));
+
+    toggleDropdown($targetLink.attr('href'), !$hiddenDiv.is(':visible'))
 
     return false;
   };
@@ -60,7 +71,11 @@ window.App = (function() {
   };
 
   const initializeToggles = function() {
-    $(document).on('click', 'a[href^="#expand-"]', handleToggle);
+    $(document).on('click', '.app-dropdown__link', handleToggle);
+
+    if ($("#expand-" + window.location.hash.replace('#', '')).length) {
+      toggleDropdown(window.location.hash, true);
+    }
   };
 
   return {

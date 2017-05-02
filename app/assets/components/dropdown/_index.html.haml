@@ -5,9 +5,10 @@
 
 - classes = ['app-dropdown']
 
+- link_classes = classes + %w[app-dropdown__link]
 - expanded_classes = classes + %w[app-dropdown__hidden]
 
-= link_to "#expand-#{url_snippet}", class: classes do
+= link_to "##{url_snippet}", id: url_snippet, class: link_classes do
   %i +
   %span= title
 
