@@ -111,7 +111,7 @@ describe ApplicationHelper do
     it 'returns an <a> linking to a corresponding <div>' do
       doc = Nokogiri::HTML(subject)
       expand_id = doc.css('body > a').attr('href').value.gsub('#', '')
-      expect(doc.css("body > div##{expand_id}")).to be_present
+      expect(doc.css("body > div#expand-#{expand_id}")).to be_present
     end
 
     it 'passes the title and body to the component' do
