@@ -27,6 +27,7 @@ class FaqsController < ApplicationController
   ]
 
   def index
+    redirect_to faq_path(helpers.faq_slug(@faq_menu[0][:items][0]))
   end
 
   def show
