@@ -23,7 +23,7 @@
 
       - dropdowns_key = "faqs.#{@faq_item[:faq]}.dropdowns"
       - if I18n.exists?(dropdowns_key)
-        - I18n.t(dropdowns_key).each do |dropdown|
+        - I18n.t(dropdowns_key).each do |_, dropdown|
           = render_component 'dropdown', title: dropdown[:title] do
             .app-faq-item
               = faq_format(dropdown[:body])

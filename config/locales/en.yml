@@ -112,7 +112,8 @@ en:
         <a href="http://mcda.us/index.php/appearing-in-court/witness-information/">What to expect as a witness</a>
 
       dropdowns:
-        - title: What can I be notified of? How can I request notifications?
+        how_notified:
+          title: What can I be notified of? How can I request notifications?
           body: |
             You have the right to be notified of:
 
@@ -122,7 +123,8 @@ en:
             </ul>
 
             Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
-        - title: Can I be present at the trial? Do I have to be?
+        can_i_be_present:
+          title: Can I be present at the trial? Do I have to be?
           body: |
             You have the right to participate in prosecution and:
 
@@ -134,7 +136,8 @@ en:
             </ul>
 
             Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
-        - title: How can I maintain privacy?
+        how_privacy:
+          title: How can I maintain privacy?
           body: |
             You have the right to to privacy and protection during the trial process including:
             <ul>
@@ -143,11 +146,13 @@ en:
             </ul>
 
             If you are in a case involving sexual conduct by a child or invasion of privacy, you have the right to  allow no coverage of sex offense proceedings by media.
-        - title: What is a victim impact statement, and how can I make one?
+        victim_impact_statement:
+          title: What is a victim impact statement, and how can I make one?
           body: |
             Talk to your advocate about making a Victim Impact Statement.
             Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
-        - title: How do I get a copy of my police report?
+        how_copy_police_report:
+          title: How do I get a copy of my police report?
           # TODO: Should there be more contacts here?
           body: |
             Contact the arresting or responding law enforcement agency directly.
@@ -161,13 +166,15 @@ en:
             503-988-7300
 
             Other Police and Sheriff’s Departments Contacts
-        - title: What other information am I entitled to?
+        what_info_entitled:
+          title: What other information am I entitled to?
           # TODO: Clarify language around the sexual assault rights.
           body: |
             If you are involved in a DUI case, you have the right to access any information about the case that the defendant has.
 
             If you are involved in a sexual assault case, you have the right to have the defendant tested.
-        - title: Can I be involved in sentencing?
+        can_i_be_involved_in_sentencing:
+          title: Can I be involved in sentencing?
           body: |
             If you are involved in a violent felony case, you have the right to be consulted regarding plea bargaining and negotiations.
 
@@ -178,7 +185,8 @@ en:
 
     prison_jail:
       dropdowns:
-        - title: What happens after conviction?
+        after_conviction:
+          title: What happens after conviction?
           body: |
             The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
 
@@ -186,11 +194,14 @@ en:
             After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
 
             <a href="http://docpub.state.or.us/OOS/intro.jsf">Look up offender status</a>
-        - title: What’s the earliest release date?
+
+        what_is_earliest_release_date:
+          title: What’s the earliest release date?
           body: |
             <a href="http://docpub.state.or.us/OOS/intro.jsf">Look up offender status</a> to see the projected earliest release date.
 
-        - title: How might the earliest release date change?
+        how_earliest_release_date_change:
+          title: How might the earliest release date change?
           body: |
             Earliest Release Date is not firm until closer to release. It gets updated periodically by counselors. The closer to release, the more predictable this date becomes.
 
@@ -206,13 +217,15 @@ en:
             Are there other programs that may allow the offender to spend time in the community?
             There are Alternative Incarceration Programs available in three institutions in Oregon that allow a small number of offenders to undergo treatment in the community. If they graduate these programs successfully they will be released earlier in addition to earned time.
 
-        - title: How can I be notified about changes or release?
+        how_notified:
+          title: How can I be notified about changes or release?
           body: |
             <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE</a>
             <br />
             <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
 
-        - title: How can I find out about parole hearings and decisions?
+        how_find_out_parole:
+          title: How can I find out about parole hearings and decisions?
           body: |
             Was the crime committed before 1989? Parole is only applicable if the offender was sentenced to prison prior to 1989.
 
@@ -229,22 +242,26 @@ en:
         Although there are differences, all types of community supervision have two things in common.  First, each offender has conditions he or she must follow.  Second, the offender is supervised by a parole/probation officer all of whom work for our Department.
 
       dropdowns:
-        - title: What are the different types of supervision?
+        types_of_supervision:
+          title: What are the different types of supervision?
           body: |
             <strong>Post-Prison Supervision*</strong> is the current legal term for supervision after prison and <strong>Probation</strong> is the term for supervision instead of prison.
 
             *Prior to 1989, Post-Prison Supervision was called Parole.  Parole is still used today if the offender was sentenced to prison prior to 1989. It is the same as Post-Prison Supervision in that the offender has to follow conditions of supervision set by the Oregon Board of Parole and Post-Prison Supervision.
-        - title: How do I learn about the the terms of my offender’s supervision?
+        how_learn_terms:
+          title: How do I learn about the the terms of my offender’s supervision?
           body: |
             To learn the specific conditions of supervision for an offender, please contact his or her probation/parole officer.
 
             <a href="https://multco.us/dcj-adult/ppo-lookup">Find the Parole/Probation Officer</a>
 
             There are also <a href="https://multco.us/dcj-adult/probation-parole-and-post-prison-supervision/standard-conditions-adult-probation-parole">general conditions that apply to almost every offender</a>.
-        - title: Who is the Parole-Probation Officer, and how can I contact him/her?
+        who_is_po:
+          title: Who is the Parole-Probation Officer, and how can I contact him/her?
           body:
             <a href="https://multco.us/dcj-adult/ppo-lookup">Find the Parole/Probation Officer</a>
-        - title: What can I talk to the Parole-Probation Officer about?
+        what_can_talk_to_po_about:
+          title: What can I talk to the Parole-Probation Officer about?
           body: |
             State and federal law limits the information we can give you about an offender. We can tell you:
 
@@ -254,18 +271,21 @@ en:
               <li>The person’s conviction history</li>
               <li>The person’s compliance with conditions of supervision and what the PO has ordered</li>
             </ul>
-        - title: Can I affect the terms of supervision?
+        can_i_affect_supervision:
+          title: Can I affect the terms of supervision?
           # TODO: <a href="TODO">Go here to learn more</a>
           body: |
             For victims under 18 at the time of the crime, they have the right to request special post-prison conditions.
-        - title: How can I be notified about changes or violations of supervision?
+        how_notified_violations:
+          title: How can I be notified about changes or violations of supervision?
           body: |
             You have the right to be notified about probation/parole violation hearings and changes to supervision.
 
             <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification">Register with the Department of Community Justice for notifications</a>
             <br />
             <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE for custody change notifications</a>
-        - title: What do I do if I witness the terms of supervision being violated?
+        what_to_do_violations:
+          title: What do I do if I witness the terms of supervision being violated?
           body: |
             Call the PO. The PO will investigate to determine if there has been a violation. If the activity continues, contact the police.
 
@@ -275,7 +295,8 @@ en:
 
     financial_assistance:
       dropdowns:
-        - title: How do I get financial compensation?
+        how_compensation:
+          title: How do I get financial compensation?
           body: |
             You have the right to financial compensation. There are several types, including:
 
@@ -294,14 +315,16 @@ en:
 
     privacy_protection:
       dropdowns:
-        - title: What if I’m being harassed by an offender on supervision?
+        what_harassment:
+          title: What if I’m being harassed by an offender on supervision?
           body: |
             First, call 9-1-1 if you are in danger or to report a new crime.
 
             For less urgent concerns, you can call the offender's PO. The PO will investigate to determine if there has been a violation.
 
             If being harassed by a youth offender or the youth’s family, contact the police to file a report, report the incident to juvenile’s assigned court counselor or notify the Victim’s Advocate in the District Attorney’s Office at Juvenile Court.
-        - title: How do I get a restraining order?
+        how_restraining_order:
+          title: How do I get a restraining order?
           body: |
             A restraining order is a court order which requires someone else to stop an undesirable behavior such as contacting you, being near you, or living with you.
 
