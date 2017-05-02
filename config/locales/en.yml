@@ -108,6 +108,7 @@ en:
         Trial is scheduled. You may be subpoenaed to testify as a witness through mail.
 
         <a href="http://mcda.us/index.php/appearing-in-court/trial-process/">What to expect from the trial process</a>
+        <br />
         <a href="http://mcda.us/index.php/appearing-in-court/witness-information/">What to expect as a witness</a>
 
       dropdowns:
@@ -208,6 +209,7 @@ en:
         - title: How can I be notified about changes or release?
           body: |
             <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE</a>
+            <br />
             <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
 
         - title: How can I find out about parole hearings and decisions?
@@ -261,6 +263,7 @@ en:
             You have the right to be notified about probation/parole violation hearings and changes to supervision.
 
             <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification">Register with the Department of Community Justice for notifications</a>
+            <br />
             <a href="https://www.vinelink.com/#/home/site/38000">Register with VINE for custody change notifications</a>
         - title: What do I do if I witness the terms of supervision being violated?
           body: |
@@ -283,7 +286,7 @@ en:
             </ul>
 
             Restitution is ordered by the judge and is an automatic right. <a href="tel:503-988-3269">Call the local courthouse at (503) 988-3269.</a>
-
+            <br />
             <a href="http://www.doj.state.or.us/victims/compensation.shtml">Check availability for Crime Victims’ Compensation</a>
 
 
