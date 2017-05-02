@@ -32,7 +32,7 @@ describe OffenderScraper do
     end
 
     context 'with multiple scrapes' do
-      it 'does not call .process_page again' do
+      it 'does not call .fetch_offender_details again' do
         expect(OffenderScraper).to receive(:fetch_offender_details).once
 
         expect(OffenderScraper.offender_details(fake_data[:sid]))
