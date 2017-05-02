@@ -4,7 +4,7 @@
     %p.app-typography--body-1= t('faqs.subtitle')
 
 .row
-  .col.s5
+  .col.s12.m5
     %nav.app-menu.app-menu--full-bleed
       - @faq_menu.each do |section|
         %section
@@ -15,7 +15,7 @@
               %li.app-menu__link{ class: ('app-menu__link--selected' if selected) }
                 = link_to item[:text], faq_path(faq_slug(item))
 
-  .col.s7
+  .col.s12.m7
     - if @faq_item
       - header_key = "faqs.#{@faq_item[:faq]}.header"
       - if I18n.exists?(header_key)
