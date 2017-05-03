@@ -227,7 +227,14 @@ en:
         how_find_out_parole:
           title: How can I find out about parole hearings and decisions?
           body: |
-            Was the crime committed before 1989? Parole is only applicable if the offender was sentenced to prison prior to 1989.
+            Not all inmates will have parole hearings. Inmates will only have a parole hearing if one of these applies to inmate:
+
+            <ul>
+              <li>They were sentenced to a crime before November 1st, 1989</li>
+              <li>They were sentenced as a "Dangerous Offender"</li>
+              <li>They were convicted of aggravated murder</li>
+              <li>They were convicted of murder before June 25th, 1995</li>
+            </ul>
 
             If yes, you have the right to attend and/or speak at the parole hearing.
 
@@ -275,7 +282,8 @@ en:
           title: Can I affect the terms of supervision?
           # TODO: <a href="TODO">Go here to learn more</a>
           body: |
-            For victims under 18 at the time of the crime, they have the right to request special post-prison conditions.
+            For post-prison supervision, you may request special conditions (such as “no contact” orders) from the Parole Board before the inmate is released. The Parole Board will make the final decision, and the inmate will have a chance to appeal.
+
         how_notified_violations:
           title: How can I be notified about changes or violations of supervision?
           body: |
@@ -304,6 +312,7 @@ en:
               <li><strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender</li>
               <li><strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program</li>
               <li>Victims of domestic violence may be eligible for financial help from the Department of Human Services</li>
+              <li>For trial appeals and attending parole hearings, you may qualify for a special type of Crime Victims Compensation to pay for travel and counseling expenses</li>
             </ul>
 
             Restitution is ordered by the judge and is an automatic right. <a href="tel:503-988-3269">Call the local courthouse at (503) 988-3269.</a>
