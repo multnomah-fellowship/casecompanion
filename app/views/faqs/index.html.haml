@@ -17,6 +17,11 @@
 
   .col.s12.m7
     - if @faq_item
+      - title_key = "faqs.#{@faq_item[:faq]}.title"
+      - if I18n.exists?(title_key)
+        %h2.app-typography--header-2= t(title_key)
+
+    - if @faq_item
       - header_key = "faqs.#{@faq_item[:faq]}.header"
       - if I18n.exists?(header_key)
         = faq_format(t(header_key))

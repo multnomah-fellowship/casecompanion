@@ -91,6 +91,7 @@ en:
     ###########################################################################
 
     before_trial:
+      title: Before Trial
       header: |
         The time between arrest and prosecution can be hectic. Here’s what to expect and where to get support:
 
@@ -255,6 +256,7 @@ en:
     ###########################################################################
 
     community_supervision:
+      title: Community Supervision
       header: |
         You may hear many confusing technical and legal terms that describe an offender’s supervision.
 
