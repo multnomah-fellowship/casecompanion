@@ -180,6 +180,9 @@ en:
 
             Talk to your advocate about your right to be consulted.
             Contact the District Attorney Victim Services at <a href="tel:503-988-3222">(503) 988-3222</a>.
+      who_to_call:
+        - name: Multnomah County District Attorney
+          phone: (503)-988-3162
 
     ###########################################################################
 
@@ -240,6 +243,14 @@ en:
 
             Register with the Board of Parole and Post-Prison Supervision for parole hearing notifications.  Victim specialist, Robyn Masella will get in touch with you and help you prepare and navigate the parole hearings process.
 
+      who_to_call:
+        - name: 'Saydyie DeRosa'
+          header: 'For questions about state prison'
+          phone: '(503) 934-1113'
+        - name: 'Chelsea Penning'
+          header: 'For questions about county jail'
+          phone: '(503) 988-2737'
+
     ###########################################################################
 
     community_supervision:
@@ -299,6 +310,10 @@ en:
 
             <a href="https://multco.us/dcj-adult/ppo-lookup">Find the Parole/Probation Officer</a>
 
+      who_to_call:
+        - name: 'Chelsea Penning'
+          phone: '(503) 934-1113'
+
     ###########################################################################
 
     financial_assistance:
@@ -319,6 +334,9 @@ en:
             <br />
             <a href="http://www.doj.state.or.us/victims/compensation.shtml">Check availability for Crime Victims’ Compensation</a>
 
+      # who_to_call:
+      # - name: 'Terri Love'
+      #   phone: 'TODO'
 
     ###########################################################################
 
@@ -363,6 +381,10 @@ en:
 
             <strong>If you want to drop the Restraining Order</strong>
             If you decide you want to drop the Restraining Order, go to the Family Law Clerk’s office and fill out a form asking the Judge to vacate (remove) the Restraining Order.  If the Judge signs the Order, give copies to the Family Law Clerk and the Sheriff’s office.  The Restraining Order will remain in effect until the order to vacate is signed.
+
+      who_to_call:
+        - name: "Offender's Parole/Probation Officer"
+          phone: <a href="https://multco.us/dcj-adult/ppo-lookup">Find Officer</a>
 
     all_rights:
       header: |
