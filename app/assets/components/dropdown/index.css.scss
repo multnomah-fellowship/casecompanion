@@ -33,6 +33,10 @@
   }
 }
 
+.app-dropdown__link {
+  text-decoration: none;
+}
+
 .app-dropdown__body {
   @extend %app-typography--body-2;
 

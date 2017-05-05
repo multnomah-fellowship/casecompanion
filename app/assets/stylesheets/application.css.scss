@@ -37,7 +37,8 @@ body, html {
 }
 
 a {
-  color: map-get($colors, primary);
+  color: inherit;
+  text-decoration: underline;
 }
 
 input, label {
@@ -166,9 +167,16 @@ strong {
 .app-header__title > h1 {
   @extend %app-typography--caption;
 
-  color: #fff;
-  margin: 30px 0 10px;
+.app-header__title {
   text-decoration: none;
+
+  > h1 {
+    @extend %app-typography--caption;
+
+    color: #fff;
+    margin: 30px 0 10px;
+    text-decoration: none;
+  }
 }
 
 .app-header__headline {
@@ -248,6 +256,7 @@ strong {
 .app-contact-list__primary-description {
   margin-left: 32px;
   line-height: 48px;
+  text-decoration: underline;
 
   &:not(:last-child) {
     border-bottom: 1px solid map-get($colors, grey-light);
