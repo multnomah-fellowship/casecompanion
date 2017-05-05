@@ -1,5 +1,6 @@
 - classes = ['app-button']
 - classes << 'app-button--solid' if options[:solid]
+- classes << 'app-button--transparent' if options[:transparent]
 
 - to = options.fetch(:to, '#')
 - no_link = options.fetch(:no_link, false)

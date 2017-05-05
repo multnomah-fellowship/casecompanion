@@ -39,6 +39,12 @@
   = render_component 'button', solid: true do
     Look Up Status &rarr;
 
+%p Here is a transparent button!
+:styleguide
+  %div{ style: 'background-color: #ccc; padding: 16px;' }
+    = render_component 'button', transparent: true do
+      Look Up Status &rarr;
+
 %p
   Pass the form helper as the "submit" option to make the button submit the
   form:
