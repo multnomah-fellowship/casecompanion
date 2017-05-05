@@ -43,6 +43,11 @@
           - if who_to_call[:header]
             %h3.app-typography--header-3= who_to_call[:header]
 
-          = render_component 'avatar_list_item',
-            name: who_to_call[:name],
-            caption: raw(who_to_call[:phone])
+          :ruby
+            avatar_options = {
+              name: who_to_call[:name],
+              caption: raw(who_to_call[:phone])
+            }
+            avatar_options[:image] = image_path(who_to_call[:image]) if who_to_call[:image].present?
+
+          = render_component 'avatar_list_item', avatar_options

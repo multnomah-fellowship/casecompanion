@@ -248,6 +248,7 @@ en:
       who_to_call:
         - name: 'Saydyie DeRosa'
           header: 'For questions about state prison'
+          image: saydyie.jpg
           phone: '(503) 934-1113'
         - name: 'Chelsea Penning'
           header: 'For questions about county jail'
