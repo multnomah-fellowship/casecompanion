@@ -4,6 +4,30 @@ RSpec.describe FaqsController, type: :controller do
   describe 'faq data structure' do
     subject { described_class::FAQ_MENU }
 
+    def each_faq_content(&block)
+      subject.each do |section|
+        section[:items].each do |item|
+          key = "faqs.#{item[:faq]}"
+          item = I18n.t(key)
+
+          # no nested structure:
+          %i[title header].each { |k| block.call(item[k]) }
+
+          # iterate through each dropdown
+          Array(item[:dropdowns]).each do |name, dropdown|
+            block.call(dropdown[:title])
+            block.call(dropdown[:body])
+          end
+
+          # iterate through "who to call"
+          Array(item[:who_to_call]).each do |who|
+            block.call(who[:name])
+            block.call(who[:phone])
+          end
+        end
+      end
+    end
+
     # this is important for URL generation
     it 'no two menu items have the same text' do
       all_text = subject.flat_map do |section|
@@ -20,6 +44,13 @@ RSpec.describe FaqsController, type: :controller do
           # weird expectation text... great error message.
           expect(I18n).to be_exists(key)
         end
+      end
+    end
+
+    it 'all links open in a new window' do
+      each_faq_content do |item|
+        doc = Nokogiri::HTML(item)
+        expect(doc.css('a')).to be_all { |el| el[:target] == '_blank' }
       end
     end
 
