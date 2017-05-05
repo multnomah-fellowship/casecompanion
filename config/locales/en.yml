@@ -6,6 +6,7 @@ en:
     subhead: "Find status information, answers to frequently asked questions,\u00a0and
       contact\u00a0information"
     cta: Look up Status
+    secondary_cta: See FAQs
     description: |
       My Advocate is a public website for victims of crime in Multnomah County,
       built by %{cfa_link} in collaboration with government and

@@ -28,9 +28,14 @@
 
         .row
           .col.s10.offset-s1
-            = render_component 'button', to: offenders_path, solid: true do
-              = t('home.cta')
-              &rarr;
+            .app-button-group
+              = render_component 'button', to: offenders_path, solid: true do
+                = t('home.cta')
+                &rarr;
+
+              = render_component 'button', to: faqs_path, transparent: true do
+                = t('home.secondary_cta')
+
 
     .app-header--subhero
       .app-container

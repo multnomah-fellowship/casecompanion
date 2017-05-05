@@ -54,6 +54,12 @@ strong {
   color: map-get($colors, primary);
 }
 
+.app-button-group {
+  > .app-button:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
 .app-button-link {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
