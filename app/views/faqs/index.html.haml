@@ -23,6 +23,8 @@
 
       - dropdowns_key = "faqs.#{@faq_item[:faq]}.dropdowns"
       - if I18n.exists?(dropdowns_key)
+        %h2.app-typography--header-2= t('faqs.faqs_title')
+
         - I18n.t(dropdowns_key).each do |_, dropdown|
           = render_component 'dropdown', title: dropdown[:title] do
             .app-faq-item
