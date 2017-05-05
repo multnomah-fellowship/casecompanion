@@ -10,6 +10,8 @@ en:
       My Advocate is a public website for victims of crime in Multnomah County,
       built by %{cfa_link} in collaboration with government and
       community&nbsp;partners.
+    faqs: How do I get a restraining order? How do I get a copy of the police report? What happens next?
+    faqs_link: See Frequently Asked Questions
 
   footer:
     title: Not finding what you're looking for?

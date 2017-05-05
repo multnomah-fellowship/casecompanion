@@ -161,11 +161,14 @@ strong {
 .app-header--subhero {
   background-color: #fff;
   padding-top: 20px;
-  padding-bottom: 36px;
-}
+  padding-bottom: 80px;
 
-.app-header__title > h1 {
-  @extend %app-typography--caption;
+  // Give a bit more top-padding for the not-first sections
+  & ~ & {
+    border-top: 1px solid $color-footer-border;
+    padding-top: 80px;
+  }
+}
 
 .app-header__title {
   text-decoration: none;

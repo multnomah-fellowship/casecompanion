@@ -43,6 +43,17 @@
           .col.s10.offset-s1.m5
             = image_tag 'partner_logos.png', class: 'app-header__logos'
 
+    .app-header--subhero
+      .app-container
+        .row
+          .col.s10.offset-s1.m3.offset-m1
+            = image_tag 'img_faq_icons.png', class: 'app-header__logos'
+
+          .col.s10.offset-s1.m6.offset-m1
+            %p.app-typography--body-1
+              = t('home.faqs')
+            = link_to t('home.faqs_link'), faqs_path, class: 'app-typography--body-1'
+
     %main.app-container
       - if flash[:info]
         .row
