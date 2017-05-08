@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 gem 'materialize-sass'
+gem 'sitemap_generator'
 
 gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
 
