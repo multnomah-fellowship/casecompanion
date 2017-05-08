@@ -1,5 +1,8 @@
 - search_params = params.fetch(:offender, {}).slice(:first_name, :last_name)
 
+- content_for :page_title do
+  = t('offender_search.title')
+
 = form_for :offender, url: offenders_path, method: :get do |f|
   .row
     .col.s10.offset-s1
