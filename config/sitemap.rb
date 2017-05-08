@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.myadvocateoregon.org"
+SitemapGenerator::Sitemap.default_host = "https://myadvocateoregon.org"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
