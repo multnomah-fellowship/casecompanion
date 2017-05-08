@@ -24,7 +24,8 @@
     - if @faq_item
       - header_key = "faqs.#{@faq_item[:faq]}.header"
       - if I18n.exists?(header_key)
-        = faq_format(t(header_key))
+        .app-faq-item
+          = faq_format(t(header_key))
 
       - dropdowns_key = "faqs.#{@faq_item[:faq]}.dropdowns"
       - if I18n.exists?(dropdowns_key)
