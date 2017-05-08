@@ -89,7 +89,7 @@ en:
       section_2:
         item_1: All victim rights
         item_2: All community services
-        item_3: All points of contact
+        item_3: All justice system services
 
     ###########################################################################
 
@@ -415,7 +415,7 @@ en:
           <li>choose to speak with a defense attorney or representative, or not</li>
         </ul>
 
-    all_services:
+    community_services:
     # TODO: explain what is "confidentiality privilege" in here
       header: |
         Community advocates may be entitled to confidentiality privilege, many are.
@@ -434,7 +434,7 @@ en:
         National Crime Victims’ Center
         (800) 394-2255
 
-    all_pocs:
+    justice_system_services:
       header: |
         Advocates in the justice system are not entitled to confidentiality privilege, unlike community partners.
 
