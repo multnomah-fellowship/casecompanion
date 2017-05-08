@@ -415,8 +415,26 @@ en:
           <li>choose to speak with a defense attorney or representative, or not</li>
         </ul>
 
-    # TODO: explain what is "confidentiality privilege" in here
     all_services:
+    # TODO: explain what is "confidentiality privilege" in here
+      header: |
+        Community advocates may be entitled to confidentiality privilege, many are.
+
+        Domestic Abuse Hotline
+        (800) 799-7233
+
+        Call to Safety Hotline
+        (503) 235-5333
+
+        <strong>Legal Help</strong>
+        Legal Aid Services of Oregon
+        (503) 224-4086
+        National Organization for Victim Assistance
+        (202) 232-6682
+        National Crime Victims’ Center
+        (800) 394-2255
+
+    all_pocs:
       header: |
         Advocates in the justice system are not entitled to confidentiality privilege, unlike community partners.
 
@@ -461,21 +479,3 @@ en:
         Washington County Sheriff
         (503) 629-0111
 
-
-    all_pocs:
-      header: |
-        Community advocates may be entitled to confidentiality privilege, many are.
-
-        Domestic Abuse Hotline
-        (800) 799-7233
-
-        Call to Safety Hotline
-        (503) 235-5333
-
-        <strong>Legal Help</strong>
-        Legal Aid Services of Oregon
-        (503) 224-4086
-        National Organization for Victim Assistance
-        (202) 232-6682
-        National Crime Victims’ Center
-        (800) 394-2255
