@@ -111,4 +111,11 @@ module ApplicationHelper
   rescue => ex
     raise StandardError.new("Error rendering component #{name}: #{ex.message}")
   end
+
+  def page_title
+    safe_join([
+      t('product_name'),
+      content_for(:page_title),
+    ].compact, raw(' &middot; '))
+  end
 end
