@@ -1,8 +1,9 @@
 # myadvocate
 Prototype for CfA multnomah fellowship
 
-[View Live Site](https://myadvocateoregon.org)
-[View Staging Site](https://staging.myadvocateoregon.org)
+* [View Live Site](https://myadvocateoregon.org)
+* [View Staging Site](https://staging.myadvocateoregon.org)
+* [Edit Website Copy](https://github.com/multnomah-fellowship/myadvocate/edit/master/config/locales/en.yml)
 
 ## configuration
 Make sure to export the following environment variables:
