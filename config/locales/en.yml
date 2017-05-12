@@ -206,7 +206,7 @@ en:
         what_is_earliest_release_date:
           title: What’s the earliest release date?
           body: |
-            <a href="http://docpub.state.or.us/OOS/intro.jsf" target="_blank">Look up offender status</a> to see the projected earliest release date.
+            <a href="/offenders" target="_blank">Look up offender status</a> to see the projected earliest release date.
 
         how_earliest_release_date_change:
           title: How might the earliest release date change?
