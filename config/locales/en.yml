@@ -201,7 +201,7 @@ en:
             <strong>Prison</strong>
             After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
 
-            <a href="http://docpub.state.or.us/OOS/intro.jsf" target="_blank">Look up offender status</a>
+            <a href="/offenders" target="_blank">Look up offender status</a>
 
         what_is_earliest_release_date:
           title: What’s the earliest release date?
