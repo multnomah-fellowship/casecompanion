@@ -3,7 +3,11 @@ Prototype for CfA multnomah fellowship
 
 * [View Live Site](https://myadvocateoregon.org)
 * [View Staging Site](https://staging.myadvocateoregon.org)
+
+## useful development links
+
 * [Edit Website Copy](https://github.com/multnomah-fellowship/myadvocate/edit/master/config/locales/en.yml)
+* [Heroku Deployment Pipeline](https://dashboard.heroku.com/pipelines/271e11fe-1847-47d2-867a-d19bd13998f3)
 
 ## configuration
 Make sure to export the following environment variables:
