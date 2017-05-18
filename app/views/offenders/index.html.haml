@@ -24,17 +24,17 @@
           class: ('active' if search_params[:last_name].present?)
 
   %section.row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m5.offset-m1
       %h3.app-typography--header-2= t('offender_search.by_sid')
 
   .row
-    .col.s5.offset-s1
+    .col.s10.offset-s1.m5.offset-m1
       .input-field
         = f.text_field :sid
         = f.label :sid, t('offender_search.sid.label')
 
   .row
-    .col.s5.offset-s1
+    .col.s10.offset-s1
       = render_component 'button', submit: f do
         = t('offender_search.search')
 
