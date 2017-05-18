@@ -86,6 +86,10 @@ window.App = (function() {
       // Delegation](https://learn.jquery.com/events/event-delegation/)
       initializeToggles();
 
+      // In case the user hits the back button and there are pre-filled values
+      // on the previous page:
+      Materialize.updateTextFields();
+
       $(document).on('click', 'tr[data-href]', handleTableClick);
     },
   };
