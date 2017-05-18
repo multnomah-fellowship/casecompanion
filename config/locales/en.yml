@@ -256,6 +256,7 @@ en:
         - name: 'Chelsea Penning'
           header: 'For questions about county jail'
           phone: '(503) 988-2737'
+          image: chelsea.jpg
 
     ###########################################################################
 
@@ -320,6 +321,7 @@ en:
       who_to_call:
         - name: 'Chelsea Penning'
           phone: '(503) 934-1113'
+          image: chelsea.jpg
 
     ###########################################################################
 
