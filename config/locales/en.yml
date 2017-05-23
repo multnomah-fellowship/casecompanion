@@ -235,7 +235,7 @@ en:
         how_find_out_parole:
           title: How can I find out about parole hearings and decisions?
           body: |
-            Not all inmates will have parole hearings. Inmates will only have a parole hearing if one of these applies to inmate:
+            You have the right to attend and/or speak at a parole hearing. Inmates will only have a parole hearing if one of these applies:
 
             <ul>
               <li>They were sentenced to a crime before November 1st, 1989</li>
@@ -244,9 +244,7 @@ en:
               <li>They were convicted of murder before June 25th, 1995</li>
             </ul>
 
-            If yes, you have the right to attend and/or speak at the parole hearing.
-
-            Register with the Board of Parole and Post-Prison Supervision for parole hearing notifications.  Victim specialist, Robyn Masella will get in touch with you and help you prepare and navigate the parole hearings process.
+            <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx" target="_blank">Register with the Board of Parole and Post-Prison Supervision</a> for parole hearing notifications. Their Victim specialist, Robyn Masella, will get in touch with you and help you prepare and navigate the parole hearings process.
 
       who_to_call:
         - name: 'Saydyie DeRosia'
