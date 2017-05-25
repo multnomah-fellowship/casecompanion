@@ -3,7 +3,7 @@
 .row
   .col.s10.offset-s1
     %h1.app-typography--header-1= t('faqs.title')
-    %p.app-typography--body-1= t('faqs.subtitle')
+    = simple_format(t('faqs.subtitle'), class: 'app-typography--body-1')
 
 .row
   .col.s12.m5
