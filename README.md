@@ -19,5 +19,16 @@ Make sure to export the following environment variables:
 ## installation
 ```bash
 # install ruby 2.4.0 (or whatever version is specified in .ruby-version)
+brew install rbenv
+rbenv install
+gem install bundler
+
+# install application dependencies
 bundle install
+
+# copy configuration template
+cp .env.development .env
+
+# start the app:
+bin/rails server
 ```
