@@ -5,30 +5,12 @@
 @import "colors";
 @import "materialize/components/variables"; // include after the other mixins have overridden variables
 
-.app-menu {
-  background-color: $color-hover;
-  padding: 32px 40px;
-}
-
-.app-menu--full-bleed {
-  margin-left: -($gutter-width / 2);
-}
-
 .app-menu__header {
   @extend %app-typography--header-4;
 }
 
 .app-menu__link {
   line-height: 36px;
-
-  > a {
-    color: $primary-color;
-    text-decoration: none;
-  }
-}
-
-.app-menu__link--selected {
-  font-weight: bold;
 }
 
 div.app-faq-item {

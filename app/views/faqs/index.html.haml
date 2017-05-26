@@ -1,56 +1,23 @@
-- content_for(:page_title, @faq_item[:text])
+- content_for(:page_title, t('faqs.title'))
 
 .row
   .col.s10.offset-s1
     %h1.app-typography--header-1= t('faqs.title')
     = simple_format(t('faqs.subtitle'), class: 'app-typography--body-1')
 
-.row
-  .col.s12.m5
-    %nav.app-menu.app-menu--full-bleed
+%section.row
+  .col.s10.offset-s1
+    %nav
+      %h2.app-typography--header-1= t('faqs.toc_header')
       - @faq_menu.each do |section|
         %section
           .app-menu__header= section[:header][:text]
           %ul
             - section[:items].each do |item|
-              - selected = @faq_item == item
-              %li.app-menu__link{ class: ('app-menu__link--selected' if selected) }
-                = link_to item[:text], faq_path(faq_slug(item))
+              %li.app-menu__link
+                = link_to item[:text], "##{faq_slug(item)}"
 
-  .col.s12.m7
-    - if @faq_item
-      - title_key = "faqs.#{@faq_item[:faq]}.title"
-      - if I18n.exists?(title_key)
-        %h2.app-typography--header-2= t(title_key)
-
-    - if @faq_item
-      - header_key = "faqs.#{@faq_item[:faq]}.header"
-      - if I18n.exists?(header_key)
-        .app-faq-item
-          = faq_format(t(header_key))
-
-      - dropdowns_key = "faqs.#{@faq_item[:faq]}.dropdowns"
-      - if I18n.exists?(dropdowns_key)
-        %h2.app-typography--header-2= t('faqs.faqs_title')
-
-        - I18n.t(dropdowns_key).each do |_, dropdown|
-          = render_component 'dropdown', title: dropdown[:title] do
-            .app-faq-item
-              = faq_format(dropdown[:body])
-
-      - who_to_call_key = "faqs.#{@faq_item[:faq]}.who_to_call"
-      - if I18n.exists?(who_to_call_key)
-        %h2.app-typography--header-2 Who to Call
-
-        - I18n.t(who_to_call_key).each do |who_to_call|
-          - if who_to_call[:header]
-            %h3.app-typography--header-3= who_to_call[:header]
-
-          :ruby
-            avatar_options = {
-              name: who_to_call[:name],
-              caption: raw(who_to_call[:phone])
-            }
-            avatar_options[:image] = image_path(who_to_call[:image]) if who_to_call[:image].present?
-
-          = render_component 'avatar_list_item', avatar_options
+- @faq_menu.flat_map { |section| section[:items] }.each do |item|
+  %section.row
+    .col.s10.offset-s1
+      = render 'faqs/faq_item', faq_item: item

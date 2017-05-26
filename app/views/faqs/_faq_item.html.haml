@@ -1,0 +1,36 @@
+%h1.app-typography--header-1{ id: faq_slug(faq_item) }= faq_item[:text]
+
+- title_key = "faqs.#{faq_item[:faq]}.title"
+- if I18n.exists?(title_key)
+  %h2.app-typography--header-2= t(title_key)
+
+- header_key = "faqs.#{faq_item[:faq]}.header"
+- if I18n.exists?(header_key)
+  .app-faq-item
+    = faq_format(t(header_key))
+
+- dropdowns_key = "faqs.#{faq_item[:faq]}.dropdowns"
+- if I18n.exists?(dropdowns_key)
+  %h2.app-typography--header-2= t('faqs.faqs_title')
+
+  - I18n.t(dropdowns_key).each do |_, dropdown|
+    = render_component 'dropdown', title: dropdown[:title] do
+      .app-faq-item
+        = faq_format(dropdown[:body])
+
+- who_to_call_key = "faqs.#{faq_item[:faq]}.who_to_call"
+- if I18n.exists?(who_to_call_key)
+  %h2.app-typography--header-2 Who to Call
+
+  - I18n.t(who_to_call_key).each do |who_to_call|
+    - if who_to_call[:header]
+      %h3.app-typography--header-3= who_to_call[:header]
+
+    :ruby
+      avatar_options = {
+        name: who_to_call[:name],
+        caption: raw(who_to_call[:phone])
+      }
+      avatar_options[:image] = image_path(who_to_call[:image]) if who_to_call[:image].present?
+
+    = render_component 'avatar_list_item', avatar_options

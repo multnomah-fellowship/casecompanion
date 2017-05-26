@@ -27,7 +27,6 @@ class FaqsController < ApplicationController
   ]
 
   def index
-    redirect_to faq_path(helpers.faq_slug(@faq_menu[0][:items][0]))
   end
 
   def show
@@ -38,9 +37,5 @@ class FaqsController < ApplicationController
 
   def set_faq_menu
     @faq_menu = FAQ_MENU
-
-    if params[:id]
-      @faq_item = helpers.find_faq_item(FAQ_MENU, params[:id])
-    end
   end
 end
