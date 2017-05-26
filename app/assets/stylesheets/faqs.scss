@@ -23,3 +23,22 @@ div.app-faq-item {
     margin-left: 20px;
   }
 }
+
+/*
+.horizontal-timeline {
+	width: 100%;
+	li {
+		display:inline;
+		position: relative;
+		&::after {
+		    content: '';
+		    position: absolute;
+		    border-radius: 50%;
+		    border: 2px solid #dfdfdf;
+		    background-color: #f8f8f8;
+		    width: 16px;
+		    height: 16px;
+		}
+	}
+}
+*/

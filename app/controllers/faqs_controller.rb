@@ -8,19 +8,27 @@ class FaqsController < ApplicationController
       items: [
         # the value of "faq" should correspond to an I18n key under faqs, e.g.
         # :before_trial will be found at t('faqs.before_trial')
-        { text: helpers.t('faqs.menu.section_1.item_2'), faq: :prison_jail },
-        { text: helpers.t('faqs.menu.section_1.item_3'), faq: :community_supervision },
-        { text: helpers.t('faqs.menu.section_1.item_4'), faq: :financial_assistance },
-        { text: helpers.t('faqs.menu.section_1.item_5'), faq: :privacy_protection },
+        { text: helpers.t('faqs.menu.section_1.item_1'), faq: :overview },
+        { text: helpers.t('faqs.menu.section_1.item_2'), faq: :community_supervision },
+        { text: helpers.t('faqs.menu.section_1.item_3'), faq: :prison_jail },
+      ],
+    },
+    # Testy stuff
+    {
+      header: { text: helpers.t('faqs.menu.header_2') },
+      items: [
+        { text: helpers.t('faqs.menu.section_2.item_1'), faq: :general_rights },
+        { text: helpers.t('faqs.menu.section_2.item_2'), faq: :notification },
+        { text: helpers.t('faqs.menu.section_2.item_3'), faq: :financial_assistance },
+        { text: helpers.t('faqs.menu.section_2.item_4'), faq: :privacy_protection},
       ],
     },
     # Directories
     {
-      header: { text: helpers.t('faqs.menu.header_2') },
+      header: { text: helpers.t('faqs.menu.header_3') },
       items: [
-        { text: helpers.t('faqs.menu.section_2.item_1'), faq: :all_rights },
-        { text: helpers.t('faqs.menu.section_2.item_2'), faq: :community_services },
-        { text: helpers.t('faqs.menu.section_2.item_3'), faq: :justice_system_services },
+        { text: helpers.t('faqs.menu.section_3.item_1'), faq: :community_services },
+        { text: helpers.t('faqs.menu.section_3.item_2'), faq: :justice_system_services },
       ],
     },
   ]

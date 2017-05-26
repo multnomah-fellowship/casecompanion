@@ -80,33 +80,35 @@ en:
     toc_header: Table of Contents
 
     menu:
-      header_1: What to expect
+      header_1: What happens next
       section_1:
-        item_1: Questions before trial
-        item_2: Questions about prison/jail
-        item_3: Questions about community supervision
-        item_4: Questions about financial assistance
-        item_5: Questions about privacy and protection
-      header_2: Directories
+        item_1: Overview
+        item_2: If offender on probation
+        item_3: If offender in jail/prison
+      header_2: Victim Rights
       section_2:
-        item_1: All victim rights
-        item_2: All community services
-        item_3: All justice system services
+        item_1: Victim Rights 
+        item_2: Right to notification
+        item_3: Right to financial assitence 
+        item_4: Right to privacy and protection
+      header_3: Directories
+      section_3:
+        item_1: All community services
+        item_2: All justice system services
 
     ###########################################################################
 
+    overview:
+      header: |
+        What happens after conviction?
+
+        The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
     prison_jail:
+      header: |
+          After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
+          <br/>
+          <a href="/offenders" target="_blank">Look up offender status</a>
       dropdowns:
-        after_conviction:
-          title: What happens after conviction?
-          body: |
-            The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
-
-            <strong>Prison</strong>
-            After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
-
-            <a href="/offenders" target="_blank">Look up offender status</a>
-
         what_is_earliest_release_date:
           title: What’s the earliest release date?
           body: |
@@ -226,28 +228,6 @@ en:
 
     ###########################################################################
 
-    financial_assistance:
-      dropdowns:
-        how_compensation:
-          title: How do I get financial compensation?
-          body: |
-            You have the right to financial compensation. There are several types, including:
-
-            <ul>
-              <li>
-                <strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender.
-
-                Restitution is ordered by the judge and is an automatic right. If you have questions about collecting restitution, you might want to <a href="http://mcda.us/index.php/protecting-victims-families/restitution/" target="_blank">read the District Attorney's overview of restitution</a> or for further questions <a href="tel:503-988-3269" target="_blank">call the local courthouse at (503) 988-3269.</a>
-              </li>
-              <li>
-                <strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program.
-                <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Check availability for Crime Victims’ Compensation</a>
-              </li>
-              <li>Victims of domestic violence may be eligible for <a href="http://www.oregon.gov/DHS/ABUSE/DOMESTIC/Pages/index.aspx" target="_blank">financial help from the Department of Human Services</a></li>
-              <li>For trial appeals and attending parole hearings, you may qualify for <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">a special type of Crime Victims Compensation to pay for travel and counseling expenses</a></li>
-            </ul>
-
-
       # who_to_call:
       # - name: 'Terri Love'
       #   phone: 'TODO'
@@ -255,6 +235,9 @@ en:
     ###########################################################################
 
     privacy_protection:
+      header: |
+        You have the right to be privacy and protection including: 
+        keep personal identifiers (for example phone number and address) from the offender
       dropdowns:
         what_harassment:
           title: What if I’m being harassed by an offender on supervision?
@@ -299,7 +282,54 @@ en:
       who_to_call:
         - name: "Offender's Parole/Probation Officer"
           phone: <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
+    
+    ###########################################################################
 
+    general_rights:
+      header: |
+        Your right to justice includes the right to a meaningful role in the criminal or juvenile justice process, to be treated with dignity and respect, to fair and impartial treatment, and to reasonable protection from the offender.
+
+        Many victims’ rights are automatic although you may need to “tell “someone you want to receive them. Here's a breakdown:
+
+    notification:
+      header: |
+        You have the right (upon request) to be notified of
+        
+        probation violation hearings
+        <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx" target="_blank">Register with Department of Community Justice</a>
+        <br/>
+        release of an offender from prison, 30 days prior
+        <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx" target="_blank">Register with Board of Parole and Post-Prison Supervision</a>
+        <br/>
+        You can also <a href="https://www.vinelink.com/#/home/site/38000" target="_blank">register with VINE</a>. VINE can call, text or email you of offender custody change. For example, you’ll receive a message if they get arrested, released from jail, move to a different county or change which office they report to. It’s a service that victims and any interested party can sign up for anonymously.
+     # dropdowns:
+     #    after_conviction:
+     #      title: How do I register for notifications?
+     #      body: |
+            
+     #        <br />
+     #        <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx" target="_blank">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
+     #        <br/>
+     #        The Department of Community Justice can notify you of probation violation hearings via phone. It’s a service available to victims of crime. 
+    financial_assistance:
+      header: |
+        You have the right to financial compensation. There are several types, including:
+          <br/>
+          <strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender. Restitution is an automatic right. 
+          <a href="http://mcda.us/index.php/protecting-victims-families/restitution/" target="_blank">Learn more about how restitution works</a>
+          <br/><br/>
+          <strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program.
+          <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Apply for Crime Victims’ Compensation</a>
+          <br/>
+          Victims of domestic violence may be eligible for <a href="http://www.oregon.gov/DHS/ABUSE/DOMESTIC/Pages/index.aspx" target="_blank">financial help from the Department of Human Services</a>
+          <br/>
+          For trial appeals and attending parole hearings, you may qualify for a special type of <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Crime Victims Compensation</a> to pay for travel and counseling expenses
+      dropdowns:
+        collecting_restitution:
+          title: Having trouble collecting restitution?
+          body: |
+            Though an automatic right, it is one of the most challenging to enforce. Restitution is ordered by the judge and collected by the courthouse so the'll be able to talk more about it. 
+            <a href="tel:503-988-3269" target="_blank">You can call the local courthouse (503) 988-3269 </a>
     all_rights:
       header: |
         You have the right to be notified of:
