@@ -68,16 +68,7 @@ RSpec.describe FaqsController, type: :controller do
   describe '#index' do
     subject { get :index }
 
-    it 'redirects to an item' do
-      subject
-      expect(response).to be_redirect
-    end
-  end
-
-  describe '#show' do
-    subject { get :show, params: { id: 1 } }
-
-    it 'renders' do
+    it 'renders successfully' do
       subject
       expect(response).to be_success
     end
