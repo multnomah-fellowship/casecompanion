@@ -14,6 +14,8 @@
 }
 
 div.app-faq-item {
+  @extend %app-typography--body-1;
+
   ul li {
     // This selector needs to be very precise to override materialize
     list-style-type: disc;

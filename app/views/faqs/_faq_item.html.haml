@@ -11,7 +11,7 @@
 
 - dropdowns_key = "faqs.#{faq_item[:faq]}.dropdowns"
 - if I18n.exists?(dropdowns_key)
-  %h2.app-typography--header-2= t('faqs.faqs_title')
+  %h3.app-typography--header-3= t('faqs.faqs_title')
 
   - I18n.t(dropdowns_key).each do |_, dropdown|
     = render_component 'dropdown', title: dropdown[:title] do
@@ -20,7 +20,7 @@
 
 - who_to_call_key = "faqs.#{faq_item[:faq]}.who_to_call"
 - if I18n.exists?(who_to_call_key)
-  %h2.app-typography--header-2 Who to Call
+  %h2.app-typography--header-3 Who to Call
 
   - I18n.t(who_to_call_key).each do |who_to_call|
     - if who_to_call[:header]
