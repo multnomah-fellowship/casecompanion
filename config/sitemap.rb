@@ -24,9 +24,5 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
-  FaqsController::FAQ_MENU.each do |section|
-    section[:items].each do |item|
-      add faq_path(ApplicationController.helpers.faq_slug(item))
-    end
-  end
+  add faqs_path
 end

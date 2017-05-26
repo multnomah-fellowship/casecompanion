@@ -29,7 +29,7 @@ class FaqsController < ApplicationController
   end
 
   def show
-    render :index
+    redirect_to faqs_path
   end
 
   private
