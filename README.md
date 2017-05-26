@@ -32,3 +32,8 @@ cp .env.development .env
 # start the app:
 bin/rails server
 ```
+
+## running tests
+To run tests, run `bin/rspec [filename of a single test]`
+
+You may have to set up your database first with `bin/rake db:test:prepare`.
