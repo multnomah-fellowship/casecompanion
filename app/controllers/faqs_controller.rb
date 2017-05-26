@@ -8,7 +8,6 @@ class FaqsController < ApplicationController
       items: [
         # the value of "faq" should correspond to an I18n key under faqs, e.g.
         # :before_trial will be found at t('faqs.before_trial')
-        { text: helpers.t('faqs.menu.section_1.item_1'), faq: :before_trial },
         { text: helpers.t('faqs.menu.section_1.item_2'), faq: :prison_jail },
         { text: helpers.t('faqs.menu.section_1.item_3'), faq: :community_supervision },
         { text: helpers.t('faqs.menu.section_1.item_4'), faq: :financial_assistance },
