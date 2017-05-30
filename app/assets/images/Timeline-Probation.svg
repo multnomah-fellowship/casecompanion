@@ -31,12 +31,6 @@
             <text id="Probation-Setence" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#182E45">
                 <tspan x="501.414062" y="44">Probation Setence</tspan>
             </text>
-            <text id="Inivestigation" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#A7AEB6">
-                <tspan x="195.019531" y="44">Inivestigation</tspan>
-            </text>
-            <text id="Prosecution" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#A7AEB6">
-                <tspan x="357.058594" y="44">Prosecution</tspan>
-            </text>
         </g>
     </g>
 </svg>
