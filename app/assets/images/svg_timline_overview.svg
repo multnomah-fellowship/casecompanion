@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="780px" height="50px" viewBox="0 0 780 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="3.061617e-15%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#355B7B" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#002953" stop-opacity="0.251160553" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="732" cy="109" r="6"></circle>
+        <circle id="path-3" cx="571" cy="108" r="4"></circle>
+        <circle id="path-4" cx="411" cy="109" r="4"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="08-FAQs-current" transform="translate(-170.000000, -100.000000)">
+            <path d="M730,108.444444 L949,108.444444" id="Line-Copy-6" stroke="#182E45" stroke-linecap="square"></path>
+            <path d="M322.5,108.333333 L730.5,108.333333" id="Line-Copy-2" stroke="url(#linearGradient-1)" stroke-linecap="square"></path>
+            <g id="Oval-Copy-18">
+                <use fill="#182E45" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <circle stroke="#FFFFFF" stroke-width="4" cx="732" cy="109" r="8"></circle>
+            </g>
+            <g id="Oval-Copy-13">
+                <use fill="#C1C8CF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <circle stroke="#FFFFFF" stroke-width="4" cx="571" cy="108" r="6"></circle>
+            </g>
+            <g id="Oval-Copy-12">
+                <use fill="#C1C8CF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                <circle stroke="#FFFFFF" stroke-width="4" cx="411" cy="109" r="6"></circle>
+            </g>
+            <text id="Sentencing" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#182E45">
+                <tspan x="691.046875" y="144">Sentencing</tspan>
+            </text>
+            <text id="Inivestigation" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#A7AEB6">
+                <tspan x="365.019531" y="144">Inivestigation</tspan>
+            </text>
+            <text id="Prosecution" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#A7AEB6">
+                <tspan x="527.058594" y="144">Prosecution</tspan>
+            </text>
+        </g>
+        <g id="Artboard-2"></g>
+    </g>
+</svg>
