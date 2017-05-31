@@ -14,9 +14,14 @@
     %header.app-header.app-header--hero
       .app-container
         .row
-          .col.s10.offset-s1
-            = link_to root_path, class: 'app-header__title' do
-              %h1= render_component 'logo', variant: :translucent
+          .col.s9.offset-s1
+            = link_to root_path, class: 'app-header__link' do
+              %h1.app-header__title--splash= render_component 'logo', variant: :translucent
+
+          - if feature_enabled?(:log_in)
+            .col.s1
+              = link_to new_sessions_path, class: 'app-header__link' do
+                .app-header__title--splash Log In
 
       .app-container
         .row

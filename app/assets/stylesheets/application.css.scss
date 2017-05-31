@@ -177,16 +177,20 @@ strong {
   }
 }
 
-.app-header__title {
+.app-header__link {
   text-decoration: none;
+}
 
-  > h1 {
-    @extend %app-typography--caption;
+.app-header__title {
+  @extend %app-typography--caption;
 
-    color: #fff;
-    margin: 30px 0 10px;
-    text-decoration: none;
-  }
+  color: $color-logo;
+  margin: 30px 0 10px;
+}
+
+.app-header__title--splash {
+  @extend .app-header__title;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .app-header__headline {

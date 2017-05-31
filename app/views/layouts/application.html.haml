@@ -15,9 +15,13 @@
     %header.app-header
       .app-container
         .row
-          .col.s12
-            = link_to root_path, class: 'app-header__title' do
-              %h1= render_component 'logo'
+          .col{ class: (feature_enabled?(:log_in) ? 's10' : 's12') }
+            = link_to root_path, class: 'app-header__link' do
+              %h1.app-header__title= render_component 'logo'
+          - if feature_enabled?(:log_in)
+            .col.s2
+              = link_to sessions_path, method: :delete, class: 'app-header__link' do
+                %div.app-header__title Log Out
 
     %main.app-container--main
       - if flash[:info]

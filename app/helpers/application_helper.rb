@@ -118,4 +118,8 @@ module ApplicationHelper
       content_for(:page_title),
     ].compact, raw(' &middot; '))
   end
+
+  def feature_enabled?(name)
+    Rails.application.config.flipper[name].enabled?
+  end
 end
