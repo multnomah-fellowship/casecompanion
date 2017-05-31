@@ -14,14 +14,21 @@
     %header.app-header.app-header--hero
       .app-container
         .row
-          .col.s9.offset-s1
+          .col.s12.offset-s1.m4.offset-m1
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title--splash= render_component 'logo', variant: :translucent
 
           - if feature_enabled?(:log_in)
-            .col.s1
-              = link_to new_sessions_path, class: 'app-header__link' do
-                .app-header__title--splash Log In
+            .col.s12.m6.offset-m1
+              - if current_user
+                = link_to '#', class: 'app-header__link' do
+                  .app-header__title--splash= current_user.email
+                &middot;
+                = link_to sessions_path, method: :delete, class: 'app-header__link' do
+                  %div.app-header__title--splash Log Out
+              - else
+                = link_to new_sessions_path, class: 'app-header__link' do
+                  .app-header__title--splash Log In
 
       .app-container
         .row

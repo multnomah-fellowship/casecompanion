@@ -15,13 +15,20 @@
     %header.app-header
       .app-container
         .row
-          .col{ class: (feature_enabled?(:log_in) ? 's10' : 's12') }
+          .col.s12{ class: ('m6' if feature_enabled?(:log_in)) }
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title= render_component 'logo'
           - if feature_enabled?(:log_in)
-            .col.s2
-              = link_to sessions_path, method: :delete, class: 'app-header__link' do
-                %div.app-header__title Log Out
+            .col.s12.m6
+              - if current_user
+                = link_to '#', class: 'app-header__link' do
+                  .app-header__title= current_user.email
+                &middot;
+                = link_to sessions_path, method: :delete, class: 'app-header__link' do
+                  %div.app-header__title Log Out
+              - else
+                = link_to new_sessions_path, class: 'app-header__link' do
+                  .app-header__title Log In
 
     %main.app-container--main
       - if flash[:info]

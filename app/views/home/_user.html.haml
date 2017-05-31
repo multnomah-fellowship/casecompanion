@@ -1,0 +1,9 @@
+.row
+  .col.s12
+    %h2.app-typography--header-1 Hello #{current_user.email}
+    %p
+      You are logged in.
+    %p
+      This is a placeholder for whatever you see when you log in.
+
+    = link_to 'Log Out', sessions_path, method: :delete

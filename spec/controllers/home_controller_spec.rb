@@ -7,14 +7,15 @@ describe HomeController do
     let(:session) { {} }
     subject { get :index, session: session }
 
-    describe 'when logged in as a victim advocate' do
+    describe 'when logged in as a victim' do
       let(:user) { User.create!(email: 'foo@bar.com', password: 'foobar') }
 
-      it 'renders links to send a notification' do
+      it 'renders a user centered homepage' do
         session[:user_id] = user.id
         subject
         expect(response).to be_success
-        expect(response.body).to include('Send Invitation')
+        expect(response.body).to include(user.email)
+        expect(response.body).to include('placeholder')
       end
     end
 

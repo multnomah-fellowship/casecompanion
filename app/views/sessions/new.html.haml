@@ -1,16 +1,17 @@
 = form_for :session, url: sessions_path do |f|
   .row
     .col.s12
-      .mdl-textfield.mdl-js-textfield
-        = f.text_field :email, class: 'mdl-textfield__input'
-        = f.label :email, class: 'mdl-textfield__label' do
+      .input-field
+        = f.text_field :email
+        = f.label :email do
           Email
 
     .col.s12
-      .mdl-textfield.mdl-js-textfield
-        = f.password_field :password, class: 'mdl-textfield__input'
-        = f.label :password, class: 'mdl-textfield__label' do
+      .input-field
+        = f.password_field :password
+        = f.label :password do
           Password
 
     .col.s12
-      = f.submit 'Login', class: 'mdl-button mdl-js-button mdl-button--raised'
+      = render_component 'button', submit: f do
+        Login
