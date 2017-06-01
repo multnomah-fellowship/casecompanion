@@ -68,6 +68,41 @@ strong {
   text-decoration: none;
 }
 
+.app-feature-flagged {
+  position: relative;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px dashed rgba(#ffbe50, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  &::after {
+    display: block;
+    content: 'feature flagged';
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background-color: rgba(#ffbe50, 0.6);
+    font-size: 10px;
+    padding: 2px;
+    margin-top: 3px;
+    margin-right: 3px;
+  }
+}
+
 .app-typography--display-1 {
   @extend %app-typography--display-1;
 }
