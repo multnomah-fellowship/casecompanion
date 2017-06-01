@@ -4,6 +4,10 @@
 - if I18n.exists?(title_key)
   %h2.app-typography--header-2= t(title_key)
 
+- pre_header_svg_key = "faqs.#{faq_item[:faq]}.pre_header_svg"
+- if I18n.exists?(pre_header_svg_key)
+  = inline_svg t(pre_header_svg_key)
+
 - header_key = "faqs.#{faq_item[:faq]}.header"
 - if I18n.exists?(header_key)
   .app-faq-item

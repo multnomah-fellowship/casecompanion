@@ -99,11 +99,15 @@ en:
     ###########################################################################
 
     overview:
+      # Uncomment this to see the SVG below the header:
+      # pre_header_svg: 'Timeline-Overview.svg'
       header: |
         What happens after conviction?
 
         The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
     prison_jail:
+      # Uncomment this to see the SVG below the header:
+      # pre_header_svg: 'Timeline-Prison.svg'
       header: |
           After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
           <br/>
@@ -165,6 +169,8 @@ en:
     ###########################################################################
 
     community_supervision:
+      # Uncomment this to see the SVG below the header:
+      # pre_header_svg: 'Timeline-Probation.svg'
       header: |
         You may hear many confusing technical and legal terms that describe an offender’s supervision.
 

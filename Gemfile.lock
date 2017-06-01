@@ -81,6 +81,9 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.1)
+    inline_svg (1.2.1)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -234,6 +237,7 @@ DEPENDENCIES
   dotenv-rails
   flipper
   haml
+  inline_svg
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

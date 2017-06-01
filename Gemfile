@@ -38,6 +38,7 @@ gem 'flipper'
 gem 'haml'
 gem 'materialize-sass'
 gem 'sitemap_generator'
+gem 'inline_svg'
 
 gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
 
