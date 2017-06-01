@@ -29,4 +29,13 @@ describe HomeController do
       end
     end
   end
+
+  describe '#sandbox' do
+    subject { get :sandbox }
+
+    it 'renders successfully' do
+      subject
+      expect(response).to be_success
+    end
+  end
 end
