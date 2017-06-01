@@ -21,6 +21,7 @@ class FaqsController < ApplicationController
         { text: helpers.t('faqs.menu.section_2.item_2'), faq: :notification },
         { text: helpers.t('faqs.menu.section_2.item_3'), faq: :financial_assistance },
         { text: helpers.t('faqs.menu.section_2.item_4'), faq: :privacy_protection},
+        { text: helpers.t('faqs.menu.section_2.item_5'), faq: :special_cases},
       ],
     },
     # Directories
