@@ -1,9 +1,12 @@
 class HomeController < ApplicationController
-  def index
+  def splash
+    return redirect_to home_path if current_user
+
     render layout: 'splash'
   end
 
-  def sandbox
+  def home
+    return redirect_to root_path unless current_user
   end
 
   def set_tracking

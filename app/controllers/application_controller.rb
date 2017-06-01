@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
     @mixpanel_token = Rails.application.config.mixpanel_token
   end
 
+  def current_user
+    @current_user ||= if session[:user_id]
+                        User.find(session[:user_id])
+                      end
+  end
+
   # Clear any residual notification_id's that are in sessions, since we're not
   # using the magic links anymore.
   def clear_notification_id

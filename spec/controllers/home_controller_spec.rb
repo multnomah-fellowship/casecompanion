@@ -3,19 +3,17 @@ require 'rails_helper'
 describe HomeController do
   render_views
 
-  describe '#index' do
+  describe '#splash' do
     let(:session) { {} }
-    subject { get :index, session: session }
+    subject { get :splash, session: session }
 
     describe 'when logged in as a victim' do
       let(:user) { User.create!(email: 'foo@bar.com', password: 'foobar') }
 
-      it 'renders a user centered homepage' do
+      it 'redirects to /home' do
         session[:user_id] = user.id
         subject
-        expect(response).to be_success
-        expect(response.body).to include(user.email)
-        expect(response.body).to include('placeholder')
+        expect(response).to redirect_to(home_path)
       end
     end
 

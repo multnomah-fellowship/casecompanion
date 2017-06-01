@@ -1,8 +1,6 @@
 module ApplicationHelper
   def current_user
-    @current_user ||= if session[:user_id]
-                        User.find(session[:user_id])
-                      end
+    @current_user
   end
 
   # Reorders a name if it contains a comma. E.g. given "Smith, Joe" will return
