@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328232309) do
+ActiveRecord::Schema.define(version: 20170602000950) do
+
+  create_table "court_case_subscriptions", force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.string  "case_number", null: false
+    t.index ["user_id"], name: "index_court_case_subscriptions_on_user_id"
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.string   "phone_number"

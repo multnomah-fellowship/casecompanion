@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_edit_permission
 
   def edit
+    @subscriptions = CourtCaseSubscription.where(user_id: current_user)
   end
 
   private
