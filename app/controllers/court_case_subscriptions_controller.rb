@@ -1,5 +1,9 @@
 class CourtCaseSubscriptionsController < ApplicationController
-  before_action :require_edit_permission
+  before_action :require_edit_permission, except: %i[show]
+
+  def show
+    @subscription = CourtCaseSubscription.find(params[:id])
+  end
 
   def create
     unless subscription = CourtCaseSubscription.create(subscription_params)

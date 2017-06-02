@@ -7,6 +7,8 @@ class HomeController < ApplicationController
 
   def home
     return redirect_to root_path unless current_user
+
+    @subscriptions = CourtCaseSubscription.where(user: current_user)
   end
 
   def set_tracking

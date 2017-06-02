@@ -3,7 +3,10 @@
     %h2.app-typography--header-1 Hello #{current_user.email}
     %p
       You are logged in.
-    %p
-      This is a placeholder for whatever you see when you log in.
+
+    %h3.app-typography--header-2 Court Case Subscriptions (#{link_to 'Edit', edit_user_path(current_user)})
+    %ul
+      - @subscriptions.each do |subscription|
+        = link_to subscription.case_number, subscription_path(subscription)
 
     = link_to 'Log Out', sessions_path, method: :delete
