@@ -85,9 +85,9 @@ en:
         item_1: Overview
         item_2: If offender on probation
         item_3: If offender in jail/prison
-      header_2: Victim Rights
+      header_2: Victims’ Rights
       section_2:
-        item_1: Victim Rights 
+        item_1: Victims’ Rights 
         item_2: Right to notification
         item_3: Right to financial assistence 
         item_4: Right to privacy and protection
@@ -325,12 +325,12 @@ en:
           <strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender. Restitution is an automatic right. 
           <a href="http://mcda.us/index.php/protecting-victims-families/restitution/" target="_blank">Learn more about how restitution works</a>
           <br/><br/>
-          <strong>Victims Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program.
+          <strong>Victims' Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program.
           <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Apply for Crime Victims’ Compensation</a>
           <br/>
           Victims of domestic violence may be eligible for <a href="http://www.oregon.gov/DHS/ABUSE/DOMESTIC/Pages/index.aspx" target="_blank">financial help from the Department of Human Services</a>
           <br/>
-          For trial appeals and attending parole hearings, you may qualify for a special type of <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Crime Victims Compensation</a> to pay for travel and counseling expenses
+          For trial appeals and attending parole hearings, you may qualify for a special type of <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Crime Victims' Compensation</a> to pay for travel and counseling expenses
       dropdowns:
         collecting_restitution:
           title: Having trouble collecting restitution?
