@@ -21,7 +21,7 @@
           - if feature_enabled?(:log_in)
             .col.s12.m6.app-feature-flagged
               - if current_user
-                = link_to '#', class: 'app-header__link' do
+                = link_to edit_user_path(current_user), class: 'app-header__link' do
                   .app-header__title= current_user.email
                 &middot;
                 = link_to sessions_path, method: :delete, class: 'app-header__link' do

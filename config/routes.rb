@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :styleguide, only: %i[show]
 
   resource :sessions, only: %i[new create destroy]
+  resources :users, only: %i[edit update]
 
   resources :notifications, only: %i[new create]
   get '/n/:id', to: 'notifications#show'
