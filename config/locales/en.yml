@@ -87,9 +87,9 @@ en:
         item_3: If offender in jail/prison
       header_2: Victims’ Rights
       section_2:
-        item_1: Victims’ Rights 
+        item_1: Victims’ Rights
         item_2: Right to notification
-        item_3: Right to financial assistence 
+        item_3: Right to financial assistance
         item_4: Right to privacy and protection
         item_5: Rights in special cases
       header_3: Directories
@@ -243,7 +243,7 @@ en:
 
     privacy_protection:
       header: |
-        You have the right to be privacy and protection including: 
+        You have the right to be privacy and protection including:
         keep personal identifiers (for example phone number and address) from the offender
       dropdowns:
         what_harassment:
@@ -289,7 +289,7 @@ en:
       who_to_call:
         - name: "Offender's Parole/Probation Officer"
           phone: <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
-    
+
     ###########################################################################
 
     general_rights:
@@ -301,7 +301,7 @@ en:
     notification:
       header: |
         You have the right (upon request) to be notified of
-        
+
         probation violation hearings
         <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification" target="_blank">Register with Department of Community Justice</a>
         <br/>
@@ -313,16 +313,16 @@ en:
      #    after_conviction:
      #      title: How do I register for notifications?
      #      body: |
-            
+
      #        <br />
      #        <a href="http://www.oregon.gov/BOPPPS/Pages/VictimNotif.aspx" target="_blank">Register with the Board of Parole and Post-Prison Supervision for prison release notifications</a>
      #        <br/>
-     #        The Department of Community Justice can notify you of probation violation hearings via phone. It’s a service available to victims of crime. 
+     #        The Department of Community Justice can notify you of probation violation hearings via phone. It’s a service available to victims of crime.
     financial_assistance:
       header: |
         You have the right to financial compensation. There are several types, including:
           <br/>
-          <strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender. Restitution is an automatic right. 
+          <strong>Restitution</strong> (money to help cover the cost of the damage the offender caused) may be ordered by the judge to be paid by the offender. Restitution is an automatic right.
           <a href="http://mcda.us/index.php/protecting-victims-families/restitution/" target="_blank">Learn more about how restitution works</a>
           <br/><br/>
           <strong>Victims' Compensation</strong> for medical, counseling, and other costs as a result of certain crimes is available through the Oregon Crime Victim's Compensation Program.
@@ -335,7 +335,7 @@ en:
         collecting_restitution:
           title: Having trouble collecting restitution?
           body: |
-            Though an automatic right, it is one of the most challenging to enforce. Restitution is ordered by the judge and collected by the courthouse so the'll be able to talk more about it. 
+            Though an automatic right, it is one of the most challenging to enforce. Restitution is ordered by the judge and collected by the courthouse so the'll be able to talk more about it.
             <a href="tel:503-988-3269" target="_blank">You can call the local courthouse (503) 988-3269 </a>
     special_cases:
       header: |
