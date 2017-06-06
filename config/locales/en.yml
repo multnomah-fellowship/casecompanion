@@ -41,6 +41,7 @@ en:
     by_sid: 'Or by SID number:'
     search: Search
     num_results: '%{num} results matching %{name}'
+    dcj: 'Search DCJ:'
     sid:
       label: Offender State ID (SID)
     first_name:

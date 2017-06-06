@@ -14,13 +14,23 @@ class DcjClient
   #
   # @return Hash? Information about the offender, if found.
   def offender_details(sid:, last_name:)
-    fetch_offender_details(sid: sid, last_name: last_name)
+    result = fetch_offender_details(sid: sid, last_name: last_name)
+
+    {
+      first: result['OffenderFirstName'],
+      last: result['OffenderLastName'],
+      sid: result['SID'],
+      dob: Date.parse(result['DOB']),
+      po_first: result['POFirstName'],
+      po_last: result['POLastName'],
+      po_phone: result['POPhone'],
+    }
   end
 
   private
 
   def fetch_offender_details(sid:, last_name:)
-    Net::HTTP.start(URL_BASE.host, URL_BASE.port) do |http|
+    Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
       request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
         key: @api_key,
         sid: sid,

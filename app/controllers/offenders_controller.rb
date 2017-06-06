@@ -1,6 +1,13 @@
 class OffendersController < ApplicationController
   def index
-    if offender_params[:sid].present?
+    if offender_params[:last_name].present? && offender_params[:dcj_sid].present? &&
+        Rails.application.config.flipper[:dcj_search].enabled?
+      # DCJ search requires last_name and SID for now :(
+      @results = [DcjClient.new.offender_details(
+        sid: offender_params[:dcj_sid],
+        last_name: offender_params[:last_name]
+      )]
+    elsif offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
       redirect_to offender_path(offender_params[:sid])
@@ -36,7 +43,9 @@ class OffendersController < ApplicationController
         @results = []
         flash.now[:error] = I18n.t('offender_search.error_too_many_results')
       end
+    end
 
+    if @results
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
     end
