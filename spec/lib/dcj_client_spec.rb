@@ -14,12 +14,14 @@ describe DcjClient do
   end
 
   before do
-    allow(DcjClient).to receive(:fetch_offender_details)
+    allow_any_instance_of(DcjClient).to receive(:fetch_offender_details)
       .and_return(offender_hash)
   end
 
   describe '#offender_details' do
-    subject { described_class.offender_details(last_name: 'foo', sid: 1234) }
+    let(:client) { described_class.new(api_key: '123') }
+
+    subject { client.offender_details(last_name: 'foo', sid: 1234) }
 
     it 'returns a hash of data' do
       expect(subject).to be_a(Hash)

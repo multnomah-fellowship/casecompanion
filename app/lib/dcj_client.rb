@@ -1,4 +1,4 @@
-module DcjClient
+class DcjClient
   # TODO: replace this with the production one once the key is deployed
   URL_BASE = URI('https://uat.multco.us')
 
@@ -13,13 +13,13 @@ module DcjClient
   # TODO: Add caching, see if we can do a search without a last name.
   #
   # @return Hash? Information about the offender, if found.
-  def self.offender_details(sid:, last_name:)
+  def offender_details(sid:, last_name:)
     fetch_offender_details(sid: sid, last_name: last_name)
   end
 
   private
 
-  def self.fetch_offender_details(sid:, last_name:)
+  def fetch_offender_details(sid:, last_name:)
     Net::HTTP.start(URL_BASE.host, URL_BASE.port) do |http|
       request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
         key: @api_key,
