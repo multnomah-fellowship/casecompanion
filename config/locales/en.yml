@@ -82,7 +82,7 @@ en:
     menu:
       header_1: What happens next
       section_1:
-        item_1: Overview
+        item_1: Post-sentencing overview
         item_2: If offender on probation
         item_3: If offender in jail/prison
       header_2: Victims’ Rights
@@ -101,14 +101,14 @@ en:
 
     overview:
       # Uncomment this to see the SVG below the header:
-      # pre_header_svg: 'Timeline-Overview.svg'
+      pre_header_svg: 'Timeline-Overview.svg'
       header: |
-        What happens after conviction?
+        What happens after sentencing?
 
         The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
     prison_jail:
       # Uncomment this to see the SVG below the header:
-      # pre_header_svg: 'Timeline-Prison.svg'
+      pre_header_svg: 'Timeline-Prison.svg'
       header: |
           After sentencing the offender will go through intake at Coffee Creek Correctional Facility. The intake process takes about three to four weeks at which point, male offenders will be transferred to a long-term facility.
           <br/>
@@ -171,7 +171,7 @@ en:
 
     community_supervision:
       # Uncomment this to see the SVG below the header:
-      # pre_header_svg: 'Timeline-Probation.svg'
+      pre_header_svg: 'Timeline-Probation.svg'
       header: |
         You may hear many confusing technical and legal terms that describe an offender’s supervision.
 
@@ -330,7 +330,7 @@ en:
           <br/>
           Victims of domestic violence may be eligible for <a href="http://www.oregon.gov/DHS/ABUSE/DOMESTIC/Pages/index.aspx" target="_blank">financial help from the Department of Human Services</a>
           <br/>
-          For trial appeals and attending parole hearings, you may qualify for a special type of <a href="http://www.doj.state.or.us/victims/compensation.shtml" target="_blank">Crime Victims' Compensation</a> to pay for travel and counseling expenses
+          For trial appeals and attending parole hearings, you may qualify for a special type of <a href="http://www.doj.state.or.us/victims/Pages/advocacy.aspx" target="_blank">Crime Victims' Compensation</a> to pay for travel and counseling expenses
       dropdowns:
         collecting_restitution:
           title: Having trouble collecting restitution?

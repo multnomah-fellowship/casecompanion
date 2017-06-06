@@ -6,7 +6,7 @@
 
 - pre_header_svg_key = "faqs.#{faq_item[:faq]}.pre_header_svg"
 - if I18n.exists?(pre_header_svg_key)
-  = inline_svg t(pre_header_svg_key)
+  .svg-container= inline_svg t(pre_header_svg_key)
 
 - header_key = "faqs.#{faq_item[:faq]}.header"
 - if I18n.exists?(header_key)

@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="780px" height="50px" viewBox="0 0 780 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100%" height="100%" viewBox="0 0 780 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
     <title>Timeline-Probation</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <linearGradient x1="3.061617e-15%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
-            <stop stop-color="#355B7B" stop-opacity="0" offset="0%"></stop>
-            <stop stop-color="#002953" stop-opacity="0.251160553" offset="100%"></stop>
+        <linearGradient x1="97.8914222%" y1="49.5137117%" x2="4.76581871%" y2="49.5137117%" id="linearGradient-1">
+            <stop stop-color="#192E45" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#192E45" offset="100%"></stop>
         </linearGradient>
-        <circle id="path-2" cx="562" cy="9" r="6"></circle>
-        <circle id="path-3" cx="401" cy="8" r="4"></circle>
-        <circle id="path-4" cx="241" cy="9" r="4"></circle>
+        <circle id="path-2" cx="397.5" cy="6.5" r="6.5"></circle>
+        <circle id="path-3" cx="238" cy="6" r="4"></circle>
+        <circle id="path-4" cx="720" cy="7" r="4"></circle>
+        <circle id="path-5" cx="78" cy="5" r="4"></circle>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Timeline-Probation">
-            <path d="M560,8.44444444 L779,8.44444444" id="Line-Copy-6" stroke="#182E45" stroke-linecap="square"></path>
-            <path d="M152.5,8.33333333 L560.5,8.33333333" id="Line-Copy-2" stroke="url(#linearGradient-1)" stroke-linecap="square"></path>
-            <g id="Oval-Copy-18">
-                <use fill="#182E45" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <circle stroke="#FFFFFF" stroke-width="4" cx="562" cy="9" r="8"></circle>
-            </g>
-            <g id="Oval-Copy-13">
-                <use fill="#C1C8CF" fill-rule="evenodd" xlink:href="#path-3"></use>
-                <circle stroke="#FFFFFF" stroke-width="4" cx="401" cy="8" r="6"></circle>
-            </g>
-            <g id="Oval-Copy-12">
-                <use fill="#C1C8CF" fill-rule="evenodd" xlink:href="#path-4"></use>
-                <circle stroke="#FFFFFF" stroke-width="4" cx="241" cy="9" r="6"></circle>
-            </g>
-            <text id="Probation-Setence" font-family="SanFranciscoText-Regular, San Francisco Text" font-size="16" font-weight="normal" fill="#182E45">
-                <tspan x="501.414062" y="44">Probation Setence</tspan>
+            <text id="if-offender-on-proba" font-family="" font-size="16" font-weight="500" fill="#4A773C">
+                <tspan x="310.484375" y="23">if offender on probation</tspan>
             </text>
+            <g id="timline" transform="translate(2.000000, 38.000000)">
+                <rect id="Rectangle-2" fill-opacity="0.181555707" fill="#182E45" fill-rule="evenodd" transform="translate(558.500000, 6.500000) scale(1, -1) translate(-558.500000, -6.500000) " x="397" y="6" width="323" height="1"></rect>
+                <rect id="Rectangle" fill="url(#linearGradient-1)" fill-rule="evenodd" transform="translate(197.000000, 6.500000) scale(-1, -1) translate(-197.000000, -6.500000) " x="0" y="6" width="394" height="1"></rect>
+                <g id="Oval-Copy-18">
+                    <use fill="#4A773C" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <circle stroke="#FFFFFF" stroke-width="4" cx="397.5" cy="6.5" r="8.5"></circle>
+                </g>
+                <g id="Oval-Copy-13">
+                    <use fill="#182E45" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <circle stroke="#FFFFFF" stroke-width="4" cx="238" cy="6" r="6"></circle>
+                </g>
+                <g id="Oval-Copy-13">
+                    <use fill="#A6B0BA" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <circle stroke="#FFFFFF" stroke-width="4" cx="720" cy="7" r="6"></circle>
+                </g>
+                <g id="Oval-Copy-12">
+                    <use fill="#182E45" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    <circle stroke="#FFFFFF" stroke-width="4" cx="78" cy="5" r="6"></circle>
+                </g>
+            </g>
         </g>
     </g>
 </svg>
