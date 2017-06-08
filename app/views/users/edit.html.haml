@@ -5,10 +5,10 @@
     - @subscriptions.each do |subscription|
       %li
         = subscription.case_number
-        = link_to 'x', user_court_case_subscription_path(current_user, subscription.id), method: :delete
+        = link_to 'x', user_court_case_subscription_path(@current_user, subscription.id), method: :delete
 
     %h1.app-typography--header-1 Subscribe to a Case:
-    = form_for([current_user, CourtCaseSubscription.new]) do |f|
+    = form_for([@current_user, CourtCaseSubscription.new]) do |f|
       .input-field
         = f.text_field :case_number
         = f.label :case_number, 'Case Number'

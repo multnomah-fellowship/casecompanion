@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def current_user
-    @current_user
-  end
-
   # TODO: Remove this wrapper by just calling the correct path everywhree
   def offender_path(id, jurisdiction = :oregon)
     offender_offenders_path(id, jurisdiction)

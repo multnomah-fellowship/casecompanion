@@ -20,9 +20,9 @@
 
           - if feature_enabled?(:log_in)
             .col.s12.m6.offset-m1.app-feature-flagged
-              - if current_user
+              - if @current_user
                 = link_to '#', class: 'app-header__link' do
-                  .app-header__title--splash= current_user.email
+                  .app-header__title--splash= @current_user.email
                 &middot;
                 = link_to sessions_path, method: :delete, class: 'app-header__link' do
                   %div.app-header__title--splash Log Out

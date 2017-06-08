@@ -1,10 +1,10 @@
 .row
   .col.s11.offset-s1
-    %h2.app-typography--header-1 Hello #{current_user.email}
+    %h2.app-typography--header-1 Hello #{@current_user.email}
     %p
       You are logged in.
 
-    %h3.app-typography--header-2 Court Case Subscriptions (#{link_to 'Edit', edit_user_path(current_user)})
+    %h3.app-typography--header-2 Court Case Subscriptions (#{link_to 'Edit', edit_user_path(@current_user)})
     %ul
       - @subscriptions.each do |subscription|
         = link_to subscription.case_number, subscription_path(subscription)

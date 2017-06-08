@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_variables
   before_action :clear_notification_id
   before_action :set_raven_context
+  before_action :set_current_user
 
   private
 
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
     @mixpanel_token = Rails.application.config.mixpanel_token
   end
 
-  def current_user
+  def set_current_user
     @current_user ||= if session[:user_id]
                         User.find(session[:user_id])
                       end
