@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 OFFENDER_FIXTURE = {
+  jurisdiction: :oregon,
   sid: '11273355',
   age: '41',
   gender: 'Female',
@@ -23,6 +24,17 @@ OFFENDER_FIXTURE = {
     "15CR44118/03,MARI,DELIV,METH,NEAR,SCHOOL,Inmate,Sentence,12/10/2015,-"
   ],
   num_offenses: 4,
+}
+
+DCJ_OFFENDER = {
+  jurisdiction: :dcj,
+  first: 'John',
+  last: 'Wilhite',
+  sid: 20130142,
+  dob: Date.parse('1980-01-01'),
+  po_first: 'FrankThe',
+  po_last: 'POPerson',
+  po_phone: '503-555-1234 ext 12345',
 }
 
 RSpec.describe OffendersController do
@@ -49,7 +61,7 @@ RSpec.describe OffendersController do
 
     describe 'with search by name' do
       let(:params) { { offender: { first_name: 'Tom', last_name: 'Dooner' } } }
-      let(:results) { [{ sid: 123456, first: 'Tom', last: 'Dooner' }] }
+      let(:results) { [{ sid: 123456, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
 
       before do
         allow(OffenderScraper).to receive(:search_by_name).and_return(results)

@@ -16,11 +16,15 @@ module OffenderScraper
     cached = OffenderSearchCache.find_by(offender_sid: sid)
 
     if cached
-      cached.data.symbolize_keys
+      cached.data.symbolize_keys.merge(
+        jurisdiction: :oregon
+      )
     else
       data = self.fetch_offender_details(sid)
 
       return nil if data.nil?
+
+      data[:jurisdiction] = :oregon
 
       OffenderSearchCache
         .unscoped
