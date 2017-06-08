@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :offenders, only: %i[show index] do
+  resources :offenders, only: %i[index] do
     collection do
+      get '/:jurisdiction/:id', action: :show, as: :offender
       post :search
     end
   end

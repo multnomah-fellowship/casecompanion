@@ -10,7 +10,7 @@ class OffendersController < ApplicationController
     elsif offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
-      redirect_to offender_path(offender_params[:sid])
+      redirect_to offender_offenders_path(:oregon, offender_params[:sid])
     elsif params[:error]
       # if this page has an "error" query param then don't attempt a search and
       # just show that error
@@ -52,7 +52,13 @@ class OffendersController < ApplicationController
   end
 
   def show
-    @offender = OffenderScraper.offender_details(params[:id])
+    @offender =
+      case params[:jurisdiction].to_sym
+      when :oregon
+        OffenderScraper.offender_details(params[:id])
+      when :dcj
+        DcjClient.new.offender_details(sid: params[:id])
+      end
 
     if @offender.nil?
       redirect_to offenders_path(error: 'no_offender_found', error_sid: params[:id])

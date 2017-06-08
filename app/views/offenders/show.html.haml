@@ -8,16 +8,19 @@
     %span.app-typography--body-1= @offender[:sid]
   .col.m5
     .app-typography--caption-above Offender Name
-    %span.app-typography--body-1= @offender[:name]
-.row.hide-on-med-and-down
-  .col.m5.offset-m1
-    .app-typography--caption-above Status
-    %span.app-typography--body-1= @offender[:status]
-  .col.m5
-    .app-typography--caption-above Offender Photo
     %span.app-typography--body-1
-      = link_to 'Show Photo', "http://docpub.state.or.us/OOS/imageLoader.jsp?idno=#{@offender[:sid]}", target: "_blank"
+      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
 .row.hide-on-med-and-down
+  - if @offender[:status]
+    .col.m5.offset-m1
+      .app-typography--caption-above Status
+      %span.app-typography--body-1= @offender[:status]
+  - if @offender[:jurisdiction] == :oregon
+    .col.m5
+      .app-typography--caption-above Offender Photo
+      %span.app-typography--body-1
+        = link_to 'Show Photo', "http://docpub.state.or.us/OOS/imageLoader.jsp?idno=#{@offender[:sid]}", target: "_blank"
+.row.hide-on-med-and-down{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
   .col.m5.offset-m1
     .app-typography--caption-above Earliest Release Date (Not Finalized)
     %span.app-typography--body-1= @offender[:earliest_release_date]
@@ -32,16 +35,17 @@
 .row.hide-on-large-only
   .col.s10.offset-s1
     .app-typography--caption-above Offender Name
-    %span.app-typography--body-1= @offender[:name]
-.row.hide-on-large-only
+    %span.app-typography--body-1
+      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
+.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
   .col.s10.offset-s1
     .app-typography--caption-above Status
     %span.app-typography--body-1= @offender[:status]
-.row.hide-on-large-only
+.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
   .col.s10.offset-s1
     .app-typography--caption-above Location
     %span.app-typography--body-1= @offender[:location]
-.row.hide-on-large-only
+.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
   .col.s10.offset-s1
     .app-typography--caption-above Earliest Release Date (Not Finalized)
     %span.app-typography--body-1= @offender[:earliest_release_date]
@@ -50,90 +54,18 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2 Frequently Asked Questions
 
-    - dropdown_key = 'faqs.prison_jail.dropdowns.how_earliest_release_date_change'
-    = render_component 'dropdown', title: t("#{dropdown_key}.title") do
-      .app-faq-item
-        = faq_format(t("#{dropdown_key}.body"))
-
-    = render_component 'dropdown', title: 'How can I stay informed about where the offender is?' do
-      %h3.app-typography--body-1
-        %strong Oregon VINE
-      %p
-        VINE is an automated notification system. For example, VINE will call,
-        text, and/or email you if there is a change in custody status.
-      = render_component 'button', to: vine_path(@offender[:sid]) do
-        VINE website
-        %i.material-icons open_in_new
-
-      %h3.app-typography--body-1
-        %strong Oregon Prison Release Notification
-      %p
-        The Oregon Parole Board can notify you 90 days prior to an inmate's
-        release and help you get a No Contact order added to an inmate's
-        conditions of Post-Prison Supervision.
-      - pps_form = 'https://www.oregon.gov/BOPPPS/docs/Fillable%20Forms/Victim%20Request%20for%20Notification.pdf'
-      = render_component 'button', to: pps_form do
-        Sign Up Form
-        %i.material-icons open_in_new
+    - case @offender[:jurisdiction].to_sym
+    - when :oregon
+      = render 'offenders/faq_prison_jail'
+    - when :dcj
+      = render 'offenders/faq_probation'
 
 %section.row
   .col.s10.offset-s1
     %h2.app-typography--header-2 Who can I talk to?
 
-    = render_component 'avatar_list_item',
-      caption: t('offender.robyn_title'),
-      name: t('offender.robyn'),
-      image: image_path('robyn.jpg')
-
-    = render_component 'dropdown', title: t('offender.contact_info', name: 'Robyn') do
-      %ul.app-contact-list
-        %li
-          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon phone
-            %span.app-contact-list__primary-description
-              (503) 945-0907
-        %li
-          = link_to 'mailto:DLParoleBoardVictimNotify@doc.state.or.us', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon email
-            %span.app-contact-list__primary-description
-              DLParoleBoardVictimNotify@doc.state.or.us
-
-    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
-      %p How to stay informed
-      %p What these notifications mean
-      %p Why the release date changes
-      %p Will there be a parole hearing I can speak at
-      %p Release plans and safety planning
-      %p Discuss terms of supervision and no contact orders
-      %p When and where an offender will be released
-      %p And more…
-
-.row
-  .col.s10.offset-s1
-    = render_component 'avatar_list_item',
-      caption: t('offender.saydyie_title'),
-      image: image_path('saydyie.jpg'),
-      name: t('offender.saydyie')
-
-    = render_component 'dropdown', title: t('offender.contact_info', name: 'Saydyie') do
-      %ul.app-contact-list
-        %li
-          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon phone
-            %span.app-contact-list__primary-description
-              (503) 934-1113
-        %li
-          = link_to 'mailto:VictimServicesProgram@doc.state.or.us', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon email
-            %span.app-contact-list__primary-description
-              VictimServicesProgram@doc.state.or.us
-
-    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
-      %p General public information about the offender
-      %p General information regarding misconducts the offender has received
-      %p Programs offered and general information on if the inmate is participating in programming
-      %p Location and institution movement of the offender
-      %p Resources for victims and victim family members
-      %p The victim service programs offered by the Oregon Department of Corrections
-      %p Questions about VINE
-
+    - case @offender[:jurisdiction].to_sym
+    - when :oregon
+      = render 'offenders/who_prison_jail'
+    - when :dcj
+      = render 'offenders/who_probation'

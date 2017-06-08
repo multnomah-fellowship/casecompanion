@@ -3,6 +3,11 @@ module ApplicationHelper
     @current_user
   end
 
+  # TODO: Remove this wrapper by just calling the correct path everywhree
+  def offender_path(id, jurisdiction = :oregon)
+    offender_offenders_path(id, jurisdiction)
+  end
+
   # Reorders a name if it contains a comma. E.g. given "Smith, Joe" will return
   # "Joe Smith"
   def name_reorderer(full_name)

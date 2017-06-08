@@ -55,7 +55,7 @@ RSpec.describe OffendersController do
 
       it 'redirects to the offender show page' do
         subject
-        expect(response).to redirect_to(offender_path(params[:offender][:sid]))
+        expect(response).to redirect_to(offender_offenders_path(:oregon, params[:offender][:sid]))
       end
     end
 
@@ -88,22 +88,39 @@ RSpec.describe OffendersController do
       allow(OffenderScraper).to receive(:offender_details)
         .with(OFFENDER_FIXTURE[:sid])
         .and_return(OFFENDER_FIXTURE)
+
+      allow_any_instance_of(DcjClient).to receive(:offender_details)
+        .with(sid: DCJ_OFFENDER[:sid].to_s)
+        .and_return(DCJ_OFFENDER)
     end
 
-    subject { get :show, params: { id: OFFENDER_FIXTURE[:sid] } }
+    subject { get :show, params: params }
 
-    it 'shows the offender' do
-      subject
-      expect(response.body).to include(OFFENDER_FIXTURE[:sid])
+    describe 'with an offender from oregon jurisdiction' do
+      let(:params) { { id: OFFENDER_FIXTURE[:sid], jurisdiction: :oregon } }
+
+      it 'shows the offender' do
+        subject
+        expect(response.body).to include(OFFENDER_FIXTURE[:sid])
+      end
+
+      it 'gives a contextual vine link' do
+        subject
+        expect(response).to be_success
+        sid = OFFENDER_FIXTURE[:sid]
+
+        link = Nokogiri::HTML(response.body).css("a[href*=\"#{sid}\"]:contains(\"VINE\")")
+        expect(link).to be_present
+      end
     end
 
-    it 'gives a contextual vine link' do
-      subject
-      expect(response).to be_success
-      sid = OFFENDER_FIXTURE[:sid]
+    describe 'with an offender from DCJ jurisdiction' do
+      let(:params) { { id: DCJ_OFFENDER[:sid], jurisdiction: 'dcj' } }
 
-      link = Nokogiri::HTML(response.body).css("a[href*=\"#{sid}\"]:contains(\"VINE\")")
-      expect(link).to be_present
+      it 'shows the offender' do
+        subject
+        expect(response.body).to include(DCJ_OFFENDER[:sid].to_s)
+      end
     end
   end
 end
