@@ -34,6 +34,18 @@ en:
     saydyie: 'Saydyie DeRosia'
     saydyie_title: 'Victim Services Coordinator, Oregon Department of Corrections'
     how_date_change: 'How might the release date date change?'
+    probation_faq_1_title: 'What is probation?'
+    probation_faq_1: |
+      There are a <a href="https://multco.us/dcj-adult/probation-parole-and-post-prison-supervision/standard-conditions-adult-probation-parole" target="_blank">set of general conditions of supervision</a> that apply in almost every case.
+
+      Sometimes there are special conditions of supervision that also apply (such as no-contact orders). To find out if a no-contact order applies in your case, you can call the Parole/Probation Officer.
+    probation_faq_2_title: 'How can I be notified about updates?'
+    probation_faq_2: |
+      <strong>Probation Status Updates</strong>
+      You can <a href="https://www.vinelink.com/#/home/site/38000" target="_blank">sign up for VINE notifications</a> to find out about any changes in supervision (for example, if the offender moves to another county) or if the offender is arrested.
+
+      <strong>Probation Violation Hearings</strong>
+      You can also <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification" target="_blank">sign up for Probation Violation hearing notification</a> to be informed if there is a probation violation hearing. If there is a hearing, you have the legal right to attend.
 
   offender_search:
     title: Look up an offender (in prison)
