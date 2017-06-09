@@ -1,57 +1,63 @@
-= render_component 'avatar_list_item',
-  caption: t('offender.robyn_title'),
-  name: t('offender.robyn'),
-  image: image_path('robyn.jpg')
-
-= render_component 'dropdown', title: t('offender.contact_info', name: 'Robyn') do
-  %ul.app-contact-list
-    %li
-      = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-        %i.material-icons.app-contact-list__icon phone
-        %span.app-contact-list__primary-description
-          (503) 945-0907
-    %li
-      = link_to 'mailto:DLParoleBoardVictimNotify@doc.state.or.us', class: 'app-contact-list__link' do
-        %i.material-icons.app-contact-list__icon email
-        %span.app-contact-list__primary-description
-          DLParoleBoardVictimNotify@doc.state.or.us
-
-= render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
-  %p How to stay informed
-  %p What these notifications mean
-  %p Why the release date changes
-  %p Will there be a parole hearing I can speak at
-  %p Release plans and safety planning
-  %p Discuss terms of supervision and no contact orders
-  %p When and where an offender will be released
-  %p And more…
+%section.row
+  .col.s10.offset-s1
+    %h2.app-typography--header-2 Who can I talk to?
 
 .row
-.col.s10.offset-s1
-= render_component 'avatar_list_item',
-  caption: t('offender.saydyie_title'),
-  image: image_path('saydyie.jpg'),
-  name: t('offender.saydyie')
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      caption: t('offender.robyn_title'),
+      name: t('offender.robyn'),
+      image: image_path('robyn.jpg')
 
-= render_component 'dropdown', title: t('offender.contact_info', name: 'Saydyie') do
-  %ul.app-contact-list
-    %li
-      = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-        %i.material-icons.app-contact-list__icon phone
-        %span.app-contact-list__primary-description
-          (503) 934-1113
-    %li
-      = link_to 'mailto:VictimServicesProgram@doc.state.or.us', class: 'app-contact-list__link' do
-        %i.material-icons.app-contact-list__icon email
-        %span.app-contact-list__primary-description
-          VictimServicesProgram@doc.state.or.us
+    = render_component 'dropdown', title: t('offender.contact_info', name: 'Robyn') do
+      %ul.app-contact-list
+        %li
+          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
+            %i.material-icons.app-contact-list__icon phone
+            %span.app-contact-list__primary-description
+              (503) 945-0907
+        %li
+          = link_to 'mailto:DLParoleBoardVictimNotify@doc.state.or.us', class: 'app-contact-list__link' do
+            %i.material-icons.app-contact-list__icon email
+            %span.app-contact-list__primary-description
+              DLParoleBoardVictimNotify@doc.state.or.us
 
-= render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
-  %p General public information about the offender
-  %p General information regarding misconducts the offender has received
-  %p Programs offered and general information on if the inmate is participating in programming
-  %p Location and institution movement of the offender
-  %p Resources for victims and victim family members
-  %p The victim service programs offered by the Oregon Department of Corrections
-  %p Questions about VINE
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
+      %p How to stay informed
+      %p What these notifications mean
+      %p Why the release date changes
+      %p Will there be a parole hearing I can speak at
+      %p Release plans and safety planning
+      %p Discuss terms of supervision and no contact orders
+      %p When and where an offender will be released
+      %p And more…
+
+.row
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      caption: t('offender.saydyie_title'),
+      image: image_path('saydyie.jpg'),
+      name: t('offender.saydyie')
+
+    = render_component 'dropdown', title: t('offender.contact_info', name: 'Saydyie') do
+      %ul.app-contact-list
+        %li
+          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
+            %i.material-icons.app-contact-list__icon phone
+            %span.app-contact-list__primary-description
+              (503) 934-1113
+        %li
+          = link_to 'mailto:VictimServicesProgram@doc.state.or.us', class: 'app-contact-list__link' do
+            %i.material-icons.app-contact-list__icon email
+            %span.app-contact-list__primary-description
+              VictimServicesProgram@doc.state.or.us
+
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
+      %p General public information about the offender
+      %p General information regarding misconducts the offender has received
+      %p Programs offered and general information on if the inmate is participating in programming
+      %p Location and institution movement of the offender
+      %p Resources for victims and victim family members
+      %p The victim service programs offered by the Oregon Department of Corrections
+      %p Questions about VINE
 

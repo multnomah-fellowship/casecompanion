@@ -1,10 +1,18 @@
 - po_phone = format_phone(locals[:po_phone])
 
-= render_component 'avatar_list_item',
-  caption: raw(t('offender.probation_who_ppo_title', phone: po_phone)),
-  name: "#{locals[:po_first]} #{locals[:po_last]}"
+%section.row
+  .col.s10.offset-s1
+    %h2.app-typography--header-2 Who can I talk to?
 
-= render_component 'avatar_list_item',
-  image: image_path('chelsea.jpg'),
-  caption: raw(t('offender.probation_who_call.caption')),
-  name: t('offender.probation_who_call.name')
+.row
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      caption: raw(t('offender.probation_who_ppo_title', phone: po_phone)),
+      name: "#{locals[:po_first]} #{locals[:po_last]}"
+
+.row
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      image: image_path('chelsea.jpg'),
+      caption: raw(t('offender.probation_who_call.caption')),
+      name: t('offender.probation_who_call.name')
