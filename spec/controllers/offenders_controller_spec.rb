@@ -55,7 +55,7 @@ RSpec.describe OffendersController do
 
       it 'redirects to the offender show page' do
         subject
-        expect(response).to redirect_to(offender_offenders_path(:oregon, params[:offender][:sid]))
+        expect(response).to redirect_to(offender_path(:oregon, params[:offender][:sid]))
       end
     end
 

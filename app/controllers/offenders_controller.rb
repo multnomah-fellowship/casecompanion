@@ -10,7 +10,7 @@ class OffendersController < ApplicationController
     elsif offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
-      redirect_to offender_offenders_path(:oregon, offender_params[:sid])
+      redirect_to offender_path(:oregon, offender_params[:sid])
     elsif params[:error]
       # if this page has an "error" query param then don't attempt a search and
       # just show that error

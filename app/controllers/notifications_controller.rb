@@ -1,10 +1,11 @@
+# TODO: remove this whole thing
 class NotificationsController < ApplicationController
   def new
     @notification = Notification.new
   end
 
   def show
-    redirect_to offender_path(params[:o])
+    redirect_to offender_path(:oregon, params[:o])
   end
 
   def create

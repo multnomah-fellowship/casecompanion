@@ -57,7 +57,7 @@ describe ApplicationHelper do
 
       it 'links to that offender' do
         expect(helper.link_path_for_offender_or_search(notification))
-          .to eq(helper.offender_path(notification.offender_sid))
+          .to eq(helper.offender_path(:oregon, notification.offender_sid))
       end
     end
   end
