@@ -1,2 +1,10 @@
-.app-todo
-  Here are a list of people to talk to
+- po_phone = format_phone(locals[:po_phone])
+
+= render_component 'avatar_list_item',
+  caption: raw(t('offender.probation_who_ppo_title', phone: po_phone)),
+  name: "#{locals[:po_first]} #{locals[:po_last]}"
+
+= render_component 'avatar_list_item',
+  image: image_path('chelsea.jpg'),
+  caption: raw(t('offender.probation_who_call.caption')),
+  name: t('offender.probation_who_call.name')

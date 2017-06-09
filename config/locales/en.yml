@@ -47,6 +47,28 @@ en:
       <strong>Probation Violation Hearings</strong>
       You can also <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification" target="_blank">sign up for Probation Violation hearing notification</a> to be informed if there is a probation violation hearing. If there is a hearing, you have the legal right to attend.
 
+    probation_who_ppo_title: |
+      Parole/Probation Officer, Department of Community Justice<br>
+      %{phone}
+    probation_who_ppo_what_about: |
+      As a parole/probation officer, Jennifer can talk to you about offender information and answer questions including:
+
+      <ul>
+        <li>What are the conditions of supervision? What do they mean to me?
+        <li>Whereabouts is the offender living? What areas should I avoid to avoid contact?
+        <li>Is the offender compliant with the conditions?
+        <li>What state of mind is the offender in?
+        <li>Is the offender making restitution payments?
+        <li>Is the offender compliant with treatment conditions?
+        <li>Other safety or general questions you might have
+      </ul>
+
+    probation_who_call:
+      name: 'Chelsea Penning'
+      caption: |
+        Victims' Specialist, Department of Community Justice<br>
+        (503) 988-2737
+
   offender_search:
     title: Look up an offender (in prison)
     by_name: 'By Name:'
