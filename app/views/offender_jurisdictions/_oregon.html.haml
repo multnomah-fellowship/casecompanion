@@ -1,0 +1,34 @@
+= form_for :offender, url: offender_jurisdiction_path(:oregon), method: :get do |f|
+  .row
+    .col.s10.offset-s1
+      %h2.app-typography--header-1= t('offender_search.title')
+
+      %h3.app-typography--header-2= t('offender_search.by_name')
+
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :first_name, value: search_params[:first_name]
+        = f.label :first_name, t('offender_search.first_name.label'),
+          class: ('active' if search_params[:first_name].present?)
+
+    .col.s10.offset-s1.m5
+      .input-field
+        = f.text_field :last_name, value: search_params[:last_name]
+        = f.label :last_name, t('offender_search.last_name.label'),
+          class: ('active' if search_params[:last_name].present?)
+
+  %section.row
+    .col.s10.offset-s1.m5.offset-m1
+      %h3.app-typography--header-2= t('offender_search.by_sid')
+
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :sid
+        = f.label :sid, t('offender_search.sid.label')
+
+  .row
+    .col.s10.offset-s1
+      = render_component 'button', submit: f do
+        = t('offender_search.search')

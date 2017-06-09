@@ -1,0 +1,20 @@
+= form_for :offender, url: offender_jurisdiction_path(:dcj), method: :get do |f|
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      %h3.app-typography--header-2= t('offender_search.dcj')
+
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :dcj_sid
+        = f.label :dcj_sid, t('offender_search.sid.label')
+
+    .col.s10.offset-s1.m5
+      .input-field
+        = f.text_field :dcj_last_name
+        = f.label :dcj_last_name, t('offender_search.last_name.label')
+
+  .row
+    .col.s10.offset-s1
+      = render_component 'button', submit: f do
+        = t('offender_search.search')

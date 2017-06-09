@@ -29,7 +29,8 @@ class DcjClient
         .unscoped
         .where(offender_sid: sid)
         .first_or_create
-        .update_attributes(data: data)
+        .tap { |record| record.assign_attributes(data: data, updated_at: Time.now) }
+        .save
 
       offender_hash(data)
     end
