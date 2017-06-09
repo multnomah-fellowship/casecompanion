@@ -22,17 +22,6 @@ module ApplicationHelper
     "(#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..-1]}"
   end
 
-  # Handles the logic for whether to link to the offender page directly, or to
-  # link to the search page if the notification is for an unknown offender
-  #
-  # TODO: remove this since it is unused in a post-notification world
-  def link_path_for_offender_or_search(notification)
-    return offenders_path unless notification
-    return offenders_path if notification.offender_sid == Notification::UNKNOWN_SID
-
-    offender_path(:oregon, notification.offender_sid)
-  end
-
   # surround "\n\n" chunks with a <p>, that's it.
   def simpler_format(error)
     sanitize(error).split("\n\n").map { |chunk| content_tag(:p, chunk) }

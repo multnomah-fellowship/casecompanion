@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     resources :court_case_subscriptions, only: %i[create destroy]
   end
 
-  resources :notifications, only: %i[new create]
-  get '/n/:id', to: 'notifications#show'
   get '/t/:tracking_id', to: 'home#set_tracking'
 
   get '/trigger-error', to: 'home#trigger_error'
