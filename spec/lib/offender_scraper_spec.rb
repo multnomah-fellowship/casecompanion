@@ -1,6 +1,26 @@
 require 'rails_helper'
 
 describe OffenderScraper do
+  describe '.search_by_name' do
+    let(:first_name) { 'Foo' }
+    let(:last_name) { 'BarBaz' }
+    let(:fake_result) do
+      { sid: '1234', first: first_name, middle: '', last: last_name, dob: '01/1991' }
+    end
+
+    before do
+      allow_any_instance_of(OosMechanizer::Searcher).to receive(:each_result)
+        .with(first_name: first_name, last_name: last_name)
+        .and_return([fake_result])
+    end
+
+    subject { OffenderScraper.search_by_name(first_name, last_name) }
+
+    it 'returns results with a jurisdiction' do
+      expect(subject[0][:jurisdiction]).to eq(:oregon)
+    end
+  end
+
   describe '.offender_details' do
     # since stubbing all the mechanize stuff is going to be difficult, we can
     # just stub the scrap method to test the surrounding logic

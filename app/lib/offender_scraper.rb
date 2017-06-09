@@ -7,7 +7,9 @@ module OffenderScraper
   #   a search results page that can take a couple seconds to load.
   def self.search_by_name(first_name, last_name)
     searcher = OosMechanizer::Searcher.new
-    searcher.each_result(first_name: first_name, last_name: last_name).to_a
+    searcher.each_result(first_name: first_name, last_name: last_name).map do |result|
+      result.merge(jurisdiction: :oregon)
+    end
   end
 
   # @return Hash? Information about the offender, if found. This method is
