@@ -285,7 +285,6 @@ en:
             </ul>
         can_i_affect_supervision:
           title: Can I affect the terms of supervision?
-          # TODO: <a href="TODO">Go here to learn more</a>
           body: |
             For post-prison supervision, you may request special conditions (such as “no contact” orders) from the Parole Board before the inmate is released. The Parole Board will make the final decision, and the inmate will have a chance to appeal.
 
