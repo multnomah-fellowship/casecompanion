@@ -22,9 +22,9 @@ module ApplicationHelper
 
   # Given a phone number like '+11234567890', returns '(123) 456-7890'
   def format_phone(phone_number)
-    local_number = phone_number.gsub(/^\+1/, '')
+    local_number = phone_number.gsub(/^\+1/, '').gsub(/-/, '')
 
-    "(#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..9]}"
+    "(#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..-1]}"
   end
 
   # Handles the logic for whether to link to the offender page directly, or to

@@ -18,6 +18,10 @@ describe ApplicationHelper do
     it 'formats a phone number as intended' do
       expect(helper.format_phone('+11234567890')).to eq('(123) 456-7890')
     end
+
+    it 'formats a phone number with an extension' do
+      expect(helper.format_phone('503-555-1234 ext 88449')).to eq('(503) 555-1234 ext 88449')
+    end
   end
 
   describe '#link_path_for_offender_or_search' do
