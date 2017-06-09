@@ -47,8 +47,8 @@
 
         .col.s10.offset-s1.m5
           .input-field
-            = f.text_field :last_name
-            = f.label :last_name, t('offender_search.last_name.label')
+            = f.text_field :dcj_last_name
+            = f.label :dcj_last_name, t('offender_search.last_name.label')
 
   .row
     .col.s10.offset-s1
@@ -101,11 +101,12 @@
           - @grouped_results.each do |group|
             %tbody
               %tr.app-table__row--bordered{ data: { href: offender_path(group[:sid]) } }
-                %td= link_to group[:sid], offender_path(group[:sid])
+                - path = offender_offenders_path(group[:jurisdiction], group[:sid])
+                %td= link_to group[:sid], path
                 %td= @name_highlighter.highlight(group[:full_name])
                 %td= group[:dob]
               - group[:aliases].each do |name|
-                %tr{ data: { href: offender_path(group[:sid]) } }
+                %tr{ data: { href: path } }
                   %td
                   %td= @name_highlighter.highlight(name)
                   %td

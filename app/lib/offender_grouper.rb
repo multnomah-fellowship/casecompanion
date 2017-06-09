@@ -24,7 +24,12 @@ class OffenderGrouper
           Raven.capture_message("DOB for SID #{sid} results not all identical!")
         end
 
-        first, middle, last, dob = results[0].values_at(:first, :middle, :last, :dob)
+        if results.map { |o| o[:jurisdiction] }.uniq.length > 1
+          Raven.capture_message("Jurisdiction for SID #{sid} results not all identical!")
+        end
+
+        first, middle, last, dob, jurisdiction =
+          results[0].values_at(:first, :middle, :last, :dob, :jurisdiction)
         aliases = results[1..-1].map do |r|
           format_name(r[:first], r[:middle], r[:last])
         end
@@ -34,6 +39,7 @@ class OffenderGrouper
           full_name: format_name(first, middle, last),
           dob: dob,
           aliases: aliases,
+          jurisdiction: jurisdiction,
         }
     end
   end

@@ -1,23 +1,25 @@
 require 'rails_helper'
 
 RESULTS = [
-  { sid: '16077966', first: 'AARON', middle: '', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'M', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN-ANDRESON', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICAHEL', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICHEAL', last: 'BROWN', dob: '09/1986' },
-  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986' },
-  { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991' },
-  { sid: '19046875', first: 'AARON', middle: 'ARTHUR', last: 'BROWN', dob: '04/1991' },
-  { sid: '19046875', first: 'AARON', middle: 'A', last: 'BROWN', dob: '04/1991' },
-  { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991' },
-  { sid: '19046875', first: 'AARON', middle: 'KARMA', last: 'BROWN', dob: '04/1991' },
+  { sid: '16077966', first: 'AARON', middle: '', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'M', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN-ANDRESON', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICAHEL', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICHEAL', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '16077966', first: 'AARON', middle: 'MICHAEL', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
+  { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
+  { sid: '19046875', first: 'AARON', middle: 'ARTHUR', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
+  { sid: '19046875', first: 'AARON', middle: 'A', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
+  { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
+  { sid: '19046875', first: 'AARON', middle: 'KARMA', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
 ]
 
 describe OffenderGrouper do
-  subject { described_class.new(RESULTS) }
+  let(:offenders) { RESULTS }
+
+  subject { described_class.new(offenders) }
 
   describe '#each_group' do
     it 'returns an enumerable of groups' do
@@ -45,6 +47,23 @@ describe OffenderGrouper do
         'Aaron Micheal Brown',
         'Aaron Michael Brown',
       ])
+    end
+
+    context 'with an offender in a different jurisdiction' do
+      let(:offenders) do
+        super().tap do |offenders|
+          offender = offenders[-1].dup
+          offender[:jurisdiction] = :dcj
+
+          offenders.push(offender)
+        end
+      end
+
+      it 'raises an error if the SID is the same' do
+        expect(Raven).to receive(:capture_message).once.with(/jurisdiction/i)
+
+        subject.each_group.to_a
+      end
     end
   end
 

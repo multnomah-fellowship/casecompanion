@@ -14,19 +14,44 @@ describe DcjClient do
   end
 
   before do
-    allow_any_instance_of(DcjClient).to receive(:fetch_offender_details)
+    OffenderSearchCache.destroy_all
+
+    allow_any_instance_of(DcjClient)
+      .to receive(:fetch_offender_details)
       .and_return(offender_hash)
   end
 
   describe '#offender_details' do
     let(:client) { described_class.new(api_key: '123') }
 
-    subject { client.offender_details(last_name: 'foo', sid: 1234) }
+    describe 'the first search for an offender' do
+      subject { client.offender_details(last_name: 'foo', sid: 1234) }
 
-    it 'returns a hash of data in the standard format' do
-      expect(subject[:first]).to eq(offender_hash['OffenderFirstName'])
-      expect(subject[:last]).to eq(offender_hash['OffenderLastName'])
-      expect(subject[:sid]).to eq(offender_hash['SID'])
+      it 'returns a hash of data in the standard format' do
+        expect(subject[:first]).to eq(offender_hash['OffenderFirstName'])
+        expect(subject[:last]).to eq(offender_hash['OffenderLastName'])
+        expect(subject[:sid]).to eq(offender_hash['SID'])
+      end
+    end
+
+    describe 'searching again for a cached offender' do
+      let(:search_sid) { 1234 }
+
+      it 'allows searching without last name a subsequent time' do
+        first = client.offender_details(last_name: 'foo', sid: search_sid)
+        second = client.offender_details(sid: search_sid)
+
+        expect(first).to eq(second)
+      end
+
+      it 'only calls the fetch method once' do
+        expect_any_instance_of(DcjClient)
+          .to receive(:fetch_offender_details)
+          .once
+
+        client.offender_details(last_name: 'foo', sid: search_sid)
+        client.offender_details(sid: search_sid)
+      end
     end
   end
 end

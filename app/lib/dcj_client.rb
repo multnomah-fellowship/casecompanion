@@ -10,26 +10,34 @@ class DcjClient
 
   # For now we have to search with the last name as well.
   #
-  # TODO: Add caching, see if we can do a search without a last name.
-  #
   # @return Hash? Information about the offender, if found.
-  def offender_details(sid:, last_name:)
-    result = fetch_offender_details(sid: sid, last_name: last_name)
+  def offender_details(sid:, last_name: '')
+    cached = OffenderSearchCache.find_by(offender_sid: sid)
 
-    {
-      first: result['OffenderFirstName'],
-      last: result['OffenderLastName'],
-      sid: result['SID'],
-      dob: Date.parse(result['DOB']),
-      po_first: result['POFirstName'],
-      po_last: result['POLastName'],
-      po_phone: result['POPhone'],
-    }
+    if cached
+      offender_hash(cached.data)
+    else
+      unless last_name.present?
+        raise 'DCJ API does not support SID-only search for uncached records'
+      end
+
+      data = fetch_offender_details(sid, last_name)
+
+      return nil if data.nil?
+
+      OffenderSearchCache
+        .unscoped
+        .where(offender_sid: sid)
+        .first_or_create
+        .update_attributes(data: data)
+
+      offender_hash(data)
+    end
   end
 
   private
 
-  def fetch_offender_details(sid:, last_name:)
+  def fetch_offender_details(sid, last_name)
     Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
       request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
         key: @api_key,
@@ -49,5 +57,18 @@ class DcjClient
 
       body
     end
+  end
+
+  def offender_hash(response_body)
+    {
+      jurisdiction: :dcj,
+      first: response_body['OffenderFirstName'],
+      last: response_body['OffenderLastName'],
+      sid: response_body['SID'],
+      dob: Date.parse(response_body['DOB']),
+      po_first: response_body['POFirstName'],
+      po_last: response_body['POLastName'],
+      po_phone: response_body['POPhone'],
+    }
   end
 end

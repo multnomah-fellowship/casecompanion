@@ -1,0 +1,26 @@
+- po_phone = format_phone(locals[:po_phone])
+
+%section.row
+  .col.s10.offset-s1
+    %h2.app-typography--header-2 Who can I talk to?
+
+.row
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      caption: raw(t('offender.probation_who_ppo_title', phone: po_phone)),
+      name: "#{locals[:po_first]} #{locals[:po_last]}"
+
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: locals[:po_first]) do
+      .app-faq-item
+        = faq_format(t('offender.probation_who_ppo_what_about'))
+
+.row
+  .col.s10.offset-s1
+    = render_component 'avatar_list_item',
+      image: image_path('chelsea.jpg'),
+      caption: raw(t('offender.probation_who_call.caption')),
+      name: t('offender.probation_who_call.name')
+
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Chelsea') do
+      .app-faq-item
+        = faq_format(t('offender.probation_who_chelsea_what_about'))

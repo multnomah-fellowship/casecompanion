@@ -20,9 +20,9 @@
               %h1.app-header__title= render_component 'logo'
           - if feature_enabled?(:log_in)
             .col.s12.m6.app-feature-flagged
-              - if current_user
-                = link_to edit_user_path(current_user), class: 'app-header__link' do
-                  .app-header__title= current_user.email
+              - if @current_user
+                = link_to edit_user_path(@current_user), class: 'app-header__link' do
+                  .app-header__title= @current_user.email
                 &middot;
                 = link_to sessions_path, method: :delete, class: 'app-header__link' do
                   %div.app-header__title Log Out
