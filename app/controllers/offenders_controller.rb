@@ -1,11 +1,11 @@
 class OffendersController < ApplicationController
   def index
-    if offender_params[:last_name].present? && offender_params[:dcj_sid].present? &&
+    if offender_params[:dcj_last_name].present? && offender_params[:dcj_sid].present? &&
         Rails.application.config.flipper[:dcj_search].enabled?
       # DCJ search requires last_name and SID for now :(
       @results = [DcjClient.new.offender_details(
         sid: offender_params[:dcj_sid],
-        last_name: offender_params[:last_name]
+        last_name: offender_params[:dcj_last_name]
       )]
     elsif offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
