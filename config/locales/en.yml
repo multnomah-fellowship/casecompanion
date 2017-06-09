@@ -69,6 +69,46 @@ en:
         Victims' Specialist, Department of Community Justice<br>
         (503) 988-2737
 
+    probation_who_chelsea_what_about: |
+      As an advocate, Chelsea can use the available offender information to help you create a safety plan tailored for your needs. For example:
+
+      Safety and safety-planning
+      <ul>
+        <li>How do I keep myself safe now? How do I explain this to my kids and keep them safe?</li>
+        <li>How can I be more safe as I prepare to leave an abusive relationship? How can I be more safe if I want to stay in the relationship?</li>
+        <li>What is the Address Confidentiality Program? Do I qualify?</li>
+      </ul>
+
+      Victim Rights
+      <ul>
+        <li>What rights do I have to protect me from my landlord or employer?</li>
+        <li>What rights do I have post-conviction? What information am I entitled to?</li>
+        <li>What is the Crime Victim's Compensation Program? Do I qualify?</li>
+      </ul>
+
+      Navigate the justice system
+      <ul>
+        <li>What if I am interested in Restorative Justice options, such as a "dialogue" with the offender?</li>
+        <li>How do I get a Protection Order (aka "Restraining Order")?</li>
+        <li>What's the difference between a Restraining Order and No Contact Order? Which is better?</li>
+        <li>How do I file for divorce or custody?</li>
+      </ul>
+
+      Support and referrals
+      <ul>
+        <li>Where can I get therapy or counseling? What support groups are available?</li>
+        <li>What if I need a domestic violence shelter? Homeless shelter? How do I access general housing assistance?</li>
+        <li>Where can I get legal advice or representation?</li>
+      </ul>
+
+      Emotional support
+      <ul>
+        <li>How do I explain what I am going through to friends and family?</li>
+        <li>How do I cope with this? When will I be "over" it?</li>
+        <li>My kids are struggling, how do I help them?</li>
+      </ul>
+
+
   offender_search:
     title: Look up an offender (in prison)
     by_name: 'By Name:'
