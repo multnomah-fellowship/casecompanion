@@ -27,7 +27,7 @@ describe OffenderScraper do
     let(:fake_data) { { sid: '1234', name: 'Foo bar' } }
 
     before do
-      OffenderSearchCache.destroy_all # TODO: why no transactional fixtures?
+      OffenderSearchCache.unscoped.destroy_all # TODO: why no transactional fixtures?
 
       allow(OffenderScraper).to receive(:fetch_offender_details).and_return(fake_data)
     end

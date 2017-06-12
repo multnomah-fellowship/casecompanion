@@ -14,7 +14,7 @@ describe DcjClient do
   end
 
   before do
-    OffenderSearchCache.destroy_all
+    OffenderSearchCache.unscoped.destroy_all
 
     allow_any_instance_of(DcjClient)
       .to receive(:fetch_offender_details)

@@ -29,5 +29,13 @@ describe OffenderNameHighlighter do
       expect(subject.highlight('<script>somebody</script>'))
         .not_to include('script')
     end
+
+    context 'when not all HIGHLIGHT_FIELD_NAMES are given' do
+      let(:search_params) { { dcj_last_name: 'Aaron' } }
+
+      it 'still highlights the fields' do
+        expect(subject.highlight('Aaron Brown')).to eq('<strong>Aaron</strong> Brown')
+      end
+    end
   end
 end

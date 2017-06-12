@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_variables
-  before_action :clear_notification_id
   before_action :set_raven_context
   before_action :set_current_user
 
@@ -17,12 +16,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= if session[:user_id]
                         User.find(session[:user_id])
                       end
-  end
-
-  # Clear any residual notification_id's that are in sessions, since we're not
-  # using the magic links anymore.
-  def clear_notification_id
-    session.delete(:notification_id)
   end
 
   def set_raven_context

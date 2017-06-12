@@ -24,44 +24,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe '#link_path_for_offender_or_search' do
-    context 'with a nil notification' do
-      it 'links to the search page' do
-        expect(helper.link_path_for_offender_or_search(nil)).to eq(helper.offenders_path)
-      end
-    end
-
-    context 'with a notification with offender_sid unknown' do
-      let(:notification) do
-        Notification.new(
-          first_name: 'Tom',
-          offender_sid: Notification::UNKNOWN_SID,
-          phone_number: '123-456-7890',
-        )
-      end
-
-      it 'links to the search page' do
-        expect(helper.link_path_for_offender_or_search(notification))
-          .to eq(helper.offenders_path)
-      end
-    end
-
-    context 'with a notification with an offender id' do
-      let(:notification) do
-        Notification.new(
-          first_name: 'Tom',
-          offender_sid: '1234',
-          phone_number: '123-456-7890',
-        )
-      end
-
-      it 'links to that offender' do
-        expect(helper.link_path_for_offender_or_search(notification))
-          .to eq(helper.offender_path(notification.offender_sid))
-      end
-    end
-  end
-
   describe '#simpler_format' do
     it 'converts properly' do
       expect(helper.simpler_format("foo\n\nbar")).to eq("<p>foo</p><p>bar</p>")

@@ -1,0 +1,64 @@
+- case params[:jurisdiction].to_sym
+- when :oregon
+  = render 'offender_jurisdictions/oregon'
+- when :dcj
+  = render 'offender_jurisdictions/dcj'
+- when :unknown
+  = render 'offender_jurisdictions/unknown'
+
+- if @results.present?
+  .row
+    - query = "#{search_params[:first_name]} #{search_params[:last_name]}"
+    - bold_query = content_tag(:strong, query)
+
+    .col.s10.offset-s1.hide-on-large-only
+      %p.app-typography--body-2
+        = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
+
+      - @results.each do |result|
+        %div.app-card--result
+          %ul
+            %li
+              %span.app-card--result__label.mdl-typography--caption SID
+              = result[:sid]
+            %li
+              %span.app-card--result__label.mdl-typography--caption First
+              = result[:first]
+            %li
+              %span.app-card--result__label.mdl-typography--caption Middle
+              = result[:middle]
+            %li
+              %span.app-card--result__label.mdl-typography--caption Last
+              = result[:last]
+            %li
+              %span.app-card--result__label.mdl-typography--caption DOB
+              = result[:dob]
+          = render_component 'button', to: offender_path(result[:jurisdiction], result[:sid]) do
+            View offender
+            %i.material-icons keyboard_arrow_right
+
+
+    .col.s10.offset-s1.hide-on-med-and-down
+      %p.app-typography--body-2
+        = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
+
+    .col.s12.hide-on-med-and-down
+      %table.app-table.app-table--full-bleed
+        %thead
+          %tr
+            %th SID
+            %th Known Aliases
+            %th DOB
+        - @grouped_results.each do |group|
+          %tbody
+            - path = offender_path(group[:jurisdiction], group[:sid])
+            %tr.app-table__row--bordered{ data: { href: path } }
+              %td= link_to group[:sid], path
+              %td= @name_highlighter.highlight(group[:full_name])
+              %td= group[:dob]
+            - group[:aliases].each do |name|
+              %tr{ data: { href: path } }
+                %td
+                %td= @name_highlighter.highlight(name)
+                %td
+

@@ -1,0 +1,26 @@
+- content_for :page_title do
+  = t('offender_search.title')
+
+.app-todo
+  .row
+    .col.s12
+      = render_component 'button', to: offender_jurisdiction_path(:oregon) do
+        In Prison
+
+- if feature_enabled?('dcj_search')
+  .app-feature-flagged
+    .row
+      .col.s12
+        = render_component 'button', to: offender_jurisdiction_path(:dcj) do
+          On Probation
+
+    .row
+      .col.s12
+        = render_component 'button', to: offender_jurisdiction_path(:dcj) do
+          On Parole
+
+.app-todo
+  .row
+    .col.s12
+      = render_component 'button', to: offender_jurisdiction_path(:unknown) do
+        Not Sure

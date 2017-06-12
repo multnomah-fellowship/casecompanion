@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :offenders, only: %i[index] do
-    collection do
-      get '/:id', to: redirect('/offenders/oregon/%{id}')
-      get '/:jurisdiction/:id', action: :show, as: :offender
-      post :search
-    end
-  end
+  get '/offenders/:jurisdiction/:id' => 'offenders#show', as: :offender
+  get '/offenders/:jurisdiction' => 'offender_jurisdictions#show', as: :offender_jurisdiction
+  get '/offenders/:id', to: redirect('/offenders/oregon/%{id}') # deprecated!
+
+  get '/offenders', to: 'offender_jurisdictions#index', as: :offenders
+  post '/offenders/:jurisdiction', to: 'offender_jurisdictions#search'
 
   resources :court_case_subscriptions, as: :subscription, only: %i[show]
 
@@ -18,8 +17,6 @@ Rails.application.routes.draw do
     resources :court_case_subscriptions, only: %i[create destroy]
   end
 
-  resources :notifications, only: %i[new create]
-  get '/n/:id', to: 'notifications#show'
   get '/t/:tracking_id', to: 'home#set_tracking'
 
   get '/trigger-error', to: 'home#trigger_error'

@@ -82,7 +82,7 @@
               %li
                 %span.app-card--result__label.mdl-typography--caption DOB
                 = result[:dob]
-            = render_component 'button', to: offender_path(result[:sid]) do
+            = render_component 'button', to: offender_path(result[:jurisdiction], result[:sid]) do
               View offender
               %i.material-icons keyboard_arrow_right
 
@@ -100,8 +100,8 @@
               %th DOB
           - @grouped_results.each do |group|
             %tbody
-              %tr.app-table__row--bordered{ data: { href: offender_path(group[:sid]) } }
-                - path = offender_offenders_path(group[:jurisdiction], group[:sid])
+              - path = offender_path(group[:jurisdiction], group[:sid])
+              %tr.app-table__row--bordered{ data: { href: path } }
                 %td= link_to group[:sid], path
                 %td= @name_highlighter.highlight(group[:full_name])
                 %td= group[:dob]
