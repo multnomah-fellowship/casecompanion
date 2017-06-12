@@ -110,7 +110,7 @@ en:
 
 
   offender_search:
-    title: Look up an offender (in prison)
+    title: Look up an offender
     by_name: 'By Name:'
     by_sid: 'Or by SID number:'
     search: Search
