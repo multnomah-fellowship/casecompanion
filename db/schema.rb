@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20170628210006) do
     t.index ["offender_sid"], name: "index_offender_search_caches_on_offender_sid", unique: true
   end
 
+  create_table "rights", force: :cascade do |t|
+    t.string  "name",                       null: false
+    t.integer "court_case_subscription_id", null: false
+    t.index ["court_case_subscription_id"], name: "index_rights_on_court_case_subscription_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
