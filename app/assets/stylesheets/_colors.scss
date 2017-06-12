@@ -23,6 +23,7 @@ $color-logo: map-get($colors, blue-multnomah);
 $color-hover: map-get($colors, blue-lighter);
 $color-table-hover: $color-hover;
 $color-divider: map-get($colors, grey-light);
+$color-accent: map-get($colors, green-dark);
 
 // typography colors
 $color-text: map-get($colors, grey-dark);

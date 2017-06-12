@@ -1,0 +1,105 @@
+// Place all the styles related to the sandbox controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "typography";
+@import "colors";
+
+
+$color-timeline-base: $color-text-caption;
+$color-timeline-current: map-get($colors, green-dark);
+$color-timeline-complete: $color-text;
+
+.test-timeline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.timeline {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li {
+  transition: all 200ms ease-in;
+  flex-grow: 1;
+  color: $color-timeline-base;
+}
+
+.timestamp {
+  margin-bottom: 20px;
+  padding: 0px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.status {
+  padding: 0px 40px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid $color-timeline-base;
+  position: relative;
+  transition: all 200ms ease-in;
+  &:before {
+    content: "";
+    width: 17px;
+    height: 17px;
+    background-color: white;
+    border-radius: 25px;
+    border: 4px solid white;
+    position: absolute;
+    top: -9px;
+    left: 0;
+    transition: all 200ms ease-in;
+  }
+}
+
+.li.complete .status {
+  border-top: 2px solid $color-timeline-complete;
+  &:before {
+    background-color: $color-timeline-complete;
+    transition: all 200ms ease-in;
+  }
+}
+
+.li.current 
+  {
+    color: $color-timeline-current;
+    .status {
+      border-top: 2px solid $color-timeline-current;
+      &:before {
+        width: 13px;
+        height: 13px;
+        top: -7px;
+        background-color: $color-timeline-current;
+        transition: all 200ms ease-in;
+      }
+    }
+}
+
+@media (min-device-width: 320px) and (max-device-width: 700px) {
+  .timeline {
+    list-style-type: none;
+    display: block;
+  }
+  .li {
+    transition: all 200ms ease-in;
+    display: flex;
+    width: inherit;
+  }
+  .timestamp {
+    width: 100px;
+  }
+  .status:before {
+    left: -8%;
+    top: 30%;
+    transition: all 200ms ease-in;
+  }
+}
+
+
+

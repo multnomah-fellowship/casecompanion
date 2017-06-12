@@ -1,8 +1,37 @@
 .row
-  .col.s12.offset-s1
+  .col.s10.offset-s1
     %h1.app-typography--header-1 Sandbox Header
 
     %p Here is a haml sandbox with all our styles and everything!
 
     = render_component 'button' do
       Here is a button!
+    / %ul.test-timeline
+    /   %li
+    /     .phase
+    /       %h3.app-typography--header-3 Police Investigation
+    /   %li
+    /     .phase
+    /       %h3.app-typography--header-3 Police Investigation
+    /   %li
+    /     .phase
+    /       %h3.app-typography--header-3 Police Investigation
+    %h1.app-typography--header-1 timeline
+    %ul
+      %li
+        %ul.timeline
+          %li.li.complete
+            .timestamp
+              %span.author Police Investigation
+            .status
+              / %h4.app-typography--header-4 Shift Created
+          %li.li.current
+            .timestamp
+              %span.author DA Prosection
+            .status
+              / %h4.app-typography--header-4 Email Sent
+          %li.li
+            .timestamp
+              %span.author Sentencing
+            .status
+              / %h4.app-typography--header-4 SIC Approval
