@@ -1,6 +1,4 @@
 class Right < ActiveRecord::Base
-  belongs_to :court_case_subscription
-
   NAMES = [
     'A-DDA to assert and enforce Victim Rights',
     'B-Notified in advance of Critical Stage Proceedings',
@@ -21,4 +19,7 @@ class Right < ActiveRecord::Base
     'Q-No Trial Readiness Notice - THIS CASE',
     'R-Restitution: Best Effort/No Reply',
   ]
+
+  belongs_to :court_case_subscription
+  validates :name, inclusion: NAMES
 end
