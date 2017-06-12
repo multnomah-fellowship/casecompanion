@@ -8,9 +8,20 @@ describe OffenderJurisdictionsController do
 
     subject { get :index, params: params }
 
-    it 'renders successfully' do
-      subject
-      expect(response).to be_success
+    describe 'with the dcj_search turned off' do
+      it 'redirects to oregon search' do
+        subject
+        expect(response).to redirect_to(offender_jurisdiction_path(:oregon))
+      end
+    end
+
+    describe 'with the dcj_search turned on' do
+      around { |ex| enable_feature('dcj_search', ex) }
+
+      it 'renders successfully' do
+        subject
+        expect(response).to be_success
+      end
     end
   end
 
@@ -65,6 +76,8 @@ describe OffenderJurisdictionsController do
           .to receive(:offender_details)
           .and_return(result)
       end
+
+      around { |ex| enable_feature('dcj_search', ex) }
 
       it 'renders the results' do
         subject
