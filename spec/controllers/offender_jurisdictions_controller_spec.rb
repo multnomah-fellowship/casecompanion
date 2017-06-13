@@ -86,7 +86,7 @@ describe OffenderJurisdictionsController do
     end
 
     describe 'with search for "unknown" jurisdiction' do
-      let(:params) { { offender: { first_name: 'John', last_name: 'Doe', dob: '01/01/1991' } } }
+      let(:params) { { jurisdiction: :unknown, offender: { first_name: 'John', last_name: 'Doe', dob: '01/01/1991' } } }
       let(:dcj_result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
       let(:oregon_results) { [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
 
@@ -99,7 +99,10 @@ describe OffenderJurisdictionsController do
           .to receive(:search_by_name).and_return(oregon_results)
       end
 
+      around { |ex| enable_feature('dcj_search', ex) }
+
       it 'renders the results' do
+        subject
         expect(response.body).to include(dcj_result[:sid].to_s)
         expect(response.body).to include(oregon_results[0][:sid].to_s)
       end
