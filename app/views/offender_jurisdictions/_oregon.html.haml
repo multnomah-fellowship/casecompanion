@@ -1,8 +1,15 @@
+- content_for :page_title, t('offender_search.title_jurisdiction', in: 'in prison')
+
 = form_for :offender, url: offender_jurisdiction_path(:oregon), method: :get do |f|
   .row
     .col.s10.offset-s1
-      %h2.app-typography--header-1= t('offender_search.title')
+      = link_to t('offender_search.back'), offenders_path
 
+      %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
+        in: emphasized_text('in prison')))
+
+  %section.row
+    .col.s10.offset-s1
       %h3.app-typography--header-2= t('offender_search.by_name')
 
   .row
@@ -18,11 +25,13 @@
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
 
-  %section.row
-    .col.s10.offset-s1.m5.offset-m1
+    .col.s10.offset-s1
+      = link_to 'Search by SID number', '#reveal-search-by-sid', class: 'app-reveal'
+
+  %section.row.hide#reveal-search-by-sid
+    .col.s10.offset-s1.m11.offset-m1
       %h3.app-typography--header-2= t('offender_search.by_sid')
 
-  .row
     .col.s10.offset-s1.m5.offset-m1
       .input-field
         = f.text_field :sid

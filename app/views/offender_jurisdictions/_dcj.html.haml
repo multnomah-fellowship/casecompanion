@@ -1,18 +1,24 @@
+- content_for :page_title, t('offender_search.title_jurisdiction', in: 'on probation or parole')
+
 = form_for :offender, url: offender_jurisdiction_path(:dcj), method: :get do |f|
   .row
+    .col.s10.offset-s1
+      = link_to t('offender_search.back'), offenders_path
+
+      %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
+        in: emphasized_text('on probation or parole')))
+
+  .row
     .col.s10.offset-s1.m5.offset-m1
-      %h3.app-typography--header-2= t('offender_search.dcj')
+      .input-field
+        = f.text_field :dcj_last_name
+        = f.label :dcj_last_name, t('offender_search.last_name.label')
 
   .row
     .col.s10.offset-s1.m5.offset-m1
       .input-field
         = f.text_field :dcj_sid
         = f.label :dcj_sid, t('offender_search.sid.label')
-
-    .col.s10.offset-s1.m5
-      .input-field
-        = f.text_field :dcj_last_name
-        = f.label :dcj_last_name, t('offender_search.last_name.label')
 
   .row
     .col.s10.offset-s1

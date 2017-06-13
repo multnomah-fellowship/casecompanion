@@ -1,1 +1,31 @@
-hello unknown
+- content_for :page_title, t('offender_search.title')
+
+= form_for :offender, url: offender_jurisdiction_path(:unknown), method: :get do |f|
+  .row
+    .col.s10.offset-s1
+      = link_to t('offender_search.back'), offenders_path
+
+      %h2.app-typography--header-1= t('offender_search.title')
+
+  .row
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :first_name, value: search_params[:first_name]
+        = f.label :first_name, t('offender_search.first_name.label'),
+          class: ('active' if search_params[:first_name].present?)
+
+    .col.s10.offset-s1.m5
+      .input-field
+        = f.text_field :last_name, value: search_params[:last_name]
+        = f.label :last_name, t('offender_search.last_name.label'),
+          class: ('active' if search_params[:last_name].present?)
+
+    .col.s10.offset-s1.m5.offset-m1
+      .input-field
+        = f.text_field :date_of_birth, placeholder: 'MM/DD/YYYY'
+        = f.label :date_of_birth, t('offender_search.date_of_birth.label')
+
+  .row
+    .col.s10.offset-s1
+      = render_component 'button', submit: f do
+        = t('offender_search.search')

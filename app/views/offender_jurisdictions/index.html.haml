@@ -1,30 +1,24 @@
-- content_for :page_title do
-  = t('offender_search.title')
+- content_for :page_title, t('offender_search.title')
 
 .row
   .col.s10.offset-s1
     %h1.app-typography--header-1= t('offender_search.title')
 
-.app-todo
-  .row
-    .col.s10.offset-s1.app__search-button-holder
+%section.row
+  .col.s10.offset-s1
+    .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:oregon) do
         In Prison
 
-- if feature_enabled?('dcj_search')
-  .app-feature-flagged
-    .row
-      .col.s10.offset-s1.app__search-button-holder
+    - if feature_enabled?('dcj_search')
+      .app__search-button-holder
         = render_component 'button', to: offender_jurisdiction_path(:dcj) do
           On Probation
 
-    .row
-      .col.s10.offset-s1.app__search-button-holder
+      .app__search-button-holder
         = render_component 'button', to: offender_jurisdiction_path(:dcj) do
           On Parole
 
-.app-todo
-  .row
-    .col.s10.offset-s1.app__search-button-holder
+    .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:unknown) do
         Not Sure

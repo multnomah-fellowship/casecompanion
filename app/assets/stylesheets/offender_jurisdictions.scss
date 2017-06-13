@@ -1,3 +1,10 @@
+@import "colors";
+
+.app__header--emphasis {
+  color: $color-header-3;
+}
+
 .app__search-button-holder {
+  margin: 36px 0;
   text-align: center;
 }
