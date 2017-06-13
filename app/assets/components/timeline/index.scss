@@ -5,31 +5,17 @@ $color-timeline-base: $color-page-border;
 $color-timeline-current: map-get($colors, green-dark);
 $color-timeline-complete: $color-text;
 
-ul.test-timeline {
-  list-style-type: none;
-  display: flex;
-  margin: 40px 0;
-
-  li {
-    background: $color-text-caption;
-    flex-grow: 1;
-    flex-basis: 0;
-  }
-}
-
-
 .timeline {
   list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 40px 0;
-}
 
-.li {
-  color: $color-timeline-base;
-  flex-grow: 1;
-  flex-basis: 0;
+  > li {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
 }
 
 .timestamp {
@@ -38,7 +24,6 @@ ul.test-timeline {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .status {
@@ -47,6 +32,7 @@ ul.test-timeline {
   justify-content: center;
   border-top: 2px solid $color-timeline-base;
   position: relative;
+
   &:before {
     content: "";
     width: 13px;
@@ -60,8 +46,9 @@ ul.test-timeline {
   }
 }
 
-.li.complete {
+.complete {
   color: $color-timeline-complete;
+
   .status {
     border-top: 2px solid $color-timeline-complete;
     &:before {
@@ -70,20 +57,26 @@ ul.test-timeline {
   }
 }
 
-.li.current {
-    color: $color-timeline-current;
-    .status {
-      border-top: 2px solid $color-timeline-current;
-      &:before {
-        width: 21px;
-        height: 21px;
-        top: -11px;
-        background-color: $color-timeline-current;
-      }
+.current {
+  color: $color-timeline-current;
+
+  .status {
+    border-top: 2px solid $color-timeline-current;
+
+    &:before {
+      width: 21px;
+      height: 21px;
+      top: -11px;
+      background-color: $color-timeline-current;
     }
+  }
 }
 
-.li:last-child .status:after {
+.future {
+  color: $color-timeline-base;
+}
+
+li:last-child .status:after {
   content: "";
   width: 13px;
   height: 13px;
@@ -102,18 +95,18 @@ ul.test-timeline {
     list-style-type: none;
     display: block;
   }
-  .li {
+
+  > li {
     display: flex;
     width: inherit;
   }
+
   .timestamp {
     width: 100px;
   }
+
   .status:before {
     left: -8%;
     top: 30%;
   }
 }
-
-
-
