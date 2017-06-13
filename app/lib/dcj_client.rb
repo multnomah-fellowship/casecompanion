@@ -1,5 +1,5 @@
 class DcjClient
-  URL_BASE = URI('https://uat.multco.us')
+  URL_BASE = URI('https://www3.multco.us/Baxter')
 
   class InvalidQueryError < StandardError; end
   class UncachedOffenderError < StandardError; end
