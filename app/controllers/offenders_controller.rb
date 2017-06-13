@@ -13,7 +13,7 @@ class OffendersController < ApplicationController
 
     if @offender.nil?
       redirect_to offender_jurisdiction_path(
-        error: 'no_offender_found',
+        error: 'error_no_results',
         error_sid: params[:id],
         jurisdiction: params[:jurisdiction]
       )

@@ -20,7 +20,7 @@ class OffenderJurisdictionsController < ApplicationController
       # if this page has an "error" query param then don't attempt a search and
       # just show that error
       case params[:error]
-      when 'no_offender_found'
+      when 'error_no_results'
         flash.now[:error] = I18n.t('offender_search.error_no_results',
                                    search_sid: params[:error_sid])
       when 'error_connection_failed'
