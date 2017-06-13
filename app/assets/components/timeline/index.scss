@@ -5,7 +5,7 @@ $color-timeline-base: $color-page-border;
 $color-timeline-current: map-get($colors, green-dark);
 $color-timeline-complete: $color-text;
 
-.timeline {
+.app-timeline {
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@ $color-timeline-complete: $color-text;
   }
 }
 
-.timestamp {
+.app-timeline__timestamp {
   margin-bottom: 20px;
   padding: 0px 40px;
   display: flex;
@@ -26,7 +26,7 @@ $color-timeline-complete: $color-text;
   align-items: center;
 }
 
-.status {
+.app-timeline__status {
   padding: 0px 40px;
   display: flex;
   justify-content: center;
@@ -46,10 +46,10 @@ $color-timeline-complete: $color-text;
   }
 }
 
-.complete {
+.app-timeline__complete {
   color: $color-timeline-complete;
 
-  .status {
+  .app-timeline__status {
     border-top: 2px solid $color-timeline-complete;
     &:before {
       background-color: $color-timeline-complete;
@@ -57,10 +57,10 @@ $color-timeline-complete: $color-text;
   }
 }
 
-.current {
+.app-timeline__current {
   color: $color-timeline-current;
 
-  .status {
+  .app-timeline__status {
     border-top: 2px solid $color-timeline-current;
 
     &:before {
@@ -72,11 +72,11 @@ $color-timeline-complete: $color-text;
   }
 }
 
-.future {
+.app-timeline__future {
   color: $color-timeline-base;
 }
 
-li:last-child .status:after {
+li:last-child .app-timeline__status:after {
   content: "";
   width: 13px;
   height: 13px;
@@ -91,7 +91,7 @@ li:last-child .status:after {
 
 
 @media (min-device-width: 320px) and (max-device-width: 700px) {
-  .timeline {
+  .app-timeline {
     list-style-type: none;
     display: block;
   }
@@ -101,11 +101,11 @@ li:last-child .status:after {
     width: inherit;
   }
 
-  .timestamp {
+  .app-timeline__timestamp {
     width: 100px;
   }
 
-  .status:before {
+  .app-timeline__status:before {
     left: -8%;
     top: 30%;
   }
