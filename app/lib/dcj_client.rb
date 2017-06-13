@@ -1,6 +1,5 @@
 class DcjClient
-  # TODO: replace this with the production one once the key is deployed
-  URL_BASE = URI('https://uat.multco.us')
+  URL_BASE = URI('https://www3.multco.us/Baxter')
 
   class RequestError < StandardError; end
 
