@@ -16,7 +16,7 @@ class OffenderJurisdictionsController < ApplicationController
     if params[:error]
       render_error(params[:error], params[:error_sid])
     else
-      if offender_params[:dcj_last_name].present? && offender_params[:dcj_dob].present? &&
+      if offender_params[:last_name].present? && offender_params[:dob].present? &&
         Rails.application.config.flipper[:dcj_search].enabled?
         # DCJ search requires last_name and (SID|dob) for now :(
         @results.push(search_dcj)
@@ -48,8 +48,8 @@ class OffenderJurisdictionsController < ApplicationController
 
   def search_dcj
     DcjClient.new.search_for_offender(
-      dob: offender_params[:dcj_dob],
-      last_name: offender_params[:dcj_last_name]
+      dob: offender_params[:dob],
+      last_name: offender_params[:last_name]
     )
   end
 

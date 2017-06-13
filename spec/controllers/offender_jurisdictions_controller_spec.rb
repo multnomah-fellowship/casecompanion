@@ -68,7 +68,7 @@ describe OffenderJurisdictionsController do
     end
 
     describe 'with search by DCJ date of birth / last name (dcj)' do
-      let(:params) { { offender: { dcj_dob: '01/01/1991', dcj_last_name: 'Dooner' }, jurisdiction: 'dcj' } }
+      let(:params) { { offender: { dob: '01/01/1991', last_name: 'Dooner' }, jurisdiction: 'dcj' } }
       let(:result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
 
       before do
