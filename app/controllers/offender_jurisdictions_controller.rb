@@ -5,11 +5,11 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def show
-    if offender_params[:dcj_last_name].present? && offender_params[:dcj_sid].present? &&
+    if offender_params[:dcj_last_name].present? && offender_params[:dcj_dob].present? &&
         Rails.application.config.flipper[:dcj_search].enabled?
       # DCJ search requires last_name and SID for now :(
       @results = [DcjClient.new.search_for_offender(
-        sid: offender_params[:dcj_sid],
+        dob: offender_params[:dcj_dob],
         last_name: offender_params[:dcj_last_name]
       )]
     elsif offender_params[:sid].present?
