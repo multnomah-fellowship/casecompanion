@@ -19,6 +19,19 @@ describe OffenderScraper do
     it 'returns results with a jurisdiction' do
       expect(subject[0][:jurisdiction]).to eq(:oregon)
     end
+
+    context 'given a blank first name' do
+      let(:first_name) { '' }
+
+      it 'does not pass the argument into to OosMechanizer' do
+        expect_any_instance_of(OosMechanizer::Searcher)
+          .to receive(:each_result)
+          .with(last_name: last_name)
+          .and_return([])
+
+        subject
+      end
+    end
   end
 
   describe '.offender_details' do

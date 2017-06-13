@@ -6,8 +6,12 @@ module OffenderScraper
   #   table. This search is not cached because it's assumed that this is used on
   #   a search results page that can take a couple seconds to load.
   def self.search_by_name(first_name, last_name)
+    search_params = {}
+    search_params[:first_name] = first_name if first_name.present?
+    search_params[:last_name] = last_name if last_name.present?
+
     searcher = OosMechanizer::Searcher.new
-    searcher.each_result(first_name: first_name, last_name: last_name).map do |result|
+    searcher.each_result(**search_params).map do |result|
       result.merge(jurisdiction: :oregon)
     end
   end
