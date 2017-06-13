@@ -70,12 +70,26 @@ window.App = (function() {
     Turbolinks.visit($tr.attr('data-href'));
   };
 
-  const initializeToggles = function() {
+  const initializeDropdowns = function() {
     $(document).on('click', '.app-dropdown__link', handleToggle);
 
     if ($("#expand-" + window.location.hash.replace('#', '')).length) {
       toggleDropdown(window.location.hash, true);
     }
+  };
+
+  const initializeReveals = function() {
+    const handleReveal = function(e) {
+      e.preventDefault();
+
+      const $link = $(e.target).closest('a');
+      const $target = $($link.attr('href'));
+
+      $link.addClass('hide');
+      $target.removeClass('hide');
+    };
+
+    $(document).on('click', '.app-reveal', handleReveal);
   };
 
   return {
@@ -84,7 +98,9 @@ window.App = (function() {
       // turbolinks navigations will not call this method again. All event
       // handlers registered in here should use [Event
       // Delegation](https://learn.jquery.com/events/event-delegation/)
-      initializeToggles();
+      initializeDropdowns();
+
+      initializeReveals();
 
       // In case the user hits the back button and there are pre-filled values
       // on the previous page:
