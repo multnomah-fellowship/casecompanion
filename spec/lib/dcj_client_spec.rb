@@ -40,10 +40,22 @@ describe DcjClient do
     end
 
     describe 'with a valid query' do
-      let(:query) { { sid: 1234, last_name: 'foo' } }
+      let(:query) { { sid: 1234, last_name: 'foo', dob: '11/01/1991' } }
 
       it 'caches results' do
         expect { subject }.to change { OffenderSearchCache.count }.by(1)
+      end
+
+      it 'searches for the right things' do
+        expect(client)
+          .to receive(:fetch_offender_details)
+          .with(hash_including(
+            dob: Date.new(1991, 11, 1),
+            last_name: 'foo',
+            sid: 1234,
+          ))
+
+        subject
       end
     end
   end

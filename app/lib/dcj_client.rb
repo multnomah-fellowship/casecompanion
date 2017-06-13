@@ -55,7 +55,7 @@ class DcjClient
 
     if search_params[:dob].present?
       begin
-        parsed_date = Date.parse(search_params[:dob]) rescue nil
+        parsed_date = Date.strptime(search_params[:dob], "%m/%d/%Y") rescue nil
       rescue
         raise InvalidQueryError.new('Error searching: Invalid DOB')
       end
@@ -69,7 +69,8 @@ class DcjClient
       request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
         key: @api_key,
         sid: sid,
-        lastName: last_name
+        lastName: last_name,
+        dob: dob
       )
 
       req = Net::HTTP::Get.new(request_uri)
