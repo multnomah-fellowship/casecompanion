@@ -84,5 +84,25 @@ describe OffenderJurisdictionsController do
         expect(response.body).to include(result[:sid].to_s)
       end
     end
+
+    describe 'with search for "unknown" jurisdiction' do
+      let(:params) { { offender: { first_name: 'John', last_name: 'Doe', dob: '01/01/1991' } } }
+      let(:dcj_result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
+      let(:oregon_results) { [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
+
+      before do
+        allow_any_instance_of(DcjClient)
+          .to receive(:search_for_offender)
+          .and_return(dcj_result)
+
+        allow(OffenderScraper)
+          .to receive(:search_by_name).and_return(oregon_results)
+      end
+
+      it 'renders the results' do
+        expect(response.body).to include(dcj_result[:sid].to_s)
+        expect(response.body).to include(oregon_results[0][:sid].to_s)
+      end
+    end
   end
 end

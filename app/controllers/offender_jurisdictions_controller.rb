@@ -7,18 +7,24 @@ class OffenderJurisdictionsController < ApplicationController
   def show
     @results = []
 
-    if offender_params[:dcj_last_name].present? && offender_params[:dcj_dob].present? &&
-        Rails.application.config.flipper[:dcj_search].enabled?
-      # DCJ search requires last_name and (SID|dob) for now :(
-      @results.push(search_dcj)
-    elsif offender_params[:sid].present?
+    if offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
       redirect_to offender_path(:oregon, offender_params[:sid])
-    elsif params[:error]
+    end
+
+    if params[:error]
       render_error(params[:error], params[:error_sid])
-    elsif offender_params[:first_name].present? || offender_params[:last_name].present?
-      @results.push(*search_oregon)
+    else
+      if offender_params[:dcj_last_name].present? && offender_params[:dcj_dob].present? &&
+        Rails.application.config.flipper[:dcj_search].enabled?
+        # DCJ search requires last_name and (SID|dob) for now :(
+        @results.push(search_dcj)
+      end
+
+      if offender_params[:first_name].present? || offender_params[:last_name].present?
+        @results.push(*search_oregon)
+      end
     end
 
     if @results.present?
@@ -50,23 +56,23 @@ class OffenderJurisdictionsController < ApplicationController
   def search_oregon
     # otherwise, time to search by name!
     begin
-      @results = OffenderScraper.search_by_name(
+      results = OffenderScraper.search_by_name(
         offender_params[:first_name],
         offender_params[:last_name]
       )
 
-      if @results.empty?
+      if results.empty?
         flash.now[:error] = I18n.t(
           'offender_search.error_no_results_by_name',
           first_name: offender_params[:first_name],
           last_name: offender_params[:last_name]
         )
       end
+
+      results
     rescue OosMechanizer::Searcher::ConnectionFailed
-      @results = []
       flash.now[:error] = I18n.t('offender_search.error_connection_failed')
     rescue OosMechanizer::Searcher::TooManyResultsError
-      @results = []
       flash.now[:error] = I18n.t('offender_search.error_too_many_results')
     end
   end
