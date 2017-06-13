@@ -13,11 +13,16 @@ class OffendersController < ApplicationController
 
     if @offender.nil?
       redirect_to offender_jurisdiction_path(
-        error: 'no_offender_found',
+        error: 'error_no_results',
         error_sid: params[:id],
         jurisdiction: params[:jurisdiction]
       )
     end
+  rescue DcjClient::UncachedOffenderError
+    redirect_to offender_jurisdiction_path(
+      error: 'error_offender_expired',
+      jurisdiction: params[:jurisdiction]
+    )
   rescue OosMechanizer::Searcher::ConnectionFailed
     redirect_to offender_jurisdiction_path(
       error: 'error_connection_failed',

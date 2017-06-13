@@ -11,14 +11,14 @@
   .row
     .col.s10.offset-s1.m5.offset-m1
       .input-field
-        = f.text_field :dcj_last_name
-        = f.label :dcj_last_name, t('offender_search.last_name.label')
+        = f.text_field :last_name
+        = f.label :last_name, t('offender_search.last_name.label')
 
   .row
     .col.s10.offset-s1.m5.offset-m1
       .input-field
-        = f.text_field :dcj_sid
-        = f.label :dcj_sid, t('offender_search.sid.label')
+        = f.text_field :dob, placeholder: 'MM/DD/YYYY'
+        = f.label :dob, t('offender_search.date_of_birth.label')
 
   .row
     .col.s10.offset-s1

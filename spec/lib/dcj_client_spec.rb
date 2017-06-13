@@ -21,36 +21,66 @@ describe DcjClient do
       .and_return(offender_hash)
   end
 
+  describe '#search_for_offender' do
+    let(:client) { described_class.new(api_key: '123') }
+    let(:query) { {} }
+
+    subject { client.search_for_offender(query) }
+
+    describe 'with invalid queries' do
+      describe 'with a query of only SID' do
+        let(:query) { { sid: 1234 } }
+        it { expect { subject }.to raise_error(DcjClient::InvalidQueryError) }
+      end
+
+      describe 'with a bad DOB' do
+        let(:query) { { sid: 1234, dob: '1234' } }
+        it { expect { subject }.to raise_error(DcjClient::InvalidQueryError) }
+      end
+    end
+
+    describe 'with a valid query' do
+      let(:query) { { sid: 1234, last_name: 'foo', dob: '11/01/1991' } }
+
+      it 'caches results' do
+        expect { subject }.to change { OffenderSearchCache.count }.by(1)
+      end
+
+      it 'searches for the right things' do
+        expect(client)
+          .to receive(:fetch_offender_details)
+          .with(hash_including(
+            dob: Date.new(1991, 11, 1),
+            last_name: 'foo',
+            sid: 1234,
+          ))
+
+        subject
+      end
+    end
+  end
+
   describe '#offender_details' do
     let(:client) { described_class.new(api_key: '123') }
+    let(:search_sid) { offender_hash['SID'] }
 
-    describe 'the first search for an offender' do
-      subject { client.offender_details(last_name: 'foo', sid: 1234) }
+    subject { client.offender_details(sid: search_sid) }
+
+    describe 'when the offender has not been searched for yet' do
+      it 'raises an error' do
+        expect { subject }.to raise_error(DcjClient::UncachedOffenderError)
+      end
+    end
+
+    describe 'for an offender who has been searched for' do
+      before do
+        client.search_for_offender(sid: search_sid, last_name: 'willy')
+      end
 
       it 'returns a hash of data in the standard format' do
         expect(subject[:first]).to eq(offender_hash['OffenderFirstName'])
         expect(subject[:last]).to eq(offender_hash['OffenderLastName'])
         expect(subject[:sid]).to eq(offender_hash['SID'])
-      end
-    end
-
-    describe 'searching again for a cached offender' do
-      let(:search_sid) { 1234 }
-
-      it 'allows searching without last name a subsequent time' do
-        first = client.offender_details(last_name: 'foo', sid: search_sid)
-        second = client.offender_details(sid: search_sid)
-
-        expect(first).to eq(second)
-      end
-
-      it 'only calls the fetch method once' do
-        expect_any_instance_of(DcjClient)
-          .to receive(:fetch_offender_details)
-          .once
-
-        client.offender_details(last_name: 'foo', sid: search_sid)
-        client.offender_details(sid: search_sid)
       end
     end
   end

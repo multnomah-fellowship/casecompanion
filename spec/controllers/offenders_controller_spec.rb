@@ -78,6 +78,18 @@ RSpec.describe OffendersController do
         subject
         expect(response.body).to include(DCJ_OFFENDER[:sid].to_s)
       end
+
+      describe 'when the offender is uncached' do
+        before do
+          allow_any_instance_of(DcjClient).to receive(:offender_details)
+            .and_raise(DcjClient::UncachedOffenderError)
+        end
+
+        it 'redirects back to search' do
+          subject
+          expect(response).to redirect_to(/#{Regexp.escape(offender_jurisdiction_path(:dcj))}/)
+        end
+      end
     end
   end
 end
