@@ -84,9 +84,11 @@ window.App = (function() {
 
       const $link = $(e.target).closest('a');
       const $target = $($link.attr('href'));
+      const text = $link.text();
 
       $link.addClass('hide');
       $target.removeClass('hide');
+      analytics.trackExpand(text);
     };
 
     $(document).on('click', '.app-reveal', handleReveal);
