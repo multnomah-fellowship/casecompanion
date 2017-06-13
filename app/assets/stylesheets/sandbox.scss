@@ -5,27 +5,35 @@
 @import "colors";
 
 
-$color-timeline-base: $color-text-caption;
+$color-timeline-base: $color-page-border;
 $color-timeline-current: map-get($colors, green-dark);
 $color-timeline-complete: $color-text;
 
-.test-timeline {
+ul.test-timeline {
+  list-style-type: none;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  margin: 40px 0;
+
+  li {
+    background: $color-text-caption;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
 }
+
 
 .timeline {
   list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 40px 0;
 }
 
 .li {
-  transition: all 200ms ease-in;
-  flex-grow: 1;
   color: $color-timeline-base;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .timestamp {
@@ -43,43 +51,55 @@ $color-timeline-complete: $color-text;
   justify-content: center;
   border-top: 2px solid $color-timeline-base;
   position: relative;
-  transition: all 200ms ease-in;
   &:before {
     content: "";
-    width: 17px;
-    height: 17px;
-    background-color: white;
+    width: 13px;
+    height: 13px;
+    background-color: $color-timeline-base;
     border-radius: 25px;
     border: 4px solid white;
     position: absolute;
-    top: -9px;
+    top: -7px;
     left: 0;
-    transition: all 200ms ease-in;
   }
 }
 
-.li.complete .status {
-  border-top: 2px solid $color-timeline-complete;
-  &:before {
-    background-color: $color-timeline-complete;
-    transition: all 200ms ease-in;
+.li.complete {
+  color: $color-timeline-complete;
+  .status {
+    border-top: 2px solid $color-timeline-complete;
+    &:before {
+      background-color: $color-timeline-complete;
+    }
   }
 }
 
-.li.current 
-  {
+.li.current {
     color: $color-timeline-current;
     .status {
       border-top: 2px solid $color-timeline-current;
       &:before {
-        width: 13px;
-        height: 13px;
-        top: -7px;
+        width: 21px;
+        height: 21px;
+        top: -11px;
         background-color: $color-timeline-current;
-        transition: all 200ms ease-in;
       }
     }
 }
+
+.li:last-child .status:after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: $color-timeline-base;
+  border-radius: 25px;
+  border: 4px solid white;
+  position: absolute;
+  top: -7px;
+  right: 0;
+}
+
+
 
 @media (min-device-width: 320px) and (max-device-width: 700px) {
   .timeline {
@@ -87,7 +107,6 @@ $color-timeline-complete: $color-text;
     display: block;
   }
   .li {
-    transition: all 200ms ease-in;
     display: flex;
     width: inherit;
   }
@@ -97,7 +116,6 @@ $color-timeline-complete: $color-text;
   .status:before {
     left: -8%;
     top: 30%;
-    transition: all 200ms ease-in;
   }
 }
 
