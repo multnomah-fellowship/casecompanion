@@ -73,7 +73,7 @@ describe OffenderJurisdictionsController do
 
       before do
         allow_any_instance_of(DcjClient)
-          .to receive(:offender_details)
+          .to receive(:search_for_offender)
           .and_return(result)
       end
 

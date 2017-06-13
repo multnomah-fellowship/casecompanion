@@ -1,43 +1,70 @@
 class DcjClient
-  URL_BASE = URI('https://www3.multco.us/Baxter')
+  URL_BASE = URI('https://uat.multco.us')
 
+  class InvalidQueryError < StandardError; end
+  class UncachedOffenderError < StandardError; end
   class RequestError < StandardError; end
 
   def initialize(api_key: ENV['DCJ_BAXTER_API_KEY'])
     @api_key = api_key
   end
 
-  # For now we have to search with the last name as well.
+  def search_for_offender(**kwargs)
+    search_params = kwargs
+
+    validate_search!(search_params)
+
+    data = fetch_offender_details(search_params)
+
+    return nil if data.nil?
+
+    OffenderSearchCache
+      .unscoped
+      .where(offender_sid: data['SID'])
+      .first_or_create
+      .tap { |record| record.assign_attributes(data: data, updated_at: Time.now) }
+      .save
+
+    offender_hash(data)
+  end
+
+  # This can only return cached results because the API requires us to search
+  # not only by SID but also with Birth date or Last Name.
   #
   # @return Hash? Information about the offender, if found.
-  def offender_details(sid:, last_name: '')
+  def offender_details(sid:)
     cached = OffenderSearchCache.find_by(offender_sid: sid)
 
     if cached
       offender_hash(cached.data)
     else
-      unless last_name.present?
-        raise 'DCJ API does not support SID-only search for uncached records'
-      end
-
-      data = fetch_offender_details(sid, last_name)
-
-      return nil if data.nil?
-
-      OffenderSearchCache
-        .unscoped
-        .where(offender_sid: sid)
-        .first_or_create
-        .tap { |record| record.assign_attributes(data: data, updated_at: Time.now) }
-        .save
-
-      offender_hash(data)
+      raise UncachedOffenderError.new('DCJ Lookup Error: Offender is uncached')
     end
   end
 
   private
 
-  def fetch_offender_details(sid, last_name)
+  def validate_search!(search_params)
+    if search_params[:last_name].blank?
+      raise InvalidQueryError.new('Error searching: Offender Last Name is required')
+    end
+
+    if search_params[:sid].blank? && search_params[:dob].blank?
+      raise InvalidQueryError.new('Error searching: SID or DOB is required')
+    end
+
+    if search_params[:dob].present?
+      begin
+        parsed_date = Date.parse(search_params[:dob]) rescue nil
+      rescue
+        raise InvalidQueryError.new('Error searching: Invalid DOB')
+      end
+
+      search_params[:dob] = parsed_date
+    end
+  end
+
+  def fetch_offender_details(sid: '', last_name: '', dob: '')
     Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
       request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
         key: @api_key,

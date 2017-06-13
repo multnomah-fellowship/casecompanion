@@ -18,6 +18,11 @@ class OffendersController < ApplicationController
         jurisdiction: params[:jurisdiction]
       )
     end
+  rescue DcjClient::UncachedOffenderError
+    redirect_to offender_jurisdiction_path(
+      error: 'error_offender_expired',
+      jurisdiction: params[:jurisdiction]
+    )
   rescue OosMechanizer::Searcher::ConnectionFailed
     redirect_to offender_jurisdiction_path(
       error: 'error_connection_failed',

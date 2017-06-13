@@ -8,7 +8,7 @@ class OffenderJurisdictionsController < ApplicationController
     if offender_params[:dcj_last_name].present? && offender_params[:dcj_sid].present? &&
         Rails.application.config.flipper[:dcj_search].enabled?
       # DCJ search requires last_name and SID for now :(
-      @results = [DcjClient.new.offender_details(
+      @results = [DcjClient.new.search_for_offender(
         sid: offender_params[:dcj_sid],
         last_name: offender_params[:dcj_last_name]
       )]
@@ -25,6 +25,8 @@ class OffenderJurisdictionsController < ApplicationController
                                    search_sid: params[:error_sid])
       when 'error_connection_failed'
         flash.now[:error] = I18n.t('offender_search.error_connection_failed')
+      when 'error_offender_expired'
+        flash.now[:error] = I18n.t('offender_search.error_offender_expired')
       end
     elsif offender_params[:first_name].present? || offender_params[:last_name].present?
       # otherwise, time to search by name!
