@@ -7,14 +7,24 @@ describe OffenderScraper do
     let(:fake_result) do
       { sid: '1234', first: first_name, middle: '', last: last_name, dob: '01/1991' }
     end
+    let(:searcher) { double(each_result: [fake_result]) }
 
     before do
-      allow_any_instance_of(OosMechanizer::Searcher).to receive(:each_result)
-        .with(first_name: first_name, last_name: last_name)
-        .and_return([fake_result])
+      allow(OosMechanizer::Searcher)
+        .to receive(:new)
+        .and_return(searcher)
     end
 
     subject { OffenderScraper.search_by_name(first_name, last_name) }
+
+    it 'searches with the right values' do
+      expect(searcher)
+        .to receive(:each_result)
+        .with(first_name: first_name, last_name: last_name)
+        .once
+
+      subject
+    end
 
     it 'returns results with a jurisdiction' do
       expect(subject[0][:jurisdiction]).to eq(:oregon)
@@ -24,7 +34,7 @@ describe OffenderScraper do
       let(:first_name) { '' }
 
       it 'does not pass the argument into to OosMechanizer' do
-        expect_any_instance_of(OosMechanizer::Searcher)
+        expect(searcher)
           .to receive(:each_result)
           .with(last_name: last_name)
           .and_return([])
@@ -42,7 +52,9 @@ describe OffenderScraper do
     before do
       OffenderSearchCache.unscoped.destroy_all # TODO: why no transactional fixtures?
 
-      allow(OffenderScraper).to receive(:fetch_offender_details).and_return(fake_data)
+      allow(OffenderScraper)
+        .to receive(:fetch_offender_details)
+        .and_return(fake_data)
     end
 
     context 'when never before scraped' do

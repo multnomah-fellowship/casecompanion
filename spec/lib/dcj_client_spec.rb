@@ -1,24 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DcjClient do
-  let(:offender_hash) do
-    {
-      'OffenderFirstName' => 'John',
-      'OffenderLastName' => 'Wilhite',
-      'SID' => 20130142,
-      'DOB' => '1977-11-07T00:00:00',
-      'POFirstName' => 'Frank',
-      'POLastName' => 'SomeRandomName',
-      'POPhone' => '503-555-1234 ext 12345',
-    }
-  end
-
   before do
     OffenderSearchCache.unscoped.destroy_all
-
-    allow_any_instance_of(DcjClient)
-      .to receive(:fetch_offender_details)
-      .and_return(offender_hash)
   end
 
   describe '#search_for_offender' do
@@ -62,7 +46,7 @@ describe DcjClient do
 
   describe '#offender_details' do
     let(:client) { described_class.new(api_key: '123') }
-    let(:search_sid) { offender_hash['SID'] }
+    let(:search_sid) { 20130142 }
 
     subject { client.offender_details(sid: search_sid) }
 
@@ -78,9 +62,9 @@ describe DcjClient do
       end
 
       it 'returns a hash of data in the standard format' do
-        expect(subject[:first]).to eq(offender_hash['OffenderFirstName'])
-        expect(subject[:last]).to eq(offender_hash['OffenderLastName'])
-        expect(subject[:sid]).to eq(offender_hash['SID'])
+        expect(subject[:first]).to eq('John')
+        expect(subject[:last]).to eq('Wilhite')
+        expect(subject[:sid]).to eq(20130142)
       end
     end
   end

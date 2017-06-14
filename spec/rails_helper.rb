@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'webmock/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -33,6 +34,22 @@ RSpec.configure do |config|
   config.before(:suite) do
     # disable all feature flags
     Rails.application.config.flipper.features.each(&:disable)
+  end
+
+  config.before(:each) do
+    sample_offender = {
+      'OffenderFirstName' => 'John',
+      'OffenderLastName' => 'Wilhite',
+      'SID' => 20130142,
+      'DOB' => '1977-11-07T00:00:00',
+      'POFirstName' => 'Frank',
+      'POLastName' => 'SomeRandomName',
+      'POPhone' => '503-555-1234 ext 12345',
+    }
+
+    stub_request(:get, %r{multco.us/Baxter/api/polookup})
+      .with(headers: { 'Accept' => 'application/json' })
+      .to_return(body: JSON.generate(sample_offender))
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

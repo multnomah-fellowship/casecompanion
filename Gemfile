@@ -50,6 +50,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+  gem 'webmock'
 
   # Needed by travis-ci:
   gem 'rake'
