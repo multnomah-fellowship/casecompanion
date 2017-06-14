@@ -8,7 +8,7 @@
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
         in: emphasized_text('on probation or parole')))
 
-  .row
+  %section.row
     .col.s10.offset-s1.m5.offset-m1
       .input-field
         = f.text_field :last_name
@@ -16,6 +16,7 @@
 
   = f.dob_select_field :dob
 
+  %section.row
   .row
     .col.s10.offset-s1
       = render_component 'button', submit: f do
