@@ -353,10 +353,8 @@ strong {
 /*
  * CUSTOM FORM FIELD STYLING
  */
-.app-textfield__help {
-  margin-top: -12px;
-  margin-bottom: 16px;
-  color: map-get($colors, grey-dark);
+.app-input-field--no-label {
+  margin-top: 0;
 }
 
 /*

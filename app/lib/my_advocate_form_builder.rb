@@ -9,17 +9,17 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
             #{f.label(:month, 'Date of Birth')}
           </div>
           <div class='col s3 offset-s1 m1 offset-m1'>
-            <div class='input-field'>
+            <div class='input-field app-input-field--no-label'>
               #{f.text_field(:month, placeholder: 'MM')}
             </div>
           </div>
           <div class='col s3 m1'>
-            <div class='input-field'>
+            <div class='input-field app-input-field--no-label'>
               #{f.text_field(:day, placeholder: 'DD')}
             </div>
           </div>
           <div class='col s4 m2'>
-            <div class='input-field'>
+            <div class='input-field app-input-field--no-label'>
               #{f.text_field(:year, placeholder: 'YYYY')}
             </div>
           </div>
