@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/offenders/:jurisdiction/:id' => 'offenders#show', as: :offender
+  post '/offenders/:jurisdiction' => 'offender_jurisdictions#search'
   get '/offenders/:jurisdiction' => 'offender_jurisdictions#show', as: :offender_jurisdiction
   get '/offenders/:id', to: redirect('/offenders/oregon/%{id}') # deprecated!
 

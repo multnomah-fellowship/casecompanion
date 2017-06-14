@@ -1,6 +1,6 @@
 - content_for :page_title, t('offender_search.title')
 
-= form_for :offender, url: offender_jurisdiction_path(:unknown), method: :get do |f|
+= form_for :offender, url: offender_jurisdiction_path(:unknown) do |f|
   .row
     .col.s10.offset-s1
       = link_to t('offender_search.back'), offenders_path

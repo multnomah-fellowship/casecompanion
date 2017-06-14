@@ -5,24 +5,28 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
     @results = []
 
     if offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
       redirect_to offender_path(:oregon, offender_params[:sid])
+      return
     end
 
     if params[:error]
       render_error(params[:error], params[:error_sid])
     else
-      if offender_params[:last_name].present? && offender_params[:dob].present? &&
-        Rails.application.config.flipper[:dcj_search].enabled?
+      if %w[dcj unknown].include?(params[:jurisdiction]) &&
+          Rails.application.config.flipper[:dcj_search].enabled?
         # DCJ search requires last_name and (SID|dob) for now :(
         @results.push(search_dcj)
       end
 
-      if offender_params[:first_name].present? || offender_params[:last_name].present?
+      if %w[oregon unknown].include?(params[:jurisdiction])
         @results.push(*search_oregon)
       end
     end
@@ -31,6 +35,8 @@ class OffenderJurisdictionsController < ApplicationController
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
     end
+
+    render :show
   end
 
   private

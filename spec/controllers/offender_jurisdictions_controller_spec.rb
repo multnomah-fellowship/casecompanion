@@ -34,6 +34,10 @@ describe OffenderJurisdictionsController do
         expect(response).to be_success
       end
     end
+  end
+
+  describe '#search' do
+    subject { post :search, params: params }
 
     describe 'with search by SID parameters (oregon)' do
       let(:params) { { offender: { sid: '1234' }, jurisdiction: 'oregon' } }
