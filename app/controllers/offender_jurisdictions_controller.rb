@@ -5,11 +5,20 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def show
+    # if this page has an "error" query param then don't attempt a search and
+    # just show that error
+    case params[:error]
+    when 'error_no_results'
+      flash.now[:error] = I18n.t('offender_search.error_no_results',
+                                 search_sid: params[:error_sid])
+    when 'error_connection_failed'
+      flash.now[:error] = I18n.t('offender_search.error_connection_failed')
+    when 'error_offender_expired'
+      flash.now[:error] = I18n.t('offender_search.error_offender_expired')
+    end
   end
 
   def search
-    @results = []
-
     if offender_params[:sid].present?
       # when searching for a SID, just go to /offenders/<sid> and let that page
       # do the search
@@ -17,18 +26,23 @@ class OffenderJurisdictionsController < ApplicationController
       return
     end
 
-    if params[:error]
-      render_error(params[:error], params[:error_sid])
-    else
-      if %w[dcj unknown].include?(params[:jurisdiction]) &&
-          Rails.application.config.flipper[:dcj_search].enabled?
-        # DCJ search requires last_name and (SID|dob) for now :(
-        @results.push(search_dcj)
-      end
+    if error = valid_offender_search?(params[:jurisdiction].to_sym)
+      flash.now[:error] = error
+      return render :show
+    end
 
-      if %w[oregon unknown].include?(params[:jurisdiction])
-        @results.push(*search_oregon)
-      end
+    # otherwise, do the search!
+
+    @results = []
+
+    if %w[dcj unknown].include?(params[:jurisdiction]) &&
+        Rails.application.config.flipper[:dcj_search].enabled?
+      # DCJ search requires last_name and (SID|dob) for now :(
+      @results.push(search_dcj)
+    end
+
+    if %w[oregon unknown].include?(params[:jurisdiction])
+      @results.push(*search_oregon)
     end
 
     @results.compact!
@@ -37,7 +51,7 @@ class OffenderJurisdictionsController < ApplicationController
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
     else
-      flash.now[:error] ||= I18n.t(
+      flash.now[:error] = I18n.t(
         'offender_search.error_no_results_by_name',
         first_name: offender_params[:first_name],
         last_name: offender_params[:last_name]
@@ -54,6 +68,38 @@ class OffenderJurisdictionsController < ApplicationController
   def redirect_to_oregon_if_no_dcj_search
     unless Rails.application.config.flipper[:dcj_search].enabled?
       redirect_to offender_jurisdiction_path(:oregon)
+    end
+  end
+
+  def valid_offender_search?(jurisdiction)
+    case jurisdiction
+    when :oregon
+      # one of first_name, or last_name must be present
+      unless offender_params[:first_name].present? || offender_params[:last_name].present?
+        return I18n.t('offender_search.error_missing_name')
+      end
+    when :dcj
+      # last name and DOB must all be present
+      unless offender_params[:last_name].present?
+        return I18n.t('offender_search.error_missing_last_name')
+      end
+
+      unless offender_params[:dob][:year].present? &&
+          offender_params[:dob][:month].present? &&
+          offender_params[:dob][:day].present?
+        return I18n.t('offender_search.error_missing_dob')
+      end
+    when :unknown
+      # last name and dob are all required
+      unless offender_params[:last_name].present?
+        return I18n.t('offender_search.error_missing_last_name')
+      end
+
+      unless offender_params[:dob][:year].present? &&
+          offender_params[:dob][:month].present? &&
+          offender_params[:dob][:day].present?
+        return I18n.t('offender_search.error_missing_dob')
+      end
     end
   end
 
@@ -99,20 +145,6 @@ class OffenderJurisdictionsController < ApplicationController
       flash.now[:error] = I18n.t('offender_search.error_connection_failed')
     rescue OosMechanizer::Searcher::TooManyResultsError
       flash.now[:error] = I18n.t('offender_search.error_too_many_results')
-    end
-  end
-
-  def render_error(error_name, error_sid)
-    # if this page has an "error" query param then don't attempt a search and
-    # just show that error
-    case error_name
-    when 'error_no_results'
-      flash.now[:error] = I18n.t('offender_search.error_no_results',
-                                 search_sid: error_sid)
-    when 'error_connection_failed'
-      flash.now[:error] = I18n.t('offender_search.error_connection_failed')
-    when 'error_offender_expired'
-      flash.now[:error] = I18n.t('offender_search.error_offender_expired')
     end
   end
 end

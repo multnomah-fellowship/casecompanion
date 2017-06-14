@@ -157,6 +157,19 @@ en:
     error_invalid_date: |
       We had trouble searching for that date of birth (%{date}). You might want to double-check that you entered it correctly.
 
+    error_missing_name: |
+      We couldn't perform a search without either a first or last name. You
+      might want to double-check that you filled out one of the fields.
+
+    error_missing_last_name: |
+      We couldn't perform a search without a last name. You
+      might want to double-check that you filled out the "Last Name" field.
+
+    error_missing_dob: |
+      We couldn't perform a search without a Date of Birth. You
+      might want to double-check that you filled out all three parts of the
+      "Date of Birth" field.
+
   faqs:
     title: Frequently Asked Questions
     subtitle: |
