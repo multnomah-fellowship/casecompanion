@@ -72,20 +72,21 @@ describe OffenderJurisdictionsController do
     end
 
     describe 'with search by DCJ date of birth / last name (dcj)' do
-      let(:params) { { offender: { dob: '01/01/1991', last_name: 'Dooner' }, jurisdiction: 'dcj' } }
-      let(:result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
-
-      before do
-        allow_any_instance_of(DcjClient)
-          .to receive(:search_for_offender)
-          .and_return(result)
+      let(:params) do
+        {
+          offender: {
+            dob: { month: '01', day: '01', year: '1991' },
+            last_name: 'Dooner',
+          },
+          jurisdiction: 'dcj',
+        }
       end
 
       around { |ex| enable_feature('dcj_search', ex) }
 
       it 'renders the results' do
         subject
-        expect(response.body).to include(result[:sid].to_s)
+        expect(response.body).to include('20130142')
       end
     end
 
