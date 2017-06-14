@@ -91,7 +91,16 @@ describe OffenderJurisdictionsController do
     end
 
     describe 'with search for "unknown" jurisdiction' do
-      let(:params) { { jurisdiction: :unknown, offender: { first_name: 'John', last_name: 'Doe', dob: '01/01/1991' } } }
+      let(:params) do
+        {
+          jurisdiction: :unknown,
+          offender: {
+            first_name: 'John',
+            last_name: 'Doe',
+            dob: { month: '01', day: '01', year: '1991' },
+          }
+        }
+      end
       let(:dcj_result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
       let(:oregon_results) { [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
 

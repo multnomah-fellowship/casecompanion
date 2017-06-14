@@ -53,13 +53,8 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def search_dcj
-    # TODO: Update the "unknown" page to use the multi-field DOB selector and
-    # then change the DcjClient API to accept a Date object
-    offender_dob = if offender_params[:dob].is_a?(String)
-                     offender_params[:dob]
-                   else
-                     offender_params[:dob].values_at(:month, :day, :year).join('/')
-                   end
+    # TODO: Change the DcjClient API to accept a Date object
+    offender_dob = offender_params[:dob].values_at(:month, :day, :year).join('/')
 
     DcjClient.new.search_for_offender(
       dob: offender_dob,
