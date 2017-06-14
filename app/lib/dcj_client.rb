@@ -52,16 +52,6 @@ class DcjClient
     if search_params[:sid].blank? && search_params[:dob].blank?
       raise InvalidQueryError.new('Error searching: SID or DOB is required')
     end
-
-    if search_params[:dob].present?
-      begin
-        parsed_date = Date.strptime(search_params[:dob], "%m/%d/%Y") rescue nil
-      rescue
-        raise InvalidQueryError.new('Error searching: Invalid DOB')
-      end
-
-      search_params[:dob] = parsed_date
-    end
   end
 
   def fetch_offender_details(sid: '', last_name: '', dob: '')

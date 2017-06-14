@@ -31,10 +31,19 @@ class OffenderJurisdictionsController < ApplicationController
       end
     end
 
+    @results.compact!
+
     if @results.present?
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
+    else
+      flash.now[:error] ||= I18n.t(
+        'offender_search.error_no_results_by_name',
+        first_name: offender_params[:first_name],
+        last_name: offender_params[:last_name]
+      )
     end
+
 
     render :show
   end
@@ -53,8 +62,23 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def search_dcj
-    # TODO: Change the DcjClient API to accept a Date object
-    offender_dob = offender_params[:dob].values_at(:month, :day, :year).join('/')
+    offender_dob = Date.new(
+      offender_params[:dob][:year].to_i,
+      offender_params[:dob][:month].to_i,
+      offender_params[:dob][:day].to_i
+    ) rescue nil
+
+    # sanity check the DOB that it is not too far in the past or in the future
+    unless offender_dob && 120.years.ago < offender_dob && offender_dob < Date.today
+      date_string =
+        offender_params[:dob].values_at(:month, :day, :year).join('/')
+
+      flash.now[:error] =
+        I18n.t('offender_search.error_invalid_date', date: date_string)
+
+      # Since DOB is required, may as well not do anything
+      return
+    end
 
     DcjClient.new.search_for_offender(
       dob: offender_dob,
@@ -69,14 +93,6 @@ class OffenderJurisdictionsController < ApplicationController
         offender_params[:first_name],
         offender_params[:last_name]
       )
-
-      if results.empty?
-        flash.now[:error] = I18n.t(
-          'offender_search.error_no_results_by_name',
-          first_name: offender_params[:first_name],
-          last_name: offender_params[:last_name]
-        )
-      end
 
       results
     rescue OosMechanizer::Searcher::ConnectionFailed

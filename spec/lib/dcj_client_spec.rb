@@ -16,15 +16,10 @@ describe DcjClient do
         let(:query) { { sid: 1234 } }
         it { expect { subject }.to raise_error(DcjClient::InvalidQueryError) }
       end
-
-      describe 'with a bad DOB' do
-        let(:query) { { sid: 1234, dob: '1234' } }
-        it { expect { subject }.to raise_error(DcjClient::InvalidQueryError) }
-      end
     end
 
     describe 'with a valid query' do
-      let(:query) { { sid: 1234, last_name: 'foo', dob: '11/01/1991' } }
+      let(:query) { { sid: 1234, last_name: 'foo', dob: Date.new(1991, 11, 1) } }
 
       it 'caches results' do
         expect { subject }.to change { OffenderSearchCache.count }.by(1)

@@ -154,6 +154,9 @@ en:
       We ran into an error while trying to display this offender. We should be
       able to display the offender information if you search again.
 
+    error_invalid_date: |
+      We had trouble searching for that date of birth (%{date}). You might want to double-check that you entered it correctly.
+
   faqs:
     title: Frequently Asked Questions
     subtitle: |
