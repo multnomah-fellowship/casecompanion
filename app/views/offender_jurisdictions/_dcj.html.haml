@@ -14,19 +14,7 @@
         = f.text_field :last_name
         = f.label :last_name, t('offender_search.last_name.label')
 
-  .row
-    = f.fields_for :dob do |dob|
-      .col.s10.offset-s1
-        = dob.label :month, t('Date of Birth')
-      .col.s3.offset-s1.m1.offset-m1
-        .input-field
-          = dob.text_field :month, placeholder: 'MM'
-      .col.s3.m1
-        .input-field
-          = dob.text_field :day, placeholder: 'DD'
-      .col.s4.m2
-        .input-field
-          = dob.text_field :year, placeholder: 'YYYY'
+  = f.dob_select_field :dob
 
   .row
     .col.s10.offset-s1

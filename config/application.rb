@@ -22,5 +22,7 @@ module MyAdvocate
     config.app_domain = ENV['APP_DOMAIN']
 
     config.mixpanel_token = ENV['MIXPANEL_TOKEN']
+
+    config.action_view.default_form_builder = 'MyAdvocateFormBuilder'
   end
 end
