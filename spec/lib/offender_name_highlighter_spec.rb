@@ -31,10 +31,19 @@ describe OffenderNameHighlighter do
     end
 
     context 'when not all HIGHLIGHT_FIELD_NAMES are given' do
-      let(:search_params) { { dcj_last_name: 'Aaron' } }
+      let(:search_params) { { last_name: 'Aaron' } }
 
       it 'still highlights the fields' do
         expect(subject.highlight('Aaron Brown')).to eq('<strong>Aaron</strong> Brown')
+      end
+    end
+
+    describe 'with blank search terms' do
+      let(:search_params) { { first_name: '', last_name: 'Aaron', sid: '' } }
+
+      it 'still highlights present fields' do
+        expect(subject.highlight('John Aaron'))
+          .to eq('John <strong>Aaron</strong>')
       end
     end
   end
