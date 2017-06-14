@@ -1,7 +1,4 @@
 class OffendersController < ApplicationController
-  def index
-  end
-
   def show
     @offender =
       case params[:jurisdiction].to_sym
