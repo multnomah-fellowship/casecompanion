@@ -53,11 +53,13 @@
               VictimServicesProgram@doc.state.or.us
 
     = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
+      %p 
+        = link_to 'https://www.oregon.gov/doc/OMR/Pages/religious_services/victims_services/victim_issues.aspx#Facilitated_Dialogue_Program', :target => "_blank" do
+          Facilitated Dialogue Program
       %p General public information about the offender
       %p General information regarding misconducts the offender has received
       %p Programs offered and general information on if the inmate is participating in programming
       %p Location and institution movement of the offender
       %p Resources for victims and victim family members
-      %p The victim service programs offered by the Oregon Department of Corrections
       %p Questions about VINE
 
