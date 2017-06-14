@@ -7,18 +7,18 @@
 %section.row
   .col.s10.offset-s1
     .app__search-button-holder
-      = render_component 'button', to: offender_jurisdiction_path(:oregon) do
+      = render_component 'button', to: offender_jurisdiction_path(:oregon), stretch: true do
         In Prison
 
     - if feature_enabled?('dcj_search')
       .app__search-button-holder
-        = render_component 'button', to: offender_jurisdiction_path(:dcj) do
+        = render_component 'button', to: offender_jurisdiction_path(:dcj), stretch: true do
           On Probation
 
       .app__search-button-holder
-        = render_component 'button', to: offender_jurisdiction_path(:dcj) do
+        = render_component 'button', to: offender_jurisdiction_path(:dcj), stretch: true do
           On Parole
 
     .app__search-button-holder
-      = render_component 'button', to: offender_jurisdiction_path(:unknown) do
+      = render_component 'button', to: offender_jurisdiction_path(:unknown), stretch: true do
         Not Sure
