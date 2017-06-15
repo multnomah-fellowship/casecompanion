@@ -31,4 +31,6 @@ $border-color: rgba(0, 0, 0, 0.2);
 
 .app-avatar-list-item__caption {
   @extend %app-typography--caption;
+
+  line-height: 24px;
 }
