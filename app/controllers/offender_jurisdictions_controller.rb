@@ -134,17 +134,19 @@ class OffenderJurisdictionsController < ApplicationController
 
   def search_oregon
     # otherwise, time to search by name!
+    results = []
+
     begin
       results = OffenderScraper.search_by_name(
         offender_params[:first_name],
         offender_params[:last_name]
       )
-
-      results
     rescue OosMechanizer::Searcher::ConnectionFailed
       @search_error = I18n.t('offender_search.error_connection_failed')
     rescue OosMechanizer::Searcher::TooManyResultsError
       @search_error = I18n.t('offender_search.error_too_many_results')
+    ensure
+      return results
     end
   end
 end
