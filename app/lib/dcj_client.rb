@@ -87,6 +87,8 @@ class DcjClient
       po_first: response_body['POFirstName'],
       po_last: response_body['POLastName'],
       po_phone: response_body['POPhone'],
+      supervision_expiration_date: response_body['ExpirationDate'],
+      po_email: response_body['POEmail'],
     }
   end
 end

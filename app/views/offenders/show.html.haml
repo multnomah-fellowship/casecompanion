@@ -2,53 +2,11 @@
   .col.s10.offset-s1
     %h2.app-typography--header-1 Offender Public Information
 
-.row.hide-on-med-and-down
-  .col.m5.offset-m1
-    .app-typography--caption-above SID
-    %span.app-typography--body-1= @offender[:sid]
-  .col.m5
-    .app-typography--caption-above Offender Name
-    %span.app-typography--body-1
-      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
-.row.hide-on-med-and-down
-  - if @offender[:status]
-    .col.m5.offset-m1
-      .app-typography--caption-above Status
-      %span.app-typography--body-1= @offender[:status]
-  - if @offender[:jurisdiction] == :oregon
-    .col.m5
-      .app-typography--caption-above Offender Photo
-      %span.app-typography--body-1
-        = link_to 'Show Photo', "http://docpub.state.or.us/OOS/imageLoader.jsp?idno=#{@offender[:sid]}", target: "_blank"
-.row.hide-on-med-and-down{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
-  .col.m5.offset-m1
-    .app-typography--caption-above Earliest Release Date (Not Finalized)
-    %span.app-typography--body-1= @offender[:earliest_release_date]
-  .col.m5
-    .app-typography--caption-above Location
-    %span.app-typography--body-1= @offender[:location]
-
-.row.hide-on-large-only
-  .col.s10.offset-s1
-    .app-typography--caption-above SID
-    %span.app-typography--body-1= @offender[:sid]
-.row.hide-on-large-only
-  .col.s10.offset-s1
-    .app-typography--caption-above Offender Name
-    %span.app-typography--body-1
-      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
-.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
-  .col.s10.offset-s1
-    .app-typography--caption-above Status
-    %span.app-typography--body-1= @offender[:status]
-.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
-  .col.s10.offset-s1
-    .app-typography--caption-above Location
-    %span.app-typography--body-1= @offender[:location]
-.row.hide-on-large-only{ class: ('hide' if @offender[:jurisdiction] != :oregon) }
-  .col.s10.offset-s1
-    .app-typography--caption-above Earliest Release Date (Not Finalized)
-    %span.app-typography--body-1= @offender[:earliest_release_date]
+- case @offender[:jurisdiction].to_sym
+- when :oregon
+  = render 'offenders/info_prison_jail'
+- when :dcj
+  = render 'offenders/info_probation'
 
 %section.row
   .col.s10.offset-s1
