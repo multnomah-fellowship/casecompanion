@@ -136,10 +136,15 @@ class OffenderJurisdictionsController < ApplicationController
       return
     end
 
-    DcjClient.new.search_for_offender(
-      dob: offender_dob,
-      last_name: offender_params[:last_name]
-    )
+    begin
+      DcjClient.new.search_for_offender(
+        dob: offender_dob,
+        last_name: offender_params[:last_name]
+      )
+    rescue DcjClient::RequestError => ex
+      Raven.capture_exception(ex)
+      @search_error = I18n.t('offender_search.error_connection_failed')
+    end
   end
 
   def search_oregon

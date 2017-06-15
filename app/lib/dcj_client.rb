@@ -55,26 +55,30 @@ class DcjClient
   end
 
   def fetch_offender_details(sid: '', last_name: '', dob: '')
-    Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
-      request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
-        key: @api_key,
-        sid: sid,
-        lastName: last_name,
-        dob: dob
-      )
+    Timeout.timeout(10) do
+      Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
+        request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
+          key: @api_key,
+          sid: sid,
+          lastName: last_name,
+          dob: dob
+        )
 
-      req = Net::HTTP::Get.new(request_uri)
-      req['Accept'] = 'application/json'
+        req = Net::HTTP::Get.new(request_uri)
+        req['Accept'] = 'application/json'
 
-      response = http.request(req)
-      body = JSON.parse(response.body)
+        response = http.request(req)
+        body = JSON.parse(response.body)
 
-      unless response.code.to_i < 300
-        raise RequestError.new("Baxter API Request Failed: #{body['Message']}")
+        unless response.code.to_i < 300
+          raise RequestError.new("Baxter API Request Failed: #{body['Message']}")
+        end
+
+        body
       end
-
-      body
     end
+  rescue Timeout::Error
+    raise RequestError.new('Baxter API failed to respond within 10 seconds')
   end
 
   def offender_hash(response_body)

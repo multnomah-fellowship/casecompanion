@@ -147,7 +147,7 @@ en:
 
     error_connection_failed: |
       We ran into a website error while trying to process your search. It might
-      help to retry your search in a few minutes.
+      help to retry your search in a minute or two.
 
     error_offender_expired: |
       We ran into an error while trying to display this offender. We should be
