@@ -1,6 +1,8 @@
 class OffenderJurisdictionsController < ApplicationController
   before_action :redirect_to_oregon_if_no_dcj_search, only: %i[index]
 
+  include ActionView::Helpers::SanitizeHelper
+
   def index
   end
 
@@ -47,17 +49,25 @@ class OffenderJurisdictionsController < ApplicationController
 
     @results.compact!
 
-    if @results.present?
-      @grouped_results = OffenderGrouper.new(@results).each_group
-      @name_highlighter = OffenderNameHighlighter.new(offender_params)
-    else
-      @search_error = I18n.t(
-        'offender_search.error_no_results_by_name',
-        first_name: offender_params[:first_name],
-        last_name: offender_params[:last_name]
-      )
-    end
+    @grouped_results = OffenderGrouper.new(@results)
+    @name_highlighter = OffenderNameHighlighter.new(offender_params)
 
+    if @results.empty?
+      full_name = sanitize("#{offender_params[:first_name]} #{offender_params[:last_name]}")
+
+      case params[:jurisdiction].to_sym
+      when :oregon
+        @search_error ||= I18n.t(
+          'offender_search.error_no_results_prison_by_name_html',
+          name: full_name
+        ).html_safe
+      when :dcj
+        @search_error ||= I18n.t(
+          'offender_search.error_no_results_dcj_by_name_html',
+          name: full_name
+        ).html_safe
+      end
+    end
 
     render :show
   end
