@@ -8,6 +8,11 @@
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
         in: emphasized_text('in prison')))
 
+  - if @search_error
+    .row.app-row--error
+      .col.s10.offset-s1
+        = @search_error
+
   %section.row
     .col.s10.offset-s1
       %h3.app-typography--header-2= t('offender_search.by_name')

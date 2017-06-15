@@ -14,6 +14,9 @@ $colors: (
   blue-multnomah: #2f6296,
   blue-light: #1481ef,
   blue-lighter: #f1f8fe,
+
+  yellow-light: #fdf5e0,
+  yellow-dark: #724f0d,
 );
 
 // layout colors
@@ -24,11 +27,13 @@ $color-hover: map-get($colors, blue-lighter);
 $color-table-hover: $color-hover;
 $color-divider: map-get($colors, grey-light);
 $color-accent: map-get($colors, green-dark);
+$color-error: map-get($colors, yellow-light);
 
 // typography colors
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
 $color-header-3: map-get($colors, green-dark);
+$color-text-error: map-get($colors, yellow-dark);
 
 // button component
 $color-button: map-get($colors, green-dark);

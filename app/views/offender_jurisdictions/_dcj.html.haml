@@ -8,6 +8,11 @@
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
         in: emphasized_text('on probation or parole')))
 
+  - if @search_error
+    .row.app-row--error
+      .col.s10.offset-s1
+        = @search_error
+
   %section.row
     .col.s10.offset-s1.m5.offset-m1
       .input-field

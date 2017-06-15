@@ -9,12 +9,12 @@ class OffenderJurisdictionsController < ApplicationController
     # just show that error
     case params[:error]
     when 'error_no_results'
-      flash.now[:error] = I18n.t('offender_search.error_no_results',
+      @search_error = I18n.t('offender_search.error_no_results',
                                  search_sid: params[:error_sid])
     when 'error_connection_failed'
-      flash.now[:error] = I18n.t('offender_search.error_connection_failed')
+      @search_error = I18n.t('offender_search.error_connection_failed')
     when 'error_offender_expired'
-      flash.now[:error] = I18n.t('offender_search.error_offender_expired')
+      @search_error = I18n.t('offender_search.error_offender_expired')
     end
   end
 
@@ -27,7 +27,7 @@ class OffenderJurisdictionsController < ApplicationController
     end
 
     if error = valid_offender_search?(params[:jurisdiction].to_sym)
-      flash.now[:error] = error
+      @search_error = error
       return render :show
     end
 
@@ -51,7 +51,7 @@ class OffenderJurisdictionsController < ApplicationController
       @grouped_results = OffenderGrouper.new(@results).each_group
       @name_highlighter = OffenderNameHighlighter.new(offender_params)
     else
-      flash.now[:error] = I18n.t(
+      @search_error = I18n.t(
         'offender_search.error_no_results_by_name',
         first_name: offender_params[:first_name],
         last_name: offender_params[:last_name]
@@ -119,7 +119,7 @@ class OffenderJurisdictionsController < ApplicationController
       date_string =
         offender_params[:dob].values_at(:month, :day, :year).join('/')
 
-      flash.now[:error] =
+      @search_error =
         I18n.t('offender_search.error_invalid_date', date: date_string)
 
       # Since DOB is required, may as well not do anything
@@ -142,9 +142,9 @@ class OffenderJurisdictionsController < ApplicationController
 
       results
     rescue OosMechanizer::Searcher::ConnectionFailed
-      flash.now[:error] = I18n.t('offender_search.error_connection_failed')
+      @search_error = I18n.t('offender_search.error_connection_failed')
     rescue OosMechanizer::Searcher::TooManyResultsError
-      flash.now[:error] = I18n.t('offender_search.error_too_many_results')
+      @search_error = I18n.t('offender_search.error_too_many_results')
     end
   end
 end

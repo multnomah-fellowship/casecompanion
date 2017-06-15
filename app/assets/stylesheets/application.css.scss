@@ -287,8 +287,15 @@ strong {
 }
 
 .app-cell--error {
-  background-color: #ffffe0;
+  background-color: $color-error;
   padding: 1em;
+}
+
+.app-row--error {
+  background-color: $color-error;
+  color: $color-text-error;
+  margin-bottom: -40px;
+  padding: 32px 0;
 }
 
 .app-vertical-spacer {
