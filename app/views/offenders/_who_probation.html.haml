@@ -12,7 +12,7 @@
 
     = render_component 'dropdown', title: t('offender.what_talk_about', name: locals[:po_first]) do
       .app-faq-item
-        = faq_format(t('offender.probation_who_ppo_what_about'))
+        = faq_format(t('offender.probation_who_ppo_what_about', name: locals[:po_first]))
 
 .row
   .col.s10.offset-s1

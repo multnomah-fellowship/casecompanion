@@ -51,7 +51,7 @@ en:
       Parole/Probation Officer, Department of Community Justice<br>
       %{phone}
     probation_who_ppo_what_about: |
-      As a parole/probation officer, Jennifer can talk to you about offender information and answer questions including:
+      As a parole/probation officer, %{name} can talk to you about offender information and answer questions including:
 
       <ul>
         <li>What are the conditions of supervision? What do they mean to me?
