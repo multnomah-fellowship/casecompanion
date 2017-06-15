@@ -10,6 +10,7 @@
   - if @search_error
     .row.app-row--error
       .col.s10.offset-s1
+        = mixpanel_track_message :error, @search_error
         = @search_error
 
   %section.row
