@@ -13,7 +13,7 @@
 
     .col.s10.offset-s1.hide-on-large-only
       %p.app-typography--body-2
-        = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
+        = raw(t('offender_search.num_results', num: @grouped_results.total_results, name: bold_query))
 
       - @results.each do |result|
         %div.app-card--result
@@ -40,7 +40,7 @@
 
     .col.s10.offset-s1.hide-on-med-and-down
       %p.app-typography--body-2
-        = raw(t('offender_search.num_results', num: @grouped_results.count, name: bold_query))
+        = raw(t('offender_search.num_results', num: @grouped_results.total_results, name: bold_query))
 
     .col.s12.hide-on-med-and-down
       %table.app-table.app-table--full-bleed

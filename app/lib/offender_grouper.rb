@@ -3,9 +3,13 @@ class OffenderGrouper
     @offenders = offenders
   end
 
-  def each_group
+  def each_group(&block)
     @_grouped ||= group_offenders
-    @_grouped.each
+    if block_given?
+      @_grouped.each(&block)
+    else
+      @_grouped.each
+    end
   end
 
   def total_results

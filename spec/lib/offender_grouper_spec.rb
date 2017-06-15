@@ -22,8 +22,8 @@ describe OffenderGrouper do
   subject { described_class.new(offenders) }
 
   describe '#each_group' do
-    it 'returns an enumerable of groups' do
-      expect(subject.each_group).to be_a(Enumerable)
+    it 'returns an enumerator of groups' do
+      expect(subject.each_group).to be_a(Enumerator)
     end
 
     it 'returns the right number of groups' do
