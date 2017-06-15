@@ -61,6 +61,11 @@ describe OffenderJurisdictionsController do
         expect(response.body).to include(results[0][:sid].to_s)
       end
 
+      it 'tracks a mixpanel event' do
+        expect { subject }
+          .to track_mixpanel_event('search', include(jurisdiction: 'oregon'))
+      end
+
       describe 'when there are no results' do
         let(:results) { [] }
 
