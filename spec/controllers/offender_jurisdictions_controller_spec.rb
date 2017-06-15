@@ -66,7 +66,7 @@ describe OffenderJurisdictionsController do
 
         it 'gives an error' do
           subject
-          expect(response.body).to include("We couldn't find that offender.")
+          expect(response.body).to include("We couldn't find")
         end
       end
     end

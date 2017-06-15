@@ -49,7 +49,7 @@
             %th SID
             %th Known Aliases
             %th DOB
-        - @grouped_results.each do |group|
+        - @grouped_results.each_group do |group|
           %tbody
             - path = offender_path(group[:jurisdiction], group[:sid])
             %tr.app-table__row--bordered{ data: { href: path } }
