@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_variables
   before_action :set_raven_context
   before_action :set_current_user
+  before_action :set_mixpanel
 
   private
 
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
     Raven.extra_context(
       url: request.url
     )
+  end
+
+  def set_mixpanel
+    @mixpanel ||= MixpanelTrackerWrapper.from_request(request)
   end
 end

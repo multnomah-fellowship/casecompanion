@@ -50,6 +50,9 @@ RSpec.configure do |config|
     stub_request(:get, %r{multco.us/Baxter/api/polookup})
       .with(headers: { 'Accept' => 'application/json' })
       .to_return(body: JSON.generate(sample_offender))
+
+    allow_any_instance_of(MixpanelTrackerWrapper)
+      .to receive(:track)
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

@@ -43,6 +43,7 @@ gem 'inline_svg'
 gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
 
 gem 'sentry-raven'
+gem 'mixpanel-ruby'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

@@ -52,6 +52,12 @@ class OffenderJurisdictionsController < ApplicationController
     @grouped_results = OffenderGrouper.new(@results)
     @name_highlighter = OffenderNameHighlighter.new(offender_params)
 
+    @mixpanel.track('search',
+      jurisdiction: params[:jurisdiction],
+      num_results: @grouped_results.total_results,
+      fields: offender_params.to_unsafe_hash
+    )
+
     if @results.empty?
       full_name = sanitize("#{offender_params[:first_name]} #{offender_params[:last_name]}")
 
