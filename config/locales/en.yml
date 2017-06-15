@@ -49,7 +49,8 @@ en:
 
     probation_who_ppo_title: |
       Parole/Probation Officer, Department of Community Justice<br>
-      %{phone}
+      %{phone}<br>
+      <a href="mailto:%{email}" target="_blank">%{email}</a>
     probation_who_ppo_what_about: |
       As a parole/probation officer, %{name} can talk to you about offender information and answer questions including:
 
