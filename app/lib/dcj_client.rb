@@ -1,5 +1,6 @@
 class DcjClient
   URL_BASE = URI('https://www3.multco.us/Baxter')
+  REQUEST_TIMEOUT = 29 # seconds
 
   class InvalidQueryError < StandardError; end
   class UncachedOffenderError < StandardError; end
@@ -55,7 +56,7 @@ class DcjClient
   end
 
   def fetch_offender_details(sid: '', last_name: '', dob: '')
-    Timeout.timeout(10) do
+    Timeout.timeout(REQUEST_TIMEOUT) do
       Net::HTTP.start(URL_BASE.host, URL_BASE.port, use_ssl: true) do |http|
         request_uri = '/Baxter/api/polookup?' + URI.encode_www_form(
           key: @api_key,
