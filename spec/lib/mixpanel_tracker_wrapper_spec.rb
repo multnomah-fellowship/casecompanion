@@ -3,8 +3,13 @@ require 'rails_helper'
 describe MixpanelTrackerWrapper do
   describe '.from_request' do
     let(:distinct_id) { 'THISISMYDISTINCTID' }
-    let(:env) { { MixpanelMiddleware::DISTINCT_ID => distinct_id } }
-    let(:request) { Rack::Request.new(env) }
+    let(:env) do
+      {
+        MixpanelMiddleware::DISTINCT_ID => distinct_id,
+        'remote_ip' => '::1',
+      }
+    end
+    let(:request) { ActionDispatch::Request.new(env) }
 
     subject { MixpanelTrackerWrapper.from_request(request) }
 
