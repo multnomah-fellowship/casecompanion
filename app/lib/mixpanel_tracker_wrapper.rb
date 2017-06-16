@@ -20,17 +20,36 @@ class MixpanelTrackerWrapper
     @ip = ip
   end
 
-  def track(event_name, event_attributes)
-    log(event_name, event_attributes)
-    @tracker.track(@distinct_id, event_name, event_attributes)
+  def track(event_name, event_properties)
+    event_properties = self.class.flatten_properties(event_properties)
+    log(event_name, event_properties)
+
+    @tracker.track(@distinct_id, event_name, event_properties, @ip)
   end
 
   private
 
-  def log(event_name, event_attributes)
+  # Converts/flattens
+  #   { 'a' => { 'b' => ... } }
+  # to:
+  #   { 'a.b' => ... }
+  def self.flatten_properties(hash, prefix: nil)
+    hash.each_with_object({}) do |(k, v), h|
+      elem_prefix = [prefix, k].compact.join('.')
+
+      case v
+      when Hash
+        h.merge!(flatten_properties(v, prefix: elem_prefix))
+      else
+        h[elem_prefix] = v
+      end
+    end
+  end
+
+  def log(event_name, event_properties)
     Rails.logger.debug(TRACK_LOG % [
       event_name,
-      event_attributes.to_hash.merge(distinct_id: @distinct_id)
+      event_properties.to_hash.merge(distinct_id: @distinct_id)
     ])
   end
 end
