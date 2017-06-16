@@ -144,10 +144,12 @@ class OffenderJurisdictionsController < ApplicationController
 
     result = nil
     begin
+      start_time = Time.now
       result = DcjClient.new.search_for_offender(
         dob: offender_dob,
         last_name: offender_params[:last_name]
       )
+      @mixpanel.track('search-duration', duration: Time.now - start_time)
     rescue DcjClient::RequestError => ex
       Raven.capture_exception(ex)
       @search_error = I18n.t('offender_search.error_connection_failed')
