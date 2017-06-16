@@ -1,15 +1,23 @@
+# A utility class for tracking mixpanel events without complicating each
+# call-site.
+#
+# This class is intended to be instantiated once per-request.
 class MixpanelTrackerWrapper
   TRACK_LOG = '  [MIXPANEL] Tracking event %s: %s'
 
   attr_reader :distinct_id
 
   def self.from_request(request)
-    new(request.env[MixpanelMiddleware::DISTINCT_ID])
+    distinct_id = request.env[MixpanelMiddleware::DISTINCT_ID]
+    ip = request.ip
+
+    new(distinct_id, ip)
   end
 
-  def initialize(distinct_id = nil)
+  def initialize(distinct_id = nil, ip = nil)
     @tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_TOKEN'])
     @distinct_id = distinct_id
+    @ip = ip
   end
 
   def track(event_name, event_attributes)
