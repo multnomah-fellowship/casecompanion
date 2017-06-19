@@ -81,7 +81,7 @@ class DcjClient
       end
     end
   rescue Timeout::Error
-    raise RequestError.new('Baxter API failed to respond within 10 seconds')
+    raise RequestError.new("Baxter API failed to respond within #{REQUEST_TIMEOUT} seconds")
   end
 
   def offender_hash(response_body)
