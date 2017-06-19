@@ -71,7 +71,9 @@ class DcjClient
         response = http.request(req)
         body = JSON.parse(response.body)
 
-        unless response.code.to_i < 300
+        if response.code.to_i == 404
+          return nil
+        elsif response.code.to_i >= 300
           raise RequestError.new("Baxter API Request Failed: #{body['Message']}")
         end
 

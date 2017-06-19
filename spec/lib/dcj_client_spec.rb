@@ -36,6 +36,17 @@ describe DcjClient do
 
         subject
       end
+
+      describe 'when no results are returned' do
+        before do
+          expect(client)
+            .to receive(:fetch_offender_details)
+            .and_return(nil)
+        end
+
+        it { expect(subject).to be_nil }
+        it { expect { subject }.not_to change { OffenderSearchCache.count } }
+      end
     end
   end
 

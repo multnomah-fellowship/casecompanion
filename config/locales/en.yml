@@ -137,9 +137,7 @@ en:
       business days for the system to update after transfer.
 
     error_no_results_dcj_by_name_html: |
-      We couldn't find <strong>%{name}</strong> in the probation or parole database. You may want
-      to double check the name you used to search or check back in a few days
-      for the system to update.
+      We couldn't find <strong>%{name}</strong> in the probation or parole database. You may want to double check the name and birthday you used to search or check back in a few days for the system to update.
 
     error_too_many_results: |
       Your search returned too many results. You may want to check that you are
