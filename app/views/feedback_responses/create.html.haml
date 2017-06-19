@@ -1,0 +1,21 @@
+.row
+  .col.s10.offset-s1
+    %p.app-typography--body-1= t('feedback_responses.header')
+
+    %h1.app-typography--header-1= t("feedback_responses.#{@feedback.value}.header")
+    = image_tag emoji_image_path(@feedback)
+    = link_to t("feedback_responses.#{@feedback.value}.subheader"),
+      change_my_reply_path(@feedback),
+      class: 'app-typography--caption'
+
+    = form_for @feedback do |f|
+      = f.label :body, t("feedback_responses.#{@feedback.value}.field_label")
+      = f.text_field :body
+      %span= t('feedback_responses.field_caption')
+
+      = render_component 'button', submit: f do
+        Submit
+
+    %p.app-typography--caption
+      = image_tag 'seal_DA.png'
+      = simple_format(t('feedback_responses.footer'))

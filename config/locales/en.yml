@@ -167,6 +167,29 @@ en:
       might want to double-check that you filled out all three parts of the
       "Date of Birth" field.
 
+  feedback_responses:
+    header: Victims' Rights Confirmation Email
+    field_caption: Feedback is anonymous
+    footer: |
+      District Attorney's Office
+      Victim Assistance Program
+      <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
+
+    thumbs_up:
+      header: That's great!
+      subheader: Change my reply :(
+      field_label: What was most helpful?
+
+    thumbs_down:
+      header: Thanks for letting us know
+      subheader: Change my reply :)
+      field_label: How can this email be improved?
+
+    yes_but:
+      header: What else?
+      subheader: Change my reply :)
+      field_label: How can this email be improved?
+
   faqs:
     title: Frequently Asked Questions
     subtitle: |

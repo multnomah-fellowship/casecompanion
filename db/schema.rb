@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602000950) do
+ActiveRecord::Schema.define(version: 20170619204724) do
 
   create_table "court_case_subscriptions", force: :cascade do |t|
     t.integer "user_id",     null: false
     t.string  "case_number", null: false
     t.index ["user_id"], name: "index_court_case_subscriptions_on_user_id"
+  end
+
+  create_table "feedback_responses", force: :cascade do |t|
+    t.integer  "value",      null: false
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
