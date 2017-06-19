@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/offenders', to: 'offender_jurisdictions#index', as: :offenders
   post '/offenders/:jurisdiction', to: 'offender_jurisdictions#search'
 
+  get '/feedback/:id' => 'feedback_responses#show', id: /\d+/
   get '/feedback/:type' => 'feedback_responses#create', as: :feedback_response
   patch '/feedback/:id' => 'feedback_responses#update'
 

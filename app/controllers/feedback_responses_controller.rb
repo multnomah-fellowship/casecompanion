@@ -1,6 +1,11 @@
 class FeedbackResponsesController < ApplicationController
   layout 'focused'
 
+  def show
+    @feedback = FeedbackResponse.find(params[:id])
+    render :update
+  end
+
   def create
     @feedback = if params[:previous_feedback_id].present?
                   FeedbackResponse.find(params[:previous_feedback_id])
