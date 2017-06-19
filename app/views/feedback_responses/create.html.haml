@@ -1,21 +1,44 @@
-.row
-  .col.s10.offset-s1
-    %p.app-typography--body-1= t('feedback_responses.header')
+- content_for :header do
+  %p= t('feedback_responses.header')
 
-    %h1.app-typography--header-1= t("feedback_responses.#{@feedback.value}.header")
-    = image_tag emoji_image_path(@feedback)
+- content_for :footer do
+  = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
+  = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
+
+.row
+  -# spacer
+.row
+  -# spacer
+
+.row
+  .col.s8.offset-s2
+    = image_tag emoji_image_path(@feedback), width: '60'
+
+    %h1.app-typography--header-2= t("feedback_responses.#{@feedback.value}.header")
     = link_to t("feedback_responses.#{@feedback.value}.subheader"),
       change_my_reply_path(@feedback),
-      class: 'app-typography--caption'
+      class: 'app-feedback__tiny-caption'
 
-    = form_for @feedback do |f|
+= form_for @feedback do |f|
+  .row
+    -# spacer
+  .row
+    -# spacer
+  .row
+    .col.s8.offset-s2
       = f.label :body, t("feedback_responses.#{@feedback.value}.field_label")
       = f.text_field :body
-      %span= t('feedback_responses.field_caption')
+      %span.app-typography--caption= t('feedback_responses.field_caption')
 
+  .row
+    -# spacer
+  .row
+    -# spacer
+  .row
+    .col.s8.offset-s2
       = render_component 'button', submit: f do
         Submit
-
-    %p.app-typography--caption
-      = image_tag 'seal_DA.png'
-      = simple_format(t('feedback_responses.footer'))
+  .row
+    -# spacer
+  .row
+    -# spacer

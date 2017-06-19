@@ -12,4 +12,9 @@
     = render 'layouts/analytics_js'
 
   %body
-    = yield
+    .app-container--focused
+      .app-container--focused__header= content_for(:header)
+
+      = yield
+
+      .app-container--focused__footer= content_for(:footer)

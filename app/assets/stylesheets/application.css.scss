@@ -200,6 +200,34 @@ strong {
   margin-bottom: 140px;
 }
 
+.app-container--focused {
+  background-color: #fff;
+  border-left: 1px solid $color-page-border;
+  border-right: 1px solid $color-page-border;
+  margin: auto;
+  max-width: 460px;
+}
+
+.app-container--focused__header {
+  @extend %app-typography--caption;
+
+  align-items: center;
+  background-color: $color-page-background;
+  border-bottom-style: solid;
+  border-color: $color-page-border;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.app-container--focused__footer {
+  @extend .app-container--focused__header;
+
+  background-color: #fff;
+  border-top-style: solid;
+}
+
 @media(min-width: 640px) {
   .app-container {
     margin-left: auto;

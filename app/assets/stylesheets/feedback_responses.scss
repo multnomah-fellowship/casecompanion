@@ -1,0 +1,16 @@
+@import "typography";
+
+.app-feedback__tiny-caption {
+  font-size: 12px;
+}
+
+.app-feedback-footer__logo {
+  margin-right: 24px;
+}
+
+.app-feedback-footer__text {
+  @extend %app-typography--caption;
+
+  font-size: 12px;
+  line-height: 16px;
+}
