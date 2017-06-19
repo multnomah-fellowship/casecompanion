@@ -4,7 +4,14 @@
 
     %p Here is a haml sandbox with all our styles and everything!
 
-    = render_component 'button' do
-      Here is a button!
+    %a.app-button
+      Search
 
+    %a.app-button.loading
+      &nbsp;
+
+    / = render_component 'button' do
+    /   Here is a button!
+.row
+  .col.s10.offset-s1
     = render_component 'timeline'
