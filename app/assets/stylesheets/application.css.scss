@@ -481,3 +481,7 @@ section.row:not(:first-child) {
   margin-top: 40px;
   border-top: 4px solid $color-divider;
 }
+
+.character-counter {
+  color: $color-text-caption;
+}
