@@ -10,10 +10,9 @@
       = render_component 'button', to: offender_jurisdiction_path(:oregon), stretch: true do
         In Prison
 
-    - if feature_enabled?('dcj_search')
-      .app__search-button-holder
-        = render_component 'button', to: offender_jurisdiction_path(:dcj), stretch: true do
-          On Probation or Parole
+    .app__search-button-holder
+      = render_component 'button', to: offender_jurisdiction_path(:dcj), stretch: true do
+        On Probation or Parole
 
     .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:unknown), stretch: true do

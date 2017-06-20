@@ -1,6 +1,4 @@
 class OffenderJurisdictionsController < ApplicationController
-  before_action :redirect_to_oregon_if_no_dcj_search, only: %i[index]
-
   include ActionView::Helpers::SanitizeHelper
 
   def index
@@ -37,8 +35,7 @@ class OffenderJurisdictionsController < ApplicationController
 
     @results = []
 
-    if %w[dcj unknown].include?(params[:jurisdiction]) &&
-        Rails.application.config.flipper[:dcj_search].enabled?
+    if %w[dcj unknown].include?(params[:jurisdiction])
       # DCJ search requires last_name and (SID|dob) for now :(
       @results.push(search_dcj)
     end
@@ -79,13 +76,6 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   private
-
-  # TODO: remove this when we unflag dcj_search
-  def redirect_to_oregon_if_no_dcj_search
-    unless Rails.application.config.flipper[:dcj_search].enabled?
-      redirect_to offender_jurisdiction_path(:oregon)
-    end
-  end
 
   def valid_offender_search?(jurisdiction)
     case jurisdiction
