@@ -11,7 +11,7 @@
   -# spacer
 
 .row
-  .col.s8.offset-s2
+  .col.s10.offset-s1
     = image_tag emoji_image_path(@feedback), width: '60'
 
     %h1.app-typography--header-2= t("feedback_responses.#{@feedback.value}.header")
@@ -25,7 +25,7 @@
   .row
     -# spacer
   .row
-    .col.s8.offset-s2
+    .col.s10.offset-s1
       = f.label :body, t("feedback_responses.#{@feedback.value}.field_label")
       = f.text_field :body
       %span.app-typography--caption= t('feedback_responses.field_caption')
@@ -35,7 +35,7 @@
   .row
     -# spacer
   .row
-    .col.s8.offset-s2
+    .col.s10.offset-s1
       = render_component 'button', submit: f do
         Submit
   .row
