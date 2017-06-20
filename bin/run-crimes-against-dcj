@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# This script is meant to politely search the DCJ PPO lookup for all offenders
+# in our current CRIMES dump, so that we can verify how many of them actually
+# show up.
+#
+# It attempts to throttle queries over 12 hours, so that we don't overwhelm the
+# PPO lookup API.
+require 'csv'
+require_relative '../config/environment.rb'
+$stdout.sync = true
+
+class Throttler
+  EXPECTED_NUM_QUERIES = 3610
+  EXPECTED_DURATION_HOURS = 12
+  EXPECTED_SECONDS_PER_QUERY = (EXPECTED_DURATION_HOURS * 60 * 60) / EXPECTED_NUM_QUERIES
+
+  def throttle(&block)
+    start = Time.now
+    result = block.call
+    duration = Time.now - start
+    sleep([5, EXPECTED_SECONDS_PER_QUERY - duration].max) unless ENV['NO_THROTTLE']
+    return result
+  end
+end
+
+client = DcjClient.new
+results = `echo "copy (select def_id_nbr, case_id_nbr, def_lname, oregon_sid_nbr from defendants where oregon_sid_nbr is not null and def_lname is not null) to STDOUT CSV HEADER;" | psql crimes`
+throttler = Throttler.new
+out = CSV.new($stdout, headers: %i[def_id_nbr case_id_nbr result], write_headers: true)
+
+CSV.parse(results, headers: :first_row) do |row|
+  result = throttler.throttle do
+    client.search_for_offender(
+      last_name: row['def_lname'],
+      sid: row['oregon_sid_nbr']
+    )
+  end
+
+  out << {
+    def_id_nbr: row['def_id_nbr'],
+    case_id_nbr: row['case_id_nbr'],
+    result: JSON.generate(result)
+  }
+end
