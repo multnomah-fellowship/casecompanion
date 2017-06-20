@@ -59,6 +59,13 @@
     Button
     %i.material-icons keyboard_arrow_right
 
+%p Button that turns into a spinner when clicked
+:styleguide
+  = render_component 'button', to: '#', spinner: true do
+    Button Text
+  = render_component 'button', to: '#', loading: true do
+    Button Text
+
 %h2 Avatar List Item
 :styleguide
   = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'

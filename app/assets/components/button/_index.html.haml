@@ -2,15 +2,16 @@
 - classes << 'app-button--solid' if options[:solid]
 - classes << 'app-button--transparent' if options[:transparent]
 - classes << 'app-button--stretch' if options[:stretch]
+- classes << 'app-button--loading' if options[:loading]
+- data = {}
+- data.merge!(disable: true, 'app-spinner': true) if options[:spinner]
 
 - to = options.fetch(:to, '#')
-- no_link = options.fetch(:no_link, false)
-
 - submit_form = options.fetch(:submit, nil)
 
 - if submit_form
   - button_text = yield.strip
-  = submit_form.submit(button_text, class: classes)
+  = submit_form.submit(button_text, class: classes, data: data)
 - else
-  = link_to(to, class: classes) do
+  = link_to(to, class: classes, data: data) do
     = yield

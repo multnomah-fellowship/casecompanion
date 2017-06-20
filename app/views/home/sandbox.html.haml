@@ -6,10 +6,10 @@
 
     %p Here is a haml sandbox with all our styles and everything!
 
-    %a.app-button
+    = render_component 'button' do
       Search
 
-    %a.app-button.loading
+    %a.app-button
       &nbsp;
 .row
   .col.s2.offset-s1

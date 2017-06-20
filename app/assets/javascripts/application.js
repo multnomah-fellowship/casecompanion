@@ -94,6 +94,20 @@ window.App = (function() {
     $(document).on('click', '.app-reveal', handleReveal);
   };
 
+  const initializeButtonSpinners = function() {
+    const handleButtonClick = function(e) {
+      const $target = $(e.target);
+      $target.addClass('app-button--loading');
+
+      if ($target.attr('href') === '#') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    $(document).on('click', '.app-button[data-app-spinner]', handleButtonClick);
+  };
+
   return {
     init: function() {
       // Beware: This is only called once on initial page load, and subsequent
@@ -103,6 +117,8 @@ window.App = (function() {
       initializeDropdowns();
 
       initializeReveals();
+
+      initializeButtonSpinners();
 
       // In case the user hits the back button and there are pre-filled values
       // on the previous page:
