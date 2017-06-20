@@ -15,9 +15,9 @@
     = image_tag emoji_image_path(@feedback), width: '60'
 
     %h1.app-typography--header-2= t("feedback_responses.#{@feedback.value}.header")
-    = link_to t("feedback_responses.#{@feedback.value}.subheader"),
-      change_my_reply_path(@feedback),
-      class: 'app-feedback__tiny-caption'
+    = link_to change_my_reply_path(@feedback), class: 'app-feedback__tiny-caption' do
+      = t("feedback_responses.subheader")
+      = image_tag emoji_image_path(@feedback, size: :small, invert: true), width: '18'
 
 = form_for @feedback do |f|
   .row

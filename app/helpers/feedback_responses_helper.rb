@@ -1,25 +1,48 @@
 module FeedbackResponsesHelper
-  def emoji_image_path(feedback)
-    case feedback.value.to_sym
+  OPPOSITES = {
+    thumbs_up: :thumbs_down,
+    thumbs_down: :thumbs_up,
+    yes_but: :thumbs_up,
+  }
+
+  def emoji_image_path(feedback, size: :default, invert: false)
+    suffix = case size
+             when :small
+              '_small'
+             when :default
+               ''
+             else
+               raise StandardError.new("Unknown emoji_image size: #{size}")
+             end
+
+    feedback_value = feedback.value.to_sym
+
+    if invert
+      feedback_value = OPPOSITES[feedback_value]
+    end
+
+    case feedback_value
     when :thumbs_up
-      image_path('emoji_happy.png')
+      image_path("emoji_happy#{suffix}.png")
     when :thumbs_down
-      image_path('emoji_sad.png')
+      image_path("emoji_sad#{suffix}.png")
     when :yes_but
-      image_path('emoji_thinking_face.png')
+      image_path("emoji_thinking_face#{suffix}.png")
     else
       raise StandardError.new("Unknown emoji_image type: #{feedback.value}")
     end
   end
 
   def change_my_reply_path(feedback)
-    case feedback.value.to_sym
-    when :thumbs_up
-      feedback_response_path(type: 'thumbs_down', previous_feedback_id: feedback.id)
-    when :thumbs_down, :yes_but
-      feedback_response_path(type: 'thumbs_up', previous_feedback_id: feedback.id)
-    else
+    feedback_value = feedback.value.to_sym
+
+    if OPPOSITES.exclude?(feedback_value)
       raise StandardError.new("Unknown change_my_reply_path type: #{feedback.value}")
     end
+
+    feedback_response_path(
+      type: OPPOSITES[feedback_value],
+      previous_feedback_id: feedback.id
+    )
   end
 end
