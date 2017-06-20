@@ -16,6 +16,7 @@
 //= require materialize/initial
 //= require materialize/global
 //= require materialize/forms
+//= require materialize/character_counter
 //= require_tree .
 
 const analytics = {

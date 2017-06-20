@@ -27,7 +27,7 @@
   .row
     .col.s10.offset-s1
       = f.label :body, t("feedback_responses.#{@feedback.value}.field_label")
-      = f.text_field :body
+      = f.text_field :body, 'data-length': 200
       %span.app-typography--caption= t('feedback_responses.field_caption')
 
   .row
