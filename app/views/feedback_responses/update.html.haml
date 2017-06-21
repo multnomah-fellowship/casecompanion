@@ -1,3 +1,16 @@
+- content_for :header do
+  %p= t('feedback_responses.header')
+
+- content_for :footer do
+  = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
+  = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
+
 .row
   .col.s10.offset-s1
     %h1.app-typography--header-1 Thanks for your feedback!
+
+    %p.app-typography--body-1
+      Your feedback will help us deliver a better service to more people.
+
+    %p.app-typography--body-1
+      Thanks again!
