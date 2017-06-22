@@ -12,7 +12,11 @@
 
   %body
     %header.app-header.app-header--hero
-      .app-container
+      / .app-container
+      /   .row
+      /     .col.s12.offset-m1
+      /       .app-header__ribbon
+      /         More features coming soon. Want to be the first to know?  Sign up to be a beta tester
         .row
           .col.s12.offset-s1.m4.offset-m1
             = link_to root_path, class: 'app-header__link' do
