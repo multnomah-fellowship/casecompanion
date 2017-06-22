@@ -1,4 +1,4 @@
-# myadvocate
+# myadvocate ![Build Status](https://travis-ci.org/multnomah-fellowship/myadvocate.svg?branch=master)
 Prototype for CfA multnomah fellowship
 
 * [View Live Site](https://myadvocateoregon.org)
