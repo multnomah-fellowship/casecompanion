@@ -50,6 +50,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'simplecov'
+  gem 'codeclimate-test-reporter'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'webmock'
