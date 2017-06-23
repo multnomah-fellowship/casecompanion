@@ -23,22 +23,33 @@ class Throttler
   end
 end
 
-client = DcjClient.new
+dcj_client = DcjClient.new
 results = `echo "copy (select def_id_nbr, case_id_nbr, def_lname, oregon_sid_nbr from defendants where oregon_sid_nbr is not null and def_lname is not null) to STDOUT CSV HEADER;" | psql crimes`
 throttler = Throttler.new
-out = CSV.new($stdout, headers: %i[def_id_nbr case_id_nbr result], write_headers: true)
+out = CSV.new($stdout, headers: %i[
+  def_id_nbr
+  case_id_nbr
+  dcj_result
+  doc_result
+], write_headers: true)
 
 CSV.parse(results, headers: :first_row) do |row|
-  result = throttler.throttle do
-    client.search_for_offender(
+  dcj_result = nil
+  doc_result = nil
+
+  throttler.throttle do
+    dcj_result = dcj_client.search_for_offender(
       last_name: row['def_lname'],
       sid: row['oregon_sid_nbr']
     )
+
+    doc_result = OffenderScraper.fetch_offender_details(row['oregon_sid_nbr'])
   end
 
   out << {
     def_id_nbr: row['def_id_nbr'],
     case_id_nbr: row['case_id_nbr'],
-    result: JSON.generate(result)
+    dcj_result: JSON.generate(dcj_result),
+    doc_result: JSON.generate(doc_result),
   }
 end
