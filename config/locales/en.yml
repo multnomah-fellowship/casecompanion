@@ -19,6 +19,13 @@ en:
     text: New features coming soon. Want to be the first to know?
     link: Sign up to be a beta tester.
 
+  beta_signups:
+    focus_header: 'Get information online. Sign up for early access:'
+    focus_label: Email Address
+    focus_caption: We won't share your email with anyone else
+    focus_cta: I'm Interested
+    screenshot_header: Coming Soon
+
   footer:
     title: Not finding what you're looking for?
     who_receiving: Who's receiving my questions?

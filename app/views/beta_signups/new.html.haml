@@ -1,31 +1,30 @@
 - content_for :focus_form do
-  %h2.app-typography--header-3 Get information online - Sign up for early access
+  %h2.app-typography--header-3= t('beta_signups.focus_header')
 
   .row
     .col.s12.m6
       .input-field
-        = label_tag 'email' do
-          Email Address
+        = label_tag 'email', t('beta_signups.focus_label')
         = text_field_tag 'email'
 
-      %span.app-typography--caption We won't share your email with anyone else
+      %span.app-typography--caption= t('beta_signups.focus_caption')
 
     .hide-on-small-only
       .col.m5.offset-m1
         = render_component 'button', stretch: true, solid: true do
-          I'm interested
+          = t('beta_signups.focus_cta')
 
   .hide-on-med-and-up
     .row
       .col.s12
         = render_component 'button', stretch: true, solid: true do
-          I'm interested
+          = t('beta_signups.focus_cta')
 
 .app-header--subhero
   .app-container
     .row
       .col.s10.offset-s1
-        %h2.app-typography--header-1 Coming Soon
+        %h2.app-typography--header-1= t('beta_signups.screenshot_header')
         %p
           Image Goes Here!
 
