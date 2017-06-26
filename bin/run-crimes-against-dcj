@@ -9,6 +9,10 @@ require 'csv'
 require_relative '../config/environment.rb'
 $stdout.sync = true
 
+def strip_leading_zero(num)
+  num.to_i.to_s
+end
+
 class Throttler
   EXPECTED_NUM_QUERIES = 3610
   EXPECTED_DURATION_HOURS = 12
@@ -38,14 +42,15 @@ CSV.parse(results, headers: :first_row) do |row|
   begin
     dcj_result = nil
     doc_result = nil
+    sid = strip_leading_zero(row['oregon_sid_nbr'])
 
     throttler.throttle do
       dcj_result = dcj_client.search_for_offender(
         last_name: row['def_lname'],
-        sid: row['oregon_sid_nbr']
+        sid: sid
       )
 
-      doc_result = OffenderScraper.fetch_offender_details(row['oregon_sid_nbr'])
+      doc_result = OffenderScraper.fetch_offender_details(sid)
     end
 
     out << {
