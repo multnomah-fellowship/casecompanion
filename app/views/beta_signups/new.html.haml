@@ -1,0 +1,42 @@
+- content_for :focus_form do
+  %h2.app-typography--header-3 Get information online - Sign up for early access
+
+  .row
+    .col.s12.m6
+      .input-field
+        = label_tag 'email' do
+          Email Address
+        = text_field_tag 'email'
+
+      %span.app-typography--caption We won't share your email with anyone else
+
+    .hide-on-small-only
+      .col.m5.offset-m1
+        = render_component 'button', stretch: true, solid: true do
+          I'm interested
+
+  .hide-on-med-and-up
+    .row
+      .col.s12
+        = render_component 'button', stretch: true, solid: true do
+          I'm interested
+
+.app-header--subhero
+  .app-container
+    .row
+      .col.s10.offset-s1
+        %h2.app-typography--header-1 Coming Soon
+        %p
+          Image Goes Here!
+
+.app-header--subhero
+  .app-container
+    .row
+      .col.s10.offset-s1.m5.offset-m1
+        %p.app-typography--body-1
+          - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org', target: '_blank')
+          = raw(t('home.description', cfa_link: cfa_link))
+
+      .col.s10.offset-s1.m5
+        = image_tag 'partner_logos.png', class: 'app-header__logos'
+

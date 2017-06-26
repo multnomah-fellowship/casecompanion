@@ -37,6 +37,10 @@ body, html {
   font-family: $system-sans-serif;
   margin: 0;
   min-width: 360px;
+
+  &.app-layout--lander {
+    background-color: #fff;
+  }
 }
 
 a {
@@ -276,6 +280,10 @@ strong {
   }
 }
 
+.app-header--lander {
+  background-color: $primary-color;
+}
+
 .app-header--subhero {
   background-color: #fff;
   padding-top: 20px;
@@ -324,6 +332,35 @@ strong {
   max-width: 230px;
   margin: auto;
   display: block;
+}
+
+$focus-form-overlap-height: 120px;
+.app-header__focus-form-spacer {
+  height: $focus-form-overlap-height;
+}
+
+@mixin override-form-color($new-color) {
+  .input-field {
+    label.active {
+      color: $color-accent !important;
+    }
+
+    input:focus {
+      border-bottom-color: $color-accent !important;
+      box-shadow: 0 1px 0 0 $color-accent !important;
+    }
+  }
+}
+
+.app-header__focus-form {
+  @include override-form-color($color-accent);
+
+  background-color: #fff;
+  bottom: $focus-form-overlap-height;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.08);
+  margin-bottom: -$focus-form-overlap-height;
+  padding: 48px 0;
+  position: relative;
 }
 
 .app-cell--error {
