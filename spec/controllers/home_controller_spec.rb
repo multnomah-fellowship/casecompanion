@@ -26,6 +26,16 @@ describe HomeController do
         expect(link).to be_present
       end
     end
+
+    describe 'with the beta_bar flag' do
+      around { |ex| enable_feature('beta_bar', ex) }
+
+      it 'renders' do
+        subject
+        expect(response).to be_success
+        expect(response.body).to include('app-beta-bar')
+      end
+    end
   end
 
   describe '#sandbox' do
