@@ -15,6 +15,10 @@ en:
     faqs: How do I get a restraining order? How do I get a copy of the police report? What happens next?
     faqs_link: See Frequently Asked Questions
 
+  beta_bar:
+    text: New features coming soon. Want to be the first to know?
+    link: Sign up to be a beta tester.
+
   footer:
     title: Not finding what you're looking for?
     who_receiving: Who's receiving my questions?

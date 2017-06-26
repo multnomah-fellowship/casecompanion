@@ -1,0 +1,8 @@
+- if feature_enabled?('beta_bar')
+  %section.app-beta-bar
+    .app-container
+      .row
+        .col.s11.offset-s1
+          %p
+            = t('beta_bar.text')
+            = link_to t('beta_bar.link'), '#'
