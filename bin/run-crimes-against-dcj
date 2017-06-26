@@ -34,22 +34,31 @@ out = CSV.new($stdout, headers: %i[
 ], write_headers: true)
 
 CSV.parse(results, headers: :first_row) do |row|
-  dcj_result = nil
-  doc_result = nil
+  num_retries = 0
+  begin
+    dcj_result = nil
+    doc_result = nil
 
-  throttler.throttle do
-    dcj_result = dcj_client.search_for_offender(
-      last_name: row['def_lname'],
-      sid: row['oregon_sid_nbr']
-    )
+    throttler.throttle do
+      dcj_result = dcj_client.search_for_offender(
+        last_name: row['def_lname'],
+        sid: row['oregon_sid_nbr']
+      )
 
-    doc_result = OffenderScraper.fetch_offender_details(row['oregon_sid_nbr'])
+      doc_result = OffenderScraper.fetch_offender_details(row['oregon_sid_nbr'])
+    end
+
+    out << {
+      def_id_nbr: row['def_id_nbr'],
+      case_id_nbr: row['case_id_nbr'],
+      dcj_result: JSON.generate(dcj_result),
+      doc_result: JSON.generate(doc_result),
+    }
+    num_retries = 0
+  rescue => ex
+    $stderr.puts "Got exception: #{ex.message}"
+    $stderr.puts "  ...retrying"
+    num_retries += 1
+    retry if num_retries < 3
   end
-
-  out << {
-    def_id_nbr: row['def_id_nbr'],
-    case_id_nbr: row['case_id_nbr'],
-    dcj_result: JSON.generate(dcj_result),
-    doc_result: JSON.generate(doc_result),
-  }
 end
