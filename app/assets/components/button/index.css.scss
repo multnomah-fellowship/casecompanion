@@ -32,9 +32,13 @@
 }
 
 .app-button--solid {
-  @extend .app-button;
-
   background-color: $color-button-solid;
+  border: none;
+  color: #fff;
+}
+
+.app-button--solid-dark {
+  background-color: $color-button-solid-dark;
   border: none;
   color: #fff;
 }
