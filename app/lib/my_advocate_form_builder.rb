@@ -1,6 +1,17 @@
 class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 
+  def hidden_attribution_fields
+    fields_for(:utm_attribution) do |f|
+      [
+        f.hidden_field(:utm_campaign),
+        f.hidden_field(:utm_content),
+        f.hidden_field(:utm_medium),
+        f.hidden_field(:utm_source),
+      ].join.html_safe
+    end
+  end
+
   def dob_select_field(method)
     fields_for(method) do |f|
       <<-HTML.html_safe

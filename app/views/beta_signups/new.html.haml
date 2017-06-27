@@ -1,24 +1,27 @@
 - content_for :focus_form do
   %h2.app-typography--header-3= t('beta_signups.focus_header')
 
-  .row
-    .col.s12.m6
-      .input-field
-        = label_tag 'email', t('beta_signups.focus_label')
-        = text_field_tag 'email'
+  = form_for @beta_signup do |f|
+    = f.hidden_attribution_fields
 
-      %span.app-typography--caption= t('beta_signups.focus_caption')
-
-    .hide-on-small-only
-      .col.m5.offset-m1
-        = render_component 'button', stretch: true, solid: true do
-          = t('beta_signups.focus_cta')
-
-  .hide-on-med-and-up
     .row
-      .col.s12
-        = render_component 'button', stretch: true, solid: true do
-          = t('beta_signups.focus_cta')
+      .col.s12.m6
+        .input-field
+          = f.label :email, t('beta_signups.focus_label')
+          = f.text_field :email
+
+        %span.app-typography--caption= t('beta_signups.focus_caption')
+
+      .hide-on-small-only
+        .col.m5.offset-m1
+          = render_component 'button', submit: f, stretch: true, solid: true do
+            = t('beta_signups.focus_cta')
+
+    .hide-on-med-and-up
+      .row
+        .col.s12
+          = render_component 'button', submit: f, stretch: true, solid: true do
+            = t('beta_signups.focus_cta')
 
 .app-header--subhero
   .app-container

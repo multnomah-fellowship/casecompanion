@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619204724) do
+ActiveRecord::Schema.define(version: 20170626234454) do
+
+  create_table "beta_signups", force: :cascade do |t|
+    t.string   "email",              null: false
+    t.integer  "utm_attribution_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["utm_attribution_id"], name: "index_beta_signups_on_utm_attribution_id"
+  end
 
   create_table "court_case_subscriptions", force: :cascade do |t|
     t.integer "user_id",     null: false
@@ -47,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170619204724) do
     t.boolean  "is_admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "utm_attributions", force: :cascade do |t|
+    t.string   "utm_source"
+    t.string   "utm_content"
+    t.string   "utm_medium"
+    t.string   "utm_campaign"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

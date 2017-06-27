@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get '/feedback/:type' => 'feedback_responses#create', as: :feedback_response
   patch '/feedback/:id' => 'feedback_responses#update'
 
-  get '/beta' => 'beta_signups#new'
+  get '/beta', to: 'beta_signups#new', as: :beta_signup
+  post '/beta', to: 'beta_signups#create', as: :beta_signups
 
   resources :court_case_subscriptions, as: :subscription, only: %i[show]
 
