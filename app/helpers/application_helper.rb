@@ -107,4 +107,9 @@ module ApplicationHelper
   def feature_enabled?(name)
     Rails.application.config.flipper[name].enabled?
   end
+
+  def render_beta_bar?
+    return false unless feature_enabled?('beta_bar')
+    return controller_name != 'beta_signups'
+  end
 end
