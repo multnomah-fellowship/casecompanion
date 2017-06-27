@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UtmAttribution, type: :model do
   describe '.new_from_params' do
-    subject { described_class.new_from_params(params) }
+    subject { described_class.new_from_params(ActionController::Parameters.new(params)) }
 
     context 'when no params are present' do
       let(:params) { {} }
