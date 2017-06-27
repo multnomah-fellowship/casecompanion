@@ -296,6 +296,14 @@ strong {
   }
 }
 
+.app-header--subhero-no-bottom-padding {
+  padding-bottom: 0;
+
+  > .app-container:last-child > .row:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .app-header__link {
   display: inline-block;
   text-decoration: none;
