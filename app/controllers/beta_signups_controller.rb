@@ -1,10 +1,10 @@
 class BetaSignupsController < ApplicationController
-  layout 'lander'
-
   def new
     @beta_signup = BetaSignup.new(
       utm_attribution: UtmAttribution.new_from_params(params)
     )
+
+    render layout: 'lander'
   end
 
   def create

@@ -1,0 +1,43 @@
+- content_for :pre_main_focus do
+  .row
+    .col.s12
+      thumbs up!
+
+  .row
+    .col.s12.m6.offset-m3
+      %h2.app-typography--header-1= t('beta_signups_created.hero_header')
+      %p= simple_format(t('beta_signups_created.hero_subheader'))
+
+-# TODO: Robyn/Chelsea/Saydyie contact info into DRY place
+.row
+  .col.s10.offset-s1
+    %h2.app-typography--header-2= t('beta_signups_created.main_header')
+
+    %h3.app-typography--header-3= t('beta_signups_created.case_open_header')
+    = render_component 'avatar_list_item',
+      name: t('beta_signups_created.your_advocate'),
+      caption: raw(t('beta_signups_created.your_advocate_caption'))
+
+.row
+  .col.s10.offset-s1
+    %h3.app-typography--header-3= t('beta_signups_created.case_prison_header')
+    = render_component 'avatar_list_item',
+      name: t('offender.robyn'),
+      caption: raw(t('offender.robyn_title_with_contact')),
+      image: image_path('robyn.jpg')
+
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
+      .app-faq-item
+        = faq_format(t('offender.prison_jail_who_robyn_what_about'))
+
+.row
+  .col.s10.offset-s1
+    %h3.app-typography--header-3= t('beta_signups_created.case_probation_header')
+    = render_component 'avatar_list_item',
+      name: t('offender.probation_who_call.name'),
+      caption: raw(t('offender.probation_who_call.caption')),
+      image: image_path('chelsea.jpg')
+
+    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Chelsea') do
+      .app-faq-item
+        = faq_format(t('offender.probation_who_chelsea_what_about'))

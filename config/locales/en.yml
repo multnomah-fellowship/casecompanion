@@ -26,6 +26,23 @@ en:
     focus_cta: I'm Interested
     screenshot_header: Coming Soon
 
+  beta_signups_created:
+    hero_header: Great! You're signed up for early access.
+    hero_subheader: |
+      Thank you for your interest.
+
+      We'll send you an email when
+      new features are available.
+    main_header: Support is always available from an advocate
+    case_open_header: If your case is still open
+    case_prison_header: If the offender is sentenced to prison
+    case_probation_header: If the offender is sentenced to probation
+    your_advocate: Your advocate at the District Attorney's office
+    your_advocate_caption: |
+      Victim Assistance Program<br>
+      (503) 988-3275<br>
+      <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
+
   footer:
     title: Not finding what you're looking for?
     who_receiving: Who's receiving my questions?
@@ -42,6 +59,11 @@ en:
     what_talk_about: 'What can I talk to %{name} about?'
     robyn: 'Robyn Masella'
     robyn_title: 'Victims Specialist, Board of Parole & Post-Prison Supervision'
+    robyn_title_with_contact: |
+      Victims Specialist, Board of Parole & Post-Prison Supervision<br>
+      (503) 945-0907<br>
+      <a href="mailto:DLParoleBoardVictimNotify@doc.state.or.us" target="_blank">DLParoleBoardVictimNotify@doc.state.or.us</a>
+
     saydyie: 'Saydyie DeRosia'
     saydyie_title: 'Victim Services Coordinator, Oregon Department of Corrections'
     how_date_change: 'How might the release date date change?'

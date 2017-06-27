@@ -33,6 +33,10 @@
                   .app-header__title Log In
 
     %main.app-container--main
+      - if content_for?(:pre_main_focus)
+        .app-container.app-container--pre-main-focus
+          = yield :pre_main_focus
+
       - if flash[:info]
         .row
           .col.s10.offset-s1
