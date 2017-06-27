@@ -8,7 +8,7 @@
       .col.s12.m6
         .input-field
           = f.label :email, t('beta_signups.focus_label')
-          = f.text_field :email
+          = f.text_field :email, type: 'email', class: 'validate'
 
         %span.app-typography--caption= t('beta_signups.focus_caption')
 
