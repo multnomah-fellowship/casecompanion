@@ -23,14 +23,8 @@
               DLParoleBoardVictimNotify@doc.state.or.us
 
     = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
-      %p How to stay informed
-      %p What these notifications mean
-      %p Why the release date changes
-      %p Will there be a parole hearing I can speak at
-      %p Release plans and safety planning
-      %p Discuss terms of supervision and no contact orders
-      %p When and where an offender will be released
-      %p And more…
+      .app-faq-item
+        = faq_format(t('offender.prison_jail_who_robyn_what_about'))
 
 .row
   .col.s10.offset-s1
