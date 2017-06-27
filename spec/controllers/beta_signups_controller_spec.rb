@@ -35,5 +35,11 @@ RSpec.describe BetaSignupsController, type: :controller do
       expect(created.utm_attribution.utm_source).to eq('source-foo')
       expect(created.utm_attribution.utm_campaign).to eq('campaign-1234')
     end
+
+    it 'renders successfully' do
+      subject
+      expect(response).to be_success
+      expect(response.body).to include('Great!')
+    end
   end
 end
