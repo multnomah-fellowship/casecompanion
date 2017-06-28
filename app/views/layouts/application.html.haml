@@ -17,7 +17,7 @@
     %header.app-header
       .app-container
         .row
-          .col.s12{ class: ('m6' if feature_enabled?(:log_in)) }
+          .col.s10.offset-s1{ class: ('m6' if feature_enabled?(:log_in)) }
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title= render_component 'logo'
           - if feature_enabled?(:log_in)
