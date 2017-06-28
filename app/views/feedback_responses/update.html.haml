@@ -1,9 +1,17 @@
 - content_for :header do
-  %p= t('feedback_responses.header')
+  - if @feedback.page == 'vrn-experiment'
+    %p= t('feedback_responses.header')
+  - else
+    = render_component 'logo'
 
 - content_for :footer do
-  = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
-  = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
+  - if @feedback.page == 'vrn-experiment'
+    = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
+    = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
+  - else
+    %span
+      = render_component 'logo'
+      = t('footer.powered_by')
 
 .row
   .col.s10.offset-s1
