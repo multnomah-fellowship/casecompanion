@@ -44,12 +44,7 @@ en:
       <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
 
   footer:
-    title: Not finding what you're looking for?
-    who_receiving: Who's receiving my questions?
-    body: |
-      We're here to help M-F 9-5! We work with advocates to track down status and contact information.
-
-      We respond during business hours. For urgent safety concerns, call 9-1-1.
+    title: Was this page useful?
     powered_by: is built by Code for America in collaboration with government and community partners for victims of crime in Multnomah County. 
     disclaimer: Note that the information here is not all-inclusive and is not intended to be legal advice. 
     textus: Text us at %{phone_number}

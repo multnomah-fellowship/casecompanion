@@ -190,8 +190,16 @@ strong {
   padding-top: 60px;
 }
 
+.app-footer__feedback-list li {
+  display: inline-block;
+  float: left;
+  min-width: 85px;
+}
+
 .app-footer__powered-by {
   @extend %app-typography--caption;
+
+  line-height: 24px;
 }
 
 .app-container {

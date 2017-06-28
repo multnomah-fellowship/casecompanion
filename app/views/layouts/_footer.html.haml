@@ -2,20 +2,19 @@
   .app-container
     .row
       .col.s10.l5.offset-s1.offset-l1
-        %h3.app-typography--header-3= t('footer.title')
-        %p= simple_format t('footer.body')
+        %h3.app-typography--header-2= t('footer.title')
 
-        = link_to t('footer.textus', phone_number: format_phone(@phone_number)), "sms:#{@phone_number}"
+        %ul.app-footer__feedback-list
+          - current_path = request.path
+          %li= link_to 'Yes', feedback_response_path(type: :thumbs_up, page: current_path)
+          %li= link_to 'No', feedback_response_path(type: :thumbs_down, page: current_path)
+          %li= link_to 'Yes, but', feedback_response_path(type: :yes_but, page: current_path)
 
       .col.s10.l5.offset-s1.offset-l1
-        %h3.app-typography--header-3= t('footer.who_receiving')
-        = render_component 'avatar_list_item', image: image_path('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
-        = render_component 'avatar_list_item', image: image_path('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'
-
-    .row
-      .col.s10.offset-s1
         %p.app-footer__powered-by
           = render_component 'logo'
           = t('footer.powered_by')
-        %p.app-footer__powered-by
-          = t('footer.disclaimer')
+
+    .row
+      .col.s10.offset-s1
+        %p.app-footer__powered-by= t('footer.disclaimer')
