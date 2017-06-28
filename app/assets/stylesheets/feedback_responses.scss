@@ -2,6 +2,11 @@
 
 .app-feedback__tiny-caption {
   font-size: 12px;
+
+  > img {
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
 }
 
 .app-feedback-footer__logo {
