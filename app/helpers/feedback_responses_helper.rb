@@ -45,4 +45,15 @@ module FeedbackResponsesHelper
       previous_feedback_id: feedback.id
     )
   end
+
+  def maybe_render_back_button(feedback)
+    is_valid_page =
+      Rails.application.routes.recognize_path(feedback.page) rescue false
+
+    if is_valid_page
+      render_component('button', to: feedback.page) do
+        raw('&larr; Go Back')
+      end
+    end
+  end
 end
