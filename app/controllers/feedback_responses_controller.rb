@@ -1,4 +1,6 @@
 class FeedbackResponsesController < ApplicationController
+  DEFAULT_PAGE = 'vrn-experiment'
+
   layout 'focused'
 
   def show
@@ -10,7 +12,10 @@ class FeedbackResponsesController < ApplicationController
     @feedback = if params[:previous_feedback_id].present?
                   FeedbackResponse.find(params[:previous_feedback_id])
                 else
-                  FeedbackResponse.create(value: params[:type])
+                  FeedbackResponse.create(
+                    page: params[:page].presence || DEFAULT_PAGE,
+                    value: params[:type]
+                  )
                 end
 
     @feedback.update_attribute(:value, params[:type])
