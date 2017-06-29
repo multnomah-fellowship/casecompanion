@@ -32,6 +32,9 @@
 @import "materialize/components/typography";
 @import "materialize/components/forms/forms";
 
+$app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
+  ($gutter-width / 2)+ ")");
+
 body, html {
   background-color: $color-page-background;
   font-family: $system-sans-serif;
@@ -187,8 +190,16 @@ strong {
   padding-top: 60px;
 }
 
+.app-footer__feedback-list li {
+  display: inline-block;
+  float: left;
+  min-width: 85px;
+}
+
 .app-footer__powered-by {
   @extend %app-typography--caption;
+
+  line-height: 24px;
 }
 
 .app-container {
@@ -225,14 +236,18 @@ $app-container-top-padding: 40px;
   border-width: 1px;
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  padding: 24px $app-column-outer-width;
 }
 
 .app-container--focused__footer {
   @extend .app-container--focused__header;
+  @extend %app-typography--caption;
 
   background-color: #fff;
   border-top-style: solid;
+  line-height: 24px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 @media(min-width: 640px) {
@@ -477,9 +492,7 @@ $focus-form-overlap-height: 120px;
 /*
  * CUSTOM TABLE STYLES
  */
-$table-gutter: unquote("calc(" + (100 / $num-cols) + "% + " +
-  ($gutter-width / 2)+ ")");
-
+$table-gutter: $app-column-outer-width;
 .app-table {
   @extend %app-typography--body-2;
 

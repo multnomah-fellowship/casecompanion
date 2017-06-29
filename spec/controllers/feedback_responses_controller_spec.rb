@@ -24,6 +24,21 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       expect { subject }.to change { FeedbackResponse.count }.by(1)
     end
 
+    it 'without a specific page defaults to "vrn-experiment"' do
+      subject
+      expect(FeedbackResponse.last.page).to eq('vrn-experiment')
+    end
+
+    describe 'when giving feedback about a specific page' do
+      let(:page) { 'foo-bar-baz' }
+      let(:params) { super().merge(page: page) }
+
+      it 'creates a feedback response with that page' do
+        subject
+        expect(FeedbackResponse.last.page).to eq(page)
+      end
+    end
+
     describe 'updating a previous feedback response' do
       let!(:previous_response) { FeedbackResponse.create(value: 'thumbs_down') }
       let(:params) { super().merge(previous_feedback_id: previous_response.id) }

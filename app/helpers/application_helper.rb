@@ -105,7 +105,7 @@ module ApplicationHelper
   end
 
   def feature_enabled?(name)
-    Rails.application.config.flipper[name].enabled?
+    Rails.env.development? || Rails.application.config.flipper[name].enabled?
   end
 
   def render_beta_bar?
