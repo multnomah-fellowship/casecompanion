@@ -466,6 +466,14 @@ $focus-form-overlap-height: 120px;
   margin-top: 0;
 }
 
+.app-input-field-caption {
+  @extend %app-typography--caption;
+
+  font-size: 14px;
+  position: relative;
+  bottom: 8px;
+}
+
 /*
  * CUSTOM CARD VARIANTS
  */
