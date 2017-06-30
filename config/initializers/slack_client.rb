@@ -1,5 +1,9 @@
 app_name = if Rails.env.production?
-             APP_DOMAIN =~ /staging/ ? 'MyAdvocate Staging' : 'MyAdvocate Production'
+             if ENV['APP_DOMAIN'] =~ /staging/
+               'MyAdvocate Staging'
+             else
+               'MyAdvocate Production'
+             end
            else
              'MyAdvocate Development'
            end
