@@ -46,7 +46,7 @@ en:
   footer:
     title: Was this page useful?
     powered_by_html: is a collaboration between five local government agencies. Built by
-      <a href="https://www.codeforamerica.org/" target="_blank">Code for America</a>.
+      <a href="https://www.codeforamerica.org/" target="_blank">Code&nbsp;for&nbsp;America</a>.
     disclaimer: Note that the information here is not all-inclusive and is not intended to be legal advice. 
     textus: Text us at %{phone_number}
 
