@@ -24,6 +24,8 @@ class FeedbackResponsesController < ApplicationController
   def update
     @feedback = FeedbackResponse.find(params[:id])
     @feedback.update_attributes(feedback_params)
+
+    send_feedback_to_slack(@feedback)
   end
 
   private
@@ -31,5 +33,18 @@ class FeedbackResponsesController < ApplicationController
   def feedback_params
     params.fetch(:feedback_response, {})
       .permit(:body)
+  end
+
+  def send_feedback_to_slack(feedback)
+    Timeout.timeout(5) do
+      slack_response =
+        Rails.application.config.slack_client.post_feedback_message(feedback)
+
+      if slack_response[:error]
+        raise StandardError.new("Error sending feedback to Slack: #{slack_response[:error]}")
+      end
+    end
+  rescue => ex
+    Raven.capture_exception(ex)
   end
 end
