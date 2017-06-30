@@ -216,7 +216,8 @@ $app-container-top-padding: 40px;
   border: 1px solid $color-page-border;
   border-top-style: none;
   padding-top: $app-container-top-padding;
-  margin-bottom: 140px;
+  padding-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .app-container--focused {
