@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe FeedbackResponsesController, type: :controller do
   render_views
 
+  around { |ex| Rails.application.config.slack_client.disable_messages! { ex.run } }
+
   describe 'GET #create' do
     let(:type) { 'thumbs_up' }
     let(:params) { { type: type } }

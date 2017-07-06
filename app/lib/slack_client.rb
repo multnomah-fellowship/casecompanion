@@ -2,6 +2,21 @@ class SlackClient
   def initialize(hook_url: ENV['SLACK_WEBHOOK_URL'], app_name: 'MyAdvocate Development')
     @hook_url = hook_url
     @app_name = app_name
+    @disabled = false
+  end
+
+  # Disable messages within a certain bit of code. Meant for use in tests, e.g.
+  #
+  # ```
+  # around do |ex|
+  #   Rails.application.config.slack_client.disable_messages! { ex.run }
+  # end
+  # ```
+  def disable_messages!(&block)
+    @disabled, previous_disabled = true, @disabled
+    yield
+  ensure
+    @disabled = previous_disabled
   end
 
   def post_beta_signup_message(beta_signup)
@@ -70,6 +85,8 @@ class SlackClient
   private
 
   def send_message(attachment)
+    return { success: true, disabled: true } if @disabled
+
     slack_uri = URI(@hook_url)
     Net::HTTP.start(slack_uri.host, slack_uri.port, use_ssl: true) do |http|
       req = Net::HTTP::Post.new(slack_uri.request_uri)
