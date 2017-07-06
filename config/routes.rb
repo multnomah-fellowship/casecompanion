@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/beta', to: 'beta_signups#new', as: :beta_signup
   post '/beta', to: 'beta_signups#create', as: :beta_signups
 
+  resources :rights, only: %i[show index]
+
   resources :court_case_subscriptions, as: :subscription, only: %i[show]
 
   resources :faqs, only: %i[show index]
