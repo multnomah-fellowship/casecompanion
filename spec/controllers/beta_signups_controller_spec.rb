@@ -14,6 +14,8 @@ RSpec.describe BetaSignupsController, type: :controller do
   end
 
   describe '#create' do
+    around { |ex| Rails.application.config.slack_client.disable_messages!(&ex) }
+
     subject { post :create, params: params }
 
     let(:params) do

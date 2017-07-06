@@ -9,6 +9,8 @@ class BetaSignupsController < ApplicationController
 
   def create
     @beta_signup = BetaSignup.create(beta_signup_params)
+
+    send_signup_to_slack(@beta_signup)
   end
 
   private
@@ -16,5 +18,18 @@ class BetaSignupsController < ApplicationController
   def beta_signup_params
     params.fetch(:beta_signup, {})
       .permit(:email, utm_attribution_attributes: UtmAttribution::FIELDS)
+  end
+
+  def send_signup_to_slack(beta_signup)
+    Timeout.timeout(5) do
+      slack_response =
+        Rails.application.config.slack_client.post_beta_signup_message(beta_signup)
+
+      if slack_response[:error]
+        raise StandardError.new("Error sending beta_signup to Slack: #{slack_response[:error]}")
+      end
+    end
+  rescue => ex
+    Raven.capture_exception(ex)
   end
 end
