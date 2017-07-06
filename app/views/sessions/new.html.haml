@@ -1,17 +1,17 @@
 = form_for :session, url: sessions_path do |f|
   .row
-    .col.s12
+    .col.s10.offset-s1
+      %h2.app-typography--header-1 Log In
+
       .input-field
         = f.text_field :email
         = f.label :email do
           Email
 
-    .col.s12
       .input-field
         = f.password_field :password
         = f.label :password do
           Password
 
-    .col.s12
       = render_component 'button', submit: f do
         Login
