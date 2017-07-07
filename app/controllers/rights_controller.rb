@@ -7,6 +7,8 @@ class RightsController < ApplicationController
   end
 
   def show
+    return render 'create' if @flow.current_page == 'confirm'
+
     render
   end
 

@@ -1,3 +1,7 @@
+= render_component 'progress_row', percent: @flow.current_progress_percent do
+  .col.s11.offset-s1
+    %h1.app-typography--header-1 #{emphasized_text('Edit')} my victims rights request
+
 = form_for(@flow, url: right_path(@flow.current_page)) do |f|
   - case params[:id]
   - when 'who_assert'
@@ -10,11 +14,13 @@
     = render partial: 'in_special_cases', locals: { f: f }
   - when 'create_account'
     = render partial: 'create_account', locals: { f: f }
-  - when 'confirm'
-    = render partial: 'confirm', locals: { f: f }
 
   .row
     .col.s11.offset-s1
       = link_to 'Reset', rights_path, method: :delete
+
       = render_component 'button', submit: f do
-        Submit
+        - if @flow.finished?
+          Submit
+        - else
+          Next &rarr;

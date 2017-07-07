@@ -97,14 +97,14 @@ class RightsFlow
     PAGES[0]
   end
 
-  def finished?
-    next_step == PAGES[-1]
-  end
-
   def self.from_cookie(cookie)
     new(**JSON.parse(Zlib::Inflate.inflate(Base64.decode64(cookie))).symbolize_keys)
   rescue
     nil
+  end
+
+  def finished?
+    next_step == PAGES[-1]
   end
 
   def next_step
@@ -116,6 +116,13 @@ class RightsFlow
       move_pages += 1
     end
     next_page
+  end
+
+  def current_progress_percent
+    seen_pages = PAGES.find_index(current_page) + 1
+    num_skip_pages = PAGES.count { |page| skip_step?(page) }
+
+    (seen_pages.to_f * 100 / (PAGES.count - num_skip_pages)).round
   end
 
   def flow_attributes
