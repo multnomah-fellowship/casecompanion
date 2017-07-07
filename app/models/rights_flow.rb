@@ -1,4 +1,7 @@
 # This model is not persisted in the database!
+# Rather, it accumulates state on each page of the flow, and at the end of the
+# flow, the #persist! method is called, at which time it creates related
+# objects.
 class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
@@ -75,13 +78,15 @@ class RightsFlow
       subscription = CourtCaseSubscription.find(court_case_subscription_id)
       subscription.checked_rights = checked_rights
       subscription.save
+      self.court_case_subscription_id = subscription.id
     else
       # TODO: Add user first, last name, phone number in here too.
-      CourtCaseSubscription.create(
+      subscription = CourtCaseSubscription.create(
         user: User.new(email: email),
         checked_rights: checked_rights,
         case_number: case_number
       )
+      self.court_case_subscription_id = subscription.id
     end
   end
 

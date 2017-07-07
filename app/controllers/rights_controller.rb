@@ -20,6 +20,11 @@ class RightsController < ApplicationController
       render :show
     else
       @flow.persist! if @flow.finished?
+
+      # Log in as the user
+      # TODO: write a test for this
+      session[:user_id] = CourtCaseSubscription.find(@flow.court_case_subscription_id).user.id
+
       redirect_to right_path(@flow.next_step)
     end
   end
@@ -42,6 +47,11 @@ class RightsController < ApplicationController
     @flow = RightsFlow.from_cookie(cookies.encrypted[:rights_flow])
     @flow ||= RightsFlow.new
     @flow.current_page = params[:id]
+
+    if @current_user && @flow.case_number.present?
+      current_subscription = CourtCaseSubscription.find_by(user: @current_user, case_number: @flow.case_number)
+      @flow.court_case_subscription_id = current_subscription.try(:id)
+    end
   end
 
   # Save the updated flow in the session.
