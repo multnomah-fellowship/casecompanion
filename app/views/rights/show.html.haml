@@ -15,7 +15,6 @@
 
   .row
     .col.s11.offset-s1
-      = render_component 'button', submit: f do
-        Reset
+      = link_to 'Reset', rights_path, method: :delete
       = render_component 'button', submit: f do
         Submit

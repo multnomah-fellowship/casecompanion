@@ -1,6 +1,6 @@
 class RightsController < ApplicationController
   before_action :load_or_initialize_flow
-  after_action :save_flow, unless: :reset_flow?
+  after_action :save_flow, except: :delete
 
   def index
     redirect_to right_path(RightsFlow.first_step)
@@ -11,20 +11,20 @@ class RightsController < ApplicationController
   end
 
   def update
-    if reset_flow?
-      cookies.delete(:rights_flow)
-      redirect_to right_path(RightsFlow.first_step)
-    else
-      @flow.assign_attributes(rights_flow_params)
-      @flow.validate!
+    @flow.assign_attributes(rights_flow_params)
+    @flow.validate!
 
-      if @flow.errors.any?
-        render :show
-      else
-        @flow.persist! if @flow.finished?
-        redirect_to right_path(@flow.next_step)
-      end
+    if @flow.errors.any?
+      render :show
+    else
+      @flow.persist! if @flow.finished?
+      redirect_to right_path(@flow.next_step)
     end
+  end
+
+  def delete
+    cookies.delete(:rights_flow)
+    redirect_to right_path(RightsFlow.first_step)
   end
 
   private
@@ -32,10 +32,6 @@ class RightsController < ApplicationController
   def rights_flow_params
     params.fetch(:rights_flow, {})
       .permit(*RightsFlow::FIELDS)
-  end
-
-  def reset_flow?
-    params[:commit] == 'Reset'
   end
 
   # Attempt to load the flow from the session. If it cannot be loaded, then
