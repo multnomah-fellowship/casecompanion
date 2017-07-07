@@ -4,15 +4,15 @@ RSpec.describe 'Rights selection flow' do
   it 'maintains the state across the entire session' do
     get '/rights'
     follow_redirect!
-    expect(response.body).to include('Assert')
+    expect(response.body).to include('to assert and enforce my rights')
 
     post '/rights/who_assert', params: { rights_flow: { 'flag_a_assert_dda' => '1' } }
     follow_redirect!
-    expect(response.body).to include('Critical Stage')
+    expect(response.body).to include('critical stage')
 
     post '/rights/to_notification', params: { rights_flow: { 'flag_b_critical_stage' => '1' } }
     follow_redirect!
-    expect(response.body).to include('Restitution')
+    expect(response.body).to include('restitution')
 
     post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k_restitution' => '1' } }
     follow_redirect!

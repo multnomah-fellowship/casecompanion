@@ -19,11 +19,12 @@ class RightsController < ApplicationController
     if @flow.errors.any?
       render :show
     else
-      @flow.persist! if @flow.finished?
-
-      # Log in as the user
-      # TODO: write a test for this
-      session[:user_id] = CourtCaseSubscription.find(@flow.court_case_subscription_id).user.id
+      if @flow.finished?
+        @flow.persist!
+        # Log in as the user
+        # TODO: write a test for this
+        session[:user_id] = CourtCaseSubscription.find(@flow.court_case_subscription_id).user.id
+      end
 
       redirect_to right_path(@flow.next_step)
     end

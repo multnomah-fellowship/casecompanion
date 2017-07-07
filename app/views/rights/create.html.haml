@@ -19,8 +19,9 @@
       You will get a letter and/or a phone call of critical stage hearings. You
       can attend if you'd like to, or not. It's your right and your choice.
 
-    %p
-      We will call you at #{format_phone(@flow.phone_number)}
+    - if @flow.phone_number
+      %p
+        We will call you at #{format_phone(@flow.phone_number)}
 
     %p
       Help us file for restitution faster,
