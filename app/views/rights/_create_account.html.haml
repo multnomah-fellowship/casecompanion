@@ -1,0 +1,42 @@
+= form_for(@flow, url: right_path(@flow.current_page)) do |f|
+  .row
+    .col.s11.offset-s1
+      %h2.app-typography--header-2 How can we reach you?
+
+  .row
+    .col.s5.offset-s1
+      .input-field
+        = f.text_field :first_name
+        = f.label :first_name, 'First Name'
+
+    .col.s5
+      .input-field
+        = f.text_field :last_name
+        = f.label :last_name, 'Last Name'
+
+  .row
+    .col.s5.offset-s1
+      .input-field
+        = f.text_field :email
+        = f.label :email, 'Email Address'
+
+    .col.s5
+      .input-field
+        = f.text_field :phone_number
+        = f.label :phone_number, 'Phone Number'
+
+  .row
+    .col.s10.offset-s1
+      %h2.app-typography--header-2 What's the case number?
+
+  .row
+    .col.s5.offset-s1
+      .input-field
+        = f.text_field :case_number
+        = f.label :case_number, 'Case Number'
+  .row
+    .col.s11.offset-s1
+      = render_component 'button', submit: f do
+        Reset
+      = render_component 'button', submit: f do
+        Submit

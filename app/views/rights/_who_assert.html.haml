@@ -1,0 +1,12 @@
+= form_for(@flow, url: right_path(@flow.current_page)) do |f|
+  .row
+    .col.s11.offset-s1
+      = f.check_box :flag_a_assert_dda
+      = f.label :flag_a_assert_dda, 'Assert DDA'
+
+  .row
+    .col.s11.offset-s1
+      = render_component 'button', submit: f do
+        Reset
+      = render_component 'button', submit: f do
+        Submit

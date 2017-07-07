@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   get '/beta', to: 'beta_signups#new', as: :beta_signup
   post '/beta', to: 'beta_signups#create', as: :beta_signups
 
-  resources :rights, only: %i[show index]
+  resources :rights, only: %i[show index create], id: Regexp.union(RightsFlow::PAGES) do
+    collection do
+      post '/:id', to: 'rights#update'
+    end
+  end
 
   resources :court_case_subscriptions, as: :subscription, only: %i[show]
 
