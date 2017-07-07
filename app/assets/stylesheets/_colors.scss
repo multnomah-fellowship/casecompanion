@@ -24,6 +24,7 @@ $color-page-background: map-get($colors, grey-lighter);
 $color-page-border: map-get($colors, grey-lightish);
 $color-logo: map-get($colors, blue-multnomah);
 $color-hover: map-get($colors, blue-lighter);
+$color-focus: map-get($colors, blue-lighter);
 $color-table-hover: $color-hover;
 $color-divider: map-get($colors, grey-light);
 $color-accent: map-get($colors, green-dark);

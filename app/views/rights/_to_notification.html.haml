@@ -1,14 +1,13 @@
 .row
-  .col.s11.offset-s1
-    = f.check_box :flag_b_critical_stage
-    = f.label :flag_b_critical_stage, t('rights_flow.to_notification.flag_b_critical_stage')
+  .col.s10.offset-s1
+    = f.check_box_with_label :flag_b_critical_stage, t('rights_flow.to_notification.flag_b_critical_stage')
 
 .row
-  .col.s11.offset-s1
+  .col.s10.offset-s1
     = f.check_box :flag_d_release_hearings
     = f.label :flag_d_release_hearings, t('rights_flow.to_notification.flag_d_release_hearings')
 
 .row
-  .col.s11.offset-s1
+  .col.s10.offset-s1
     = f.check_box :flag_e_revocation_hearings
     = f.label :flag_e_revocation_hearings, t('rights_flow.to_notification.flag_e_revocation_hearings')

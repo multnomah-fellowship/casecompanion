@@ -60,6 +60,12 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def check_box_with_label(method, label_text)
+    <<-HTML.html_safe
+      #{check_box(method)} #{label(method, label_text, class: 'app-checkbox-with-label')}
+    HTML
+  end
+
   private
 
   def add_class!(options, *new_classes)
