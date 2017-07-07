@@ -1,0 +1,4 @@
+- percent = [0, [options[:percent], 100].min].max
+
+.row.progress-bar{ class: "progress-bar--#{percent}" }
+  = yield

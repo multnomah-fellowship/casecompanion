@@ -1,0 +1,23 @@
+@import "colors";
+
+.progress-bar {
+  border-bottom: 3px solid $color-divider;
+  position: relative;
+
+  &::before {
+    background-color: $color-accent;
+    bottom: -3px;
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+  }
+}
+
+@for $percent from 0 through 100 {
+  .progress-bar--#{$percent} {
+    &::before {
+      width: unquote($percent + "%");
+    }
+  }
+}
