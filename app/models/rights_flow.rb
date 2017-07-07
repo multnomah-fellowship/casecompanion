@@ -62,6 +62,7 @@ class RightsFlow
         errors.add(:last_name, :blank) unless last_name.present?
         errors.add(:email, :blank) unless email.present?
         errors.add(:phone_number, :blank) unless phone_number.present?
+        errors.add(:case_number, :blank) unless case_number.present?
       end
     else
       nil
