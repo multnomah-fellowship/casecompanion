@@ -1,6 +1,10 @@
 = render_component 'progress_row', percent: @flow.current_progress_percent do
   .col.s11.offset-s1
-    %h1.app-typography--header-1 #{emphasized_text('Edit')} my victims rights request
+    %h1.app-typography--header-1
+      - if @flow.court_case_subscription_id
+        = t('rights_flow.edit_header_html', edit: emphasized_text('Edit'))
+      - else
+        = t('rights_flow.new_header_html', new: emphasized_text('New'))
 
 = form_for(@flow, url: right_path(@flow.current_page)) do |f|
   - case params[:id]

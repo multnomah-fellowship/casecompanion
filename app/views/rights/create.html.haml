@@ -14,4 +14,26 @@
 
 .row
   .col.s11.offset-s1
-    You will get a letter, etc.
+    -# TODO: This should depend on the rights selected. Then move this into I18n
+    %p
+      You will get a letter and/or a phone call of critical stage hearings. You
+      can attend if you'd like to, or not. It's your right and your choice.
+
+    %p
+      We will call you at #{format_phone(@flow.phone_number)}
+
+    %p
+      Help us file for restitution faster,
+      = link_to 'fill out the restitution form', 'http://mcda.us/wp-content/uploads/2013/09/Adult_English_March-2013.pdf', target: '_blank'
+
+    %p
+      To see and edit your rights and contact information,
+      -# TODO: Make this link go somewhere.
+      = link_to 'create an account at myadvocateoregon.org', '#'
+
+    %p.app-typography--caption
+      You can also do this later.
+
+    -# TODO: Where does this go?
+    = render_component 'button', to: root_path do
+      Done

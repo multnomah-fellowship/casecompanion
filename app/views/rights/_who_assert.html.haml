@@ -1,4 +1,9 @@
 .row
   .col.s11.offset-s1
-    = f.check_box :flag_a_assert_dda
-    = f.label :flag_a_assert_dda, 'Assert DDA'
+    = f.radio_button :flag_a_assert_dda, true
+    = f.label :flag_a_assert_dda, t('rights_flow.who_assert.flag_a_assert_dda'), value: true
+
+.row
+  .col.s11.offset-s1
+    = f.radio_button :flag_a_assert_dda, false
+    = f.label :flag_a_assert_dda, t('rights_flow.who_assert.flag_a_assert_dda_false'), value: false

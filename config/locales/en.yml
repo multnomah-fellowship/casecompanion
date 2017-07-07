@@ -43,6 +43,47 @@ en:
       (503) 988-3275<br>
       <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
 
+  rights_flow:
+    new_header_html: '%{new} victim rights request'
+    edit_header_html: '%{edit} my victim rights request'
+    who_assert:
+      preamble: |
+        Your right to justice includes the right to a meaningful role in the criminal or juvenile justice process, to be treated with dignity and respect, to fair and impartial treatment, and to reasonable protection from the offender.
+
+        Many victims' rights are automatic, although you may need to tell someone you want to receive them.
+
+        Use this form to tell the District Attorney which rights you'd like to receive.
+      field_header: Who's asserting my rights?
+      flag_a_assert_dda:
+        I want the District Attorney to assert and enforce my rights to the
+        extent that the District Attorney believes it will best serve the
+        effective prosecution of the case
+      flag_a_assert_dda_false:
+        Let me choose for myself
+    to_notification:
+      flag_b_critical_stage:
+        Notify me in advance of any critical stage of the proceedings held in open court
+      flag_d_release_hearings:
+        To be notified in advance about release hearings
+      flag_e_revocation_hearings:
+        To be notified in advance about probation revocation hearings
+    to_financial_assistance:
+      flag_k_restitution:
+        The right to prompt restitution, which is the loss to you caused by the defendant.
+    in_special_cases:
+      flag_h_limited_distribution:
+        To limit copying or distribution of visual or audio recordings of sexual conduct by a child or invasion of personal privacy
+      flag_i_no_media:
+        To allow no-coverage of sex offense proceedings by media television, photography, or recording equipment
+      flag_j:
+        To have as a special condition of post-prison supervision that th eperson convicted of a sex crime in your case not live within three miles of your home if you were younger than 18 years old when the crime occurred (exceptions may apply)
+      flag_f:
+        If the crime involved the transmission of bodily fluids, testing of the defendant for HIV and other communicable diseases
+    confirm:
+      focus_header: "You're all set."
+      focus_subheader: We sent you an email with a copy of your rights.
+      next: "What's next?"
+
   footer:
     title: Was this page useful?
     powered_by_html: is a collaboration between five local government agencies. Built by
@@ -570,4 +611,3 @@ en:
 
         Washington County Sheriff
         (503) 629-0111
-
