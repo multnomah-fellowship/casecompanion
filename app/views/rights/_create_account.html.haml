@@ -36,7 +36,9 @@
         = f.label :case_number, 'Case Number'
   .row
     .col.s11.offset-s1
-      = render_component 'button', submit: f do
+      -# TODO: Uncomment Reset button when I can position it to the left via CSS.
+      -#
+        = render_component 'button', submit: f do
         Reset
       = render_component 'button', submit: f do
         Submit
