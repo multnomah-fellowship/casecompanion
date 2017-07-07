@@ -32,7 +32,7 @@ RSpec.describe 'Rights selection flow' do
       }
     }
     follow_redirect!
-    expect(response.body).to include('done')
+    expect(response.body).to include('all set')
 
     # The latest subscription should have flags A, B, K...
     last_subscription = CourtCaseSubscription.last
