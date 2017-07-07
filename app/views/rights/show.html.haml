@@ -1,13 +1,21 @@
-- case params[:id]
-- when 'who_assert'
-  = render 'who_assert'
-- when 'to_notification'
-  = render 'to_notification'
-- when 'to_financial_assistance'
-  = render 'to_financial_assistance'
-- when 'in_special_cases'
-  = render 'in_special_cases'
-- when 'create_account'
-  = render 'create_account'
-- when 'confirm'
-  = render 'confirm'
+= form_for(@flow, url: right_path(@flow.current_page)) do |f|
+  - case params[:id]
+  - when 'who_assert'
+    = render partial: 'who_assert', locals: { f: f }
+  - when 'to_notification'
+    = render partial: 'to_notification', locals: { f: f }
+  - when 'to_financial_assistance'
+    = render partial: 'to_financial_assistance', locals: { f: f }
+  - when 'in_special_cases'
+    = render partial: 'in_special_cases', locals: { f: f }
+  - when 'create_account'
+    = render partial: 'create_account', locals: { f: f }
+  - when 'confirm'
+    = render partial: 'confirm', locals: { f: f }
+
+  .row
+    .col.s11.offset-s1
+      = render_component 'button', submit: f do
+        Reset
+      = render_component 'button', submit: f do
+        Submit

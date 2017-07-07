@@ -1,27 +1,19 @@
-= form_for(@flow, url: right_path(@flow.current_page)) do |f|
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_h_limited_distribution
-      = f.label :flag_h_limited_distribution, 'Limited Distribution'
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_h_limited_distribution
+    = f.label :flag_h_limited_distribution, 'Limited Distribution'
 
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_i_no_media
-      = f.label :flag_i_no_media, 'No media of sex offense proceedings'
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_i_no_media
+    = f.label :flag_i_no_media, 'No media of sex offense proceedings'
 
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_j
-      = f.label :flag_j, 'No living within 3 mi'
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_j
+    = f.label :flag_j, 'No living within 3 mi'
 
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_f
-      = f.label :flag_f, 'Request HIV/disease check'
-
-  .row
-    .col.s11.offset-s1
-      = render_component 'button', submit: f do
-        Reset
-      = render_component 'button', submit: f do
-        Submit
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_f
+    = f.label :flag_f, 'Request HIV/disease check'

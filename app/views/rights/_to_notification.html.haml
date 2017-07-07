@@ -1,22 +1,14 @@
-= form_for(@flow, url: right_path(@flow.current_page)) do |f|
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_b_critical_stage
-      = f.label :flag_b_critical_stage, 'Critical Stage'
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_b_critical_stage
+    = f.label :flag_b_critical_stage, 'Critical Stage'
 
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_d_release_hearings
-      = f.label :flag_d_release_hearings, 'Release Hearings'
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_d_release_hearings
+    = f.label :flag_d_release_hearings, 'Release Hearings'
 
-  .row
-    .col.s11.offset-s1
-      = f.check_box :flag_e_revocation_hearings
-      = f.label :flag_e_revocation_hearings, 'Revocation Hearings'
-
-  .row
-    .col.s11.offset-s1
-      = render_component 'button', submit: f do
-        Reset
-      = render_component 'button', submit: f do
-        Submit
+.row
+  .col.s11.offset-s1
+    = f.check_box :flag_e_revocation_hearings
+    = f.label :flag_e_revocation_hearings, 'Revocation Hearings'
