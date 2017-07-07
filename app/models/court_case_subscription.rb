@@ -1,7 +1,7 @@
 class CourtCaseSubscription < ActiveRecord::Base
   belongs_to :user
 
-  has_many :checked_rights, class_name: 'Right'
+  has_many :checked_rights, class_name: 'Right', dependent: :destroy
 
   validates :case_number, uniqueness: { scope: :user_id }
 
