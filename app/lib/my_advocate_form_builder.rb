@@ -1,11 +1,22 @@
 class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 
+  def check_box(method, options = {}, checked_value = '1', unchecked_value = '0')
+    add_class!(options, 'filled-in')
+
+    super(method, options, checked_value, unchecked_value)
+  end
+
+  def radio_button(method, tag_value, options = {})
+    add_class!(options, 'with-gap')
+
+    super(method, tag_value, options)
+  end
+
   def label(method, text = nil, options = {}, &block)
     if @object.try(:errors).is_a?(ActiveModel::Errors) && @object.errors.include?(method)
       options['data-error'] = @object.errors.full_messages_for(method).first
-      options['class'] ||= ''
-      options['class'] = (options['class'].split(/\s+/) | ['active']).join(' ')
+      add_class!(options, 'active')
     end
 
     super(method, text, options, &block)
@@ -47,5 +58,12 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
         </div>
       HTML
     end
+  end
+
+  private
+
+  def add_class!(options, *new_classes)
+    options['class'] ||= ''
+    options['class'] = (options['class'].split(/\s+/) | new_classes).join(' ')
   end
 end
