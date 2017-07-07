@@ -1,5 +1,11 @@
 .row
   .col.s10.offset-s1
+    %p= simple_format(t('rights_flow.who_assert.preamble'))
+
+%section.row
+  .col.s10.offset-s1
+    %h2.app-typography--header-2= t('rights_flow.who_assert.field_header')
+
     = f.radio_button :flag_a_assert_dda, true
     = f.label :flag_a_assert_dda, t('rights_flow.who_assert.flag_a_assert_dda'), value: true
 

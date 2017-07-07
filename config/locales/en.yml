@@ -61,6 +61,11 @@ en:
       flag_a_assert_dda_false:
         Let me choose for myself
     to_notification:
+      preamble:
+        You have the right (upon request) to be notified in advance of critical
+        stage hearings. You'll receive a letter in the mail. Often, we'll give
+        you a phone call as well when it's short notice.
+      field_header: Right to notification
       flag_b_critical_stage:
         Notify me in advance of any critical stage of the proceedings held in open court
       flag_d_release_hearings:
@@ -68,9 +73,15 @@ en:
       flag_e_revocation_hearings:
         To be notified in advance about probation revocation hearings
     to_financial_assistance:
+      preamble:
+        You have the right to financial compensation. Restitution is ordered by the judge at the time of sentencing.
+      field_header: Right to financial compensation
       flag_k_restitution:
         The right to prompt restitution, which is the loss to you caused by the defendant.
     in_special_cases:
+      preamble:
+        There are additional rights in some special cases.
+      field_header: Rights in special situations
       flag_h_limited_distribution:
         To limit copying or distribution of visual or audio recordings of sexual conduct by a child or invasion of personal privacy
       flag_i_no_media:
