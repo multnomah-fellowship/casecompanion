@@ -11,7 +11,7 @@
 - submit_form = options.fetch(:submit, nil)
 
 - if submit_form
-  - button_text = yield.strip
+  - button_text = sanitize(yield.strip)
   = submit_form.submit(button_text, class: classes, data: data)
 - else
   = link_to(to, class: classes, data: data) do
