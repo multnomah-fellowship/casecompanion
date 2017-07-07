@@ -11,12 +11,26 @@ describe RightsFlow do
       }
     end
 
+    subject { flow.persist! }
+
     context 'for a flow that has an existing user' do
+      let(:user) { User.create(email: 'tom@example.com', password: 'foobar') }
+      let(:court_case_subscription) { CourtCaseSubscription.create(user: user, case_number: '17CR1234') }
+
       let(:flow) do
-        RightsFlow.new(**chosen_rights.merge(court_case_subscription_id: 123))
+        RightsFlow.new(**chosen_rights.symbolize_keys.merge(court_case_subscription_id: court_case_subscription.id))
       end
 
-      it 'updates the court_case_subscription given'
+      it 'updates the court_case_subscription given' do
+        subject
+
+        expect(court_case_subscription.rights_hash)
+          .to include('A-DDA to assert and enforce Victim Rights' => false)
+        expect(court_case_subscription.rights_hash)
+          .to include('B-Notified in advance of Critical Stage Proceedings' => true)
+        expect(court_case_subscription.rights_hash)
+          .to include('I-No media coverage of Sex Offense Proceedings' => true)
+      end
     end
 
     context 'for a flow that is going to create a user' do
@@ -27,10 +41,21 @@ describe RightsFlow do
           'email' => 'tom@example.com',
           'phone_number' => '330 555 1234',
           'case_number' => '17CR1234'
-        ))
+        ).symbolize_keys)
       end
 
-      it 'creates a court_case_subscription'
+      it 'creates a court_case_subscription' do
+        expect { subject }.to change { CourtCaseSubscription.count }.by(1)
+
+        last_subscription = CourtCaseSubscription.last
+        expect(last_subscription.user.email).to eq('tom@example.com')
+        expect(last_subscription.rights_hash)
+          .to include('A-DDA to assert and enforce Victim Rights' => false)
+        expect(last_subscription.rights_hash)
+          .to include('B-Notified in advance of Critical Stage Proceedings' => true)
+        expect(last_subscription.rights_hash)
+          .to include('I-No media coverage of Sex Offense Proceedings' => true)
+      end
     end
   end
 

@@ -30,11 +30,39 @@ class RightsFlow
     confirm
   ]
 
+  RIGHTS_MAPPING = {
+    'flag_a_assert_dda' => Right::NAMES[0],
+    'flag_b_critical_stage' => Right::NAMES[1],
+    'flag_d_release_hearings' => Right::NAMES[3],
+    'flag_e_revocation_hearings' => Right::NAMES[4],
+    'flag_f' => Right::NAMES[5],
+    'flag_h_limited_distribution' => Right::NAMES[7],
+    'flag_i_no_media' => Right::NAMES[8],
+    'flag_j' => Right::NAMES[9],
+    'flag_k_restitution' => Right::NAMES[10],
+  }
+
   attr_accessor :current_page, :court_case_subscription_id
   attr_accessor(*FIELDS)
 
   def persist!
-    # TODO: Implement this.
+    checked_rights = flow_attributes.map do |attr, value|
+      Right.new(name: RIGHTS_MAPPING.fetch(attr)) if value.present? && value.to_i == 1
+    end.compact
+
+    # If there is a subscription already, update it
+    if court_case_subscription_id
+      subscription = CourtCaseSubscription.find(court_case_subscription_id)
+      subscription.checked_rights = checked_rights
+      subscription.save
+    else
+      # TODO: Add user first, last name, phone number in here too.
+      CourtCaseSubscription.create(
+        user: User.new(email: email),
+        checked_rights: checked_rights,
+        case_number: case_number
+      )
+    end
   end
 
   def skip_step?(step)
