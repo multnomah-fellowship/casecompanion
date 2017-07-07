@@ -24,5 +24,16 @@ module MyAdvocate
     config.mixpanel_token = ENV['MIXPANEL_TOKEN']
 
     config.action_view.default_form_builder = 'MyAdvocateFormBuilder'
+
+    # Update the <input> tag for a field when it has errors based on the class
+    # names that Materialize.css expects to see.
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      fragment = Nokogiri::HTML.fragment(html_tag)
+      tag = fragment.children.first
+      tag['class'] ||= ''
+      tag['class'] = (tag['class'].split(/\s+/) | ['validate', 'invalid']).join(' ')
+      tag['placeholder'] ||= '' # hack: this causes the label to auto-"activate"
+      tag.to_s.html_safe
+    end
   end
 end

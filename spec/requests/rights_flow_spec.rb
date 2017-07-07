@@ -22,7 +22,15 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     expect(response.body).to include('How can we reach you?')
 
-    post '/rights/create_account', params: { rights_flow: { 'case_number' => '17CR1234' } }
+    post '/rights/create_account', params: {
+      rights_flow: {
+        'first_name' => 'Tom',
+        'last_name' => 'Example',
+        'email' => 'tom@example.com',
+        'phone_number' => '330 555 1234',
+        'case_number' => '17CR1234'
+      }
+    }
     follow_redirect!
     expect(response.body).to include('done')
 

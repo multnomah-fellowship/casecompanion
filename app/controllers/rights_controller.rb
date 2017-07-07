@@ -16,8 +16,14 @@ class RightsController < ApplicationController
       redirect_to right_path(RightsFlow.first_step)
     else
       @flow.assign_attributes(rights_flow_params)
-      @flow.persist! if @flow.finished?
-      redirect_to right_path(@flow.next_step)
+      @flow.validate!
+
+      if @flow.errors.any?
+        render :show
+      else
+        @flow.persist! if @flow.finished?
+        redirect_to right_path(@flow.next_step)
+      end
     end
   end
 

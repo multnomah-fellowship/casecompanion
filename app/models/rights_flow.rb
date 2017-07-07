@@ -44,6 +44,26 @@ class RightsFlow
 
   attr_accessor :current_page, :court_case_subscription_id
   attr_accessor(*FIELDS)
+  attr_reader :errors
+
+  def initialize(*)
+    @errors = ActiveModel::Errors.new(self)
+    super
+  end
+
+  def validate!
+    case current_page
+    when 'create_account'
+      unless court_case_subscription_id.present?
+        errors.add(:first_name, :blank) unless first_name.present?
+        errors.add(:last_name, :blank) unless last_name.present?
+        errors.add(:email, :blank) unless email.present?
+        errors.add(:phone_number, :blank) unless phone_number.present?
+      end
+    else
+      nil
+    end
+  end
 
   def persist!
     checked_rights = flow_attributes.map do |attr, value|

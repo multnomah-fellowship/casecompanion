@@ -1,6 +1,16 @@
 class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 
+  def label(field, text, options = {})
+    if @object.try(:errors).is_a?(ActiveModel::Errors) && @object.errors.include?(field)
+      options['data-error'] = @object.errors.full_messages_for(field).first
+      options['class'] ||= ''
+      options['class'] = (options['class'].split(/\s+/) | ['active']).join(' ')
+    end
+
+    super(field, text, options)
+  end
+
   def hidden_attribution_fields
     fields_for(:utm_attribution) do |f|
       [
