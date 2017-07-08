@@ -19,12 +19,15 @@
   - when 'create_account'
     = render partial: 'create_account', locals: { f: f }
 
-  .row
-    .col.s11.offset-s1
-      = link_to 'Reset', rights_path, method: :delete
+  %section.row
 
-      = render_component 'button', submit: f do
-        - if @flow.finished?
-          Submit
-        - else
-          Next &rarr;
+  .row
+    .col.s10.offset-s1
+      .app-rights-buttons
+        = link_to 'Reset', rights_path, method: :delete
+
+        = render_component 'button', submit: f do
+          - if @flow.finished?
+            Submit
+          - else
+            Next &rarr;
