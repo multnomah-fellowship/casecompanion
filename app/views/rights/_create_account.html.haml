@@ -41,4 +41,6 @@
         = f.text_field :case_number
         = f.label :case_number, 'Case Number'
 
-      = link_to 'Look up the Case Number', '#', class: 'app-typography--caption'
+      = link_to 'Look up the Case Number',
+        'http://mcda.us/index.php/case-information/case-status/',
+        class: 'app-typography--caption', target: '_blank'
