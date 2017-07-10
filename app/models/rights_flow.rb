@@ -22,6 +22,7 @@ class RightsFlow
 
     first_name last_name email phone_number
     case_number
+    court_case_subscription_id
   ]
 
   PAGES = %w[
@@ -45,7 +46,7 @@ class RightsFlow
     'flag_k_restitution' => Right::NAMES[10],
   }
 
-  attr_accessor :current_page, :court_case_subscription_id
+  attr_accessor :current_page
   attr_accessor(*FIELDS)
   attr_reader :errors
 
@@ -70,29 +71,59 @@ class RightsFlow
   end
 
   def persist!
-    checked_rights = flow_attributes.map do |attr, value|
+    # Computed fields are still persisted in the session, but are not visible
+    # to the user. They are not the rights checkboxes.
+    computed_fields = %w[court_case_subscription_id]
+
+    checked_rights = flow_attributes.without(*computed_fields).map do |attr, value|
       Right.new(name: RIGHTS_MAPPING.fetch(attr)) if value.present? && value.to_i == 1
     end.compact
 
     # If there is a subscription already, update it
-    if court_case_subscription_id
-      subscription = CourtCaseSubscription.find(court_case_subscription_id)
-      subscription.checked_rights = checked_rights
-      subscription.save
-      self.court_case_subscription_id = subscription.id
-    else
-      # TODO: Add user first, last name, phone number in here too.
-      subscription = CourtCaseSubscription.create(
-        user: User.new(email: email),
-        checked_rights: checked_rights,
-        case_number: case_number
-      )
-      self.court_case_subscription_id = subscription.id
+    subscription = if court_case_subscription_id
+                     CourtCaseSubscription
+                       .find(court_case_subscription_id)
+                   else
+                     CourtCaseSubscription.new
+                   end
+
+    previous_rights_hash = subscription.rights_hash
+
+    # Update the subscription's properties.
+    # If only the `checked_rights` are changed, then we need to manually
+    # update the updated_at field of the CourtCaseSubscription.
+    #
+    # (Using `belongs_to ..., touch: true` results in the timestamp being
+    # updated twice.)
+    subscription.assign_attributes(
+      checked_rights: checked_rights,
+      case_number: case_number,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      phone_number: phone_number
+    )
+
+    if subscription.persisted? &&
+        subscription.rights_hash != previous_rights_hash
+      subscription.touch
     end
+
+    subscription.save
+
+    self.court_case_subscription_id = subscription.id
   end
 
   def skip_step?(step)
     return true if step == 'create_account' && court_case_subscription_id.present?
+  end
+
+  def just_created?
+    return false unless court_case_subscription_id
+    subscription = CourtCaseSubscription.find(court_case_subscription_id)
+    return false unless subscription
+
+    subscription.created_at == subscription.updated_at
   end
 
   # ######################################################################

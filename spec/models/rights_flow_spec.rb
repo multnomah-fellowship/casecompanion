@@ -33,7 +33,7 @@ describe RightsFlow do
       end
     end
 
-    context 'for a flow that is going to create a user' do
+    context 'for a flow that has user contact info' do
       let(:flow) do
         RightsFlow.new(**chosen_rights.merge(
           'first_name' => 'Tom',
@@ -44,11 +44,12 @@ describe RightsFlow do
         ).symbolize_keys)
       end
 
-      it 'creates a court_case_subscription' do
+      it 'creates a court_case_subscription with the user information' do
         expect { subject }.to change { CourtCaseSubscription.count }.by(1)
 
         last_subscription = CourtCaseSubscription.last
-        expect(last_subscription.user.email).to eq('tom@example.com')
+        expect(last_subscription.email).to eq('tom@example.com')
+        expect(last_subscription.phone_number).to eq('330 555 1234')
         expect(last_subscription.rights_hash)
           .to include('A-DDA to assert and enforce Victim Rights' => false)
         expect(last_subscription.rights_hash)
