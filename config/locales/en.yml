@@ -273,6 +273,8 @@ en:
       District Attorney's Office
       Victim Assistance Program
       <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
+    thing_page: page
+    thing_email: email
 
     thumbs_up:
       header: That's great!
@@ -280,11 +282,11 @@ en:
 
     thumbs_down:
       header: Thanks for letting us know
-      field_label: How can this email be improved?
+      field_label: How can this %{thing} be improved?
 
     yes_but:
       header: What else?
-      field_label: How can this email be improved?
+      field_label: How can this %{thing} be improved?
 
   faqs:
     title: Frequently Asked Questions

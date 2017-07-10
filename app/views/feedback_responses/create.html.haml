@@ -35,7 +35,9 @@
   .row
     .col.s10.offset-s1
       .input-field
-        = f.label :body, t("feedback_responses.#{@feedback.value}.field_label")
+        - thing_key = @feedback.page == 'vrn-experiment' ? 'thing_email' : 'thing_page'
+        = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
+          thing: t("feedback_responses.#{thing_key}"))
         = f.text_field :body, 'data-length': 200
         %span.app-input-field-caption= t('feedback_responses.field_caption')
 
