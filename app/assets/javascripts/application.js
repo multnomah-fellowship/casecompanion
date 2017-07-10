@@ -46,7 +46,7 @@ window.App = (function() {
       history.replaceState({}, "My Advocate", newLocation);
 
       // track mixpanel
-      const text = $dropdown.find('span').text();
+      const text = $targetLink.find('span').text();
       analytics.trackExpand(text);
     } else {
       // hide it!
