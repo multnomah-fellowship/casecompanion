@@ -16,6 +16,12 @@ Make sure to export the following environment variables:
 * `TWILIO_PHONE_NUMBER` (e.g. '+11234567890')
 * `APP_DOMAIN` (e.g. `myadvocateoregon.org`. This domain must have valid TLS!)
 
+To send email you will additionally need the following settings:
+
+* `SMTP_HOSTNAME` (e.g. 'smtp.mailgun.org')
+* `SMTP_USERNAME` (e.g. 'postmaster@mail.myadvocateoregon.org')
+* `SMTP_PASSWORD` (e.g. '12345')
+
 ## installation
 ```bash
 # install ruby 2.4.0 (or whatever version is specified in .ruby-version)

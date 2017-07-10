@@ -1,0 +1,10 @@
+Hi #{@subscription.first_name},
+
+This email confirms that you completed the Victim Rights Notification.
+
+%ul
+  - @subscription.checked_rights.each do |right|
+    %li= right.name
+
+Sincerely,
+MCDA

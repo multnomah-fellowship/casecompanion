@@ -35,5 +35,15 @@ module MyAdvocate
       tag['placeholder'] ||= '' # hack: this causes the label to auto-"activate"
       tag.to_s.html_safe
     end
+
+    # ActionMailer
+    if ENV['SMTP_HOSTNAME'].present?
+      config.action_mailer.delivery_method = :smtp
+      config.action_mailer.smtp_settings = {
+        address: ENV['SMTP_HOSTNAME'],
+        user_name: ENV['SMTP_USERNAME'],
+        password: ENV['SMTP_PASSWORD'],
+      }
+    end
   end
 end

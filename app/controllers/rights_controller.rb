@@ -21,6 +21,8 @@ class RightsController < ApplicationController
     else
       if @flow.finished?
         @flow.persist!
+
+        send_rights_confirmation_email(@flow.court_case_subscription_id)
       end
 
       redirect_to right_path(@flow.next_step)
@@ -50,5 +52,11 @@ class RightsController < ApplicationController
   # Save the updated flow in the session.
   def save_flow
     cookies.encrypted[:rights_flow] = @flow.to_cookie
+  end
+
+  def send_rights_confirmation_email(subscription_id)
+    subscription = CourtCaseSubscription.find(subscription_id)
+
+    RightsMailer.send_vrn_receipt(subscription)
   end
 end
