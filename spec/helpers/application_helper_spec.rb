@@ -26,6 +26,14 @@ describe ApplicationHelper do
     it 'removes a US country code' do
       expect(helper.format_phone('13305551234')).to eq('(330) 555-1234')
     end
+
+    it 'removes whitespace between groups of numbers' do
+      expect(helper.format_phone('330   555 1234 ext 123')).to eq('(330) 555-1234 ext 123')
+    end
+
+    it 'handles country code plus extension' do
+      expect(helper.format_phone('1 330 555 1234 ex 1')).to eq('(330) 555-1234 ex 1')
+    end
   end
 
   describe '#simpler_format' do
