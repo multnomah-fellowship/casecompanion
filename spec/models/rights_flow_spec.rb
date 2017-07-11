@@ -93,7 +93,6 @@ describe RightsFlow do
           .to receive(:skip_step?)
           .with(pages[1])
           .and_return(true)
-
       end
 
       it 'skips that step' do
