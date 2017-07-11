@@ -27,7 +27,8 @@ class OffenderJurisdictionsController < ApplicationController
       return
     end
 
-    if error = valid_offender_search?(params[:jurisdiction].to_sym)
+    error = valid_offender_search?(params[:jurisdiction].to_sym)
+    if error
       @search_error = error
       return render :show
     end
@@ -147,9 +148,9 @@ class OffenderJurisdictionsController < ApplicationController
     rescue DcjClient::RequestError => ex
       Raven.capture_exception(ex)
       @search_error = I18n.t('offender_search.error_connection_failed')
-    ensure
-      return result
     end
+
+    result
   end
 
   def search_oregon
@@ -165,8 +166,8 @@ class OffenderJurisdictionsController < ApplicationController
       @search_error = I18n.t('offender_search.error_connection_failed')
     rescue OosMechanizer::Searcher::TooManyResultsError
       @search_error = I18n.t('offender_search.error_too_many_results')
-    ensure
-      return results
     end
+
+    results
   end
 end

@@ -8,7 +8,8 @@ class CourtCaseSubscriptionsController < ApplicationController
   end
 
   def create
-    unless subscription = CourtCaseSubscription.create(subscription_params)
+    subscription = CourtCaseSubscription.create(subscription_params)
+    unless subscription
       flash[:error] = 'There was an error subscribing to that case: ' +
         subscription.errors.full_messages.join('<br />')
     end
@@ -40,10 +41,9 @@ class CourtCaseSubscriptionsController < ApplicationController
     return if @current_user.is_admin
 
     user = User.find(params[:user_id])
-    if user != @current_user
-      flash[:error] = 'You do not have permission to view this page.'
-      return redirect_to home_path
-    end
-    user = params[:user_id]
+    return if user == @current_user
+
+    flash[:error] = 'You do not have permission to view this page.'
+    redirect_to home_path
   end
 end

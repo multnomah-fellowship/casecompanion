@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     return if @current_user.is_admin
 
     user = User.find(params[:id])
-    if user != @current_user
-      flash[:error] = 'You do not have permission to view this page.'
-      return redirect_to home_path
-    end
+    return if user == @current_user
+
+    flash[:error] = 'You do not have permission to view this page.'
+    redirect_to home_path
   end
 end

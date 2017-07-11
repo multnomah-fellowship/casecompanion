@@ -54,10 +54,10 @@ module FeedbackResponsesHelper
         false
       end
 
-    if is_valid_page
-      render_component('button', to: feedback.page) do
-        raw('&larr; Go Back')
-      end
+    return unless is_valid_page
+
+    render_component('button', to: feedback.page) do
+      raw('&larr; Go Back')
     end
   end
 end

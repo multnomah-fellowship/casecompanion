@@ -52,7 +52,7 @@ RSpec.describe FaqsController, type: :controller do
     it 'all links open in a new window' do
       each_faq_content do |item|
         doc = Nokogiri::HTML(item)
-        expect(doc.css('a')).to be_all { |el| el[:target] == '_blank' }
+        expect(doc.css('a')).to(be_all { |el| el[:target] == '_blank' })
       end
     end
 

@@ -75,7 +75,7 @@ describe OffenderScraper do
               .to be_nil
             expect(OffenderScraper.offender_details('NONEXISTENT_SID'))
               .to be_nil
-          end.not_to change { OffenderSearchCache.count }
+          end.not_to(change { OffenderSearchCache.count })
         end
       end
     end

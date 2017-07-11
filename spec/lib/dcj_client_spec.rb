@@ -24,7 +24,7 @@ describe DcjClient do
       let(:query) { { sid: 1234, last_name: 'foo', dob: Date.new(1991, 11, 1) } }
 
       it 'caches results' do
-        expect { subject }.to change { OffenderSearchCache.count }.by(1)
+        expect { subject }.to(change { OffenderSearchCache.count }.by(1))
       end
 
       it 'searches for the right things' do
@@ -47,7 +47,7 @@ describe DcjClient do
         end
 
         it { expect(subject).to be_nil }
-        it { expect { subject }.not_to change { OffenderSearchCache.count } }
+        it { expect { subject }.not_to(change { OffenderSearchCache.count }) }
       end
     end
   end

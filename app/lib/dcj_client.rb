@@ -38,11 +38,9 @@ class DcjClient
   def offender_details(sid:)
     cached = OffenderSearchCache.find_by(offender_sid: sid)
 
-    if cached
-      offender_hash(cached.data)
-    else
-      raise UncachedOffenderError, 'DCJ Lookup Error: Offender is uncached'
-    end
+    raise UncachedOffenderError, 'DCJ Lookup Error: Offender is uncached' unless cached
+
+    offender_hash(cached.data)
   end
 
   private
@@ -52,9 +50,9 @@ class DcjClient
       raise InvalidQueryError, 'Error searching: Offender Last Name is required'
     end
 
-    if search_params[:sid].blank? && search_params[:dob].blank?
-      raise InvalidQueryError, 'Error searching: SID or DOB is required'
-    end
+    return if search_params[:sid].present? || search_params[:dob].present?
+
+    raise InvalidQueryError, 'Error searching: SID or DOB is required'
   end
 
   def fetch_offender_details(sid: '', last_name: '', dob: '')
@@ -73,9 +71,9 @@ class DcjClient
         response = http.request(req)
         body = JSON.parse(response.body)
 
-        if response.code.to_i == 404
-          return nil
-        elsif response.code.to_i >= 300
+        return nil if response.code.to_i == 404
+
+        if response.code.to_i >= 300
           raise RequestError, "Baxter API Request Failed: #{body['Message']}"
         end
 

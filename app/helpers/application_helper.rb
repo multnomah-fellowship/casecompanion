@@ -71,7 +71,8 @@ module ApplicationHelper
   # Given a counselor and a full institution name, produce a shortened title for
   # that counselor, like "Counselor, OSCI"
   def short_counselor_title(institution_name)
-    if acronym = INSTITUTION_ACRONYMS[institution_name].presence
+    acronym = INSTITUTION_ACRONYMS[institution_name].presence
+    if acronym
       "Counselor, #{acronym}"
     else
       'Counselor'

@@ -44,8 +44,7 @@ module OffenderScraper
     end
   end
 
-  private
-
+  # private
   def self.fetch_offender_details(sid)
     searcher = OosMechanizer::Searcher.new
     searcher.offender_details(sid)

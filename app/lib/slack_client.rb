@@ -97,11 +97,8 @@ class SlackClient
       req.body = JSON.generate(attachment)
 
       resp = http.request(req)
-      if resp.code.to_i < 300
-        return { success: true }
-      else
-        return { error: "Slack Request Failed (code #{resp.code}): #{resp.body}" }
-      end
+      return { success: true } if resp.code.to_i < 300
+      return { error: "Slack Request Failed (code #{resp.code}): #{resp.body}" }
     end
   end
 end

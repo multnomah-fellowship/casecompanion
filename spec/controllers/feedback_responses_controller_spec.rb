@@ -25,7 +25,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
     end
 
     it 'creates a feedback response' do
-      expect { subject }.to change { FeedbackResponse.count }.by(1)
+      expect { subject }.to(change { FeedbackResponse.count }.by(1))
     end
 
     it 'without a specific page defaults to "vrn-experiment"' do
@@ -47,7 +47,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       let!(:previous_response) { FeedbackResponse.create(value: 'thumbs_down') }
       let(:params) { super().merge(previous_feedback_id: previous_response.id) }
 
-      it { expect { subject }.not_to change { FeedbackResponse.count } }
+      it { expect { subject }.not_to(change { FeedbackResponse.count }) }
 
       it 'updates the value as expected' do
         subject
