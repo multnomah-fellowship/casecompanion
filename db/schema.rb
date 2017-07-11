@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170710204013) do
   create_table "beta_signups", force: :cascade do |t|
-    t.string   "email",              null: false
+    t.string   "email", null: false
     t.integer  "utm_attribution_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170710204013) do
 
   create_table "court_case_subscriptions", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "case_number",  null: false
+    t.string   "case_number", null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170710204013) do
     t.text     "body"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.string   "page",       default: "vrn-experiment", null: false
+    t.string   "page", default: "vrn-experiment", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
