@@ -10,9 +10,6 @@
 # Cop supports --auto-correct.
 # Configuration parameters: Include, TreatCommentsAsGroupSeparators.
 # Include: **/Gemfile, **/gems.rb
-Bundler/OrderedGems:
-  Exclude:
-    - 'Gemfile'
 
 # Offense count: 2
 # Cop supports --auto-correct.
