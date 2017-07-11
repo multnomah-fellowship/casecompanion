@@ -35,12 +35,12 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2 What's the case number?
 
-  .row
-    .col.s5.offset-s1
-      .input-field
-        = f.text_field :case_number
-        = f.label :case_number, 'Case Number'
+.row
+  .col.s5.offset-s1
+    .input-field
+      = f.text_field :case_number
+      = f.label :case_number, 'Case Number'
 
-      = link_to 'Look up the Case Number',
-        'http://mcda.us/index.php/case-information/case-status/',
-        class: 'app-typography--caption', target: '_blank'
+    = link_to 'Look up the Case Number',
+      'http://mcda.us/index.php/case-information/case-status/',
+      class: 'app-typography--caption', target: '_blank'
