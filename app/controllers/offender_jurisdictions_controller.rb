@@ -10,7 +10,7 @@ class OffenderJurisdictionsController < ApplicationController
     case params[:error]
     when 'error_no_results'
       @search_error = I18n.t('offender_search.error_no_results',
-                                 search_sid: params[:error_sid])
+                             search_sid: params[:error_sid])
     when 'error_connection_failed'
       @search_error = I18n.t('offender_search.error_connection_failed')
     when 'error_offender_expired'
@@ -50,9 +50,9 @@ class OffenderJurisdictionsController < ApplicationController
     @name_highlighter = OffenderNameHighlighter.new(offender_params)
 
     @mixpanel.track('search',
-      jurisdiction: params[:jurisdiction],
-      num_results: @grouped_results.total_results,
-      fields: offender_params.to_unsafe_hash,
+                    jurisdiction: params[:jurisdiction],
+                    num_results: @grouped_results.total_results,
+                    fields: offender_params.to_unsafe_hash,
     )
 
     if @results.empty?
