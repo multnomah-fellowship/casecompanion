@@ -6,25 +6,29 @@ class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
 
+  # The attributes of this model which will be set by <form> elements. These
+  # fields will all be persisted in the flow cookie.
   FIELDS = %w[
-    flag_a_assert_dda flag_a_let_me_choose
-
+    flag_a_assert_dda
+    flag_a_let_me_choose
     flag_b_critical_stage
     flag_d_release_hearings
     flag_e_revocation_hearings
-
     flag_k_restitution
-
     flag_h_limited_distribution
     flag_i_no_media
     flag_j
     flag_f
-
-    first_name last_name email phone_number
+    first_name
+    last_name
+    email
+    phone_number
     case_number
     court_case_subscription_id
   ]
 
+  # The ordered steps of the flow, all of which will be the `id` in the route
+  # /rights/:id
   PAGES = %w[
     who_assert
     to_notification
@@ -34,6 +38,7 @@ class RightsFlow
     confirm
   ]
 
+  # Mapping of the field name (in FIELDS) to Right name
   RIGHTS_MAPPING = {
     'flag_a_assert_dda' => Right::NAMES[0],
     'flag_b_critical_stage' => Right::NAMES[1],
@@ -75,9 +80,12 @@ class RightsFlow
     # to the user. They are not the rights checkboxes.
     computed_fields = %w[court_case_subscription_id]
 
-    checked_rights = flow_attributes.without(*computed_fields).map do |attr, value|
-      Right.new(name: RIGHTS_MAPPING.fetch(attr)) if value.present? && value.to_i == 1
-    end.compact
+    checked_rights =
+      flow_attributes
+        .without(*computed_fields)
+        .find_all { |attr, value| value.present? && value.to_i == 1 }
+        .map { |attr, value| Right.new(name: RIGHTS_MAPPING.fetch(attr)) }
+        .compact
 
     # If there is a subscription already, update it
     subscription = if court_case_subscription_id
