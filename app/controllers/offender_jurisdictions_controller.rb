@@ -53,7 +53,7 @@ class OffenderJurisdictionsController < ApplicationController
                     jurisdiction: params[:jurisdiction],
                     num_results: @grouped_results.total_results,
                     fields: offender_params.to_unsafe_hash,
-    )
+                   )
 
     if @results.empty?
       full_name = sanitize("#{offender_params[:first_name]} #{offender_params[:last_name]}")
