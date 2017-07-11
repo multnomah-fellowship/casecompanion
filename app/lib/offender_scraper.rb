@@ -23,7 +23,7 @@ module OffenderScraper
   def self.offender_details(sid)
     cached = OffenderSearchCache.find_by(offender_sid: sid)
 
-    if cached
+    if cached.try(:data)
       cached.data.symbolize_keys.merge(
         jurisdiction: :oregon,
       )
