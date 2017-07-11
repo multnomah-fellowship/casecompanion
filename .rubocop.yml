@@ -1,3 +1,6 @@
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
 Metrics/LineLength:
   Max: 100
 
