@@ -28,8 +28,8 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
-        'case_number' => '17CR1234'
-      }
+        'case_number' => '17CR1234',
+      },
     }
     follow_redirect!
     expect(response.body).to include('all set')
@@ -73,8 +73,8 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
-        'case_number' => '17CR1234'
-      }
+        'case_number' => '17CR1234',
+      },
     }
     follow_redirect!
     expect(response.body).to include('all set')
@@ -85,8 +85,8 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'Thomas@example.com',
         'phone_number' => '330 123 1234',
-        'case_number' => '18CR1234'
-      }
+        'case_number' => '18CR1234',
+      },
     }
     follow_redirect!
     expect(response.body).to include('Changes saved')

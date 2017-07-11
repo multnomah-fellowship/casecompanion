@@ -25,8 +25,8 @@ RSpec.describe BetaSignupsController, type: :controller do
           utm_attribution_attributes: {
             utm_source: 'source-foo',
             utm_campaign: 'campaign-1234',
-          }
-        }
+          },
+        },
       }
     end
 

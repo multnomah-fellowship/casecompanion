@@ -39,13 +39,13 @@ class SlackClient
             {
               title: 'Email',
               value: beta_signup.email,
-              short: true
+              short: true,
             },
           ] + attribution_fields,
           footer: @app_name,
           ts: beta_signup.created_at.to_i,
-        }
-      ]
+        },
+      ],
     }
 
     send_message(beta_signup_attachment)
@@ -65,18 +65,18 @@ class SlackClient
             {
               title: "Value",
               value: feedback.value,
-              short: true
+              short: true,
             },
             {
               title: "Page",
               value: feedback.page,
-              short: true
-            }
+              short: true,
+            },
           ],
           footer: @app_name,
           ts: feedback.created_at.to_i,
-        }
-      ]
+        },
+      ],
     }
 
     send_message(feedback_attachment)

@@ -396,13 +396,6 @@ Style/SymbolArray:
     - 'Gemfile'
     - 'app/models/feedback_response.rb'
 
-# Offense count: 35
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStylesForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInLiteral:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/WhileUntilDo:

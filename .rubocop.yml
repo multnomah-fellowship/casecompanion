@@ -7,4 +7,7 @@ Metrics/LineLength:
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
 inherit_from: .rubocop_todo.yml

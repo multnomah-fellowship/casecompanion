@@ -92,7 +92,7 @@ describe OffenderJurisdictionsController do
             first_name: 'John',
             last_name: 'Doe',
             dob: { month: '01', day: '01', year: '1991' },
-          }
+          },
         }
       end
 

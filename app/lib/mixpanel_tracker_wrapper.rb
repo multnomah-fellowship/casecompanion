@@ -49,7 +49,7 @@ class MixpanelTrackerWrapper
   def log(event_name, event_properties)
     Rails.logger.debug(TRACK_LOG % [
       event_name,
-      event_properties.to_hash.merge(distinct_id: @distinct_id)
+      event_properties.to_hash.merge(distinct_id: @distinct_id),
     ])
   end
 end
