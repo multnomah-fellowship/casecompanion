@@ -38,7 +38,9 @@ describe OffenderJurisdictionsController do
     end
 
     describe 'with search by name (oregon)' do
-      let(:params) { { offender: { first_name: 'Tom', last_name: 'Dooner' }, jurisdiction: 'oregon' } }
+      let(:params) do
+        { offender: { first_name: 'Tom', last_name: 'Dooner' }, jurisdiction: 'oregon' }
+      end
       let(:results) { [{ sid: 123456, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
 
       before do
@@ -93,8 +95,14 @@ describe OffenderJurisdictionsController do
           }
         }
       end
-      let(:dcj_result) { { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' } }
-      let(:oregon_results) { [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
+
+      let(:dcj_result) do
+        { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' }
+      end
+
+      let(:oregon_results) do
+        [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }]
+      end
 
       before do
         allow_any_instance_of(DcjClient)

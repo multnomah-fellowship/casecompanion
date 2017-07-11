@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/LineLength
 RESULTS = [
   { sid: '16077966', first: 'AARON', middle: '', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
   { sid: '16077966', first: 'AARON', middle: 'M', last: 'BROWN', dob: '09/1986', jurisdiction: :oregon },
@@ -15,6 +16,7 @@ RESULTS = [
   { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
   { sid: '19046875', first: 'AARON', middle: 'KARMA', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
 ]
+# rubocop:enable Metrics/LineLength
 
 describe OffenderGrouper do
   let(:offenders) { RESULTS }

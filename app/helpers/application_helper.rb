@@ -78,7 +78,8 @@ module ApplicationHelper
 
   def vine_path(offender_sid = nil)
     if offender_sid
-      "https://www.vinelink.com/vinelink/servlet/SubjectSearch?siteID=38000&agency=900&offenderID=#{offender_sid}"
+      'https://www.vinelink.com/vinelink/servlet/SubjectSearch?siteID=38000' \
+        "&agency=900&offenderID=#{offender_sid}"
     else
       'https://www.vinelink.com/#/home/site/38000'
     end

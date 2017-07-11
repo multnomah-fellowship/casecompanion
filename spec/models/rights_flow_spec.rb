@@ -15,10 +15,16 @@ describe RightsFlow do
 
     context 'for a flow that has an existing user' do
       let(:user) { User.create(email: 'tom@example.com', password: 'foobar') }
-      let(:court_case_subscription) { CourtCaseSubscription.create(user: user, case_number: '17CR1234') }
+      let(:court_case_subscription) do
+        CourtCaseSubscription.create(user: user, case_number: '17CR1234')
+      end
 
       let(:flow) do
-        RightsFlow.new(**chosen_rights.symbolize_keys.merge(court_case_subscription_id: court_case_subscription.id))
+        RightsFlow.new(
+          **chosen_rights
+            .symbolize_keys
+            .merge(court_case_subscription_id: court_case_subscription.id)
+        )
       end
 
       it 'updates the court_case_subscription given' do
