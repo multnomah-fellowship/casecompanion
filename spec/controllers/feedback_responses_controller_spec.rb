@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FeedbackResponsesController, type: :controller do
@@ -54,7 +56,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
     end
   end
 
-  describe "PATCH #update" do
+  describe 'PATCH #update' do
     let(:feedback_response) { FeedbackResponse.create(value: 'thumbs_down') }
     let(:params) do
       {
@@ -67,7 +69,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
 
     subject { patch :update, params: params }
 
-    it "returns http success" do
+    it 'returns http success' do
       subject
       expect(response).to have_http_status(:success)
       expect(feedback_response.reload.body).to eq(params[:feedback_response][:body])

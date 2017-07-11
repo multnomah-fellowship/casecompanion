@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe MixpanelTrackerWrapper do
@@ -25,7 +27,7 @@ describe MixpanelTrackerWrapper do
 
     it 'returns the expected flattened version' do
       expect(subject)
-        .to eq({ 'a.b' => 'c', 'a.d.e' => 1000 })
+        .to eq('a.b' => 'c', 'a.d.e' => 1000)
     end
   end
 end

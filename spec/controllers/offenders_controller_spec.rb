@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 OFFENDER_FIXTURE = {
@@ -18,24 +20,24 @@ OFFENDER_FIXTURE = {
   admission_date: '12/10/2015',
   earliest_release_date: '05/10/2017',
   offenses: [
-    "15CR05613/01,MARI,POSSESS,METH,Inmate,Sentence,12/10/2015,-",
-    "15CR05613/02,MARI,POSSESS,METH,Inmate,Sentence,12/10/2015,-",
-    "15CR44118/01,MARI,FIREARM,-,FELON,POSSESS,Inmate,Sentence,12/10/2015,-",
-    "15CR44118/03,MARI,DELIV,METH,NEAR,SCHOOL,Inmate,Sentence,12/10/2015,-",
+    '15CR05613/01,MARI,POSSESS,METH,Inmate,Sentence,12/10/2015,-',
+    '15CR05613/02,MARI,POSSESS,METH,Inmate,Sentence,12/10/2015,-',
+    '15CR44118/01,MARI,FIREARM,-,FELON,POSSESS,Inmate,Sentence,12/10/2015,-',
+    '15CR44118/03,MARI,DELIV,METH,NEAR,SCHOOL,Inmate,Sentence,12/10/2015,-',
   ],
   num_offenses: 4,
-}
+}.freeze
 
 DCJ_OFFENDER = {
   jurisdiction: :dcj,
   first: 'John',
   last: 'Wilhite',
-  sid: 20130142,
+  sid: 20_130_142,
   dob: Date.parse('1980-01-01'),
   po_first: 'FrankThe',
   po_last: 'POPerson',
   po_phone: '503-555-1234 ext 12345',
-}
+}.freeze
 
 RSpec.describe OffendersController do
   render_views

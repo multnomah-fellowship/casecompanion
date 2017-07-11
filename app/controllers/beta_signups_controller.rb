@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BetaSignupsController < ApplicationController
   def new
     @beta_signup = BetaSignup.new(
@@ -26,7 +28,7 @@ class BetaSignupsController < ApplicationController
         Rails.application.config.slack_client.post_beta_signup_message(beta_signup)
 
       if slack_response[:error]
-        raise StandardError.new("Error sending beta_signup to Slack: #{slack_response[:error]}")
+        raise StandardError, "Error sending beta_signup to Slack: #{slack_response[:error]}"
       end
     end
   rescue => ex

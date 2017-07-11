@@ -1,28 +1,30 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FaqsController, type: :controller do
   describe 'faq data structure' do
     subject { described_class::FAQ_MENU }
 
-    def each_faq_content(&block)
+    def each_faq_content
       subject.each do |section|
         section[:items].each do |item|
           key = "faqs.#{item[:faq]}"
           item = I18n.t(key)
 
           # no nested structure:
-          %i[title header].each { |k| block.call(item[k]) }
+          %i[title header].each { |k| yield(item[k]) }
 
           # iterate through each dropdown
-          Array(item[:dropdowns]).each do |name, dropdown|
-            block.call(dropdown[:title])
-            block.call(dropdown[:body])
+          Array(item[:dropdowns]).each do |_name, dropdown|
+            yield(dropdown[:title])
+            yield(dropdown[:body])
           end
 
           # iterate through "who to call"
           Array(item[:who_to_call]).each do |who|
-            block.call(who[:name])
-            block.call(who[:phone])
+            yield(who[:name])
+            yield(who[:phone])
           end
         end
       end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 app_name = if Rails.env.production?
-             if ENV['APP_DOMAIN'] =~ /staging/
+             if ENV['APP_DOMAIN'].match?(/staging/)
                'MyAdvocate Staging'
              else
                'MyAdvocate Production'

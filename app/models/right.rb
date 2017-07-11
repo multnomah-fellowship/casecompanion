@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Right < ActiveRecord::Base
   NAMES = [
     'A-DDA to assert and enforce Victim Rights',
@@ -18,7 +20,7 @@ class Right < ActiveRecord::Base
     'P-Medical Records Subpoenaed',
     'Q-No Trial Readiness Notice - THIS CASE',
     'R-Restitution: Best Effort/No Reply',
-  ]
+  ].freeze
 
   belongs_to :court_case_subscription
   validates :name, inclusion: NAMES

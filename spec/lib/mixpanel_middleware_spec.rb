@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe MixpanelMiddleware do
-  let(:app) { Proc.new { |env| [200, {}, 'Response OK'] } }
+  let(:app) { proc { |_env| [200, {}, 'Response OK'] } }
   let(:env) { {} }
   let(:mixpanel_token) { 'token_here' }
 

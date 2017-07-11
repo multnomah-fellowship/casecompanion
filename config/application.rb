@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -27,12 +29,12 @@ module MyAdvocate
 
     # Update the <input> tag for a field when it has errors based on the class
     # names that Materialize.css expects to see.
-    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
       fragment = Nokogiri::HTML.fragment(html_tag)
       tag = fragment.children.first
       tag['class'] ||= ''
-      tag['class'] = (tag['class'].split(/\s+/) | ['validate', 'invalid']).join(' ')
-      tag['placeholder'] ||= '' # hack: this causes the label to auto-"activate"
+      tag['class'] = (tag['class'].split(/\s+/) | %w[validate invalid]).join(' ')
+      tag['placeholder'] ||= '' # HACK: this causes the label to auto-"activate"
       tag.to_s.html_safe
     end
 

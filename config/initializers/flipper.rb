@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use flipper's memory adapter for now, since we don't need to share the state
 # between application processes yet.
 #

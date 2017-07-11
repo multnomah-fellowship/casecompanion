@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ApplicationHelper do
@@ -38,7 +40,7 @@ describe ApplicationHelper do
 
   describe '#simpler_format' do
     it 'converts properly' do
-      expect(helper.simpler_format("foo\n\nbar")).to eq("<p>foo</p><p>bar</p>")
+      expect(helper.simpler_format("foo\n\nbar")).to eq('<p>foo</p><p>bar</p>')
       expect(helper.simpler_format("foo\nbar\n\nbaz")).to eq("<p>foo\nbar</p><p>baz</p>")
     end
 
@@ -81,14 +83,14 @@ describe ApplicationHelper do
 
   # this tests the nested-layout flow.
   describe '#render_component with a dropdown' do
-    let(:body) { proc { "body here" } }
+    let(:body) { proc { 'body here' } }
     let(:title) { 'Title here' }
 
     subject { helper.render_component('dropdown', title: title, &body) }
 
     it 'returns an <a> linking to a corresponding <div>' do
       doc = Nokogiri::HTML(subject)
-      expand_id = doc.css('body > a').attr('href').value.gsub('#', '')
+      expand_id = doc.css('body > a').attr('href').value.delete('#')
       expect(doc.css("body > div#expand-#{expand_id}")).to be_present
     end
 

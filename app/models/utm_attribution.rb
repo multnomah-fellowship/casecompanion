@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UtmAttribution < ApplicationRecord
-  FIELDS = %w[utm_campaign utm_medium utm_source utm_content]
+  FIELDS = %w[utm_campaign utm_medium utm_source utm_content].freeze
 
   def self.new_from_params(params)
     new(params.permit(*FIELDS).slice(*FIELDS))

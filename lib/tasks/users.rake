@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :users do
   desc 'Create an administrator login'
   task create_admin: :environment do
@@ -8,7 +10,7 @@ namespace :users do
 
     password_confirmed = false
 
-    until password_confirmed do
+    until password_confirmed
       puts 'Password: '
       password = $stdin.noecho(&:gets).strip
 

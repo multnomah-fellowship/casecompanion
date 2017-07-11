@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 

@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe RightsMailer, type: :mailer do
   describe '#send_vrn_receipt' do
@@ -17,7 +19,7 @@ RSpec.describe RightsMailer, type: :mailer do
         ],
       )
     end
-    
+
     subject { described_class.send_vrn_receipt(subscription) }
 
     it 'renders' do

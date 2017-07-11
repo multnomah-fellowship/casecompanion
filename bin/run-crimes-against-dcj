@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # This script is meant to politely search the DCJ PPO lookup for all offenders
 # in our current CRIMES dump, so that we can verify how many of them actually
 # show up.
@@ -18,12 +20,12 @@ class Throttler
   EXPECTED_DURATION_HOURS = 12
   EXPECTED_SECONDS_PER_QUERY = (EXPECTED_DURATION_HOURS * 60 * 60) / EXPECTED_NUM_QUERIES
 
-  def throttle(&block)
+  def throttle
     start = Time.now
-    result = block.call
+    result = yield
     duration = Time.now - start
     sleep([5, EXPECTED_SECONDS_PER_QUERY - duration].max) unless ENV['NO_THROTTLE']
-    return result
+    result
   end
 end
 
@@ -66,7 +68,7 @@ CSV.parse(results, headers: :first_row) do |row|
     num_retries = 0
   rescue => ex
     $stderr.puts "Got exception: #{ex.message}"
-    $stderr.puts "  ...retrying"
+    $stderr.puts '  ...retrying'
     num_retries += 1
     retry if num_retries < 3
   end

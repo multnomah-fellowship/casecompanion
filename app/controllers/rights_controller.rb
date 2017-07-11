@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RightsController < ApplicationController
   before_action :load_or_initialize_flow
   after_action :save_flow, except: :delete

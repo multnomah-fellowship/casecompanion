@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oos_mechanizer'
 require 'json'
 
@@ -26,7 +28,7 @@ module OffenderScraper
         jurisdiction: :oregon,
       )
     else
-      data = self.fetch_offender_details(sid)
+      data = fetch_offender_details(sid)
 
       return nil if data.nil?
 

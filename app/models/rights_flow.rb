@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This model is not persisted in the database!
 # Rather, it accumulates state on each page of the flow, and at the end of the
 # flow, the #persist! method is called, at which time it creates related
@@ -25,7 +27,7 @@ class RightsFlow
     phone_number
     case_number
     court_case_subscription_id
-  ]
+  ].freeze
 
   # The ordered steps of the flow, all of which will be the `id` in the route
   # /rights/:id
@@ -36,7 +38,7 @@ class RightsFlow
     in_special_cases
     create_account
     confirm
-  ]
+  ].freeze
 
   # Mapping of the field name (in FIELDS) to Right name
   RIGHTS_MAPPING = {
@@ -49,7 +51,7 @@ class RightsFlow
     'flag_i_no_media' => Right::NAMES[8],
     'flag_j' => Right::NAMES[9],
     'flag_k_restitution' => Right::NAMES[10],
-  }
+  }.freeze
 
   attr_accessor :current_page
   attr_accessor(*FIELDS)
@@ -70,8 +72,6 @@ class RightsFlow
         errors.add(:phone_number, :blank) unless phone_number.present?
         errors.add(:case_number, :blank) unless case_number.present?
       end
-    else
-      nil
     end
   end
 
@@ -83,8 +83,8 @@ class RightsFlow
     checked_rights =
       flow_attributes
         .without(*computed_fields)
-        .find_all { |attr, value| value.present? && value.to_i == 1 }
-        .map { |attr, value| Right.new(name: RIGHTS_MAPPING.fetch(attr)) }
+        .find_all { |_attr, value| value.present? && value.to_i == 1 }
+        .map { |attr, _value| Right.new(name: RIGHTS_MAPPING.fetch(attr)) }
         .compact
 
     # If there is a subscription already, update it
@@ -171,7 +171,7 @@ class RightsFlow
   end
 
   def flow_attributes
-    Hash[FIELDS.map { |f| [f, self.send(f)] }]
+    Hash[FIELDS.map { |f| [f, send(f)] }]
   end
 
   def to_cookie

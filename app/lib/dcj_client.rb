@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DcjClient
   URL_BASE = URI('https://www3.multco.us/Baxter')
   REQUEST_TIMEOUT = 29 # seconds
@@ -39,7 +41,7 @@ class DcjClient
     if cached
       offender_hash(cached.data)
     else
-      raise UncachedOffenderError.new('DCJ Lookup Error: Offender is uncached')
+      raise UncachedOffenderError, 'DCJ Lookup Error: Offender is uncached'
     end
   end
 
@@ -47,11 +49,11 @@ class DcjClient
 
   def validate_search!(search_params)
     if search_params[:last_name].blank?
-      raise InvalidQueryError.new('Error searching: Offender Last Name is required')
+      raise InvalidQueryError, 'Error searching: Offender Last Name is required'
     end
 
     if search_params[:sid].blank? && search_params[:dob].blank?
-      raise InvalidQueryError.new('Error searching: SID or DOB is required')
+      raise InvalidQueryError, 'Error searching: SID or DOB is required'
     end
   end
 
@@ -74,14 +76,14 @@ class DcjClient
         if response.code.to_i == 404
           return nil
         elsif response.code.to_i >= 300
-          raise RequestError.new("Baxter API Request Failed: #{body['Message']}")
+          raise RequestError, "Baxter API Request Failed: #{body['Message']}"
         end
 
         body
       end
     end
   rescue Timeout::Error
-    raise RequestError.new("Baxter API failed to respond within #{REQUEST_TIMEOUT} seconds")
+    raise RequestError, "Baxter API failed to respond within #{REQUEST_TIMEOUT} seconds"
   end
 
   def offender_hash(response_body)

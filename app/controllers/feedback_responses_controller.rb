@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FeedbackResponsesController < ApplicationController
   DEFAULT_PAGE = 'vrn-experiment'
 
@@ -41,7 +43,7 @@ class FeedbackResponsesController < ApplicationController
         Rails.application.config.slack_client.post_feedback_message(feedback)
 
       if slack_response[:error]
-        raise StandardError.new("Error sending feedback to Slack: #{slack_response[:error]}")
+        raise StandardError, "Error sending feedback to Slack: #{slack_response[:error]}"
       end
     end
   rescue => ex

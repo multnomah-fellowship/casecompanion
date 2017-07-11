@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class OffenderJurisdictionsController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
-  def index
-  end
+  def index; end
 
   def show
     # if this page has an "error" query param then don't attempt a search and
@@ -10,7 +11,7 @@ class OffenderJurisdictionsController < ApplicationController
     case params[:error]
     when 'error_no_results'
       @search_error = I18n.t('offender_search.error_no_results',
-                             search_sid: params[:error_sid])
+        search_sid: params[:error_sid])
     when 'error_connection_failed'
       @search_error = I18n.t('offender_search.error_connection_failed')
     when 'error_offender_expired'
@@ -50,10 +51,9 @@ class OffenderJurisdictionsController < ApplicationController
     @name_highlighter = OffenderNameHighlighter.new(offender_params)
 
     @mixpanel.track('search',
-                    jurisdiction: params[:jurisdiction],
-                    num_results: @grouped_results.total_results,
-                    fields: offender_params.to_unsafe_hash,
-                   )
+      jurisdiction: params[:jurisdiction],
+      num_results: @grouped_results.total_results,
+      fields: offender_params.to_unsafe_hash)
 
     if @results.empty?
       full_name = sanitize("#{offender_params[:first_name]} #{offender_params[:last_name]}")
@@ -82,7 +82,7 @@ class OffenderJurisdictionsController < ApplicationController
     when :oregon
       # one of first_name, or last_name must be present
       unless offender_params[:first_name].present? || offender_params[:last_name].present?
-        return I18n.t('offender_search.error_missing_name')
+        I18n.t('offender_search.error_missing_name')
       end
     when :dcj
       # last name and DOB must all be present
@@ -114,11 +114,15 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def search_dcj
-    offender_dob = Date.new(
-      offender_params[:dob][:year].to_i,
-      offender_params[:dob][:month].to_i,
-      offender_params[:dob][:day].to_i,
-    ) rescue nil
+    offender_dob = begin
+                     Date.new(
+                       offender_params[:dob][:year].to_i,
+                       offender_params[:dob][:month].to_i,
+                       offender_params[:dob][:day].to_i,
+                     )
+                   rescue
+                     nil
+                   end
 
     # sanity check the DOB that it is not too far in the past or in the future
     unless offender_dob && 120.years.ago < offender_dob && offender_dob < Date.today

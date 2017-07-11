@@ -1,25 +1,25 @@
+# frozen_string_literal: true
+
 module FeedbackResponsesHelper
   OPPOSITES = {
     thumbs_up: :thumbs_down,
     thumbs_down: :thumbs_up,
     yes_but: :thumbs_up,
-  }
+  }.freeze
 
   def emoji_image_path(feedback, size: :default, invert: false)
     suffix = case size
              when :small
-              '_small'
+               '_small'
              when :default
                ''
              else
-               raise StandardError.new("Unknown emoji_image size: #{size}")
+               raise StandardError, "Unknown emoji_image size: #{size}"
              end
 
     feedback_value = feedback.value.to_sym
 
-    if invert
-      feedback_value = OPPOSITES[feedback_value]
-    end
+    feedback_value = OPPOSITES[feedback_value] if invert
 
     case feedback_value
     when :thumbs_up
@@ -29,7 +29,7 @@ module FeedbackResponsesHelper
     when :yes_but
       image_path("emoji_thinking_face#{suffix}.png")
     else
-      raise StandardError.new("Unknown emoji_image type: #{feedback.value}")
+      raise StandardError, "Unknown emoji_image type: #{feedback.value}"
     end
   end
 
@@ -37,7 +37,7 @@ module FeedbackResponsesHelper
     feedback_value = feedback.value.to_sym
 
     if OPPOSITES.exclude?(feedback_value)
-      raise StandardError.new("Unknown change_my_reply_path type: #{feedback.value}")
+      raise StandardError, "Unknown change_my_reply_path type: #{feedback.value}"
     end
 
     feedback_response_path(
@@ -48,7 +48,11 @@ module FeedbackResponsesHelper
 
   def maybe_render_back_button(feedback)
     is_valid_page =
-      Rails.application.routes.recognize_path(feedback.page) rescue false
+      begin
+        Rails.application.routes.recognize_path(feedback.page)
+      rescue
+        false
+      end
 
     if is_valid_page
       render_component('button', to: feedback.page) do

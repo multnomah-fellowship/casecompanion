@@ -1,4 +1,16 @@
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Layout/IndentArray:
   EnforcedStyle: consistent
 
 Metrics/LineLength:
@@ -10,4 +22,4 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
 
-inherit_from: .rubocop_todo.yml
+# inherit_from: .rubocop_todo.yml

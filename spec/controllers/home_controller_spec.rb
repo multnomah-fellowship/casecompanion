@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe HomeController do
@@ -22,7 +24,7 @@ describe HomeController do
         subject
         expect(response).to be_success
         doc = Nokogiri::HTML(response.body)
-        link = doc.css("a[href=\"/offenders\"]")
+        link = doc.css('a[href="/offenders"]')
         expect(link).to be_present
       end
     end

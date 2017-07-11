@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   # Reorders a name if it contains a comma. E.g. given "Smith, Joe" will return
   # "Joe Smith"
@@ -17,7 +19,7 @@ module ApplicationHelper
 
   # Given a phone number like '+11234567890', returns '(123) 456-7890'
   def format_phone(phone_number)
-    local_number = phone_number.gsub(/^\+1/, '').gsub(/-/, '').gsub(/(?<=\d)\s+(?=\d)/, '')
+    local_number = phone_number.gsub(/^\+1/, '').delete('-').gsub(/(?<=\d)\s+(?=\d)/, '')
     local_number = local_number[1..-1] if local_number.split(/\s+/)[0].length == 11
 
     "(#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..-1]}"
@@ -64,7 +66,7 @@ module ApplicationHelper
     'Trci Minimum'                                   => 'TRCM',
     'Two Rivers Correctional Institution'            => 'TRCI',
     'Warner Creek Correctional Facility'             => 'WCCF',
-  }
+  }.freeze
 
   # Given a counselor and a full institution name, produce a shortened title for
   # that counselor, like "Counselor, OSCI"
@@ -96,7 +98,7 @@ module ApplicationHelper
       render(partial: "#{name}/index", locals: { options: options })
     end
   rescue => ex
-    raise StandardError.new("Error rendering component #{name}: #{ex.message}")
+    raise StandardError, "Error rendering component #{name}: #{ex.message}"
   end
 
   def page_title
@@ -112,6 +114,6 @@ module ApplicationHelper
 
   def render_beta_bar?
     return false unless feature_enabled?('beta_bar')
-    return controller_name != 'beta_signups'
+    controller_name != 'beta_signups'
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe DcjClient do
@@ -52,7 +54,7 @@ describe DcjClient do
 
   describe '#offender_details' do
     let(:client) { described_class.new(api_key: '123') }
-    let(:search_sid) { 20130142 }
+    let(:search_sid) { 20_130_142 }
 
     subject { client.offender_details(sid: search_sid) }
 
@@ -70,7 +72,7 @@ describe DcjClient do
       it 'returns a hash of data in the standard format' do
         expect(subject[:first]).to eq('John')
         expect(subject[:last]).to eq('Wilhite')
-        expect(subject[:sid]).to eq(20130142)
+        expect(subject[:sid]).to eq(20_130_142)
       end
     end
   end

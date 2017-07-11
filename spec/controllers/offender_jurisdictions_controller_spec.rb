@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe OffenderJurisdictionsController do
@@ -41,7 +43,7 @@ describe OffenderJurisdictionsController do
       let(:params) do
         { offender: { first_name: 'Tom', last_name: 'Dooner' }, jurisdiction: 'oregon' }
       end
-      let(:results) { [{ sid: 123456, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
+      let(:results) { [{ sid: 123_456, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }] }
 
       before do
         allow(OffenderScraper).to receive(:search_by_name).and_return(results)
@@ -97,11 +99,11 @@ describe OffenderJurisdictionsController do
       end
 
       let(:dcj_result) do
-        { sid: 123456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' }
+        { sid: 123_456, jurisdiction: :dcj, first: 'Tom', last: 'Dooner', dob: '01/1991' }
       end
 
       let(:oregon_results) do
-        [{ sid: 4445555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }]
+        [{ sid: 4_445_555, jurisdiction: :oregon, first: 'Tom', last: 'Dooner' }]
       end
 
       before do

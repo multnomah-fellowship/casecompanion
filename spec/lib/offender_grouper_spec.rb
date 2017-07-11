@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # rubocop:disable Metrics/LineLength
@@ -15,7 +17,7 @@ RESULTS = [
   { sid: '19046875', first: 'AARON', middle: 'A', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
   { sid: '19046875', first: 'AARON', middle: '', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
   { sid: '19046875', first: 'AARON', middle: 'KARMA', last: 'BROWN', dob: '04/1991', jurisdiction: :oregon },
-]
+].freeze
 # rubocop:enable Metrics/LineLength
 
 describe OffenderGrouper do

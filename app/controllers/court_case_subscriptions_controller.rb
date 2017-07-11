@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CourtCaseSubscriptionsController < ApplicationController
   before_action :require_edit_permission, except: %i[show]
 

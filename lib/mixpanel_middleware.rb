@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # This is a maybe-too-clever class to attempt to synchronize the distinct_id on
 # server-sent events to match the client-side event.
 #
 # This is done by parsing the value of the `mp_*_mixpanel` cookie and storing
 # its value in the `env` which is available in controllers via `request.env`.
 class MixpanelMiddleware
-  DISTINCT_ID = 'myadvocate.mixpanel_distinct_id'.freeze
+  DISTINCT_ID = 'myadvocate.mixpanel_distinct_id'
 
   def initialize(app, mixpanel_token)
     @app = app
@@ -30,4 +32,3 @@ class MixpanelMiddleware
     @app.call(env)
   end
 end
-

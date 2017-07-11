@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RightsMailer < ApplicationMailer
   def send_vrn_receipt(court_case_subscription)
     @subscription = court_case_subscription

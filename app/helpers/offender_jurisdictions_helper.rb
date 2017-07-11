@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OffenderJurisdictionsHelper
   def search_params
     @_search_params ||=

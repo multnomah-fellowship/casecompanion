@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SlackClient
   def initialize(hook_url: ENV['SLACK_WEBHOOK_URL'], app_name: 'MyAdvocate Development')
     @hook_url = hook_url
@@ -12,8 +14,9 @@ class SlackClient
   #   Rails.application.config.slack_client.disable_messages! { ex.run }
   # end
   # ```
-  def disable_messages!(&block)
-    @disabled, previous_disabled = true, @disabled
+  def disable_messages!
+    previous_disabled = @disabled
+    @disabled = true
     yield
   ensure
     @disabled = previous_disabled
@@ -63,12 +66,12 @@ class SlackClient
           text: feedback.body,
           fields: [
             {
-              title: "Value",
+              title: 'Value',
               value: feedback.value,
               short: true,
             },
             {
-              title: "Page",
+              title: 'Page',
               value: feedback.page,
               short: true,
             },

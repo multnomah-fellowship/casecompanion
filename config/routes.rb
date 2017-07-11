@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get '/offenders/:jurisdiction/:id' => 'offenders#show', as: :offender
   post '/offenders/:jurisdiction' => 'offender_jurisdictions#search'

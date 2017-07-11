@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCourtCaseSubscriptions < ActiveRecord::Migration[5.0]
   def change
     create_table :court_case_subscriptions do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A utility class for tracking mixpanel events without complicating each
 # call-site.
 #
@@ -47,9 +49,6 @@ class MixpanelTrackerWrapper
   end
 
   def log(event_name, event_properties)
-    Rails.logger.debug(TRACK_LOG % [
-      event_name,
-      event_properties.to_hash.merge(distinct_id: @distinct_id),
-    ])
+    Rails.logger.debug(format(TRACK_LOG, event_name, event_properties.to_hash.merge(distinct_id: @distinct_id)))
   end
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OffenderNameHighlighter
   include ActionView::Helpers::SanitizeHelper
 
-  HIGHLIGHT_FIELD_NAMES = %i[first_name last_name]
+  HIGHLIGHT_FIELD_NAMES = %i[first_name last_name].freeze
 
   def initialize(search_params)
     @search_params = search_params
