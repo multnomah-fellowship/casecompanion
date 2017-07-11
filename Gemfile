@@ -55,6 +55,9 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'webmock'
 
+  # Linters, et al.:
+  gem 'rubocop'
+
   # Needed by travis-ci:
   gem 'rake'
 
