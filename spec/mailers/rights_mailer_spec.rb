@@ -14,7 +14,7 @@ RSpec.describe RightsMailer, type: :mailer do
           Right.new(name: 'B-Notified in advance of Critical Stage Proceedings'),
           Right.new(name: 'D-Notified in advance of Release Hrgs'),
           Right.new(name: 'K-Right to Restitution'),
-        ]
+        ],
       )
     end
     

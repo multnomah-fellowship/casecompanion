@@ -4,7 +4,7 @@ class RightsMailer < ApplicationMailer
 
     mail(
       to: @subscription.email,
-      subject: 'Victim Rights Notification Confirmation'
+      subject: 'Victim Rights Notification Confirmation',
     )
   end
 end

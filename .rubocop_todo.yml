@@ -441,16 +441,6 @@ Style/SymbolArray:
     - 'Gemfile'
     - 'app/models/feedback_response.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStylesForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInArguments:
-  Exclude:
-    - 'lib/tasks/users.rake'
-    - 'spec/lib/dcj_client_spec.rb'
-    - 'spec/lib/slack_client_spec.rb'
-
 # Offense count: 35
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleForMultiline, SupportedStylesForMultiline.

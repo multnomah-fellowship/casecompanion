@@ -42,7 +42,7 @@ module FeedbackResponsesHelper
 
     feedback_response_path(
       type: OPPOSITES[feedback_value],
-      previous_feedback_id: feedback.id
+      previous_feedback_id: feedback.id,
     )
   end
 

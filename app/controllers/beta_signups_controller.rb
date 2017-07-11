@@ -1,7 +1,7 @@
 class BetaSignupsController < ApplicationController
   def new
     @beta_signup = BetaSignup.new(
-      utm_attribution: UtmAttribution.new_from_params(params)
+      utm_attribution: UtmAttribution.new_from_params(params),
     )
 
     render layout: 'lander'

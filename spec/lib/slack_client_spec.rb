@@ -29,7 +29,7 @@ describe SlackClient do
         expect(payload['attachments'].first['fields'])
           .to include(hash_including(
             'title' => 'Email',
-            'value' => beta_signup.email
+            'value' => beta_signup.email,
           ))
       end).to have_been_made
     end
@@ -46,7 +46,7 @@ describe SlackClient do
           expect(payload['attachments'].first['fields'])
             .to include(hash_including(
               'title' => 'utm_campaign',
-              'value' => utm_attribution.utm_campaign
+              'value' => utm_attribution.utm_campaign,
             ))
           expect(payload['attachments'].first['fields'])
             .not_to include(hash_including('title' => 'utm_content'))
@@ -60,7 +60,7 @@ describe SlackClient do
       FeedbackResponse.create(
         value: 'thumbs_up',
         page: '/give-me-feedback',
-        body: 'just enough corgis'
+        body: 'just enough corgis',
       )
     end
 

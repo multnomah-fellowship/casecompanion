@@ -11,5 +11,5 @@ app_name = if Rails.env.production?
 Rails.application.config.slack_client =
   SlackClient.new(
     hook_url: ENV['SLACK_WEBHOOK_URL'],
-    app_name: app_name
+    app_name: app_name,
   )

@@ -62,7 +62,7 @@ class DcjClient
           key: @api_key,
           sid: sid,
           lastName: last_name,
-          dob: dob
+          dob: dob,
         )
 
         req = Net::HTTP::Get.new(request_uri)

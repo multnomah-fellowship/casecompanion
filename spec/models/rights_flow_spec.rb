@@ -23,7 +23,7 @@ describe RightsFlow do
         RightsFlow.new(
           **chosen_rights
             .symbolize_keys
-            .merge(court_case_subscription_id: court_case_subscription.id)
+            .merge(court_case_subscription_id: court_case_subscription.id),
         )
       end
 
@@ -46,7 +46,7 @@ describe RightsFlow do
           'last_name' => 'Dooner',
           'email' => 'tom@example.com',
           'phone_number' => '330 555 1234',
-          'case_number' => '17CR1234'
+          'case_number' => '17CR1234',
         ).symbolize_keys)
       end
 

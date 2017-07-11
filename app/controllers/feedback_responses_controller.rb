@@ -14,7 +14,7 @@ class FeedbackResponsesController < ApplicationController
                 else
                   FeedbackResponse.create(
                     page: params[:page].presence || DEFAULT_PAGE,
-                    value: params[:type]
+                    value: params[:type],
                   )
                 end
 

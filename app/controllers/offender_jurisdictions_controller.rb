@@ -52,7 +52,7 @@ class OffenderJurisdictionsController < ApplicationController
     @mixpanel.track('search',
       jurisdiction: params[:jurisdiction],
       num_results: @grouped_results.total_results,
-      fields: offender_params.to_unsafe_hash
+      fields: offender_params.to_unsafe_hash,
     )
 
     if @results.empty?
@@ -62,12 +62,12 @@ class OffenderJurisdictionsController < ApplicationController
       when :oregon
         @search_error ||= I18n.t(
           'offender_search.error_no_results_prison_by_name_html',
-          name: full_name
+          name: full_name,
         ).html_safe
       when :dcj
         @search_error ||= I18n.t(
           'offender_search.error_no_results_dcj_by_name_html',
-          name: full_name
+          name: full_name,
         ).html_safe
       end
     end
@@ -117,7 +117,7 @@ class OffenderJurisdictionsController < ApplicationController
     offender_dob = Date.new(
       offender_params[:dob][:year].to_i,
       offender_params[:dob][:month].to_i,
-      offender_params[:dob][:day].to_i
+      offender_params[:dob][:day].to_i,
     ) rescue nil
 
     # sanity check the DOB that it is not too far in the past or in the future
@@ -137,7 +137,7 @@ class OffenderJurisdictionsController < ApplicationController
       start_time = Time.now
       result = DcjClient.new.search_for_offender(
         dob: offender_dob,
-        last_name: offender_params[:last_name]
+        last_name: offender_params[:last_name],
       )
       @mixpanel.track('search-duration', duration: Time.now - start_time)
     rescue DcjClient::RequestError => ex
@@ -155,7 +155,7 @@ class OffenderJurisdictionsController < ApplicationController
     begin
       results = OffenderScraper.search_by_name(
         offender_params[:first_name],
-        offender_params[:last_name]
+        offender_params[:last_name],
       )
     rescue OosMechanizer::Searcher::ConnectionFailed
       @search_error = I18n.t('offender_search.error_connection_failed')

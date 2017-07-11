@@ -51,7 +51,7 @@ CSV.parse(results, headers: :first_row) do |row|
     throttler.throttle do
       dcj_result = dcj_client.search_for_offender(
         last_name: row['def_lname'],
-        sid: sid
+        sid: sid,
       )
 
       doc_result = OffenderScraper.fetch_offender_details(sid)

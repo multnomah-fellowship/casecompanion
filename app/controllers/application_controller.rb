@@ -21,11 +21,11 @@ class ApplicationController < ActionController::Base
 
   def set_raven_context
     Raven.user_context(
-      distinct_id: session[:distinct_id]
+      distinct_id: session[:distinct_id],
     )
 
     Raven.extra_context(
-      url: request.url
+      url: request.url,
     )
   end
 

@@ -93,7 +93,7 @@ RSpec.describe 'Rights selection flow' do
 
     subscription = CourtCaseSubscription.find_by(
       case_number: '18CR1234',
-      email: 'Thomas@example.com'
+      email: 'Thomas@example.com',
     )
     expect(subscription).to be_present
     expect(subscription.phone_number).to eq('330 123 1234')
