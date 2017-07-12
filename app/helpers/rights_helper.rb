@@ -13,4 +13,10 @@ module RightsHelper
       flow_order.find_index(flag)
     end
   end
+
+  def right_text(right)
+    right_name_to_flag = Right::RIGHTS.invert
+
+    t("rights.#{right_name_to_flag[right.name]}")
+  end
 end

@@ -30,6 +30,7 @@ gem 'inline_svg'
 gem 'materialize-sass'
 gem 'mixpanel-ruby'
 gem 'oos_mechanizer', git: 'https://github.com/tdooner/oos-mechanizer.git'
+gem 'premailer-rails'
 gem 'sentry-raven'
 gem 'sitemap_generator'
 

@@ -1,10 +1,40 @@
-Hi #{@subscription.first_name},
+- num_rights = @subscription.checked_rights.length
 
-This email confirms that you completed the Victim Rights Notification.
+%h1 Victims' Rights Confirmation
+
+Hi #{@subscription.first_name},
+%br
+%br
+You're receiving this email because you have requested Victims' Rights.
+%br
+%br
+You've seleced #{pluralize(num_rights, 'rights')} as follows:
 
 %ul
-  - @subscription.checked_rights.each do |right|
-    %li= right.name
+  - sort_rights_in_flow_order(@subscription.checked_rights).each do |right|
+    %li= right_text(right)
+
+Questions or updates? Call your advocate:
+
+%table.email--contact-box
+  %tr
+    %td
+      %ul.email--contact-details-list
+        %li Multnomah County District Attorney
+        %li Victim Assistance Program
+        %li (503) 988-3275
+
+%h3 What happens next?
+
+= image_tag 'email_next_prosecution'
+
+%ul
+  %li
+    We will send you a letter every time there's a "critical stage" hearing coming up. We'll often call as well. You are welcome to attend, but you don't have to.
+  %li
+    You may be subpoenaed as a witness. In that case, we'll send you a separate notification (letter, phone call, or email). If you're subpoenaed as a witness, you're required to attend.
+    #{link_to 'Learn more about testifying as a witness', 'http://mcda.us/index.php/appearing-in-court/witness-information/', target: '_blank'}.
 
 Sincerely,
-MCDA
+%br
+Multnomah County District Attorney

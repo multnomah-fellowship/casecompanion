@@ -47,5 +47,9 @@ module MyAdvocate
         password: ENV['SMTP_PASSWORD'],
       }
     end
+
+    config.action_mailer.default_url_options = {
+      host: ENV['APP_DOMAIN'],
+    }
   end
 end

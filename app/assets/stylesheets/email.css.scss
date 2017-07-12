@@ -1,0 +1,117 @@
+@import "typography";
+@import "colors";
+@import "materialize/components/variables"; // include after the other mixins have overridden variables
+
+body, html {
+  @extend %app-typography--body-1;
+}
+
+h1 {
+  @extend %app-typography--header-1;
+}
+
+h2 {
+  @extend %app-typography--header-2;
+}
+
+h3 {
+  @extend %app-typography--header-3;
+}
+
+td {
+  @extend %app-typography--body-1;
+}
+
+.email--outer {
+  max-width: 600px;
+  width: 100%;
+}
+
+.email--outer-cell {
+  padding: 16px 20px;
+}
+
+.email--seal {
+  > tr > td {
+    padding-right: 20px;
+  }
+}
+
+.email--seal-img {
+  width: 120px;
+}
+
+.email--seal__title {
+  @extend %app-typography--body-1;
+
+  font-weight: 600;
+}
+
+.email--contact-details-list {
+  @extend %app-typography--body-1;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.email--contact-details-list-small {
+  @extend %app-typography--body-2;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.email--contact-box {
+  margin: 16px 0;
+  width: 100%;
+
+  > tr > td {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+}
+
+.email--feedback {
+  background-color: $color-focus;
+  margin-top: 80px;
+  width: 100%;
+
+  > tr:first-child > td {
+    padding-top: 24px;
+  }
+
+  > tr:last-child > td {
+    padding-bottom: 24px;
+  }
+
+  td {
+    text-align: center;
+  }
+}
+
+.email--feedback-link {
+  color: $color-text;
+  display: inline-block;
+  width: 100%;
+
+  > p {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+}
+
+.email--footer-our-address {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.email--footer-our-address-list {
+  font-size: 12px;
+  line-height: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

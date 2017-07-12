@@ -1,0 +1,48 @@
+= stylesheet_link_tag 'email'
+
+%table.email--outer
+  %tr
+    %td.email--outer-cell
+
+      %table.email--seal
+        %tr
+          %td
+            = image_tag 'seal_DA.png', class: 'email--seal-img'
+          %td
+            %p.email--seal__title
+              Rod Underhill, District Attorney
+
+            %ul.email--contact-details-list-small
+              %li Victim Assistance Program
+              %li (503) 988-3275
+              %li www.mcda.us
+
+  %tr
+    %td.email--outer-cell
+      = yield
+
+  %tr
+    %td.email--outer-cell
+      %table.email--feedback
+        %tr
+          %td{ colspan: 3 }
+            %h2 Was this email useful?
+        %tr
+          %td{ width: '33%' }
+            = link_to feedback_response_url('thumbs_up'), class: 'email--feedback-link' do
+              = image_tag 'emoji_happy_small.png', width: 32
+              %p Yes
+          %td{ width: '33%' }
+            = link_to feedback_response_url('thumbs_down'), class: 'email--feedback-link' do
+              = image_tag 'emoji_sad_small.png', width: 32
+              %p No
+          %td{ width: '33%' }
+            = link_to feedback_response_url('yes_but'), class: 'email--feedback-link' do
+              = image_tag 'emoji_thinking_face.png', width: 32
+              %p Yes, but
+
+      %h6.email--footer-our-address Our mailing address is:
+      %ul.email--footer-our-address-list
+        %li Code for America
+        %li 155 9th St.
+        %li San Francisco, CA 94103

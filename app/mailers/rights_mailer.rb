@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class RightsMailer < ApplicationMailer
+  layout 'email'
+  helper :application
+  helper :rights
+
   # TODO: rename this to not start with "send_"
   def send_vrn_receipt(court_case_subscription)
     @subscription = court_case_subscription
