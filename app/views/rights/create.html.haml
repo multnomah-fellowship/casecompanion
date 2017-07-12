@@ -42,6 +42,9 @@
     %p.app-typography--caption
       You can also do this later.
 
-    -# TODO: Where does this go?
-    = render_component 'button', to: root_path do
-      Done
+.row
+  -# spacer
+
+.row
+  .col.s10.offset-s1
+    = link_to 'Back to Home Page', root_path
