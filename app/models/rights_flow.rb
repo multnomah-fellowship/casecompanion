@@ -42,20 +42,6 @@ class RightsFlow
     confirm
   ].freeze
 
-  # Mapping of the field name (in FIELDS) to Right name
-  # TODO: Remove this because all the names should line up now.
-  RIGHTS_MAPPING = {
-    'flag_a' => Right::RIGHTS[:flag_a],
-    'flag_b' => Right::RIGHTS[:flag_b],
-    'flag_d' => Right::RIGHTS[:flag_d],
-    'flag_e' => Right::RIGHTS[:flag_e],
-    'flag_f' => Right::RIGHTS[:flag_f],
-    'flag_h' => Right::RIGHTS[:flag_h],
-    'flag_i' => Right::RIGHTS[:flag_i],
-    'flag_j' => Right::RIGHTS[:flag_j],
-    'flag_k' => Right::RIGHTS[:flag_k],
-  }.freeze
-
   attr_accessor :current_page
   attr_accessor(*FIELDS)
   attr_reader :errors
@@ -87,7 +73,7 @@ class RightsFlow
       flow_attributes
         .without(*computed_fields)
         .find_all { |_attr, value| value.present? && value.to_i == 1 }
-        .map { |attr, _value| Right.new(name: RIGHTS_MAPPING.fetch(attr)) }
+        .map { |attr, _value| Right.new(name: Right::RIGHTS.fetch(attr.to_sym)) }
         .compact
 
     # If there is a subscription already, update it
