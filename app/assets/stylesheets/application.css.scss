@@ -591,9 +591,18 @@ section.row:not(:first-child) {
 }
 
 .app-checkbox-with-label {
-  background-color: $color-focus;
+  transition: background-color .25s, border .25s;
   width: 100%;
-  border: 2px solid $color-text;
+
+  input:not(:checked) + & {
+    background-color: #fff;
+    border: 2px solid $color-divider;
+  }
+
+  input:checked + & {
+    background-color: $color-focus;
+    border: 2px solid $color-text;
+  }
 
   // Check icon:
   &:before {
