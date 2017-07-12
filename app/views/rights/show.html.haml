@@ -21,13 +21,17 @@
 
   %section.row
 
-  .row
-    .col.s10.offset-s1
-      .app-rights-buttons
-        = link_to 'Reset', rights_path, method: :delete
+  .row.app-row--rights-buttons
+    .col.s6.offset-s1
+      = link_to 'Reset', rights_path, method: :delete
 
-        = render_component 'button', submit: f do
-          - if @flow.finished?
-            Submit
-          - else
-            Next &rarr;
+    .col.s2.app-col--text-centered
+      - if @flow.previous_step
+        = link_to 'Back', right_path(@flow.previous_step)
+
+    .col.s2
+      = render_component 'button', submit: f do
+        - if @flow.finished?
+          Submit
+        - else
+          Next &rarr;

@@ -141,6 +141,19 @@ class RightsFlow
     next_step == PAGES[-1]
   end
 
+  def previous_step
+    previous_page = nil
+    move_pages = 1
+    loop do
+      i = PAGES.find_index(current_page) - move_pages
+      break if i.negative?
+      previous_page = PAGES[i]
+      break unless skip_step?(previous_page)
+      move_pages += 1
+    end
+    previous_page
+  end
+
   def next_step
     next_page = nil
     move_pages = 1

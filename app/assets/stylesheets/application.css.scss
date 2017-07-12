@@ -565,6 +565,10 @@ section.row:not(:first-child) {
   border-top: 4px solid $color-divider;
 }
 
+.app-col--text-centered {
+  text-align: center;
+}
+
 .app-container--pre-main-focus {
   background-color: $color-focus;
   border-bottom: 2px solid $color-divider;

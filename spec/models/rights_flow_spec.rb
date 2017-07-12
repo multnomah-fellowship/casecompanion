@@ -81,6 +81,37 @@ describe RightsFlow do
     end
   end
 
+  describe '#previous_step' do
+    let(:start_page) { 2 }
+    let(:flow) { RightsFlow.new(current_page: pages[start_page]) }
+
+    it 'returns the right value' do
+      expect(flow.previous_step).to eq(pages[start_page - 1])
+    end
+
+    context 'when the previous step is skipped' do
+      before do
+        allow(flow).to receive(:skip_step?).and_call_original
+        allow(flow)
+          .to receive(:skip_step?)
+          .with(pages[start_page - 1])
+          .and_return(true)
+      end
+
+      it 'skips that step' do
+        expect(flow.previous_step).to eq(pages[start_page - 2])
+      end
+    end
+
+    context 'for the first page of the flow' do
+      let(:start_page) { 0 }
+
+      it 'returns nil' do
+        expect(flow.previous_step).to be_nil
+      end
+    end
+  end
+
   describe '#next_step' do
     let(:flow) { RightsFlow.new(current_page: pages[0]) }
 
