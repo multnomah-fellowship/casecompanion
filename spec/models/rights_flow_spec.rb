@@ -8,8 +8,8 @@ describe RightsFlow do
   describe '#persist!' do
     let(:chosen_rights) do
       {
-        'flag_b_critical_stage' => '1',
-        'flag_i_no_media' => '1',
+        'flag_b' => '1',
+        'flag_i' => '1',
       }
     end
 

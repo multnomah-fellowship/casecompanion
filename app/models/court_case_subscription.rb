@@ -13,7 +13,7 @@ class CourtCaseSubscription < ActiveRecord::Base
   end
 
   def rights_hash
-    Hash[Right::NAMES.map { |right| [right, false] }]
+    Hash[Right::RIGHTS.values.map { |right| [right, false] }]
       .merge(Hash[checked_rights.map { |right| [right.name, true] }])
   end
 end

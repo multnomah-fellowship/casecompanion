@@ -11,16 +11,18 @@ class RightsFlow
   # The attributes of this model which will be set by <form> elements. These
   # fields will all be persisted in the flow cookie.
   FIELDS = %w[
-    flag_a_assert_dda
-    flag_a_let_me_choose
-    flag_b_critical_stage
-    flag_d_release_hearings
-    flag_e_revocation_hearings
-    flag_k_restitution
-    flag_h_limited_distribution
-    flag_i_no_media
-    flag_j
+    flag_a
+    flag_b
+    flag_c
+    flag_d
+    flag_e
     flag_f
+    flag_g
+    flag_h
+    flag_i
+    flag_j
+    flag_k
+    flag_m
     first_name
     last_name
     email
@@ -41,16 +43,17 @@ class RightsFlow
   ].freeze
 
   # Mapping of the field name (in FIELDS) to Right name
+  # TODO: Remove this because all the names should line up now.
   RIGHTS_MAPPING = {
-    'flag_a_assert_dda' => Right::NAMES[0],
-    'flag_b_critical_stage' => Right::NAMES[1],
-    'flag_d_release_hearings' => Right::NAMES[3],
-    'flag_e_revocation_hearings' => Right::NAMES[4],
-    'flag_f' => Right::NAMES[5],
-    'flag_h_limited_distribution' => Right::NAMES[7],
-    'flag_i_no_media' => Right::NAMES[8],
-    'flag_j' => Right::NAMES[9],
-    'flag_k_restitution' => Right::NAMES[10],
+    'flag_a' => Right::RIGHTS[:flag_a],
+    'flag_b' => Right::RIGHTS[:flag_b],
+    'flag_d' => Right::RIGHTS[:flag_d],
+    'flag_e' => Right::RIGHTS[:flag_e],
+    'flag_f' => Right::RIGHTS[:flag_f],
+    'flag_h' => Right::RIGHTS[:flag_h],
+    'flag_i' => Right::RIGHTS[:flag_i],
+    'flag_j' => Right::RIGHTS[:flag_j],
+    'flag_k' => Right::RIGHTS[:flag_k],
   }.freeze
 
   attr_accessor :current_page

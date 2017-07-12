@@ -54,11 +54,11 @@ en:
 
         Use this form to tell the District Attorney which rights you'd like to receive.
       field_header: Who's asserting my rights?
-      flag_a_assert_dda:
+      flag_a_true:
         I want the District Attorney to assert and enforce my rights to the
         extent that the District Attorney believes it will best serve the
         effective prosecution of the case
-      flag_a_assert_dda_false:
+      flag_a_false:
         Let me choose for myself
     to_notification:
       preamble:
@@ -66,30 +66,36 @@ en:
         stage hearings. You'll receive a letter in the mail. Often, we'll give
         you a phone call as well when it's short notice.
       field_header: Right to notification
-      flag_b_critical_stage:
+      flag_b:
         Notify me in advance of any critical stage of the proceedings held in open court
-      flag_d_release_hearings:
+      flag_d:
         To be notified in advance about release hearings
-      flag_e_revocation_hearings:
+      flag_e:
         To be notified in advance about probation revocation hearings
     to_financial_assistance:
       preamble:
         You have the right to financial compensation. Restitution is ordered by the judge at the time of sentencing.
       field_header: Right to financial compensation
-      flag_k_restitution:
+      flag_k:
         The right to prompt restitution, which is the loss to you caused by the defendant.
     in_special_cases:
       preamble:
         There are additional rights in some special cases.
       field_header: Rights in special situations
-      flag_h_limited_distribution:
+      flag_c:
+        In a violent felony case, that a Deputy District Attorney consult with you before making a plea offer and before entering into a final plea agreement
+      flag_f:
+        If the crime involved the transmission of bodily fluids, testing of the defendant for HIV and other communicable diseases
+      flag_g:
+        In a DUII automobile collision case, that information about the case given to the defendant is also shared with you.
+      flag_h:
         To limit copying or distribution of visual or audio recordings of sexual conduct by a child or invasion of personal privacy
-      flag_i_no_media:
+      flag_i:
         To allow no-coverage of sex offense proceedings by media television, photography, or recording equipment
       flag_j:
         To have as a special condition of post-prison supervision that th eperson convicted of a sex crime in your case not live within three miles of your home if you were younger than 18 years old when the crime occurred (exceptions may apply)
-      flag_f:
-        If the crime involved the transmission of bodily fluids, testing of the defendant for HIV and other communicable diseases
+      flag_m:
+        For person crimes and burglary in the first degree only, to request ongoing involvement in any court actions that happen after the conviction such as appeal, post-conviction, or federal habeas proceedings.
     confirm:
       focus_header: "You're all set."
       focus_subheader: We sent you an email with a copy of your rights.

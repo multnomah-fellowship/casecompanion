@@ -8,15 +8,15 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     expect(response.body).to include('to assert and enforce my rights')
 
-    post '/rights/who_assert', params: { rights_flow: { 'flag_a_assert_dda' => '1' } }
+    post '/rights/who_assert', params: { rights_flow: { 'flag_a' => '1' } }
     follow_redirect!
     expect(response.body).to include('critical stage')
 
-    post '/rights/to_notification', params: { rights_flow: { 'flag_b_critical_stage' => '1' } }
+    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
     follow_redirect!
     expect(response.body).to include('restitution')
 
-    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k_restitution' => '1' } }
+    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
     follow_redirect!
     expect(response.body).to include('sex offense proceedings')
 
@@ -57,13 +57,13 @@ RSpec.describe 'Rights selection flow' do
     get '/rights'
     follow_redirect!
 
-    post '/rights/who_assert', params: { rights_flow: { 'flag_a_assert_dda' => '1' } }
+    post '/rights/who_assert', params: { rights_flow: { 'flag_a' => '1' } }
     follow_redirect!
 
-    post '/rights/to_notification', params: { rights_flow: { 'flag_b_critical_stage' => '1' } }
+    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
     follow_redirect!
 
-    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k_restitution' => '1' } }
+    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
     follow_redirect!
 
     post '/rights/in_special_cases'

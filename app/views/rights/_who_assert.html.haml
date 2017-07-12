@@ -6,10 +6,10 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2= t('rights_flow.who_assert.field_header')
 
-    = f.radio_button :flag_a_assert_dda, true
-    = f.label :flag_a_assert_dda, t('rights_flow.who_assert.flag_a_assert_dda'), value: true
+    = f.radio_button :flag_a, true
+    = f.label :flag_a, t('rights_flow.who_assert.flag_a_true'), value: true
 
 .row
   .col.s10.offset-s1
-    = f.radio_button :flag_a_assert_dda, false
-    = f.label :flag_a_assert_dda, t('rights_flow.who_assert.flag_a_assert_dda_false'), value: false
+    = f.radio_button :flag_a, false
+    = f.label :flag_a, t('rights_flow.who_assert.flag_a_false'), value: false
