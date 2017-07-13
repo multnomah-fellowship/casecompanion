@@ -12,6 +12,8 @@ class BetaSignupsController < ApplicationController
   def create
     @beta_signup = BetaSignup.create(beta_signup_params)
 
+    return render :new, layout: 'lander' if @beta_signup.errors.any?
+
     send_signup_to_slack(@beta_signup)
   end
 
