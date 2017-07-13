@@ -5,8 +5,7 @@ class RightsMailer < ApplicationMailer
   helper :application
   helper :rights
 
-  # TODO: rename this to not start with "send_"
-  def send_vrn_receipt(court_case_subscription)
+  def vrn_receipt(court_case_subscription)
     @subscription = court_case_subscription
 
     mail(

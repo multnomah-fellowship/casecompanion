@@ -2,7 +2,7 @@
 
 # Preview all emails at http://localhost:3000/rails/mailers/rights_mailer
 class RightsMailerPreview < ActionMailer::Preview
-  def send_vrn_receipt
+  def vrn_receipt
     subscription = CourtCaseSubscription.new(
       first_name: 'Mary',
       last_name: 'Jones',
@@ -17,6 +17,6 @@ class RightsMailerPreview < ActionMailer::Preview
       ],
     )
 
-    RightsMailer.send_vrn_receipt(subscription)
+    RightsMailer.vrn_receipt(subscription)
   end
 end

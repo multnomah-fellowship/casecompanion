@@ -60,7 +60,7 @@ class RightsController < ApplicationController
     subscription = CourtCaseSubscription.find(subscription_id)
 
     RightsMailer
-      .send_vrn_receipt(subscription)
+      .vrn_receipt(subscription)
       .deliver_now
   end
 end
