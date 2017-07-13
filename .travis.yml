@@ -7,8 +7,11 @@ rvm:
 - 2.4.0
 script: bundle exec rspec
 after_success:
-  - bundle exec codeclimate-test-reporter
+- bundle exec codeclimate-test-reporter
 env:
   global:
-    - TWILIO_PHONE_NUMBER=+14155555555
-    - APP_DOMAIN=localhost
+  - TWILIO_PHONE_NUMBER=+14155555555
+  - APP_DOMAIN=localhost
+notifications:
+  slack:
+    secure: W+jMoZpXMkCwYGItAkdaWiXsgaql4qr2n7af6DDOzkhvBENkod+G8CR/Bi9IdIGbgAjaJRrWEvsgdsNvyojJS4YbN7GtqptQtR/6DDCZfgEPjm0NvVMeMG5Kk3xx4uJLoOspHr+xUAabhrxTtDX/rEc6HMzt0Wmr18udBVzQLwGYO1KBLC/hx50ynLUM5CSnL6BRQ1ofjutv1tc37yCTMBsa/zoQ/Yw93orLLOAMLAV2s6a0gZjTyM2TL18wZtKg4JtIgkFfx8e/bzR/dRx5QafZAyPGI3JXXGfjK78bYDOuO7xa3hHxVOsSj6hX6BVtDG/phKzGjIKgVL/4VrTmIQyC4P1SVVWY9COe7nFiAeYqqn+IJBZ9oPkGByHFuN8buHMLDs0eSjeb70O7YAdgG+7rKUy/+64t+GDHjPPYtihm2ipC9eG53yHs6p2pn5gU6ZHT9FbZgn3+4+08Ui8/sPqTbV8y7trdSbNYA0XpQ474Q8qL6ToPTtMek/2XL0ZIfqiTmXjTgor3Rc43121K8tnp5xq6OyL+sNgIbu/2eSeV7/99vzyWVMR9tL9NLokrCvt6mTuwX1h6UV7OYvj2qFU51EYdQDRWX6nI92OvkeVPImoVZyBA6mc+jmjYCzxQRVJYfcsa/gK7xUrxaiHSJuAGh+mVztarYlVa7SF+bGc=
