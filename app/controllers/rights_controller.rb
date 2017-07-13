@@ -62,5 +62,9 @@ class RightsController < ApplicationController
     RightsMailer
       .vrn_receipt(subscription)
       .deliver_now
+
+    RightsMailer
+      .vrn_advocate_update(subscription)
+      .deliver_now
   end
 end

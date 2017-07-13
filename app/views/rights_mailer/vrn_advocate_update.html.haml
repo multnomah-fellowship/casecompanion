@@ -1,0 +1,35 @@
+%h1 Update to Victims Rights
+
+Hello,
+%br
+%br
+You're receiving this email because a victim has updated their requested Victims'
+Rights on myadvocateoregon.org.
+%br
+%br
+Case details:
+%ul
+  %li
+    %b Name:
+    #{@subscription.first_name} #{@subscription.last_name}
+
+  %li
+    %b Phone Number:
+    #{format_phone(@subscription.phone_number)}
+
+  %li
+    %b Email Address:
+    #{@subscription.email}
+
+  %li
+    %b Case Number:
+    #{@subscription.case_number}
+
+The following rights are selected:
+%ul
+  - @subscription.checked_rights.each do |right|
+    %li= right.name
+
+We hope that this email will be useful in updating the victim's preferred rights in your case tracking system.
+%br
+If you believe there has been an error in this email, please report it to #{link_to 'myadvocate@codeforamerica.org', 'mailto:myadvocate@codeforamerica.org'}.
