@@ -9,5 +9,6 @@ script: bundle exec rspec
 after_success:
   - bundle exec codeclimate-test-reporter
 env:
-  - TWILIO_PHONE_NUMBER=+14155555555
-  - APP_DOMAIN=localhost
+  global:
+    - TWILIO_PHONE_NUMBER=+14155555555
+    - APP_DOMAIN=localhost
