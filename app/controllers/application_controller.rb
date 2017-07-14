@@ -30,6 +30,17 @@ class ApplicationController < ActionController::Base
   end
 
   def set_mixpanel
+    # This is to help me trace down the incorrect cities in the Mixpanel
+    # server-side events on heroku
+    if helpers.feature_enabled?('log_request_ips')
+      Rails.logger.info(JSON.generate(
+        'request.ip' => request.ip,
+        'request.remote_ip' => request.remote_ip,
+        'request.remote_addr' => request.remote_addr,
+        'x-forwarded-for' => request.headers['X-Forwarded-For'],
+      ))
+    end
+
     @mixpanel ||= MixpanelTrackerWrapper.from_request(request)
   end
 end
