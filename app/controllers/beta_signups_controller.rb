@@ -39,6 +39,8 @@ class BetaSignupsController < ApplicationController
   end
 
   def send_email_confirmation(beta_signup)
+    return unless helpers.feature_enabled?('beta_signup_email')
+
     BetaSignupsMailer
       .beta_signup_created(beta_signup)
       .deliver_now
