@@ -114,7 +114,6 @@ module ApplicationHelper
   end
 
   def render_beta_bar?
-    return false unless feature_enabled?('beta_bar')
     controller_name != 'beta_signups'
   end
 end
