@@ -6,9 +6,9 @@
 
         %ul.app-footer__feedback-list
           - current_path = request.path
-          %li= link_to 'Yes', feedback_response_path(type: :thumbs_up, page: current_path)
-          %li= link_to 'No', feedback_response_path(type: :thumbs_down, page: current_path)
-          %li= link_to 'Yes, but', feedback_response_path(type: :yes_but, page: current_path)
+          %li= link_to 'Yes', feedback_response_path(type: :thumbs_up, page: current_path), target: '_blank'
+          %li= link_to 'No', feedback_response_path(type: :thumbs_down, page: current_path), target: '_blank'
+          %li= link_to 'Yes, but', feedback_response_path(type: :yes_but, page: current_path), target: '_blank'
 
       .hide-on-large-only
         .row
