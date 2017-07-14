@@ -14,6 +14,7 @@ class BetaSignupsController < ApplicationController
 
     return render :new, layout: 'lander' if @beta_signup.errors.any?
 
+    @mixpanel.track('beta-signup', email: @beta_signup.email, beta_signup_id: @beta_signup.id)
     send_signup_to_slack(@beta_signup)
     send_email_confirmation(@beta_signup)
   end
