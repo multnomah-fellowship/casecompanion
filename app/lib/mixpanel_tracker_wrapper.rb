@@ -11,7 +11,7 @@ class MixpanelTrackerWrapper
 
   def self.from_request(request)
     distinct_id = request.env[MixpanelMiddleware::DISTINCT_ID]
-    ip = request.remote_ip
+    ip = request.env[PossiblyFakeRequestIpMiddleware::KEY]
 
     new(distinct_id, ip)
   end
