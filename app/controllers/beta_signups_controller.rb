@@ -15,6 +15,7 @@ class BetaSignupsController < ApplicationController
     return render :new, layout: 'lander' if @beta_signup.errors.any?
 
     send_signup_to_slack(@beta_signup)
+    send_email_confirmation(@beta_signup)
   end
 
   private
@@ -35,5 +36,11 @@ class BetaSignupsController < ApplicationController
     end
   rescue => ex
     Raven.capture_exception(ex)
+  end
+
+  def send_email_confirmation(beta_signup)
+    BetaSignupsMailer
+      .beta_signup_created(beta_signup)
+      .deliver_now
   end
 end

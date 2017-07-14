@@ -22,6 +22,10 @@ td {
   @extend %app-typography--body-1;
 }
 
+a {
+  color: inherit;
+}
+
 .email--outer {
   max-width: 600px;
   width: 100%;
@@ -114,4 +118,8 @@ td {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.email--disclaimer-text {
+  @extend %app-typography--caption;
 }
