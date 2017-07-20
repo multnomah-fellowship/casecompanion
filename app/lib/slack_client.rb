@@ -28,7 +28,7 @@ class SlackClient
     attribution_fields =
       beta_signup.utm_attribution
         .try(:slice, *UtmAttribution::FIELDS)
-        .try(:compact)
+        .try(:find_all) { |_k, v| v.present? }
         .try(:map) { |k, v| { title: k, value: v, short: true } }
         .to_a
 

@@ -37,7 +37,7 @@ describe SlackClient do
     end
 
     describe 'with a UTM attribution' do
-      let(:utm_attribution) { UtmAttribution.new(utm_campaign: 'foo') }
+      let(:utm_attribution) { UtmAttribution.new(utm_campaign: 'foo', utm_content: '') }
 
       it 'includes the UTM attribution' do
         subject
