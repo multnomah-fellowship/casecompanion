@@ -157,8 +157,8 @@ en:
       name: 'Chelsea Penning'
       caption: |
         Victims' Specialist, Department of Community Justice<br>
-        (503) 988-2737
-        chelsea.penning@multco.us
+        (503) 988-2737<br>
+        <a href="mailto:chelsea.penning@multco.us" target="_blank">chelsea.penning@multco.us</a>
 
     prison_jail_who_robyn_what_about: |
       How to stay informed
