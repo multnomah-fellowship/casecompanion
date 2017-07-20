@@ -52,5 +52,3 @@ Style/ClassAndModuleChildren:
 
 Lint/IneffectiveAccessModifier:
   Enabled: false
-
-# inherit_from: .rubocop_todo.yml
