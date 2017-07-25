@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/tdooner/oos-mechanizer.git
-  revision: 54c4b6ec3281d5b05da745dde2c901654544faf3
+  revision: 94ee5fdf6ba9baf3762cf4caf41a6d416b5a84ca
   specs:
     oos_mechanizer (0.1.1)
       mechanize (~> 2.7.5)
