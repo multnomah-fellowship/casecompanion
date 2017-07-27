@@ -3,9 +3,8 @@ en:
   product_description: 'Helping victims navigate the criminal justice system'
 
   home:
-    headline: "Navigating the criminal justice system\u00a0post\u2011conviction"
-    subhead: "Find status information, answers to frequently asked questions,\u00a0and
-      contact\u00a0information"
+    headline: "Find the information and support you need\u00a0after the\u00a0case\u00a0is\u00a0over"
+    subhead: "Look up offender status, find your point of contact and answers to frequently\u00a0asked\u00a0questions"
     cta: Look up Status
     secondary_cta: See FAQs
     description: |
