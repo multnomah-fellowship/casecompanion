@@ -71,6 +71,9 @@ class OffenderJurisdictionsController < ApplicationController
           name: full_name,
         ).html_safe
       end
+    elsif @results.length == 1
+      result = @results[0]
+      return redirect_to offender_path(result[:jurisdiction], result[:sid])
     end
 
     render :show

@@ -80,9 +80,9 @@ describe OffenderJurisdictionsController do
         }
       end
 
-      it 'renders the results' do
+      it 'redirects to DCJ offender page' do
         subject
-        expect(response.body).to include('20130142')
+        expect(response).to redirect_to(offender_path(:dcj, '20130142'))
       end
     end
 
