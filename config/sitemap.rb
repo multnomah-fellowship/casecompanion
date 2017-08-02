@@ -27,4 +27,7 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
   add faqs_path
+
+  add offender_jurisdiction_path(:oregon)
+  add offender_jurisdiction_path(:dcj)
 end
