@@ -55,7 +55,7 @@
           .col.s10.offset-s1.m5.offset-m1
             %p.app-typography--body-1
               - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org', target: '_blank')
-              = raw(t('home.description', cfa_link: cfa_link))
+              = raw(t('home.description', cfa_link: cfa_link, product_name: product_name))
 
           .col.s10.offset-s1.m5
             = image_tag 'partner_logos.png', class: 'app-header__logos'

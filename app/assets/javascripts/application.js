@@ -42,7 +42,8 @@ window.App = (function() {
       $icon.text('–');
 
       // store the location in the URL
-      const newLocation = window.location.pathname + id
+      const newLocation = window.location.pathname + id;
+      const pageTitle = document.getElementsByTagName("title")[0].innerText;
       history.replaceState({}, "My Advocate", newLocation);
 
       // track mixpanel

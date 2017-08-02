@@ -104,7 +104,7 @@ module ApplicationHelper
 
   def page_title
     safe_join([
-      t('product_name'),
+      product_name,
       content_for(:page_title),
     ].compact, raw(' &middot; '))
   end
@@ -115,5 +115,13 @@ module ApplicationHelper
 
   def render_beta_bar?
     controller_name != 'beta_signups'
+  end
+
+  def product_name
+    if Rails.application.config.app_domain.match?(/myadvocateoregon/i)
+      I18n.t('old_product_name')
+    else
+      I18n.t('product_name')
+    end
   end
 end

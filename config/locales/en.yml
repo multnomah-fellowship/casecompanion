@@ -1,5 +1,6 @@
 en:
-  product_name: My Advocate
+  product_name: Case Companion
+  old_product_name: My Advocate
   product_description: 'Helping victims navigate the criminal justice system'
 
   home:
@@ -8,7 +9,7 @@ en:
     cta: Look up Status
     secondary_cta: See FAQs
     description: |
-      My Advocate is a public website for victims of crime in Multnomah County,
+      %{product_name} is a public website for victims of crime in Multnomah County,
       built by %{cfa_link} in collaboration with government and
       community&nbsp;partners.
     faqs: How do I get a restraining order? How do I get a copy of the police report? What happens next?

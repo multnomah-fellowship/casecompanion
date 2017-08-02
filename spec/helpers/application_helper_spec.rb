@@ -111,4 +111,42 @@ describe ApplicationHelper do
       expect(subject).to include(options[:caption])
     end
   end
+
+  describe '#product_name' do
+    subject { helper.product_name }
+
+    around do |example|
+      begin
+        old = Rails.application.config.app_domain
+        Rails.application.config.app_domain = app_domain
+        example.run
+      ensure
+        Rails.application.config.app_domain = old
+      end
+    end
+
+    describe 'locally' do
+      let(:app_domain) { 'localhost' }
+
+      it 'is CaseCompanion by default' do
+        expect(subject).to eq('Case Companion')
+      end
+    end
+
+    describe 'for MyAdvocate' do
+      let(:app_domain) { 'myadvocateoregon.org' }
+
+      it 'is MyAdvocate' do
+        expect(subject).to eq('My Advocate')
+      end
+    end
+
+    describe 'when the app domain is casecompanion.org' do
+      let(:app_domain) { 'casecompanion.org' }
+
+      it 'is CaseCompanion' do
+        expect(subject).to eq('Case Companion')
+      end
+    end
+  end
 end
