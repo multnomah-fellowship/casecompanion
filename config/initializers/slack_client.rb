@@ -2,12 +2,12 @@
 
 app_name = if Rails.env.production?
              if ENV['APP_DOMAIN'].match?(/staging/)
-               'MyAdvocate Staging'
+               'Case Companion Staging'
              else
-               'MyAdvocate Production'
+               'Case Companion Production'
              end
            else
-             'MyAdvocate Development'
+             'Case Companion Dev'
            end
 
 Rails.application.config.slack_client =

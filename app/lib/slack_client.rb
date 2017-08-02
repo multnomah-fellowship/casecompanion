@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SlackClient
-  def initialize(hook_url: ENV['SLACK_WEBHOOK_URL'], app_name: 'MyAdvocate Development')
+  def initialize(hook_url: ENV['SLACK_WEBHOOK_URL'], app_name: 'Case Companion Dev')
     @hook_url = hook_url
     @app_name = app_name
     @disabled = false
@@ -62,7 +62,7 @@ class SlackClient
         {
           fallback: "New feedback submitted: #{feedback.body}",
           color: '#2f6296', # color: multnomah-blue
-          pretext: 'New Feedback Submitted to MyAdvocate',
+          pretext: 'New Feedback Submitted to Case Companion',
           text: feedback.body,
           fields: [
             {

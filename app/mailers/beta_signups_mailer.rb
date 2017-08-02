@@ -8,7 +8,7 @@ class BetaSignupsMailer < ApplicationMailer
 
     mail(
       to: @signup.email,
-      subject: 'Thanks from MyAdvocate',
+      subject: 'Thanks from Case Companion',
     )
   end
 end
