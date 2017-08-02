@@ -104,8 +104,8 @@ module ApplicationHelper
 
   def page_title
     safe_join([
-      product_name,
       content_for(:page_title),
+      product_name,
     ].compact, raw(' &middot; '))
   end
 
