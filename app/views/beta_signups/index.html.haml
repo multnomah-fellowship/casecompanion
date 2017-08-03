@@ -1,0 +1,17 @@
+- headers = @beta_signups.first.attribute_names + UtmAttribution::FIELDS - %w[utm_attribution_id updated_at]
+
+.row
+  .col.s11.offset-s1
+    = link_to 'Download as CSV', beta_signups_download_path(format: 'csv')
+
+%table
+  %thead
+    %tr
+      - headers.each do |header|
+        %th.app-typography--body-2= header
+
+  %tbody
+    - @beta_signups.each do |signup|
+      %tr
+        - signup.attributes.values_at(*headers).each do |attribute|
+          %td.app-typography--body-2= attribute

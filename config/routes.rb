@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get '/beta', to: 'beta_signups#new', as: :beta_signup
   post '/beta', to: 'beta_signups#create', as: :beta_signups
+  get '/beta/download', to: 'beta_signups#index', as: :beta_signups_download
 
   resources :rights, only: %i[show index create destroy], id: Regexp.union(RightsFlow::PAGES) do
     collection do

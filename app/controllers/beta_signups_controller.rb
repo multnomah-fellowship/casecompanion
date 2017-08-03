@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'csv'
+
 class BetaSignupsController < ApplicationController
   def new
     @beta_signup = BetaSignup.new(
@@ -17,6 +19,19 @@ class BetaSignupsController < ApplicationController
     @mixpanel.track('beta-signup', email: @beta_signup.email, beta_signup_id: @beta_signup.id)
     send_signup_to_slack(@beta_signup)
     send_email_confirmation(@beta_signup)
+  end
+
+  def index
+    verify_shared_secret!
+
+    @beta_signups = BetaSignup.all.includes(:utm_attribution)
+
+    return render text: 'No beta signups!' unless @beta_signups.any?
+
+    respond_to do |format|
+      format.html
+      format.csv
+    end
   end
 
   private
@@ -45,5 +60,18 @@ class BetaSignupsController < ApplicationController
     BetaSignupsMailer
       .beta_signup_created(beta_signup)
       .deliver_now
+  end
+
+  def verify_shared_secret!
+    if ENV['DOWNLOAD_SECRET'].blank?
+      flash[:error] = 'Unconfigured download secret'
+      redirect_to root_path
+    elsif params[:secret].blank?
+      flash[:error] = 'Please use the secret URL parameter to download'
+      redirect_to root_path
+    elsif params[:secret] != ENV['DOWNLOAD_SECRET']
+      flash[:error] = 'Incorrect download secret'
+      redirect_to root_path
+    end
   end
 end
