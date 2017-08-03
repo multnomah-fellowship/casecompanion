@@ -1,0 +1,5 @@
+- headers = @beta_signups.first.attribute_names + UtmAttribution::FIELDS - %w[utm_attribution_id updated_at]
+
+= CSV.generate(headers: headers, write_headers: true) do |csv|
+  - @beta_signups.each do |signup|
+    - csv << signup.attributes.values_at(*headers)

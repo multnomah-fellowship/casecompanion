@@ -46,4 +46,29 @@ RSpec.describe BetaSignupsController, type: :controller do
       expect(response.body).to include('Great!')
     end
   end
+
+  describe '#index' do
+    let!(:beta_signup) do
+      BetaSignup.create(
+        email: 'foo@example.com',
+        utm_attribution: UtmAttribution.new,
+      )
+    end
+
+    before do
+      allow_any_instance_of(BetaSignupsController)
+        .to receive(:verify_shared_secret!)
+        .and_return(nil)
+    end
+
+    subject { get :index, format: :csv }
+
+    it 'responds with a CSV' do
+      subject
+      expect(response).to be_success
+
+      rows = CSV.parse(response.body, headers: :first_row)
+      expect(rows[0]['email']).to eq(beta_signup.email)
+    end
+  end
 end
