@@ -12,7 +12,6 @@ env:
   global:
   - TWILIO_PHONE_NUMBER=+14155555555
   - APP_DOMAIN=localhost
-  - DOWNLOAD_SECRET=foobar
 notifications:
   slack:
     on_success: change
