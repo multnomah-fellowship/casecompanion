@@ -2,7 +2,7 @@
 
 .row
   .col.s11.offset-s1
-    = link_to 'Download as CSV', beta_signups_download_path(format: 'csv')
+    = link_to 'Download as CSV', beta_signups_download_path(format: 'csv', secret: params[:secret])
 
 %table
   %thead
