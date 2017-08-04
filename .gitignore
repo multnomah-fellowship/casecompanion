@@ -24,3 +24,4 @@
 .env
 coverage
 .DS_Store
+deploy/create-ami/variables.json

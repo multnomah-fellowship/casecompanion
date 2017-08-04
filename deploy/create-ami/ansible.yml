@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Install python (for ansible itself)
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+  - name: Install postgresql
+    apt:
+      name: postgresql-9.5
+
+  # 1. Create an "app" user which will have permissions necessary to run the app
+  # 2. Create a "tdooner" user with my SSH key
+  # 3. Install rbenv, ruby
+  # 4. Create a systemd unit file for the application with an EnvironmentFile
+  #    set with the desired configuration. Enable the service to start on boot.
+  # 5. Add application code
+  # 6. Get nginx and puma going.
+  # 7. Figure out logging / log rotation. Maybe just use systemd.
