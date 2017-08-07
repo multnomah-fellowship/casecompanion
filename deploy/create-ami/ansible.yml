@@ -10,11 +10,6 @@
     apt:
       name: sudo
 
-  # This should probably use RDS instead of an on-instance database
-  - name: Install postgresql
-    apt:
-      name: postgresql-9.5
-
   # 1. Create an "app" user and group which will have permissions necessary to
   # run the app
   - name: Create app group
@@ -53,9 +48,38 @@
       rbenv_users:
         - app
 
-# 4. Create a systemd unit file for the application with an EnvironmentFile
-#    set with the desired configuration. Enable the service to start on boot.
-# 5. Add application code
-# 6. Get nginx and puma going.
-# 7. Figure out logging / log rotation. Maybe just use systemd.
-# 8. Copy in the code and configuration for the deploy
+# 4. Install packages that are application dependencies
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install application dependencies
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - postgresql-9.5 # TODO: Use RDS or a different instance?
+        - libpq-dev
+        - libsqlite3-dev
+        - nodejs # a javascript runtime is required for uglifier
+
+    # 5. Create a systemd unit file for the application with an EnvironmentFile
+    # set with the desired configuration. Enable the service to start on boot.
+    # TODO: Add the EnvironmentFile
+    - name: Install systemd template
+      template:
+        src: ./templates/casecompanion.service.j2
+        dest: /etc/systemd/system/casecompanion.service
+
+    - name: Enable systemd service on boot
+      file:
+        src: /etc/systemd/system/multi-user.target.wants/casecompanion.service
+        dest: /etc/systemd/system/casecompanion.service
+        state: link
+
+    # 6. Add application code
+    - name: Copy application code
+      copy:
+        src: ../../
+        dest: /home/app/src
+
+# 7. Get nginx and puma going.
+# 8. Figure out logging / log rotation. Maybe just use systemd.
