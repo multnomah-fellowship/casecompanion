@@ -13,5 +13,13 @@
   "provisioners": [{
     "type": "ansible",
     "playbook_file": "ansible.yml"
-  }]
+  }],
+
+  "post-processors": [[
+    {
+      "type": "docker-tag",
+      "repository": "multnomah-fellowship/casecompanion",
+      "tag": "latest"
+    }
+  ]]
 }
