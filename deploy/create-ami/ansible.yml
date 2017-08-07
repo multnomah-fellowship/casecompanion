@@ -1,9 +1,14 @@
 ---
 - hosts: all
   gather_facts: false
+
   tasks:
   - name: Install python (for ansible itself)
     raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+  - name: Install sudo (for ansible itself)
+    apt:
+      name: sudo
 
   # This should probably use RDS instead of an on-instance database
   - name: Install postgresql
@@ -29,10 +34,28 @@
       groups: app
       append: true
 
-  # 3. Install rbenv, ruby
-  # 4. Create a systemd unit file for the application with an EnvironmentFile
-  #    set with the desired configuration. Enable the service to start on boot.
-  # 5. Add application code
-  # 6. Get nginx and puma going.
-  # 7. Figure out logging / log rotation. Maybe just use systemd.
-  # 8. Copy in the code and configuration for the deploy
+# 3. Install rbenv, ruby
+- hosts: all
+  gather_facts: true
+  vars:
+    rbenv:
+      env: user
+      version: 'v1.1.1'
+      default_ruby: 2.4.0
+      rubies:
+        - version: 2.4.0
+
+  roles:
+    - role: zzet.rbenv
+      rbenv_extra_depends:
+        - ca-certificates
+        - curl
+      rbenv_users:
+        - app
+
+# 4. Create a systemd unit file for the application with an EnvironmentFile
+#    set with the desired configuration. Enable the service to start on boot.
+# 5. Add application code
+# 6. Get nginx and puma going.
+# 7. Figure out logging / log rotation. Maybe just use systemd.
+# 8. Copy in the code and configuration for the deploy
