@@ -60,6 +60,7 @@
         - libpq-dev
         - libsqlite3-dev
         - nodejs # a javascript runtime is required for uglifier
+        - rsync # for copying
       become: true
 
     # 5. Create a systemd unit file for the application with an EnvironmentFile
@@ -80,12 +81,13 @@
 
     # 6. Add application code
     - name: Copy application code
-      copy:
-        src: ../../
+      synchronize:
+        src: ../../../
         dest: /home/app/src
-        owner: app
-        group: app
+        rsync_opts:
+          - "--exclude=.git"
       become: true
+      become_user: app
 
 # 7. Install and configure nginx
 - hosts: all
