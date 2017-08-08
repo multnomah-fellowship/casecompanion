@@ -3,12 +3,12 @@
 [Unit]
 Description=CaseCompanion Ruby Application Server
 
-# TODO: EnvironmentFile
 [Service]
 ExecStart=/home/app/.rbenv/shims/bundle exec rails server
 User=app
 Group=app
-WorkingDirectory=/home/app/src
+WorkingDirectory=/home/app/current
+EnvironmentFile=/home/app/shared/.env
 
 [Install]
 WantedBy=multi-user.target
