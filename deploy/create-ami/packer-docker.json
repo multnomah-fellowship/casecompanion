@@ -10,13 +10,16 @@
     "commit": true
   }],
 
-  "provisioners": [{
-    "type": "ansible",
-    "playbook_file": "ansible.yml",
-    "extra_arguments": [
-      "--extra-vars", "starts_without_sudo=yes"
-    ]
-  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "test -e /usr/bin/sudo || (apt update && apt -y install sudo)"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "ansible.yml"
+    }
+  ],
 
   "post-processors": [[
     {

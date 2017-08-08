@@ -5,13 +5,7 @@
   tasks:
   - name: Install python (for ansible itself)
     raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-    # We need to `sudo` this installation on AWS but cannot in docker
-    become: "{{ starts_without_sudo | default(true) }}"
-
-  - name: Install sudo (for ansible itself)
-    apt:
-      name: sudo
-    when: 'starts_without_sudo is defined'
+    become: true
 
   # 1. Create an "app" user and group which will have permissions necessary to
   # run the app
