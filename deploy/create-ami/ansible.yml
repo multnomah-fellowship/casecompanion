@@ -82,5 +82,13 @@
         src: ../../
         dest: /home/app/src
 
-# 7. Get nginx and puma going.
+# 7. Install and configure nginx
+- hosts: all
+  gather_facts: true
+  roles:
+    - role: jdauphant.nginx
+      nginx_sites:
+        casecompanion:
+          template: ./templates/casecompanion.conf.j2
+
 # 8. Figure out logging / log rotation. Maybe just use systemd.
