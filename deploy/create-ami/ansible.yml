@@ -79,8 +79,8 @@
 
     - name: Enable systemd service on boot
       file:
-        src: /etc/systemd/system/multi-user.target.wants/casecompanion.service
-        dest: /etc/systemd/system/casecompanion.service
+        src: /etc/systemd/system/casecompanion.service
+        dest: /etc/systemd/system/multi-user.target.wants/casecompanion.service
         state: link
       become: true
 
