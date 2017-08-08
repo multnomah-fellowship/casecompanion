@@ -5,22 +5,27 @@
   tasks:
   - name: Install python (for ansible itself)
     raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    # We need to `sudo` this installation on AWS but cannot in docker
+    become: "{{ starts_without_sudo | default(true) }}"
 
   - name: Install sudo (for ansible itself)
     apt:
       name: sudo
+    when: 'starts_without_sudo is defined'
 
   # 1. Create an "app" user and group which will have permissions necessary to
   # run the app
   - name: Create app group
     group:
       name: app
+    become: true
 
   - name: Create user 'app'
     user:
       name: app
       group: app
       comment: "CaseCompanion Application"
+    become: true
 
   # 2. Create a "tdooner" user with my SSH key
   - name: Create user 'tdooner'
@@ -28,6 +33,7 @@
       name: tdooner
       groups: app
       append: true
+    become: true
 
 # 3. Install rbenv, ruby
 - hosts: all
@@ -60,6 +66,7 @@
         - libpq-dev
         - libsqlite3-dev
         - nodejs # a javascript runtime is required for uglifier
+      become: true
 
     # 5. Create a systemd unit file for the application with an EnvironmentFile
     # set with the desired configuration. Enable the service to start on boot.
@@ -68,19 +75,23 @@
       template:
         src: ./templates/casecompanion.service.j2
         dest: /etc/systemd/system/casecompanion.service
-        force: true
+      become: true
 
     - name: Enable systemd service on boot
       file:
         src: /etc/systemd/system/multi-user.target.wants/casecompanion.service
         dest: /etc/systemd/system/casecompanion.service
         state: link
+      become: true
 
     # 6. Add application code
     - name: Copy application code
       copy:
         src: ../../
         dest: /home/app/src
+        owner: app
+        group: app
+      become: true
 
 # 7. Install and configure nginx
 - hosts: all
