@@ -4,7 +4,8 @@
 Description=CaseCompanion Ruby Application Server
 
 [Service]
-ExecStart=/home/app/.rbenv/shims/bundle exec rails server
+# Bash is needed to initialize rbenv:
+ExecStart=/bin/bash -lc "exec bin/rails server -b 0.0.0.0"
 User=app
 Group=app
 WorkingDirectory=/home/app/current
