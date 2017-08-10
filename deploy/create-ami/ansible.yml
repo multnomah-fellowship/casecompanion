@@ -107,6 +107,7 @@
       branch: master
       templates:
         - { src: "./templates/env.j2", dest: '{{ shared_path }}/.env' }
+        - { src: "./templates/database.yml", dest: '{{ shared_path }}/config/database.yml' }
       symlinks:
         # TODO: logging
         # TODO: Puma
