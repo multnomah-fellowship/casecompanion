@@ -29,6 +29,13 @@
       append: true
     become: true
 
+  - name: Cache rbenv directory between builds
+    file:
+      src: "/mnt/cache/rbenv"
+      dest: "/home/app/.rbenv"
+      state: link
+    when: packer_builder_type == "docker" and cache_rbenv_during_build == "true"
+
 # 3. Install rbenv, ruby
 - hosts: all
   gather_facts: true
