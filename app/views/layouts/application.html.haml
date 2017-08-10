@@ -48,9 +48,6 @@
           .col.s10.offset-s1.app-cell--error
             = simpler_format flash[:error]
             = mixpanel_track_message :error, flash[:error]
-            %p
-              Confused? Ask us a question:
-              #{link_to "text #{format_phone(@phone_number)}", "sms:#{@phone_number}", class: 'app-button-link'}.
 
       = yield
 
