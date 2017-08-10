@@ -416,13 +416,13 @@ en:
           body: |
             To learn the specific conditions of supervision for an offender, please contact his or her probation/parole officer.
 
-            <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
+            <a href="https://myadvocateoregon.org/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
 
             There are also <a href="https://multco.us/dcj-adult/probation-parole-and-post-prison-supervision/standard-conditions-adult-probation-parole" target="_blank">general conditions that apply to almost every offender</a>.
         who_is_po:
           title: Who is the Parole-Probation Officer, and how can I contact him/her?
           body:
-            <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
+            <a href="https://myadvocateoregon.org/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
         what_can_talk_to_po_about:
           title: What can I talk to the Parole-Probation Officer about?
           body: |
@@ -452,7 +452,7 @@ en:
           body: |
             Call the Parole/Probation Officer (PO). The PO will conduct an investigation and let you know what comes next. If the activity continues, or if you feel in danger, call 9-1-1.
 
-            <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
+            <a href="https://myadvocateoregon.org/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
 
       who_to_call:
         - name: 'Chelsea Penning'
@@ -514,7 +514,7 @@ en:
 
       who_to_call:
         - name: "Offender's Parole/Probation Officer"
-          phone: <a href="https://multco.us/dcj-adult/ppo-lookup" target="_blank">Lookup the Parole/Probation Officer</a>
+          phone: <a href="https://myadvocateoregon.org/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
 
     ###########################################################################
 
