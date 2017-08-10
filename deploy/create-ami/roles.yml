@@ -1,5 +1,6 @@
 - zzet.rbenv
 - jdauphant.nginx
+- jdauphant.ssl-certs
 - nicolai86.prepare-release
 - git+https://github.com/nicolai86/ansible-rails-deployment.git,79b8c10658a05d23bccf35698830374f1f592900
 - nicolai86.finalize-release
