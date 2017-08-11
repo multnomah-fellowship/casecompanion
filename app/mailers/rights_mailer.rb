@@ -20,7 +20,7 @@ class RightsMailer < ApplicationMailer
     remove_feedback_section!
 
     mail(
-      to: 'tdooner@codeforamerica.org',
+      to: Rails.application.config.vrn_update_email_address,
       subject: "Victim Rights Updated: #{@subscription.first_name} #{@subscription.last_name}",
     )
   end
