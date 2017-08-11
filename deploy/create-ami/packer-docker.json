@@ -23,7 +23,10 @@
     {
       "type": "ansible",
       "playbook_file": "ansible.yml",
-      "extra_arguments": ["--extra-vars", "cache_rbenv_during_build={{ user `cache_rbenv_during_build` }}"]
+      "extra_arguments": [
+        "--extra-vars", "cache_rbenv_during_build={{ user `cache_rbenv_during_build` }}",
+        "--vault-password-file", ".ansible_vault_password.py"
+      ]
     }
   ],
 

@@ -90,6 +90,8 @@
   become: true
   become_user: app
   gather_facts: false
+  vars_files:
+  - secrets.yml
   vars:
     user: app
     home_directory: '/home/{{ user }}'
