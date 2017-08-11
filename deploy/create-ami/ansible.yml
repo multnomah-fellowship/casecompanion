@@ -29,6 +29,11 @@
       append: true
     become: true
 
+  - name: Add authorized keys
+    authorized_key:
+      user: tdooner
+      key: "{{ lookup('file', 'tdooner.pub') }}"
+
   - name: Cache rbenv directory between builds
     file:
       src: "/mnt/cache/rbenv"
