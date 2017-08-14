@@ -11,7 +11,7 @@
     "region": "us-west-2",
     "instance_type": "t2.small",
     "ssh_username": "ubuntu",
-    "ami_name": "packer casecompanion {{isotime \"2006-01-02\"}}",
+    "ami_name": "packer casecompanion {{isotime \"2006-01-02 15_04_05\"}}",
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
