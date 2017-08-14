@@ -1,0 +1,7 @@
+{
+  "aws_access_key": "",
+  "aws_secret_key": "",
+  "ansible_vault_password": "",
+
+  "cache_rbenv_during_build": "false"
+}

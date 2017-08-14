@@ -1,19 +1,166 @@
 ---
 - hosts: all
   gather_facts: false
+
   tasks:
   - name: Install python (for ansible itself)
     raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    become: true
 
-  - name: Install postgresql
-    apt:
-      name: postgresql-9.5
+  # 1. Create an "app" user and group which will have permissions necessary to
+  # run the app
+  - name: Create app group
+    group:
+      name: app
+    become: true
 
-  # 1. Create an "app" user which will have permissions necessary to run the app
+  - name: Create user 'app'
+    user:
+      name: app
+      group: app
+      comment: "CaseCompanion Application"
+    become: true
+
   # 2. Create a "tdooner" user with my SSH key
-  # 3. Install rbenv, ruby
-  # 4. Create a systemd unit file for the application with an EnvironmentFile
-  #    set with the desired configuration. Enable the service to start on boot.
-  # 5. Add application code
-  # 6. Get nginx and puma going.
-  # 7. Figure out logging / log rotation. Maybe just use systemd.
+  - name: Create developer users
+    user:
+      name: "{{ item }}"
+      groups: app,sudo
+      append: true
+    with_items:
+      - tdooner
+      - joleary
+    become: true
+
+  - name: Add authorized keys
+    authorized_key:
+      user: "{{ item.user }}"
+      key: "{{ item.key }}"
+    with_items:
+      - { user: tdooner, key: "{{ lookup('file', 'tdooner.pub') }}" }
+      - { user: joleary, key: "{{ lookup('file', 'joleary.pub') }}" }
+    become: true
+
+  - name: Add sudoers rules for tdooner and app user
+    template:
+      src: ./templates/sudo.j2
+      dest: /etc/sudoers.d/casecompanion
+      validate: 'visudo -cf %s'
+    become: true
+
+  - name: Cache rbenv directory between builds
+    file:
+      src: "/mnt/cache/rbenv"
+      dest: "/home/app/.rbenv"
+      state: link
+    when: packer_builder_type == "docker" and cache_rbenv_during_build == "true"
+
+# 3. Install rbenv, ruby
+- hosts: all
+  gather_facts: true
+  vars:
+    rbenv:
+      env: user
+      version: 'v1.1.1'
+      default_ruby: 2.4.0
+      rubies:
+        - version: 2.4.0
+  roles:
+    - role: zzet.rbenv
+      rbenv_extra_depends:
+        - ca-certificates
+        - curl
+        - git
+      rbenv_users:
+        - app
+
+# 4. Install packages that are application dependencies
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install application dependencies
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - postgresql-9.5 # TODO: Use RDS or a different instance?
+        - libpq-dev
+        - libsqlite3-dev
+        - nodejs # a javascript runtime is required for uglifier
+        - rsync # for copying
+      become: true
+
+    # 5. Create a systemd unit file for the application with an EnvironmentFile
+    # set with the desired configuration. Enable the service to start on boot.
+    - name: Install systemd template
+      template:
+        src: ./templates/casecompanion.service.j2
+        dest: /etc/systemd/system/casecompanion.service
+      become: true
+
+    - name: Enable systemd service on boot
+      file:
+        src: /etc/systemd/system/casecompanion.service
+        dest: /etc/systemd/system/multi-user.target.wants/casecompanion.service
+        state: link
+      become: true
+
+# 6. Add application code and deploy folder structure
+- hosts: all
+  become: true
+  become_user: app
+  gather_facts: false
+  vars_files:
+  - secrets.yml
+  vars:
+    user: app
+    home_directory: '/home/{{ user }}'
+    deploy_to: '{{ home_directory }}'
+    gem_home: '{{ home_directory }}/.rbenv/versions/2.4.0'
+    rails_env: production
+    bundle_install_options: "--gemfile='./Gemfile' --deployment"
+    rails_bin_paths:
+      - "{{ home_directory }}/.rbenv/shims"
+    custom_environment:
+      APP_DOMAIN: myadvocateoregon.org
+  roles:
+    - role: nicolai86.prepare-release
+      repo: https://github.com/multnomah-fellowship/casecompanion.git
+      branch: master
+      templates:
+        - { src: "./templates/env.j2", dest: '{{ shared_path }}/.env' }
+        - { src: "./templates/database.yml", dest: '{{ shared_path }}/config/database.yml' }
+      symlinks:
+        # TODO: logging
+        # TODO: Puma
+        - { src: '{{ shared_path }}/vendor/bundle', dest: '{{ build_path }}/vendor/bundle' }
+        - { src: '{{ shared_path }}/.env', dest: '{{ build_path }}/.env' }
+        - { src: '{{ shared_path }}/config/database.yml', dest: '{{ build_path }}/config/database.yml' }
+      directories:
+        - '{{ shared_path }}/config'
+        - '{{ shared_path }}/log'
+        - '{{ shared_path }}/public'
+      tags: deploy
+    - role: ansible-rails-deployment
+      migrate: no # TODO: this can't be done until postgres is running; figure out how to do it in an RDS world
+      compile_assets: yes
+      force_migrate: no
+      force_asset_compilation: no
+      tags: deploy
+    - role: nicolai86.finalize-release
+      tags: deploy
+
+# 7. Install and configure nginx
+- hosts: all
+  become: true
+  gather_facts: true
+  roles:
+    # Generate a self-signed TLS certificate so that Cloudflare can connect to
+    # this server.
+    - role: jdauphant.ssl-certs
+      ssl_certs_generate_dh_param: true
+    - role: jdauphant.nginx
+      nginx_sites:
+        casecompanion:
+          template: ./templates/casecompanion.conf.j2
+
+# 8. Figure out logging / log rotation. Maybe just use systemd.

@@ -11,7 +11,8 @@
     "region": "us-west-2",
     "instance_type": "t2.small",
     "ssh_username": "ubuntu",
-    "ami_name": "packer casecompanion 2",
+    "ami_name": "packer casecompanion {{isotime \"2006-01-02 15_04_05\"}}",
+    "ami_users": ["127729491206"],
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
@@ -26,6 +27,8 @@
   "provisioners": [{
     "type": "ansible",
     "playbook_file": "ansible.yml",
-    "extra_arguments": ["-vvv"]
+    "extra_arguments": [
+      "--vault-password-file", ".ansible_vault_password.py"
+    ]
   }]
 }

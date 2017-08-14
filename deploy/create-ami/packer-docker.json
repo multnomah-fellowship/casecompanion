@@ -1,17 +1,40 @@
 {
   "variables": {
     "aws_access_key": "",
-    "aws_secret_key": ""
+    "aws_secret_key": "",
+    "cache_path": "{{ env `HOME` }}/.cache",
+    "cache_rbenv_during_build": "false"
   },
 
   "builders": [{
     "type": "docker",
     "image": "ubuntu:16.04",
-    "commit": true
+    "commit": true,
+    "volumes": {
+      "{{ user `cache_path` }}/docker-casecompanion": "/mnt/cache"
+    }
   }],
 
-  "provisioners": [{
-    "type": "ansible",
-    "playbook_file": "ansible.yml"
-  }]
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "test -e /usr/bin/sudo || (apt update && apt -y install sudo)"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "ansible.yml",
+      "extra_arguments": [
+        "--extra-vars", "cache_rbenv_during_build={{ user `cache_rbenv_during_build` }}",
+        "--vault-password-file", ".ansible_vault_password.py"
+      ]
+    }
+  ],
+
+  "post-processors": [[
+    {
+      "type": "docker-tag",
+      "repository": "multnomah-fellowship/casecompanion",
+      "tag": "latest"
+    }
+  ]]
 }

@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=CaseCompanion Ruby Application Server
+
+[Service]
+# Bash is needed to initialize rbenv:
+ExecStart=/bin/bash -lc "exec bin/rails server -b 0.0.0.0"
+User=app
+Group=app
+WorkingDirectory=/home/app/current
+EnvironmentFile=/home/app/shared/.env
+
+[Install]
+WantedBy=multi-user.target

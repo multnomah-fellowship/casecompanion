@@ -1,0 +1,3 @@
+# {{ ansible_managed }}
+production:
+  url: <%= ENV['DATABASE_URL'] %>
