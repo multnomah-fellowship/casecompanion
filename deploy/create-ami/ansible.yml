@@ -22,17 +22,31 @@
     become: true
 
   # 2. Create a "tdooner" user with my SSH key
-  - name: Create user 'tdooner'
+  - name: Create developer users
     user:
-      name: tdooner
-      groups: app
+      name: "{{ item }}"
+      groups: app,sudo
       append: true
+    with_items:
+      - tdooner
+      - joleary
     become: true
 
   - name: Add authorized keys
     authorized_key:
-      user: tdooner
-      key: "{{ lookup('file', 'tdooner.pub') }}"
+      user: "{{ item.user }}"
+      key: "{{ item.key }}"
+    with_items:
+      - { user: tdooner, key: "{{ lookup('file', 'tdooner.pub') }}" }
+      - { user: joleary, key: "{{ lookup('file', 'joleary.pub') }}" }
+    become: true
+
+  - name: Add sudoers rules for tdooner and app user
+    template:
+      src: ./templates/sudo.j2
+      dest: /etc/sudoers.d/casecompanion
+      validate: 'visudo -cf %s'
+    become: true
 
   - name: Cache rbenv directory between builds
     file:
