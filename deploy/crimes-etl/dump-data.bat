@@ -1,13 +1,18 @@
-REM Run this script first (on dameta).
+REM This script should be run as a user with connection permission to SQL
+REM Server.
 REM
-REM This script dumps data from SQL Server into some local CSV files
+REM It dumps data from SQL Server into some local CSV files in preparation for
+REM processing by the copy-and-process.sh script.
 
-sqlcmd -S "dacry2\mssql$dada2" -d Crimsadl -i queries\00_SETUP.sql
+path C:\Program Files\Microsoft SQL Server\90\Tools\binn\;%PATH%
+cd C:\Users\doonert\casecompanion\deploy\crimes-etl
 
-sqlcmd -S "dacry2\mssql$dada2" -d Crimsadl -i queries\01_VRN.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\00_SETUP.sql
 
-sqlcmd -S "dacry2\mssql$dada2" -d Crimsadl -i queries\before.sql,queries\02_VICTIM_NAME.sql -o victims.csv -s "^" -W
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01_VRN.sql
 
-sqlcmd -S "dacry2\mssql$dada2" -d Crimsadl -i queries\before.sql,queries\03_VRN.sql -o vrns.csv -s "^" -W
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.sql,queries\02_VICTIM_NAME.sql -o victims.csv -s "^" -W
+
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.sql,queries\03_VRN.sql -o vrns.csv -s "^" -W
 
 pause
