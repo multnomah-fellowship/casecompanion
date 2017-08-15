@@ -39,6 +39,9 @@
     with_items:
       - { user: tdooner, key: "{{ lookup('file', 'tdooner.pub') }}" }
       - { user: joleary, key: "{{ lookup('file', 'joleary.pub') }}" }
+      # Also give everyone access to log in for deployment purposes to the `app` user:
+      - { user: app, key: "{{ lookup('file', 'tdooner.pub') }}" }
+      - { user: app, key: "{{ lookup('file', 'joleary.pub') }}" }
     become: true
 
   - name: Add sudoers rules for tdooner and app user
@@ -117,6 +120,7 @@
     deploy_to: '{{ home_directory }}'
     gem_home: '{{ home_directory }}/.rbenv/versions/2.4.0'
     rails_env: production
+    # TODO: Set `/home/app/shared/bundle` as the bundle path
     bundle_install_options: "--gemfile='./Gemfile' --deployment"
     rails_bin_paths:
       - "{{ home_directory }}/.rbenv/shims"
