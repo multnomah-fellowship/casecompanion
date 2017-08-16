@@ -10,8 +10,10 @@
 namespace :git do
   task :fix_config do
     on roles(:all) do
-      execute :git, 'config', 'remote.origin.fetch', '+refs/*:refs/*'
-      execute :git, 'config', 'remote.origin.mirror', 'true'
+      within repo_path do
+        execute :git, 'config', 'remote.origin.fetch', '+refs/*:refs/*'
+        execute :git, 'config', 'remote.origin.mirror', 'true'
+      end
     end
   end
 end

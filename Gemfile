@@ -69,6 +69,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-install'
 end
 
 group :production do
