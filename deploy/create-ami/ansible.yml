@@ -1,6 +1,8 @@
 ---
 - hosts: all
   gather_facts: false
+  vars:
+    ruby_version: "{{ lookup('file', '../../.ruby-version') }}"
 
   tasks:
   - name: Install python (for ansible itself)
@@ -62,12 +64,13 @@
 - hosts: all
   gather_facts: true
   vars:
+    ruby_version: "{{ lookup('file', '../../.ruby-version') }}"
     rbenv:
       env: user
       version: 'v1.1.1'
-      default_ruby: 2.4.0
+      default_ruby: "{{ ruby_version }}"
       rubies:
-        - version: 2.4.0
+        - version: "{{ ruby_version }}"
   roles:
     - role: zzet.rbenv
       rbenv_extra_depends:
@@ -115,9 +118,10 @@
   - secrets.yml
   vars:
     user: app
+    ruby_version: "{{ lookup('file', '../../.ruby-version') }}"
     home_directory: '/home/{{ user }}'
     deploy_to: '{{ home_directory }}'
-    gem_home: '{{ home_directory }}/.rbenv/versions/2.4.0'
+    gem_home: '{{ home_directory }}/.rbenv/versions/{{ ruby_version }}'
     rails_env: production
     # TODO: Set `/home/app/shared/bundle` as the bundle path
     bundle_install_options: "--gemfile='./Gemfile' --deployment"
