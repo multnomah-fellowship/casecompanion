@@ -17,6 +17,8 @@ RSpec::Matchers.define :track_mixpanel_event do |event, attributes|
       .with(event, attributes)
 
     actual.call
+
+    true
   end
 
   supports_block_expectations

@@ -1,0 +1,1 @@
+AhoyEmail.subscribers << EmailSubscriber.new

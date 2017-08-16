@@ -5,15 +5,8 @@ require 'rails_helper'
 describe MixpanelTrackerWrapper do
   describe '.from_request' do
     let(:distinct_id) { 'THISISMYDISTINCTID' }
-    let(:env) do
-      {
-        MixpanelMiddleware::DISTINCT_ID => distinct_id,
-        'remote_ip' => '::1',
-      }
-    end
-    let(:request) { ActionDispatch::Request.new(env) }
 
-    subject { MixpanelTrackerWrapper.from_request(request) }
+    subject { MixpanelTrackerWrapper.from_request(mixpanel_trackable_request(distinct_id)) }
 
     it 'sets distinct_id from the request' do
       expect(subject.distinct_id).to eq(distinct_id)

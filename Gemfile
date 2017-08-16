@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
 # Dependencies we have added to Rails
+gem 'ahoy_email'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'flipper'
 gem 'haml'
