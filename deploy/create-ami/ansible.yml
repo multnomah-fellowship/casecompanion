@@ -90,6 +90,7 @@
       with_items:
         - libpq-dev
         - libsqlite3-dev
+        - tzdata
         - nodejs # a javascript runtime is required for uglifier
         - rsync # for copying
       become: true
