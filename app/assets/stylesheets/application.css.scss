@@ -262,18 +262,6 @@ $app-container-top-padding: 40px;
   }
 }
 
-.app-beta-bar {
-  @extend %app-typography--body-2;
-
-  background-color: $primary-color;
-  color: rgba(255, 255, 255, 0.8);
-  overflow: auto; // expand to margin of <p>
-
-  .row {
-    margin-bottom: 0;
-  }
-}
-
 .app-header {
   background-color: #fff;
   border-bottom: 1px solid $color-page-border;

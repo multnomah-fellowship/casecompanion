@@ -113,10 +113,6 @@ module ApplicationHelper
     Rails.env.development? || Rails.application.config.flipper[name].enabled?
   end
 
-  def render_beta_bar?
-    controller_name != 'beta_signups'
-  end
-
   def product_name
     if Rails.application.config.app_domain.match?(/myadvocateoregon/i)
       I18n.t('old_product_name')
