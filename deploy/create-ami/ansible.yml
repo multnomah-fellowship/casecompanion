@@ -85,7 +85,6 @@
       apt:
         name: "{{ item }}"
       with_items:
-        - postgresql-9.5 # TODO: Use RDS or a different instance?
         - libpq-dev
         - libsqlite3-dev
         - nodejs # a javascript runtime is required for uglifier
@@ -133,9 +132,9 @@
       templates:
         - { src: "./templates/env.j2", dest: '{{ shared_path }}/.env' }
         - { src: "./templates/database.yml", dest: '{{ shared_path }}/config/database.yml' }
+        - { src: "./templates/psqlenv.j2", dest: '{{ shared_path }}/.psqlenv' }
       symlinks:
         # TODO: logging
-        # TODO: Puma
         - { src: '{{ shared_path }}/vendor/bundle', dest: '{{ build_path }}/vendor/bundle' }
         - { src: '{{ shared_path }}/.env', dest: '{{ build_path }}/.env' }
         - { src: '{{ shared_path }}/config/database.yml', dest: '{{ build_path }}/config/database.yml' }
@@ -145,7 +144,7 @@
         - '{{ shared_path }}/public'
       tags: deploy
     - role: ansible-rails-deployment
-      migrate: no # TODO: this can't be done until postgres is running; figure out how to do it in an RDS world
+      migrate: no
       compile_assets: yes
       force_migrate: no
       force_asset_compilation: no
