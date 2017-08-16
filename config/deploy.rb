@@ -8,6 +8,7 @@ set :repo_url, 'https://github.com/multnomah-fellowship/casecompanion.git'
 set :deploy_to, '/home/app'
 set :default_env, APP_DOMAIN: 'localhost'
 set :systemd_service, 'casecompanion'
+set :rbenv_ruby, File.read(File.expand_path('../../.ruby-version', __FILE__)).strip
 
 # TODO: Make Ansible use Capistrano's default
 set :repo_path, -> { "#{fetch(:deploy_to)}/scm" }
