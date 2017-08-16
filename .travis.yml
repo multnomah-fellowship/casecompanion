@@ -10,7 +10,7 @@ after_success:
 - bundle exec codeclimate-test-reporter
 env:
   global:
-  - TWILIO_PHONE_NUMBER=+14155555555
+  - RAILS_ENV=test
   - APP_DOMAIN=localhost
 notifications:
   slack:
