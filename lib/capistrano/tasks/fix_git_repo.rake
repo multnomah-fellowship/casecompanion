@@ -9,7 +9,7 @@
 
 namespace :git do
   task :fix_config do
-    on :all do
+    on roles(:all) do
       execute :git, 'config', 'remote.origin.fetch', '+refs/*:refs/*'
       execute :git, 'config', 'remote.origin.mirror', 'true'
     end
