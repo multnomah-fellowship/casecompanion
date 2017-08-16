@@ -17,6 +17,7 @@
           .col.s10.offset-s1.m4.offset-m1
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title--splash= render_component 'logo', variant: :translucent
+              .app-header__subtitle formerly MyAdvocate
 
           - if feature_enabled?(:log_in)
             .col.s10.m6.offset-m1.app-feature-flagged
