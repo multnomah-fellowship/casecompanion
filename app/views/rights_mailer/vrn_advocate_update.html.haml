@@ -4,7 +4,7 @@ Hello,
 %br
 %br
 You're receiving this email because #{@subscription.first_name} has updated
-their requested Victims' Rights on myadvocateoregon.org.
+their requested Victims' Rights on casecompanion.org.
 %br
 %br
 Case details:
@@ -30,4 +30,4 @@ The following rights are selected:
   - @subscription.checked_rights.each do |right|
     %li= right.name
 
-If you believe there has been an error in this email, please report it to #{link_to 'team@myadvocateoregon.org', 'mailto:team@myadvocateoregon.org'}.
+If you believe there has been an error in this email, please report it to #{link_to 'team@casecompanion.org', 'mailto:team@casecompanion.org'}.

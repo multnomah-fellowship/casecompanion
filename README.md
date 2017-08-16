@@ -1,8 +1,8 @@
 # myadvocate ![Build Status](https://travis-ci.org/multnomah-fellowship/myadvocate.svg?branch=master)
 Prototype for CfA multnomah fellowship
 
-* [View Live Site](https://myadvocateoregon.org)
-* [View Staging Site](https://staging.myadvocateoregon.org)
+* [View Live Site](https://casecompanion.org)
+* [View Staging Site](https://staging.casecompanion.org)
 
 ## useful development links
 
@@ -12,12 +12,12 @@ Prototype for CfA multnomah fellowship
 ## configuration
 Make sure to export the following environment variables:
 
-* `APP_DOMAIN` (e.g. `myadvocateoregon.org`. This domain must have valid TLS!)
+* `APP_DOMAIN` (e.g. `casecocmpanion.org`. This domain must have valid TLS!)
 
 To send email you will additionally need the following settings:
 
 * `SMTP_HOSTNAME` (e.g. 'smtp.mailgun.org')
-* `SMTP_USERNAME` (e.g. 'postmaster@mail.myadvocateoregon.org')
+* `SMTP_USERNAME` (e.g. 'postmaster@casecompanion.org')
 * `SMTP_PASSWORD` (e.g. '12345')
 
 ## installation

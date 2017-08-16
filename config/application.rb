@@ -51,5 +51,7 @@ module MyAdvocate
     config.action_mailer.default_url_options = {
       host: ENV['APP_DOMAIN'],
     }
+
+    config.vrn_update_email_address = ENV['VRN_UPDATE_EMAIL_ADDRESS']
   end
 end

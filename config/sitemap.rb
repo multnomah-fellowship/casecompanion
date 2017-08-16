@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://myadvocateoregon.org'
+SitemapGenerator::Sitemap.default_host = 'https://casecompanion.org'
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -27,4 +27,7 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
   add faqs_path
+
+  add offender_jurisdiction_path(:oregon)
+  add offender_jurisdiction_path(:dcj)
 end

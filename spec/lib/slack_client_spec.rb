@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe SlackClient do
   let(:slack_url) { 'https://example.com/foo/bar' }
-  let(:client) { SlackClient.new(hook_url: slack_url, app_name: 'MyAdvocate Test') }
+  let(:client) { SlackClient.new(hook_url: slack_url, app_name: 'Case Companion Test') }
 
   before do
     stub_request(:post, slack_url)
