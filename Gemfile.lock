@@ -172,9 +172,13 @@ GEM
     parallel (1.11.2)
     parser (2.4.0.0)
       ast (~> 2.2)
+    pdf-core (0.7.0)
     pg (0.20.0)
     pg (0.20.0-x64-mingw32)
     powerpack (0.1.1)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     premailer (1.10.4)
       addressable
       css_parser (>= 1.4.10)
@@ -287,6 +291,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
+    ttfunk (1.5.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -342,6 +347,7 @@ DEPENDENCIES
   mixpanel-ruby
   oos_mechanizer!
   pg
+  prawn
   premailer-rails
   pry
   puma (~> 3.0)
