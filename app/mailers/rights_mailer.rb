@@ -21,7 +21,7 @@ class RightsMailer < ApplicationMailer
 
     pdf_name = %W[
       VRN
-      DA##{@subscription.case_number}
+      #{@subscription.case_number}
       #{@subscription.first_name}
       #{@subscription.last_name}
     ].join('-') + '.pdf'
