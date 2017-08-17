@@ -10,10 +10,10 @@
   display: inline-block;
 }
 
-.app-logo--translucent {
+.app-logo--single-color {
   color: rgba(#fff, 0.8);
 
   .app-logo__beta {
-    color: rgba(#fff, 0.4);
+    color: inherit;
   }
 }
