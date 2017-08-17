@@ -57,7 +57,8 @@ RSpec.describe FeedbackResponsesController, type: :controller do
   end
 
   describe 'PATCH #update' do
-    let(:feedback_response) { FeedbackResponse.create(value: 'thumbs_down') }
+    let(:feedback_response) { FeedbackResponse.create(value: 'thumbs_down', page: page) }
+    let(:page) { '/' }
     let(:params) do
       {
         id: feedback_response.id,
@@ -73,6 +74,16 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       subject
       expect(response).to have_http_status(:success)
       expect(feedback_response.reload.body).to eq(params[:feedback_response][:body])
+    end
+
+    context 'for a VRN confirmation email' do
+      let(:page) { 'vrn-experiment' }
+
+      it 'returns success' do
+        subject
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include(I18n.t('feedback_responses.header'))
+      end
     end
   end
 end

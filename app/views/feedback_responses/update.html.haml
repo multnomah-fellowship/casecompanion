@@ -23,4 +23,13 @@
     %p.app-typography--body-1
       Thanks again!
 
+    - if @feedback.page == 'vrn-experiment'
+      %h2.app-typography--header-2 Want to help make this email better?
+
+      %p.app-typography--body-1
+        We want to hear from you! We'll buy you a coffee and pay you $35 for an
+        hour of your time.
+
+      = link_to 'Sign up for a user interview', 'https://docs.google.com/forms/d/e/1FAIpQLScG-pCZHnn8uufdd-aEK5LWmS0Cb4oMgoPwJZo8HxuwIrlMSA/viewform'
+
     = maybe_render_back_button(@feedback)
