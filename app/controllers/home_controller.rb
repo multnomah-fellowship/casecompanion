@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  REVISION_PATH = File.expand_path('../../REVISION', __FILE__)
+
   def splash
     return redirect_to home_path if @current_user
 
@@ -20,5 +22,13 @@ class HomeController < ApplicationController
 
   def trigger_error
     raise 'Sentry testing error!'
+  end
+
+  def health
+    info = {
+      revision: File.exist?(REVISION_PATH) ? File.read(REVISION_PATH) : 'unknown',
+    }
+
+    render json: info
   end
 end

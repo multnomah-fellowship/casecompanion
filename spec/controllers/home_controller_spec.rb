@@ -38,4 +38,10 @@ describe HomeController do
       expect(response).to be_success
     end
   end
+
+  describe '#health' do
+    subject { get :health }
+
+    it { expect(subject).to have_http_status(:ok) }
+  end
 end

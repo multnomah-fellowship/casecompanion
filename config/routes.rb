@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   get '/trigger-error', to: 'home#trigger_error'
   get '/sandbox', to: 'home#sandbox'
+  get '/health', to: 'home#health'
   get '/home', to: 'home#home'
 
   root to: 'home#splash'
