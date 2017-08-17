@@ -96,6 +96,8 @@ class RightsPdfGenerator
     end
 
     @data = pdf.render
+
+    self
   end
 
   private
