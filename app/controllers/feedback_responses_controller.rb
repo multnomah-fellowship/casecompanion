@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FeedbackResponsesController < ApplicationController
-  DEFAULT_PAGE = 'vrn-experiment'
+  DEFAULT_PAGE = 'vrn-confirmation'
 
   layout 'focused'
 

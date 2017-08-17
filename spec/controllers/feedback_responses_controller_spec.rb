@@ -28,9 +28,9 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       expect { subject }.to(change { FeedbackResponse.count }.by(1))
     end
 
-    it 'without a specific page defaults to "vrn-experiment"' do
+    it 'without a specific page defaults to "vrn-confirmation"' do
       subject
-      expect(FeedbackResponse.last.page).to eq('vrn-experiment')
+      expect(FeedbackResponse.last.page).to eq('vrn-confirmation')
     end
 
     describe 'when giving feedback about a specific page' do
@@ -77,7 +77,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
     end
 
     context 'for a VRN confirmation email' do
-      let(:page) { 'vrn-experiment' }
+      let(:page) { 'vrn-confirmation' }
 
       it 'returns success' do
         subject

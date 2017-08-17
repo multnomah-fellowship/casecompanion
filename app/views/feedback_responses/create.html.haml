@@ -1,11 +1,11 @@
 - content_for :header do
-  - if @feedback.page == 'vrn-experiment'
+  - if @feedback.page == 'vrn-confirmation'
     %p= t('feedback_responses.header')
   - else
     = render_component 'logo'
 
 - content_for :footer do
-  - if @feedback.page == 'vrn-experiment'
+  - if @feedback.page == 'vrn-confirmation'
     = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
     = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
   - else
@@ -35,7 +35,7 @@
   .row
     .col.s10.offset-s1
       .input-field
-        - thing_key = @feedback.page == 'vrn-experiment' ? 'thing_email' : 'thing_page'
+        - thing_key = @feedback.page == 'vrn-confirmation' ? 'thing_email' : 'thing_page'
         = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
           thing: t("feedback_responses.#{thing_key}"))
         = f.text_field :body, 'data-length': 200
