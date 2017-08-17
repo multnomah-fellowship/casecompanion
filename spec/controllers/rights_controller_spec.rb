@@ -21,4 +21,15 @@ describe RightsController, type: :controller do
       end
     end
   end
+
+  describe '#preview' do
+    subject { get :preview }
+
+    it 'renders' do
+      subject
+
+      expect(response).to be_success
+      expect(response.headers['Content-Type']).to include('application/pdf')
+    end
+  end
 end

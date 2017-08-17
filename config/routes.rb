@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       post '/:id', to: 'rights#update'
       delete '/', to: 'rights#delete'
+      get '/preview', to: 'rights#preview'
     end
   end
 
