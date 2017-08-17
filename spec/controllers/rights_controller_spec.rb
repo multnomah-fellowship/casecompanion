@@ -23,7 +23,7 @@ describe RightsController, type: :controller do
   end
 
   describe '#preview' do
-    subject { get :preview }
+    subject { get :preview, format: 'pdf' }
 
     it 'renders' do
       subject
