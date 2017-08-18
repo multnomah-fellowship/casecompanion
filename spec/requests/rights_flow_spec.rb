@@ -31,6 +31,7 @@ RSpec.describe 'Rights selection flow' do
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
         'case_number' => '17CR1234',
+        'advocate_email' => 'advocate@example.com',
       },
     }
     follow_redirect!
@@ -51,6 +52,8 @@ RSpec.describe 'Rights selection flow' do
 
     expect(last_subscription.email)
       .to eq('tom@example.com')
+    expect(last_subscription.advocate_email)
+      .to eq('advocate@example.com')
   end
 
   it 'allows hitting back and saving an updated version' do

@@ -28,6 +28,7 @@ class RightsFlow
     email
     phone_number
     case_number
+    advocate_email
     court_case_subscription_id
   ].freeze
 
@@ -60,6 +61,7 @@ class RightsFlow
         errors.add(:email, :blank) unless email.present?
         errors.add(:phone_number, :blank) unless phone_number.present?
         errors.add(:case_number, :blank) unless case_number.present?
+        errors.add(:advocate_email, :blank) unless advocate_email.present?
       end
     end
   end
@@ -99,6 +101,7 @@ class RightsFlow
       last_name: last_name,
       email: email,
       phone_number: phone_number,
+      advocate_email: advocate_email,
     )
 
     if subscription.persisted? &&

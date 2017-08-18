@@ -32,6 +32,7 @@
 @import "materialize/components/grid";
 @import "materialize/components/typography";
 @import "materialize/components/forms/forms";
+@import "materialize/components/dropdown";
 
 $app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
   ($gutter-width / 2)+ ")");

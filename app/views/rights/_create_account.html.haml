@@ -44,3 +44,9 @@
     = link_to 'Look up the Case Number',
       'http://mcda.us/index.php/case-information/case-status/',
       class: 'app-typography--caption', target: '_blank'
+
+  .col.s5
+    .input-field
+      = f.select :advocate_email,
+        options_for_select(AdvocateList.name_and_emails, @flow.advocate_email)
+      = f.label :advocate_email, 'Advocate Name'
