@@ -18,7 +18,9 @@ class AdvocateList
     end
 
     def name_and_emails
-      all.map { |r| [formatted_advocate_name(r), r['Email']] }
+      all
+        .map { |r| [formatted_advocate_name(r), r['Email']] }
+        .sort_by(&:first)
     end
 
     private
