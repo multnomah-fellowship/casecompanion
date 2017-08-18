@@ -79,6 +79,7 @@ RSpec.describe 'Rights selection flow' do
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
         'case_number' => '17CR1234',
+        'advocate_email' => 'advocate@example.com',
       },
     }
     follow_redirect!
