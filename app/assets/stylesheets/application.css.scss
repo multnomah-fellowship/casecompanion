@@ -32,6 +32,7 @@
 @import "materialize/components/grid";
 @import "materialize/components/typography";
 @import "materialize/components/forms/forms";
+@import "materialize/components/dropdown";
 
 $app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
   ($gutter-width / 2)+ ")");
@@ -575,6 +576,26 @@ section.row:not(:first-child) {
 
 .character-counter {
   color: $color-text-caption;
+}
+
+.select-wrapper {
+  & ~ label {
+    display: block;
+    width: 100%;
+  }
+
+  & ~ label.active {
+    top: 12px;
+  }
+
+  &.invalid ~ label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    display: block;
+    position: absolute;
+    top: 60px;
+    opacity: 1;
+  }
 }
 
 // This rule overrides the Materialize CSS rules for checkbox labels.

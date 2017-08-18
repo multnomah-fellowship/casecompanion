@@ -17,6 +17,8 @@
 //= require materialize/global
 //= require materialize/forms
 //= require materialize/character_counter
+//= require materialize/dropdown
+//= require materialize/jquery.easing.1.3
 //= require_tree .
 
 const analytics = {
@@ -128,10 +130,27 @@ window.App = (function() {
 
       $(document).on('click', 'tr[data-href]', handleTableClick);
     },
+
+    onPageLoad: function(e) {
+      // This method is called after a page is loaded, either for the first time
+      // or via turbolinks.
+      //
+      // Since turbolinks effectively turns this site into a single-page app,
+      // any event listeners created here for elements on this page should be
+      // removed on `onPageOffload`.
+      $('select').material_select();
+
+      analytics.trackView(e);
+    },
+
+    onPageOffload: function() {
+      $('select').material_select('destroy');
+    }
   };
 })();
 
-document.addEventListener('turbolinks:load', analytics.trackView);
+document.addEventListener('turbolinks:load', window.App.onPageLoad);
+document.addEventListener('turbolinks:visit', window.App.onPageOffload);
 
 // Initialize the app on the first load only.
 window.addEventListener('load', window.App.init);
