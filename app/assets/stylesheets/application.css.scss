@@ -578,6 +578,26 @@ section.row:not(:first-child) {
   color: $color-text-caption;
 }
 
+.select-wrapper {
+  & ~ label {
+    display: block;
+    width: 100%;
+  }
+
+  & ~ label.active {
+    top: 12px;
+  }
+
+  &.invalid ~ label:after {
+    content: attr(data-error);
+    color: $input-error-color;
+    display: block;
+    position: absolute;
+    top: 60px;
+    opacity: 1;
+  }
+}
+
 // This rule overrides the Materialize CSS rules for checkbox labels.
 [type="checkbox"] + .app-checkbox-with-label {
   @extend %app-typography--body-1;

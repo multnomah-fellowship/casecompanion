@@ -39,6 +39,14 @@ en:
       (503) 988-3222<br>
       <a href="http://www.mcda.us" target="_blank">www.mcda.us</a>
 
+  activemodel:
+    attributes:
+      rights_flow:
+        # HACK: Since we're showing a <select> with the label "Advocate Name"
+        # but it actually persists as an "advocate_email", we need to fudge the
+        # attribute name for purposes of error messages and such.
+        advocate_email: 'Advocate Name'
+
   rights:
     flag_a:
       I want the District Attorney to assert and enforce my rights to the

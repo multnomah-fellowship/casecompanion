@@ -7,6 +7,7 @@
 class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
+  extend ActiveModel::Translation
 
   # The attributes of this model which will be set by <form> elements. These
   # fields will all be persisted in the flow cookie.
