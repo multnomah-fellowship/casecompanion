@@ -26,3 +26,4 @@ coverage
 .DS_Store
 deploy/create-ami/variables.json
 deploy/create-ami/secrets.yml
+node_modules
