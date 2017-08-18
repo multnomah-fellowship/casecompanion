@@ -18,7 +18,7 @@
 //= require materialize/forms
 //= require materialize/character_counter
 //= require materialize/dropdown
-//= require materialize/jquery.easing.1.3
+//= require materialize/jquery.easing.1.4
 //= require_tree .
 
 const analytics = {
