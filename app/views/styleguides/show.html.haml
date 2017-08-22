@@ -18,6 +18,11 @@
 %h1 Form Styling
 We have some custom form styling.
 
+%h2 Check box with label
+:styleguide
+  = form_for '#' do |f|
+    = f.check_box_with_label 'attr', 'This is some text'
+
 %h2 Input field attachment
 :styleguide
   = form_for '#' do |f|
