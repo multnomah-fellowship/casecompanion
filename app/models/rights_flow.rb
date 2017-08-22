@@ -41,7 +41,7 @@ class RightsFlow
     to_financial_assistance
     in_special_cases
     create_account
-    confirm
+    done
   ].freeze
 
   attr_accessor :current_page
