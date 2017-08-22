@@ -489,7 +489,11 @@ $focus-form-overlap-height: 120px;
 
   font-size: 14px;
   position: relative;
-  bottom: 8px;
+  bottom: 18px;
+
+  label.invalid ~ & {
+    display: none;
+  }
 }
 
 .app-field-attachment {
@@ -607,6 +611,8 @@ section.row:not(:first-child) {
 
 .character-counter {
   color: $color-text-caption;
+  position: relative;
+  bottom: 16px;
 }
 
 .select-wrapper {
