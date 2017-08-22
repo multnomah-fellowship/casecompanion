@@ -102,9 +102,12 @@ en:
       preamble:
         There are additional rights in some special cases.
       field_header: Rights in special situations
-    confirm:
+    done:
       focus_header: "You're all set."
+      focus_header_changed: Changes saved.
       focus_subheader: We sent you an email with a copy of your rights.
+      focus_subheader_changed:
+        Your rights request will be updated. It may take a few days for the system to update.
       next: "What's next?"
 
   footer:

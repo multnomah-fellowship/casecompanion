@@ -6,17 +6,15 @@
   .row
     .col.s12.m6.offset-m3
       - if @flow.just_created?
-        %h2.app-typography--header-1 You're all set.
-        %p We sent you a copy of your rights.
+        %h2.app-typography--header-1= t('rights_flow.done.focus_header')
+        %p= t('rights_flow.done.focus_subheader')
       - else
-        %h2.app-typography--header-1 Changes saved.
-        %p
-          Your rights request will be updated. It may take a few days for the
-          system to update.
+        %h2.app-typography--header-1= t('rights_flow.done.focus_header_changed')
+        %p= t('rights_flow.done.focus_subheader_changed')
 
 .row
   .col.s10.offset-s1
-    %h2.app-typography--header-2 What's next?
+    %h2.app-typography--header-2= t('rights_flow.done.next')
 
   .col.s10.offset-s1
     -# TODO: This should depend on the rights selected. Then move this into I18n
