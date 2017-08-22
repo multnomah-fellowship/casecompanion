@@ -71,7 +71,7 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   private
 
   def add_class!(options, *new_classes)
-    options['class'] ||= ''
-    options['class'] = (options['class'].split(/\s+/) | new_classes).join(' ')
+    options[:class] ||= ''
+    options[:class] = (options[:class].split(/\s+/) | new_classes).join(' ')
   end
 end

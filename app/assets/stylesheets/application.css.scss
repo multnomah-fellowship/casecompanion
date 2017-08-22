@@ -652,6 +652,10 @@ section.row:not(:first-child) {
     border: 2px solid $color-divider;
   }
 
+  input:not(:checked) + &.invalid {
+    border-color: $input-error-color;
+  }
+
   input:checked + & {
     background-color: $color-focus;
     border: 2px solid $color-text;
