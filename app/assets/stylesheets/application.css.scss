@@ -464,6 +464,19 @@ $focus-form-overlap-height: 120px;
   }
 }
 
+.app-list-check {
+  margin: 40px 0;
+  padding-left: column-width(1);
+  position: relative;
+
+  &::before {
+    font-family: 'Material Icons';
+    content: 'check';
+    position: absolute;
+    left: 16px;
+  }
+}
+
 /*
  * CUSTOM FORM FIELD STYLING
  */
