@@ -492,6 +492,20 @@ $focus-form-overlap-height: 120px;
   bottom: 8px;
 }
 
+.app-field-attachment {
+  background-color: $color-focus;
+  border: 2px solid $color-divider;
+  border-top-style: none;
+  padding: 2rem 1rem;
+
+  > .input-field {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: column-width(6);
+  }
+}
+
 /*
  * CUSTOM CARD VARIANTS
  */
