@@ -34,8 +34,12 @@
 @import "materialize/components/forms/forms";
 @import "materialize/components/dropdown";
 
+@function column-width($cols) {
+  @return unquote((100 / ($num-cols / $cols)) + "%");
+}
+
 $app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
-  ($gutter-width / 2)+ ")");
+  ($gutter-width / 2) + ")");
 
 body, html {
   @extend %app-typography--body-1;
