@@ -30,7 +30,7 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
-        'case_number' => '17CR1234',
+        'case_number' => '1000000',
         'advocate_email' => 'advocate@example.com',
       },
     }
@@ -51,7 +51,7 @@ RSpec.describe 'Rights selection flow' do
     expect(response.body).to include('Tom Example')
     expect(response.body).to include('tom@example.com')
     expect(response.body).to include('(330) 555-1234')
-    expect(response.body).to include('17CR1234')
+    expect(response.body).to include('1000000')
 
     post '/rights/confirmation', params: {
       rights_flow: {
@@ -102,7 +102,7 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
-        'case_number' => '17CR1234',
+        'case_number' => '1000000',
         'advocate_email' => 'advocate@example.com',
       },
     }
@@ -123,7 +123,7 @@ RSpec.describe 'Rights selection flow' do
         'last_name' => 'Example',
         'email' => 'Thomas@example.com',
         'phone_number' => '330 123 1234',
-        'case_number' => '18CR1234',
+        'case_number' => '1000001',
       },
     }
     follow_redirect!
@@ -138,7 +138,7 @@ RSpec.describe 'Rights selection flow' do
     expect(response.body).to include(I18n.t('rights_flow.done.focus_header_changed'))
 
     subscription = CourtCaseSubscription.find_by(
-      case_number: '18CR1234',
+      case_number: '1000001',
       email: 'Thomas@example.com',
     )
     expect(subscription).to be_present

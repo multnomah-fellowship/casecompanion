@@ -69,6 +69,15 @@ class RightsFlow
         errors.add(:case_number, :blank) unless case_number.present?
         errors.add(:advocate_email, :blank) unless advocate_email.present?
       end
+
+      if case_number.present?
+        case case_number
+        when /\d+CR\d+/i
+          errors.add(:case_number, 'should be the DA case number')
+        when /[[:alpha:]]/
+          errors.add(:case_number, 'cannot contain letters')
+        end
+      end
     when 'confirmation'
       unless electronic_signature_checked == '1'
         errors.add(:electronic_signature_checked, 'must be checked')
