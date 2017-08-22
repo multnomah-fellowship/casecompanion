@@ -1,0 +1,47 @@
+.row
+  .col.s10.offset-s1
+    %p
+      = t('rights_flow.confirmation.preamble')
+
+    %p
+      = t('rights_flow.confirmation.header')
+
+    %ul
+      - Right::RIGHTS.keys.each do |key|
+        - if @flow.right_selected?(key)
+          %li.app-list-check= t("rights.#{key}")
+
+    %p= link_to t('rights_flow.confirmation.edit_link'), right_path('to_notification')
+
+%section.row
+  .col.s10.offset-s1
+    %p= t('rights_flow.confirmation.contact_info')
+
+    %p
+      #{@flow.first_name} #{@flow.last_name}
+      %br
+      #{@flow.email}
+      %br
+      #{format_phone(@flow.phone_number) if @flow.phone_number}
+
+    %p
+      = t('rights_flow.confirmation.case_info')
+      %br
+      Case Number is #{@flow.case_number}
+      %br
+      Advocate Email is #{@flow.advocate_email}
+
+    %p= link_to t('rights_flow.confirmation.edit_link'), right_path('create_account')
+
+- content_for :rights_button_footer do
+  .row
+    -# spacer
+  .row
+    .col.s10.offset-s1
+      = f.check_box_with_label :electronic_signature_checked, t('rights_flow.confirmation.signature_field_text')
+
+      .app-field-attachment
+        .input-field
+          = f.text_field :electronic_signature_name
+          = f.label :electronic_signature_name, t('rights_flow.confirmation.signature_field_label')
+          %span.app-input-field-caption= t('rights_flow.confirmation.signature_field_caption')
