@@ -4,8 +4,6 @@
 # Rather, it accumulates state on each page of the flow, and at the end of the
 # flow, the #persist! method is called, at which time it creates related
 # objects.
-#
-# rubocop:disable Metrics/ClassLength
 class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
@@ -133,10 +131,6 @@ class RightsFlow
     self.court_case_subscription_id = subscription.id
   end
 
-  def skip_step?(step)
-    return true if step == 'create_account' && court_case_subscription_id.present?
-  end
-
   def just_created?
     return false unless court_case_subscription_id
     subscription = CourtCaseSubscription.find(court_case_subscription_id)
@@ -171,34 +165,20 @@ class RightsFlow
   end
 
   def previous_step
-    previous_page = nil
-    move_pages = 1
-    loop do
-      i = PAGES.find_index(current_page) - move_pages
-      break if i.negative?
-      previous_page = PAGES[i]
-      break unless skip_step?(previous_page)
-      move_pages += 1
-    end
-    previous_page
+    i = PAGES.find_index(current_page)
+    return if i.zero?
+
+    PAGES[[0, i - 1].max]
   end
 
   def next_step
-    next_page = nil
-    move_pages = 1
-    loop do
-      next_page = PAGES[PAGES.find_index(current_page) + move_pages]
-      break unless skip_step?(next_page)
-      move_pages += 1
-    end
-    next_page
+    PAGES[PAGES.find_index(current_page) + 1]
   end
 
   def current_progress_percent
     seen_pages = PAGES.find_index(current_page) + 1
-    num_skip_pages = PAGES.count { |page| skip_step?(page) }
 
-    (seen_pages.to_f * 100 / (PAGES.count - num_skip_pages)).round
+    (seen_pages.to_f * 100 / PAGES.count).round
   end
 
   def flow_attributes
