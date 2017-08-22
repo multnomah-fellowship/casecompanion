@@ -19,6 +19,15 @@ class RightsMailer < ApplicationMailer
 
     remove_feedback_section!
 
+    pdf_name = %W[
+      VRN
+      #{@subscription.case_number}
+      #{@subscription.first_name}
+      #{@subscription.last_name}
+    ].join('-') + '.pdf'
+
+    attachments[pdf_name] = RightsPdfGenerator.new(@subscription).generate.data
+
     mail(
       to: Rails.application.config.vrn_update_email_address,
       subject: "Victim Rights Updated: #{@subscription.first_name} #{@subscription.last_name}",

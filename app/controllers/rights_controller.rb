@@ -36,6 +36,30 @@ class RightsController < ApplicationController
     redirect_to right_path(RightsFlow.first_step)
   end
 
+  def preview
+    return head :not_found unless params[:format] == 'pdf'
+
+    subscription = CourtCaseSubscription.new(
+      case_number: '1000000',
+      email: 'person@example.com',
+      first_name: 'Duncan',
+      last_name: 'Doodlebear', # (sp?)
+      phone_number: '(503) 555-1234',
+      checked_rights: [
+        Right.new(name: Right::RIGHTS[:flag_a]),
+        Right.new(name: Right::RIGHTS[:flag_b]),
+        Right.new(name: Right::RIGHTS[:flag_d]),
+        Right.new(name: Right::RIGHTS[:flag_k]),
+        Right.new(name: Right::RIGHTS[:flag_m]),
+      ],
+    )
+
+    generator = RightsPdfGenerator.new(subscription)
+    generator.generate
+
+    render body: generator.data, content_type: 'application/pdf'
+  end
+
   private
 
   def rights_flow_params
