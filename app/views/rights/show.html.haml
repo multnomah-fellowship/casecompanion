@@ -7,19 +7,11 @@
         = t('rights_flow.new_header_html', new: emphasized_text('New'))
 
 = form_for(@flow, url: right_path(@flow.current_page)) do |f|
-  - case params[:id]
-  - when 'who_assert'
-    = render partial: 'who_assert', locals: { f: f }
-  - when 'to_notification'
-    = render partial: 'to_notification', locals: { f: f }
-  - when 'to_financial_assistance'
-    = render partial: 'to_financial_assistance', locals: { f: f }
-  - when 'in_special_cases'
-    = render partial: 'in_special_cases', locals: { f: f }
-  - when 'create_account'
-    = render partial: 'create_account', locals: { f: f }
+  - if RightsFlow::PAGES.include?(params[:id])
+    = render partial: params[:id], locals: { f: f }
 
   %section.row
+    = yield :rights_button_footer
 
   .row.app-row--rights-buttons
     .col.s6.offset-s1

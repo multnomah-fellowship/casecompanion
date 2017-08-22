@@ -34,8 +34,12 @@
 @import "materialize/components/forms/forms";
 @import "materialize/components/dropdown";
 
+@function column-width($cols) {
+  @return unquote((100 / ($num-cols / $cols)) + "%");
+}
+
 $app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
-  ($gutter-width / 2)+ ")");
+  ($gutter-width / 2) + ")");
 
 body, html {
   @extend %app-typography--body-1;
@@ -460,6 +464,19 @@ $focus-form-overlap-height: 120px;
   }
 }
 
+.app-list-check {
+  margin: 40px 0;
+  padding-left: column-width(1);
+  position: relative;
+
+  &::before {
+    font-family: 'Material Icons';
+    content: 'check';
+    position: absolute;
+    left: 16px;
+  }
+}
+
 /*
  * CUSTOM FORM FIELD STYLING
  */
@@ -472,7 +489,25 @@ $focus-form-overlap-height: 120px;
 
   font-size: 14px;
   position: relative;
-  bottom: 8px;
+  bottom: 18px;
+
+  label.invalid ~ & {
+    display: none;
+  }
+}
+
+.app-field-attachment {
+  background-color: $color-focus;
+  border: 2px solid $color-divider;
+  border-top-style: none;
+  padding: 2rem 1rem;
+
+  > .input-field {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: column-width(6);
+  }
 }
 
 /*
@@ -576,6 +611,8 @@ section.row:not(:first-child) {
 
 .character-counter {
   color: $color-text-caption;
+  position: relative;
+  bottom: 16px;
 }
 
 .select-wrapper {

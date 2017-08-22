@@ -35,7 +35,31 @@ RSpec.describe 'Rights selection flow' do
       },
     }
     follow_redirect!
-    expect(response.body).to include('all set')
+    expect(response.body).to include(I18n.t('rights_flow.confirmation.header'))
+
+    # Check that it confirms the correct rights
+    expect(response.body)
+      .to include(I18n.t('rights.flag_a'))
+    expect(response.body)
+      .to include(I18n.t('rights.flag_b'))
+    expect(response.body)
+      .to include(I18n.t('rights.flag_k'))
+    expect(response.body)
+      .not_to include(I18n.t('rights.flag_c'))
+
+    # Check that it confirms my contact info
+    expect(response.body).to include('Tom Example')
+    expect(response.body).to include('tom@example.com')
+    expect(response.body).to include('(330) 555-1234')
+    expect(response.body).to include('17CR1234')
+
+    post '/rights/confirmation', params: {
+      rights_flow: {
+        'electronic_signature_checked' => '1',
+        'electronic_signature_name' => 'Tom Example',
+      },
+    }
+    follow_redirect!
 
     # The latest subscription should have flags A, B, K...
     last_subscription = CourtCaseSubscription.last
@@ -83,7 +107,15 @@ RSpec.describe 'Rights selection flow' do
       },
     }
     follow_redirect!
-    expect(response.body).to include('all set')
+
+    post '/rights/confirmation', params: {
+      rights_flow: {
+        'electronic_signature_checked' => '1',
+        'electronic_signature_name' => 'Tom Example',
+      },
+    }
+    follow_redirect!
+    expect(response.body).to include(I18n.t('rights_flow.done.focus_header'))
 
     post '/rights/create_account', params: {
       rights_flow: {
@@ -95,7 +127,15 @@ RSpec.describe 'Rights selection flow' do
       },
     }
     follow_redirect!
-    expect(response.body).to include('Changes saved')
+
+    post '/rights/confirmation', params: {
+      rights_flow: {
+        'electronic_signature_checked' => '1',
+        'electronic_signature_name' => 'Thomas Example',
+      },
+    }
+    follow_redirect!
+    expect(response.body).to include(I18n.t('rights_flow.done.focus_header_changed'))
 
     subscription = CourtCaseSubscription.find_by(
       case_number: '18CR1234',
@@ -103,5 +143,6 @@ RSpec.describe 'Rights selection flow' do
     )
     expect(subscription).to be_present
     expect(subscription.phone_number).to eq('330 123 1234')
+    expect(subscription.first_name).to eq('Thomas')
   end
 end

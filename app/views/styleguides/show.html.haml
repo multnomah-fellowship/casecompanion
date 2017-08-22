@@ -15,6 +15,30 @@
 .app-typography--caption{ contenteditable: true }
   Caption
 
+%h1 Form Styling
+We have some custom form styling.
+
+%h2 Check box with label
+:styleguide
+  = form_for '#' do |f|
+    = f.check_box_with_label 'attr', 'This is some text'
+
+%h2 Input field attachment
+:styleguide
+  = form_for '#' do |f|
+    = f.check_box_with_label 'some_attribute', 'This field has an attachment'
+    .app-field-attachment
+      This goes below the form field
+
+%h1 Custom List Styling
+We have a checklist styling:
+
+:styleguide
+  %ul
+    %li.app-list-check Something that is checked
+    %li.app-list-check Other checked thing
+    %li.app-list-check One more check
+
 %h1 Components
 
 %h2 Dropdown

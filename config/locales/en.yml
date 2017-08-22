@@ -46,6 +46,7 @@ en:
         # but it actually persists as an "advocate_email", we need to fudge the
         # attribute name for purposes of error messages and such.
         advocate_email: 'Advocate Name'
+        electronic_signature_name: 'Signature'
 
   rights:
     flag_a:
@@ -102,9 +103,21 @@ en:
       preamble:
         There are additional rights in some special cases.
       field_header: Rights in special situations
-    confirm:
+    confirmation:
+      preamble: Review and submit. If the information is correct, type your name below and hit Submit. To edit, hit Back.
+      header: "You've selected the following:"
+      contact_info: "Your contact information:"
+      case_info: "Case Information:"
+      edit_link: Go back to edit
+      signature_field_text: By checking this box I am acknowledging the rights I have requested.
+      signature_field_label: Electronic Signature
+      signature_field_caption: Type your name as it appears above
+    done:
       focus_header: "You're all set."
+      focus_header_changed: Changes saved.
       focus_subheader: We sent you an email with a copy of your rights.
+      focus_subheader_changed:
+        Your rights request will be updated. It may take a few days for the system to update.
       next: "What's next?"
 
   footer:

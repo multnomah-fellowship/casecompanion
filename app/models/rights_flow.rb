@@ -4,6 +4,8 @@
 # Rather, it accumulates state on each page of the flow, and at the end of the
 # flow, the #persist! method is called, at which time it creates related
 # objects.
+#
+# rubocop:disable Metrics/ClassLength
 class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
@@ -31,6 +33,8 @@ class RightsFlow
     case_number
     advocate_email
     court_case_subscription_id
+    electronic_signature_checked
+    electronic_signature_name
   ].freeze
 
   # The ordered steps of the flow, all of which will be the `id` in the route
@@ -41,7 +45,8 @@ class RightsFlow
     to_financial_assistance
     in_special_cases
     create_account
-    confirm
+    confirmation
+    done
   ].freeze
 
   attr_accessor :current_page
@@ -64,17 +69,21 @@ class RightsFlow
         errors.add(:case_number, :blank) unless case_number.present?
         errors.add(:advocate_email, :blank) unless advocate_email.present?
       end
+    when 'confirmation'
+      unless electronic_signature_checked == '1'
+        errors.add(:electronic_signature_checked, 'must be checked')
+      end
+
+      unless electronic_signature_name == "#{first_name} #{last_name}"
+        errors.add(:electronic_signature_name, "must match \"#{first_name} #{last_name}\"")
+      end
     end
   end
 
   def persist!
-    # Computed fields are still persisted in the session, but are not visible
-    # to the user. They are not the rights checkboxes.
-    computed_fields = %w[court_case_subscription_id]
-
     checked_rights =
       flow_attributes
-        .without(*computed_fields)
+        .find_all { |attr, _value| Right::RIGHTS.include?(attr.to_sym) }
         .find_all { |_attr, value| value.present? && value.to_i == 1 }
         .map { |attr, _value| Right.new(name: Right::RIGHTS.fetch(attr.to_sym)) }
         .compact
@@ -125,6 +134,13 @@ class RightsFlow
     return false unless subscription
 
     subscription.created_at == subscription.updated_at
+  end
+
+  # @param right {String} The key from Right::RIGHTS, e.g. :flag_a
+  def right_selected?(right)
+    return unless respond_to?(right)
+
+    %w[true 1].include?(send(right))
   end
 
   # ######################################################################
