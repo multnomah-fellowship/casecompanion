@@ -152,11 +152,11 @@ class RightsFlow
     when 'who_assert'
       0
     when 'to_notification'
-      1
+      0
     when 'to_financial_assistance'
-      2
+      1
     when 'in_special_cases'
-      3
+      2
     when 'create_account'
       3
     when 'confirmation'
