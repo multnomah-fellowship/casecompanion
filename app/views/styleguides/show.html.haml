@@ -110,16 +110,6 @@ We have a checklist styling:
 :styleguide
   = render_component 'timeline'
 
-%h2 Row with Progress Indication
+%h2 Progress Bar
 :styleguide
-  = render_component 'progress_row', percent: 10 do
-    .col.s12
-      Content here!
-
-  = render_component 'progress_row', percent: 55 do
-    .col.s12
-      Content here!
-
-  = render_component 'progress_row', percent: 99 do
-    .col.s12
-      Content here!
+  = render_component 'progress_bar', chunks: 3, filled: 1

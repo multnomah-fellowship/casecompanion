@@ -1,0 +1,6 @@
+- chunks = options[:chunks]
+- filled = options[:filled]
+
+.app-progress-bar
+  - chunks.times do |i|
+    %span.app-progress-bar-chunk{ class: ('app-progress-bar-chunk--filled' if i < filled) }

@@ -77,15 +77,16 @@ en:
       For person crimes and burglary in the first degree only, to request ongoing involvement in any court actions that happen after the conviction such as appeal, post-conviction, or federal habeas proceedings.
 
   rights_flow:
-    new_header_html: '%{new} victim rights request'
-    edit_header_html: '%{edit} my victim rights request'
+    new_header_html: 'Request My Rights Online'
     who_assert:
       preamble: |
-        Your right to justice includes the right to a meaningful role in the criminal or juvenile justice process, to be treated with dignity and respect, to fair and impartial treatment, and to reasonable protection from the offender.
+        Every crime victim in Oregon has legal rights. Many victims' rights are automatic, although you may need to tell someone you want to receive them. Use this form to tell the Multnomah County District Attorney which rights you'd like to receive.
 
-        Many victims' rights are automatic, although you may need to tell someone you want to receive them.
+        There are three sections. We'll walk you through each of:
+          - Rights to notification
+          - Right to restitution
+          - Rights in special circumstances
 
-        Use this form to tell the District Attorney which rights you'd like to receive.
       field_header: Who's asserting my rights?
       flag_a_false:
         Let me choose for myself

@@ -1,0 +1,19 @@
+@import "colors";
+
+.app-progress-bar {
+  display: flex;
+}
+
+.app-progress-bar-chunk {
+  flex-grow: 1;
+  height: 8px;
+  background-color: $color-divider;
+
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+}
+
+.app-progress-bar-chunk--filled {
+  background-color: $color-accent;
+}

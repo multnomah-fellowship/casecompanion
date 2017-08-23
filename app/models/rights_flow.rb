@@ -4,6 +4,7 @@
 # Rather, it accumulates state on each page of the flow, and at the end of the
 # flow, the #persist! method is called, at which time it creates related
 # objects.
+# rubocop:disable Metrics/ClassLength
 class RightsFlow
   include ActiveModel::Model
   include ActiveModel::AttributeMethods
@@ -146,6 +147,25 @@ class RightsFlow
     %w[true 1].include?(send(right))
   end
 
+  def current_progress_chunks
+    case current_page
+    when 'who_assert'
+      0
+    when 'to_notification'
+      1
+    when 'to_financial_assistance'
+      2
+    when 'in_special_cases'
+      3
+    when 'create_account'
+      3
+    when 'confirmation'
+      3
+    when 'done'
+      3
+    end
+  end
+
   # ######################################################################
   # These are generic methods which could be extracted to a superclass:
   # ######################################################################
@@ -173,12 +193,6 @@ class RightsFlow
 
   def next_step
     PAGES[PAGES.find_index(current_page) + 1]
-  end
-
-  def current_progress_percent
-    seen_pages = PAGES.find_index(current_page) + 1
-
-    (seen_pages.to_f * 100 / PAGES.count).round
   end
 
   def flow_attributes
