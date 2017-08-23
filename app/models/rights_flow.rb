@@ -32,6 +32,7 @@ class RightsFlow
     case_number
     advocate_email
     court_case_subscription_id
+    completed_step
     electronic_signature_checked
     electronic_signature_name
   ].freeze
@@ -57,6 +58,7 @@ class RightsFlow
     super
   end
 
+  # rubocop:disable Metrics/AbcSize
   def validate!
     case current_page
     when 'create_account'
@@ -86,7 +88,10 @@ class RightsFlow
         errors.add(:electronic_signature_name, "must match \"#{first_name} #{last_name}\"")
       end
     end
+
+    assign_attributes(completed_step: current_page) if errors.none?
   end
+  # rubocop:enable Metrics/AbcSize
 
   def persist!
     checked_rights =
@@ -178,6 +183,22 @@ class RightsFlow
     new(**JSON.parse(Zlib::Inflate.inflate(Base64.decode64(cookie))).symbolize_keys)
   rescue
     nil
+  end
+
+  def redirect_to_page
+    # if the user is on the first step, don't redirect them
+    return if current_page == RightsFlow.first_step
+
+    # if the user is on a page before or including the page after the last
+    # completed step, don't redirect them
+    completed_step_index = PAGES.find_index(completed_step || RightsFlow.first_step)
+    return if PAGES.find_index(current_page) <= completed_step_index + 1
+
+    # otherwise, they need to be redirected
+    #   if they haven't completed any steps yet, get them back to the beginning
+    return self.class.first_step unless completed_step
+
+    PAGES[PAGES.find_index(completed_step) + 1]
   end
 
   def finished?

@@ -78,7 +78,7 @@ RSpec.describe 'Rights selection flow' do
       .to eq('advocate@example.com')
   end
 
-  it 'allows hitting back and saving an updated version' do
+  it 'clears the session after ending the flow' do
     get '/rights'
     follow_redirect!
 
@@ -115,32 +115,31 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     expect(response.body).to include(I18n.t('rights_flow.done.focus_header'))
 
-    post '/rights/create_account', params: {
-      rights_flow: {
-        'first_name' => 'Thomas',
-        'last_name' => 'Example',
-        'email' => 'Thomas@example.com',
-        'phone_number' => '330 123 1234',
-        'case_number' => '1000001',
-      },
-    }
+    # simulate clicking the browser back button
+    get '/rights/create_account'
+    expect(response).to redirect_to(right_path(RightsFlow.first_step))
+  end
+
+  it 'redirects when you try to go to a future page' do
+    # first fill out a few pages
+    get '/rights'
+    follow_redirect!
+    post '/rights/who_assert', params: {}
+    follow_redirect!
+    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
+    follow_redirect!
+    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
     follow_redirect!
 
-    post '/rights/confirmation', params: {
-      rights_flow: {
-        'electronic_signature_checked' => '1',
-        'electronic_signature_name' => 'Thomas Example',
-      },
-    }
-    follow_redirect!
-    expect(response.body).to include(I18n.t('rights_flow.done.focus_header_changed'))
+    # then try to skip ahead
+    get '/rights/confirmation'
 
-    subscription = CourtCaseSubscription.find_by(
-      case_number: '1000001',
-      email: 'Thomas@example.com',
-    )
-    expect(subscription).to be_present
-    expect(subscription.phone_number).to eq('330 123 1234')
-    expect(subscription.first_name).to eq('Thomas')
+    # verify that the skip was forbidden
+    expect(response).to redirect_to('/rights/in_special_cases')
+  end
+
+  it 'redirects you back to the start when going to and end page' do
+    get '/rights/confirmation'
+    expect(response).to redirect_to('/rights/who_assert')
   end
 end

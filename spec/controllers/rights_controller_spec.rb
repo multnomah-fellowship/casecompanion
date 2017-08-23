@@ -13,15 +13,6 @@ describe RightsController, type: :controller do
     end
   end
 
-  describe '#show' do
-    RightsFlow::PAGES.each do |right_page|
-      it "renders page '#{right_page}'" do
-        get :show, params: { id: right_page }
-        expect(response).to be_success
-      end
-    end
-  end
-
   describe '#preview' do
     subject { get :preview, format: 'pdf' }
 
