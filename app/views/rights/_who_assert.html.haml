@@ -1,15 +1,3 @@
 .row
   .col.s10.offset-s1
     %p= simple_format(t('rights_flow.who_assert.preamble'))
-
-%section.row
-  .col.s10.offset-s1
-    %h2.app-typography--header-2= t('rights_flow.who_assert.field_header')
-
-    = f.radio_button :flag_a, true
-    = f.label :flag_a, t('rights.flag_a'), value: true
-
-.row
-  .col.s10.offset-s1
-    = f.radio_button :flag_a, false
-    = f.label :flag_a, t('rights_flow.who_assert.flag_a_false'), value: false

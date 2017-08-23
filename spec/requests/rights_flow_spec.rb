@@ -6,9 +6,9 @@ RSpec.describe 'Rights selection flow' do
   it 'maintains the state across the entire session' do
     get '/rights'
     follow_redirect!
-    expect(response.body).to include('to assert and enforce my rights')
+    expect(response.body).to include(I18n.t('rights_flow.new_header_html'))
 
-    post '/rights/who_assert', params: { rights_flow: { 'flag_a' => '1' } }
+    post '/rights/who_assert', params: {}
     follow_redirect!
     expect(response.body).to include('critical stage')
 
@@ -39,8 +39,6 @@ RSpec.describe 'Rights selection flow' do
 
     # Check that it confirms the correct rights
     expect(response.body)
-      .to include(I18n.t('rights.flag_a'))
-    expect(response.body)
       .to include(I18n.t('rights.flag_b'))
     expect(response.body)
       .to include(I18n.t('rights.flag_k'))
@@ -64,13 +62,13 @@ RSpec.describe 'Rights selection flow' do
     # The latest subscription should have flags A, B, K...
     last_subscription = CourtCaseSubscription.last
     expect(last_subscription.rights_hash)
-      .to include('A-DDA to assert and enforce Victim Rights' => true)
-    expect(last_subscription.rights_hash)
       .to include('B-Notified in advance of Critical Stage Proceedings' => true)
     expect(last_subscription.rights_hash)
       .to include('K-Right to Restitution' => true)
 
     # ...but not any other flags
+    expect(last_subscription.rights_hash)
+      .to include('A-DDA to assert and enforce Victim Rights' => false)
     expect(last_subscription.rights_hash)
       .to include('C-Talk with DDA before a Plea Agreement' => false)
 
@@ -84,7 +82,7 @@ RSpec.describe 'Rights selection flow' do
     get '/rights'
     follow_redirect!
 
-    post '/rights/who_assert', params: { rights_flow: { 'flag_a' => '1' } }
+    post '/rights/who_assert', params: {}
     follow_redirect!
 
     post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
