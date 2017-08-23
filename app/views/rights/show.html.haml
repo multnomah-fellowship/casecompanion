@@ -24,5 +24,7 @@
       = render_component 'button', submit: f do
         - if @flow.finished?
           Submit
+        - elsif @flow.current_page == RightsFlow.first_step
+          Begin &rarr;
         - else
           Next &rarr;
