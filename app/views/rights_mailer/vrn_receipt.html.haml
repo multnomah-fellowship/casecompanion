@@ -22,7 +22,7 @@ You've seleced #{pluralize(num_rights, 'rights')} as follows:
       Help us process your restitution.
       = link_to 'Fill out this restitution form', 'http://mcda.us/wp-content/uploads/2013/09/Adult_English_March-2013.pdf'
       and email it to
-      = link_to 'Restitution@mcda.us', 'mailto:Restitution@mcda.us'
+      #{link_to 'Restitution@mcda.us', 'mailto:Restitution@mcda.us'}.
 
 %h3 What happens next?
 %ul
@@ -48,7 +48,7 @@ You've seleced #{pluralize(num_rights, 'rights')} as follows:
 
 %h3 Did you know?
 
-You may be eligible for financial assistance to help cover
+You may be eligible for financial assistance to help cover:
 %ul
   %li mental health counseling and other medical expenses
   %li loss of earnings
