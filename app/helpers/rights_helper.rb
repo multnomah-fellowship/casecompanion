@@ -5,13 +5,17 @@ module RightsHelper
   # purposes of displaying the rights to a user.
   def sort_rights_in_flow_order(rights)
     right_name_to_flag = Right::RIGHTS.invert
-    flow_order = Right::GROUPS.values.flatten
 
     rights.sort_by do |right|
       flag = right_name_to_flag[right.name]
 
-      flow_order.find_index(flag)
+      sorted_right_flags.find_index(flag)
     end
+  end
+
+  # List of right flags (e.g. :flag_a, :flag_b) in flow order.
+  def sorted_right_flags
+    @_sorted_right_flags ||= Right::GROUPS.values.flatten
   end
 
   def right_text(right)

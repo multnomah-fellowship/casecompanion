@@ -7,7 +7,7 @@
       = t('rights_flow.confirmation.header')
 
     %ul
-      - Right::RIGHTS.keys.each do |key|
+      - sorted_right_flags.each do |key|
         - if @flow.right_selected?(key)
           %li.app-list-check= t("rights.#{key}")
 
