@@ -3,6 +3,31 @@
 require 'rails_helper'
 
 RSpec.describe CourtCaseSubscription do
+  describe '#checked_right?' do
+    let(:user) { User.create(email: 'foo@bar.com', password: 'foobar') }
+    let(:subscription) { CourtCaseSubscription.create(user: user, case_number: '17CR1234') }
+    let(:checked_rights) { Right::RIGHTS.keys.sample(2) }
+    let(:unchecked_rights) { Right::RIGHTS.keys - checked_rights }
+
+    before do
+      checked_rights.each do |flag|
+        Right.create(court_case_subscription: subscription, name: Right::RIGHTS[flag])
+      end
+    end
+
+    subject { subscription.checked_right?(right_to_check) }
+
+    describe 'for a checked right' do
+      let(:right_to_check) { checked_rights.sample }
+      it { is_expected.to be true }
+    end
+
+    describe 'for an unchecked right' do
+      let(:right_to_check) { unchecked_rights.sample }
+      it { is_expected.to be false }
+    end
+  end
+
   describe '#rights_hash' do
     let(:user) { User.create(email: 'foo@bar.com', password: 'foobar') }
     let(:subscription) { CourtCaseSubscription.create(user: user, case_number: '17CR1234') }
