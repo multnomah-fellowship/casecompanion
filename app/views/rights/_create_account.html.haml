@@ -23,12 +23,12 @@
 .row
   .col.s5.offset-s1
     .input-field
-      = f.text_field :email
+      = f.text_field :email, type: 'email'
       = f.label :email, 'Email Address'
 
   .col.s5
     .input-field
-      = f.text_field :phone_number
+      = f.text_field :phone_number, type: 'tel'
       = f.label :phone_number, 'Phone Number'
 
 .row
@@ -38,7 +38,7 @@
 .row
   .col.s5.offset-s1
     .input-field
-      = f.text_field :case_number
+      = f.text_field :case_number, type: 'number'
       = f.label :case_number, 'Case Number'
 
     = link_to 'Look up the Case Number',
