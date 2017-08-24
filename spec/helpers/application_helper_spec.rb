@@ -36,6 +36,12 @@ describe ApplicationHelper do
     it 'handles country code plus extension' do
       expect(helper.format_phone('1 330 555 1234 ex 1')).to eq('(330) 555-1234 ex 1')
     end
+
+    it 'does nothing if the number is already formatted' do
+      original = '(503) 555-1234 ext 123'
+      expect(helper.format_phone(original))
+        .to eq(original)
+    end
   end
 
   describe '#simpler_format' do

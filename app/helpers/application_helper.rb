@@ -19,7 +19,13 @@ module ApplicationHelper
 
   # Given a phone number like '+11234567890', returns '(123) 456-7890'
   def format_phone(phone_number)
-    local_number = phone_number.gsub(/^\+1/, '').delete('-').gsub(/(?<=\d)\s+(?=\d)/, '')
+    local_number = phone_number
+      .gsub(/^\+1/, '')
+      .delete('-')
+      .delete('(')
+      .delete(')')
+      .gsub(/(?<=\d)\s+(?=\d)/, '')
+
     local_number = local_number[1..-1] if local_number.split(/\s+/)[0].length == 11
 
     "(#{local_number[0..2]}) #{local_number[3..5]}-#{local_number[6..-1]}"
