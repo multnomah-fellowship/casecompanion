@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817202939) do
+ActiveRecord::Schema.define(version: 20170824045109) do
 
   create_table "ahoy_messages", force: :cascade do |t|
     t.string   "token"
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 20170817202939) do
   end
 
   create_table "feedback_responses", force: :cascade do |t|
-    t.integer  "value",                                 null: false
+    t.integer  "value",                                         null: false
     t.text     "body"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "page",       default: "vrn-experiment", null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.string   "page",               default: "vrn-experiment", null: false
+    t.integer  "utm_attribution_id"
+    t.index ["utm_attribution_id"], name: "index_feedback_responses_on_utm_attribution_id"
   end
 
   create_table "notifications", force: :cascade do |t|

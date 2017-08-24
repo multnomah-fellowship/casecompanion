@@ -17,6 +17,7 @@ class FeedbackResponsesController < ApplicationController
                   FeedbackResponse.create(
                     page: params[:page].presence || DEFAULT_PAGE,
                     value: params[:type],
+                    utm_attribution: UtmAttribution.new_from_params(params),
                   )
                 end
 
