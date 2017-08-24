@@ -31,15 +31,12 @@
           %tr
             %td{ width: '33%' }
               = link_to feedback_response_url('thumbs_up'), class: 'email--feedback-link' do
-                = image_tag 'emoji_happy_small.png', width: 32
                 %p Yes
             %td{ width: '33%' }
               = link_to feedback_response_url('thumbs_down'), class: 'email--feedback-link' do
-                = image_tag 'emoji_sad_small.png', width: 32
                 %p No
             %td{ width: '33%' }
               = link_to feedback_response_url('yes_but'), class: 'email--feedback-link' do
-                = image_tag 'emoji_thinking_face.png', width: 32
                 %p Yes, but
 
       %h6.email--footer-our-address Our mailing address is:

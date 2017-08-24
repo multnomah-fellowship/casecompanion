@@ -69,6 +69,7 @@ a {
 
 .email--contact-box {
   margin: 16px 0;
+  text-align: center;
   width: 100%;
 
   > tr > td {
@@ -79,7 +80,7 @@ a {
 
 .email--feedback {
   background-color: $color-focus;
-  margin-top: 80px;
+  margin-top: 20px;
   width: 100%;
 
   > tr:first-child > td {

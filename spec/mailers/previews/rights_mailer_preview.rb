@@ -19,6 +19,7 @@ class RightsMailerPreview < ActionMailer::Preview
       email: 'mary@example.com',
       phone_number: '415-555-1234',
       case_number: '17CR1234',
+      advocate_email: AdvocateList.name_and_emails.first.last,
       checked_rights: [
         Right.new(name: 'A-DDA to assert and enforce Victim Rights'),
         Right.new(name: 'B-Notified in advance of Critical Stage Proceedings'),
@@ -26,6 +27,5 @@ class RightsMailerPreview < ActionMailer::Preview
         Right.new(name: 'K-Right to Restitution'),
       ],
     )
-
   end
 end

@@ -14,27 +14,58 @@ You've seleced #{pluralize(num_rights, 'rights')} as follows:
   - sort_rights_in_flow_order(@subscription.checked_rights).each do |right|
     %li= right_text(right)
 
-Questions or updates? Call your advocate:
+- if @subscription.checked_right?(:flag_k)
+  %h3 What do I need to do?
 
+  %ul
+    %li
+      Help us process your restitution.
+      = link_to 'Fill out this restitution form', 'http://mcda.us/wp-content/uploads/2013/09/Adult_English_March-2013.pdf'
+      and email it to
+      = link_to 'Restitution@mcda.us', 'mailto:Restitution@mcda.us'
+
+%h3 What happens next?
+%ul
+  - if @subscription.checked_right?(:flag_b)
+    %li
+      We will send a letter every time there's a
+      %b critical stage hearing
+      coming up. We'll often call as well. You are welcome to attend, but you
+      don't have to.
+  - if @subscription.checked_right?(:flag_d)
+    %li
+      We will send a letter every time there's a
+      %b release hearing
+      coming up. We'll often call as well. You are welcome to attend, but you
+      don't have to. You will also have the right to speak at this meeting.
+  %li
+    You may be
+    = succeed '.' do
+      %b subpoenaed as a witness
+    In this case we'll send you a separate letter,
+    phone call, or email. If you're subpoenaed as a witness, you're required
+    to attend.
+
+%h3 Did you know?
+
+You may be eligible for financial assistance to help cover
+%ul
+  %li mental health counseling and other medical expenses
+  %li loss of earnings
+  %li funeral expenses
+  %li and more
+
+= link_to "Learn more about Crime Victim's Compensation", 'https://www.doj.state.or.us/crime-victims/victims-services/compensation-for-victims-of-crime/'
+(money available from the state of Oregon)
+
+- advocate_info = AdvocateList.advocate_info_by_email(@subscription.advocate_email)
 %table.email--contact-box
   %tr
     %td
+      %p
+        %b Questions or updates? #{advocate_info[:first_name]} can help:
+
       %ul.email--contact-details-list
-        %li Multnomah County District Attorney
-        %li Victim Assistance Program
-        %li (503) 988-3222
-
-%h3 What happens next?
-
-= image_tag 'email_next_prosecution'
-
-%ul
-  %li
-    We will send you a letter every time there's a "critical stage" hearing coming up. We'll often call as well. You are welcome to attend, but you don't have to.
-  %li
-    You may be subpoenaed as a witness. In that case, we'll send you a separate notification (letter, phone call, or email). If you're subpoenaed as a witness, you're required to attend.
-    #{link_to 'Learn more about testifying as a witness', 'http://mcda.us/index.php/appearing-in-court/witness-information/', target: '_blank'}.
-
-Sincerely,
-%br
-Multnomah County District Attorney
+        %li= advocate_info[:name]
+        %li= format_phone(advocate_info[:phone])
+        %li= advocate_info[:email]
