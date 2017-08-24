@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize/initial
+//= require materialize/jquery.easing.1.4
+//= require materialize/velocity.min
 //= require materialize/global
 //= require materialize/forms
 //= require materialize/character_counter
 //= require materialize/dropdown
-//= require materialize/jquery.easing.1.4
 //= require_tree .
 
 const analytics = {
