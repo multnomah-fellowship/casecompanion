@@ -13,10 +13,7 @@
     = yield :rights_button_footer
 
   .row.app-row--rights-buttons
-    .col.s6.offset-s1
-      = link_to 'Reset', rights_path, method: :delete
-
-    .col.s2.app-col--text-centered
+    .col.s8.offset-s1
       - if @flow.previous_step
         = link_to 'Back', right_path(@flow.previous_step)
 
