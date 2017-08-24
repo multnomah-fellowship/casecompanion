@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe RightsMailer, type: :mailer do
+  include_context 'with fake advocate'
+
   let(:subscription) do
     CourtCaseSubscription.new(
       first_name: 'Mary',
@@ -10,6 +12,7 @@ RSpec.describe RightsMailer, type: :mailer do
       email: 'mary@example.com',
       phone_number: '415-555-1234',
       case_number: '17CR1234',
+      advocate_email: FAKE_ADVOCATE_EMAIL,
       checked_rights: [
         Right.new(name: 'A-DDA to assert and enforce Victim Rights'),
         Right.new(name: 'B-Notified in advance of Critical Stage Proceedings'),

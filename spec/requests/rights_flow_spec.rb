@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Rights selection flow' do
+  include_context 'with fake advocate'
+
   it 'maintains the state across the entire session' do
     get '/rights'
     follow_redirect!
@@ -31,7 +33,7 @@ RSpec.describe 'Rights selection flow' do
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
         'case_number' => '1000000',
-        'advocate_email' => 'advocate@example.com',
+        'advocate_email' => FAKE_ADVOCATE_EMAIL,
       },
     }
     follow_redirect!
@@ -75,7 +77,7 @@ RSpec.describe 'Rights selection flow' do
     expect(last_subscription.email)
       .to eq('tom@example.com')
     expect(last_subscription.advocate_email)
-      .to eq('advocate@example.com')
+      .to eq(FAKE_ADVOCATE_EMAIL)
   end
 
   it 'clears the session after ending the flow' do
@@ -101,7 +103,7 @@ RSpec.describe 'Rights selection flow' do
         'email' => 'tom@example.com',
         'phone_number' => '330 555 1234',
         'case_number' => '1000000',
-        'advocate_email' => 'advocate@example.com',
+        'advocate_email' => FAKE_ADVOCATE_EMAIL,
       },
     }
     follow_redirect!
