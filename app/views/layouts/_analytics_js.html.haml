@@ -3,7 +3,7 @@
   window.MyAdvocate.mixpanel = #{JSON.generate(
     token: @mixpanel_token,
     distinct_id: session[:distinct_id],
-  )};
+  ).html_safe};
 
 - if ENV['ENABLE_INSPECTLET']
   :javascript
