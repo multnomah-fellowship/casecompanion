@@ -53,9 +53,11 @@ We have a checklist styling:
         Body here!
 
 %h2 Button
-%p Here is a default button:
+%p Here is a button:
 :styleguide
   = render_component 'button' do
+    Search
+  = render_component 'button', dark: true do
     Search
 
 %p Here is a button with a solid background:

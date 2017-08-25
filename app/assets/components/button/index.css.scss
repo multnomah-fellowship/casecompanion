@@ -32,6 +32,12 @@
   }
 }
 
+.app-button--dark {
+  border-color: $color-text;
+  border-width: 3px;
+  color: $color-text;
+}
+
 .app-button--solid {
   background-color: $color-button-solid;
   border: none;
