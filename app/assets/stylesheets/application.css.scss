@@ -46,6 +46,7 @@ body, html {
   @extend %app-typography--body-1;
 
   background-color: $color-page-background;
+  color: $color-text;
   margin: 0;
   min-width: 360px;
 
@@ -55,7 +56,6 @@ body, html {
 }
 
 a {
-  color: inherit;
   text-decoration: underline;
 }
 
