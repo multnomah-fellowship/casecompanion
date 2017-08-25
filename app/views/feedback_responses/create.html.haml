@@ -38,7 +38,7 @@
         - thing_key = @feedback.page == 'vrn-confirmation' ? 'thing_email' : 'thing_page'
         = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
           thing: t("feedback_responses.#{thing_key}"))
-        = f.text_field :body, 'data-length': 200
+        = f.text_field :body, 'data-length': 200, autofocus: true
         %span.app-input-field-caption= t('feedback_responses.field_caption')
 
   .row
