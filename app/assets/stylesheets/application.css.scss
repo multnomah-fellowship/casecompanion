@@ -73,12 +73,6 @@ strong {
   color: map-get($colors, primary);
 }
 
-.app-button-group {
-  > .app-button:not(:last-child) {
-    margin-right: 16px;
-  }
-}
-
 .app-button-link {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
@@ -158,6 +152,14 @@ strong {
 
 .app-typography--display-1 {
   @extend %app-typography--display-1;
+}
+
+.app-typography--display-2 {
+  @extend %app-typography--display-2;
+}
+
+.app-typography--display-3 {
+  @extend %app-typography--display-3;
 }
 
 .app-typography--header-1 {
@@ -261,6 +263,35 @@ $app-container-top-padding: 40px;
   padding-bottom: 32px;
 }
 
+.app-container--left-line {
+  position: relative;
+
+  &::before {
+    display: block;
+    content: ' ';
+    border-left: 3px solid $color-divider;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: column-width(1.5);
+  }
+}
+
+.app-container--subhero {
+  background-color: #fff;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  // Add a border for the not-first sections
+  & ~ & {
+    border-top: 1px solid $color-footer-border;
+  }
+}
+
+.app-container--centered {
+  text-align: center;
+}
+
 @media(min-width: 640px) {
   .app-container {
     margin-left: auto;
@@ -269,9 +300,11 @@ $app-container-top-padding: 40px;
   }
 }
 
+
 .app-header {
   background-color: #fff;
   border-bottom: 1px solid $color-page-border;
+  clear: both;
   overflow: auto;
 }
 
@@ -284,41 +317,10 @@ $app-container-top-padding: 40px;
   overflow: hidden;
   padding-bottom: 100px;
   position: relative;
-
-  &::after {
-    background-color: #fff;
-    width: calc(100% + 20px);
-    content: '';
-    height: 100px;
-    position: absolute;
-    bottom: -45px;
-    left: 0;
-    transform: rotate(-2.78deg);
-  }
 }
 
 .app-header--lander {
   background-color: $primary-color;
-}
-
-.app-header--subhero {
-  background-color: #fff;
-  padding-top: 20px;
-  padding-bottom: 80px;
-
-  // Give a bit more top-padding for the not-first sections
-  & ~ & {
-    border-top: 1px solid $color-footer-border;
-    padding-top: 80px;
-  }
-}
-
-.app-header--subhero-no-bottom-padding {
-  padding-bottom: 0;
-
-  > .app-container:last-child > .row:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .app-header__link {
@@ -349,14 +351,19 @@ $app-container-top-padding: 40px;
   @extend %app-typography--display-1;
 
   color: #fff;
-  margin-top: 120px;
+  margin: 120px 0 60px;
 }
 
-.app-header__subhead {
+.app-header__subhead-1 {
+  @extend %app-typography--display-3;
+
+  color: #fff;
+}
+
+.app-header__subhead-2 {
   @extend %app-typography--body-1;
 
   color: #fff;
-  margin-top: 40px;
 }
 
 .app-header__logos {
@@ -395,6 +402,22 @@ $focus-form-overlap-height: 120px;
   position: relative;
 }
 
+.app-left-line-dot {
+  position: relative;
+
+  &::before {
+    content: ' ';
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: -56px;
+    top: 7px;
+    border-radius: 8px;
+    border: 8px solid $color-text;
+  }
+}
+
 .app-cell--error {
   background-color: $color-error;
   padding: 1em;
@@ -414,6 +437,16 @@ $focus-form-overlap-height: 120px;
 @media(min-width: 640px) {
   .app-vertical-spacer {
     height: 160px;
+  }
+}
+
+.app-button-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  > .app-button:not(:last-child) {
+    margin-bottom: 20px;
   }
 }
 
@@ -437,6 +470,14 @@ $focus-form-overlap-height: 120px;
  */
 .app-row--rights-checks-container {
   min-height: 450px;
+}
+
+/*
+ * HOME PAGE
+ */
+.app-home-link-with-description {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 /*

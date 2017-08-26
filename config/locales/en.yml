@@ -4,10 +4,42 @@ en:
   product_description: 'Helping victims navigate the criminal justice system'
 
   home:
-    headline: "Find the information and support you need\u00a0after the\u00a0case\u00a0is\u00a0over"
-    subhead: "Look up offender status, find your point of contact and answers to frequently\u00a0asked\u00a0questions"
-    cta: Look up Status
-    secondary_cta: See FAQs
+    headline: "Find the information and support\u00a0you\u00a0need"
+    subhead_1: "For victims of crime in Multnomah County"
+    subhead_2: |
+      Being a victim of crime is a difficult, complicated, and process. We know you will likely have many questions while navigating the criminal justice system. We're here to help.
+    timeline_header: Useful links each step of the way
+    after_reporting:
+      header: After reporting the crime
+      find_status:
+        link: Find the status of the investigation
+        description: Find and call your local police department. The detective will be able to help.
+    after_charges:
+      header: After the District Attorney files charges
+      request_rights:
+        link: Request My Rights online
+        description: You have rights as a crime victim under the Oregon constitution. Some rights are automatic, and some must be requested.
+      during_prosecution:
+        link: What happens during prosecution
+        description: Learn more about the process, your role, and what support is available.
+      look_up_status:
+        link: Look up the status of your case
+        description: Find what charges are filed and what dates are scheduled on the Oregon Court Records website.
+    after_closed:
+      header: After the case is closed
+      look_up_status:
+        link: Look up offender status
+        description: Find the offender status and who's available to answer questions.
+      after_sentencing:
+        link: What happens after sentencing
+        description: Read about what happens after sentencing and what support is available.
+      look_up_case:
+        link: Look up the status of your case
+        description: Look up the online court records after sentencing to find the sentencing documents. You can also see if restitution was issued.
+    other_questions: Other Questions?
+    read_faqs: Read all FAQs
+    contact_us: Contact Us
+    about_site: About this Website
     description: |
       %{product_name} is a public website for victims of crime in Multnomah County,
       built by %{cfa_link} in collaboration with government and
