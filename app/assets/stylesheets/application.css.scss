@@ -431,6 +431,13 @@ $focus-form-overlap-height: 120px;
 }
 
 /*
+ * RIGHTS FLOW
+ */
+.app-row--rights-checks-container {
+  min-height: 450px;
+}
+
+/*
  * CUSTOM LIST STYLING
  */
 // Contact list is a first stab at a component to abstract a list-in-a-list-item
@@ -636,6 +643,7 @@ section.row:not(:first-child) {
   @extend %app-typography--body-1;
 
   height: auto;
+  margin-bottom: 20px;
   padding: 28px 36px 28px 72px;
 }
 
