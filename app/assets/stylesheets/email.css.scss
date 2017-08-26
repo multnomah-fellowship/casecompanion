@@ -42,7 +42,9 @@ a {
 }
 
 .email--seal-img {
-  width: 120px;
+  max-width: 120px;
+  min-width: 60px;
+  width: 100%;
 }
 
 .email--seal__title {
