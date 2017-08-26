@@ -23,6 +23,8 @@ You've seleced #{pluralize(num_rights, 'rights')} as follows:
       = link_to 'Fill out this restitution form', 'http://mcda.us/wp-content/uploads/2013/09/Adult_English_March-2013.pdf'
       and email it to
       #{link_to 'Restitution@mcda.us', 'mailto:Restitution@mcda.us'}.
+      %ul
+        %li Your DA Case Number is #{@subscription.case_number}
 
 %h3 What happens next?
 %ul
