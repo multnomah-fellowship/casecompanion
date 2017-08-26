@@ -402,7 +402,7 @@ $focus-form-overlap-height: 120px;
   position: relative;
 }
 
-.app-left-line-dot {
+.app-row--left-line-dot {
   position: relative;
 
   &::before {
@@ -411,8 +411,8 @@ $focus-form-overlap-height: 120px;
     width: 16px;
     height: 16px;
     position: absolute;
-    left: -56px;
-    top: 7px;
+    left: unquote("calc(" + column-width(1.5) + " - 7px)");
+    top: 28px;
     border-radius: 8px;
     border: 8px solid $color-text;
   }

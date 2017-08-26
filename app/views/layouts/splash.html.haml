@@ -44,9 +44,9 @@
           .col.s8.offset-s2
             %h3.app-typography--display-2= t('home.timeline_header')
 
-        .row
+        .row.app-row--left-line-dot
           .col.s8.offset-s2
-            %h3.app-left-line-dot.app-typography--header-1= t('home.after_reporting.header')
+            %h3.app-typography--header-1= t('home.after_reporting.header')
 
             .app-home-link-with-description
               = link_to t('home.after_reporting.find_status.link'),
@@ -54,9 +54,9 @@
                 class: 'app-typography--body-1'
               .app-typography--body-2= t('home.after_reporting.find_status.description')
 
-        .row
+        .row.app-row--left-line-dot
           .col.s8.offset-s2
-            %h3.app-left-line-dot.app-typography--header-1= t('home.after_charges.header')
+            %h3.app-typography--header-1= t('home.after_charges.header')
 
             .app-home-link-with-description
               = link_to t('home.after_charges.request_rights.link'), rights_path, class: 'app-typography--body-1'
@@ -74,9 +74,9 @@
                 class: 'app-typography--body-1'
               .app-typography--body-2= t('home.after_charges.during_prosecution.description')
 
-        .row
+        .row.app-row--left-line-dot
           .col.s8.offset-s2
-            %h3.app-left-line-dot.app-typography--header-1= t('home.after_closed.header')
+            %h3.app-typography--header-1= t('home.after_closed.header')
 
             .app-home-link-with-description
               = link_to t('home.after_closed.look_up_status.link'), offenders_path, class: 'app-typography--body-1'
