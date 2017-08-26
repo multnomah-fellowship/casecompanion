@@ -40,6 +40,7 @@
 
 $app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
   ($gutter-width / 2) + ")");
+$app-field-margin-bottom: 20px;
 
 body, html {
   @extend %app-typography--body-1;
@@ -507,6 +508,7 @@ $focus-form-overlap-height: 120px;
   background-color: $color-focus;
   border: 2px solid $color-divider;
   border-top-style: none;
+  margin-top: -$app-field-margin-bottom;
   padding: 2rem 1rem;
 
   > .input-field {
@@ -643,7 +645,7 @@ section.row:not(:first-child) {
   @extend %app-typography--body-1;
 
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: $app-field-margin-bottom;
   padding: 28px 36px 28px 72px;
 }
 
