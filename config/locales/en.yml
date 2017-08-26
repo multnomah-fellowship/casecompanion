@@ -107,6 +107,7 @@ en:
     confirmation:
       preamble: Review and submit. If the information is correct, type your name below and hit Submit. To edit, hit Back.
       header: "You've selected the following:"
+      header_none: "You have not requested any rights."
       contact_info: "Your contact information:"
       case_info: "Case Information:"
       edit_link: Go back to edit

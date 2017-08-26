@@ -1,15 +1,19 @@
+- selected_no_rights = sorted_right_flags.none? { |key| @flow.right_selected?(key) }
+
 .row
   .col.s10.offset-s1
     %p
       = t('rights_flow.confirmation.preamble')
 
-    %p
-      = t('rights_flow.confirmation.header')
+    - if selected_no_rights
+      %p= t('rights_flow.confirmation.header_none')
+    - else
+      %p= t('rights_flow.confirmation.header')
 
-    %ul
-      - sorted_right_flags.each do |key|
-        - if @flow.right_selected?(key)
-          %li.app-list-check= t("rights.#{key}")
+      %ul
+        - sorted_right_flags.each do |key|
+          - if @flow.right_selected?(key)
+            %li.app-list-check= t("rights.#{key}")
 
     %p= link_to t('rights_flow.confirmation.edit_link'), right_path('to_notification')
 
