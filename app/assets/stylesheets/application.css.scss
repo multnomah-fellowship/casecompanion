@@ -669,6 +669,8 @@ section.row:not(:first-child) {
 
   // Check icon:
   &:before {
+    transition: initial !important;
+
     input:not(:checked) + & {
       top: (32px + 10px) !important;
       left: (36px + 6px) !important;
@@ -684,6 +686,7 @@ section.row:not(:first-child) {
   &:after {
     top: 32px !important;
     left: 36px !important;
+    transition: initial !important;
 
     input:checked + & {
       background-color: $color-text !important;
