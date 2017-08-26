@@ -1,0 +1,71 @@
+{
+  "name": "casecompanion",
+  "scripts": {
+  },
+  "env": {
+    "APP_DOMAIN": {
+      "required": true
+    },
+    "DCJ_BAXTER_API_KEY": {
+      "required": true
+    },
+    "DOWNLOAD_SECRET": {
+      "required": true
+    },
+    "FEATURES_ENABLED": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_PUCE_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MIXPANEL_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SLACK_WEBHOOK_URL": {
+      "required": true
+    },
+    "SMTP_HOSTNAME": {
+      "required": true
+    },
+    "SMTP_PASSWORD": {
+      "required": true
+    },
+    "SMTP_USERNAME": {
+      "required": true
+    },
+    "TWILIO_PHONE_NUMBER": {
+      "required": true
+    },
+    "VRN_UPDATE_EMAIL_ADDRESS": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
