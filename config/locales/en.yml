@@ -362,7 +362,7 @@ en:
     menu:
       header_1: What happens next
       section_1:
-        item_1: Before and during trial
+        item_1: During prosecution and trial
         item_2: Post-sentencing overview
         item_3: If offender on probation
         item_4: If offender in jail/prison
@@ -381,7 +381,7 @@ en:
     ###########################################################################
     trial_overview:
       header: |
-        The time between arrest and prosecution can be hectic. Here’s what to expect and where to get support:
+        The time after arrest can be hectic. Here’s what to expect and where to get support:
 
         <strong>Within 48 - 72 hrs of reporting a crime</strong>
         Prosecutors will review evidence and make a charging decision.
@@ -481,7 +481,7 @@ en:
       header: |
         What happens after sentencing?
 
-        The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
+        The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender will either receive probation or prison time. If the offender receives prison time, they either stay in a county jail (if the sentence is less than 1 year) or are transferred to prison (if sentence is longer than 1 year).
     prison_jail:
       # Uncomment this to see the SVG below the header:
       pre_header_svg: 'Timeline-Prison.svg'
