@@ -4,10 +4,42 @@ en:
   product_description: 'Helping victims navigate the criminal justice system'
 
   home:
-    headline: "Find the information and support you need\u00a0after the\u00a0case\u00a0is\u00a0over"
-    subhead: "Look up offender status, find your point of contact and answers to frequently\u00a0asked\u00a0questions"
-    cta: Look up Status
-    secondary_cta: See FAQs
+    headline: "Find the information and support\u00a0you\u00a0need"
+    subhead_1: "For victims of crime in Multnomah County"
+    subhead_2: |
+      Being a victim of crime is a difficult, complicated, and process. We know you will likely have many questions while navigating the criminal justice system. We're here to help.
+    timeline_header: Useful links each step of the way
+    after_reporting:
+      header: After reporting the crime
+      find_status:
+        link: Find the status of the investigation
+        description: Find and call your local police department. The detective will be able to help.
+    after_charges:
+      header: After the District Attorney files charges
+      request_rights:
+        link: Request My Rights online
+        description: You have rights as a crime victim under the Oregon constitution. Some rights are automatic, and some must be requested.
+      during_prosecution:
+        link: What happens during prosecution
+        description: Learn more about the process, your role, and what support is available.
+      look_up_status:
+        link: Look up the status of your case
+        description: Find what charges are filed and what dates are scheduled on the Oregon Court Records website.
+    after_closed:
+      header: After the case is closed
+      look_up_status:
+        link: Look up offender status
+        description: Find the offender status and who's available to answer questions.
+      after_sentencing:
+        link: What happens after sentencing
+        description: Read about what happens after sentencing and what support is available.
+      look_up_case:
+        link: Look up the status of your case
+        description: Look up the online court records after sentencing to find the sentencing documents. You can also see if restitution was issued.
+    other_questions: Other Questions?
+    read_faqs: Read all FAQs
+    contact_us: Contact Us
+    about_site: About this Website
     description: |
       %{product_name} is a public website for victims of crime in Multnomah County,
       built by %{cfa_link} in collaboration with government and
@@ -330,9 +362,10 @@ en:
     menu:
       header_1: What happens next
       section_1:
-        item_1: Post-sentencing overview
-        item_2: If offender on probation
-        item_3: If offender in jail/prison
+        item_1: During prosecution and trial
+        item_2: Post-sentencing overview
+        item_3: If offender on probation
+        item_4: If offender in jail/prison
       header_2: Victims’ Rights
       section_2:
         item_1: Victims’ Rights
@@ -346,6 +379,101 @@ en:
         item_2: All justice system services
 
     ###########################################################################
+    trial_overview:
+      header: |
+        The time after arrest can be hectic. Here’s what to expect and where to get support:
+
+        <strong>Within 48 - 72 hrs of reporting a crime</strong>
+        Prosecutors will review evidence and make a charging decision.
+
+        <strong>Within 3 days of reporting the crime</strong>
+        You’ll receive a call from an advocate about a scheduled arraignment. An arraignment is a hearing for the District Attorney to officially press charges. As a victim, you have the right to attend but can choose not to.
+
+        <strong>Within 7 days of reporting the crime</strong>
+        In felony cases, a Grand Jury will be scheduled. You may receive a subpoena to testify as a witness, which shows the date, time, and location in our office where they are expected to appear and testify.
+
+        The offender will not be present at the grand jury. It will be you along with the prosecutor and any other witnesses in the case.
+
+        <strong>Within about 30 days of reporting the crime</strong>
+        Trial is scheduled. You may be subpoenaed to testify as a witness through mail.
+
+        <a href="http://mcda.us/index.php/appearing-in-court/trial-process/" target="_blank">What to expect from the trial process</a>
+        <br />
+        <a href="http://mcda.us/index.php/appearing-in-court/witness-information/" target="_blank">What to expect as a witness</a>
+
+      dropdowns:
+        how_notified:
+          title: What can I be notified of? How can I request notifications?
+          body: |
+            You have the right to be notified of:
+
+            <ul>
+              <li>critical stage hearings in advance</li>
+              <li>release hearings in advance</li>
+            </ul>
+
+            Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222" target="_blank">(503) 988-3222</a>.
+        can_i_be_present:
+          title: Can I be present at the trial? Do I have to be?
+          body: |
+            You have the right to participate in prosecution and:
+
+            <ul>
+              <li>be in the courtroom during trials and or hearings</li>
+              <li>request to speak at these events</li>
+              <li>provide a written or oral statement to the court at the time of sentencing</li>
+              <li>participate in mediation or a restorative conference (all parties willing)</li>
+            </ul>
+
+            Talk to your advocate about notifications. Contact the District Attorney Victim Services at <a href="tel:503-988-3222" target="_blank">(503) 988-3222</a>.
+        how_privacy:
+          title: How can I maintain privacy?
+          body: |
+            You have the right to to privacy and protection during the trial process including:
+            <ul>
+              <li>keep victim address and phone number from the defendant</li>
+              <li>choose to speak with a defense attorney or representative, or not</li>
+            </ul>
+
+            If you are in a case involving sexual conduct by a child or invasion of privacy, you have the right to  allow no coverage of sex offense proceedings by media.
+        victim_impact_statement:
+          title: What is a victim impact statement, and how can I make one?
+          body: |
+            Talk to your advocate about making a Victim Impact Statement.
+            Contact the District Attorney Victim Services at <a href="tel:503-988-3222" target="_blank">(503) 988-3222</a>.
+        how_copy_police_report:
+          title: How do I get a copy of my police report?
+          body: |
+            Contact the arresting or responding law enforcement agency directly.
+
+            <strong>County Level</strong>
+            Multnomah County Sheriff's Office has police reports generated by Sheriff's Office deputies.
+
+            Requests must be made by mail or in person at:
+            234 SW Kendall Ct.
+            Troutdale OR 97060
+            503-988-7300
+
+            Other Police and Sheriff’s Departments Contacts
+        what_info_entitled:
+          title: What other information am I entitled to?
+          # TODO: Clarify language around the sexual assault rights.
+          body: |
+            If you are involved in a DUI case, you have the right to access any information about the case that the defendant has.
+
+            If you are involved in a sexual assault case, you have the right to have the defendant tested.
+        can_i_be_involved_in_sentencing:
+          title: Can I be involved in sentencing?
+          body: |
+            If you are involved in a violent felony case, you have the right to be consulted regarding plea bargaining and negotiations.
+
+            Talk to your advocate about your right to be consulted.
+            Contact the District Attorney Victim Services at <a href="tel:503-988-3222" target="_blank">(503) 988-3222</a>.
+      who_to_call:
+        - name: Multnomah County District Attorney Victim Services
+          phone: (503) 988-3222
+
+    ###########################################################################
 
     overview:
       # Uncomment this to see the SVG below the header:
@@ -353,7 +481,7 @@ en:
       header: |
         What happens after sentencing?
 
-        The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender either stays in a county jail (if the sentence is less than 1 year) or is transferred to prison (if sentence is longer than 1 year)
+        The judge sets the sentence and conditions at the time of conviction. Depending on the length and conditions, the offender will either receive probation or prison time. If the offender receives prison time, they either stay in a county jail (if the sentence is less than 1 year) or are transferred to prison (if sentence is longer than 1 year).
     prison_jail:
       # Uncomment this to see the SVG below the header:
       pre_header_svg: 'Timeline-Prison.svg'
@@ -626,7 +754,7 @@ en:
         Multnomah County Circuit Court and Family Law Center
         (503) 988-3943
 
-        <strong>Multnomah County Police Departments</strong>
+        <strong id="police-departments">Multnomah County Police Departments</strong>
 
         Gresham Police
         (503) 618-2318

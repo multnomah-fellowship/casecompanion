@@ -12,6 +12,7 @@ $colors: (
   green-dark: #4a883c,
 
   blue-multnomah: #2f6296,
+  blue: #206fbf,
   blue-light: #1481ef,
   blue-lighter: #f1f8fe,
 
@@ -53,7 +54,7 @@ $primary-color-dark: darken($primary-color, 15%);
 $secondary-color: $primary-color;
 $success-color: #f00; // TODO is this used anywhere?
 $error-color: #f00; // TODO is this used anywhere?
-$link-color: $color-text;
+$link-color: map-get($colors, blue);
 
 $card-link-color: $link-color;
 $input-border-color: $color-text;

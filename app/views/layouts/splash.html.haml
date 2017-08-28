@@ -14,13 +14,13 @@
     %header.app-header.app-header--hero
       .app-container
         .row
-          .col.s10.offset-s1.m4.offset-m1
+          .col.s8.offset-s2.m4.offset-m2
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title--splash= render_component 'logo', variant: :single_color
             .app-header__subtitle formerly MyAdvocate
 
           - if feature_enabled?(:log_in)
-            .col.s10.m6.offset-m1.app-feature-flagged
+            .col.s10.m4.offset-m1.app-feature-flagged
               - if @current_user
                 = link_to '#', class: 'app-header__link' do
                   .app-header__title--splash= @current_user.email
@@ -33,42 +33,92 @@
 
       .app-container
         .row
-          .col.s10.offset-s1
+          .col.s8.offset-s2
             %h2.app-header__headline= t('home.headline')
-            %h3.app-header__subhead= t('home.subhead')
+            %h3.app-header__subhead-1= t('home.subhead_1')
+            %h3.app-header__subhead-2= t('home.subhead_2')
 
+    .app-header
+      .app-container.app-container--left-line.app-container--subhero
+        .row
+          .col.s8.offset-s2
+            %h3.app-typography--display-2= t('home.timeline_header')
+
+        .row.app-row--left-line-dot
+          .col.s8.offset-s2
+            %h3.app-typography--header-1= t('home.after_reporting.header')
+
+            .app-home-link-with-description
+              = link_to t('home.after_reporting.find_status.link'),
+                faqs_path(anchor: 'police-departments'),
+                class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_reporting.find_status.description')
+
+        .row.app-row--left-line-dot
+          .col.s8.offset-s2
+            %h3.app-typography--header-1= t('home.after_charges.header')
+
+            .app-home-link-with-description
+              = link_to t('home.after_charges.request_rights.link'), rights_path, class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_charges.request_rights.description')
+
+            .app-home-link-with-description
+              = link_to t('home.after_charges.during_prosecution.link'), faqs_path(anchor: 'before-and-during-trial'),
+                class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_charges.during_prosecution.description')
+
+            .app-home-link-with-description
+              = link_to t('home.after_charges.look_up_status.link'),
+                'https://webportal.courts.oregon.gov/portal/Home/Dashboard/29',
+                target: '_blank',
+                class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_charges.during_prosecution.description')
+
+        .row.app-row--left-line-dot
+          .col.s8.offset-s2
+            %h3.app-typography--header-1= t('home.after_closed.header')
+
+            .app-home-link-with-description
+              = link_to t('home.after_closed.look_up_status.link'), offenders_path, class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_closed.look_up_status.description')
+
+            .app-home-link-with-description
+              = link_to t('home.after_closed.after_sentencing.link'),
+                faqs_path(anchor: 'post-sentencing-overview'),
+                class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_closed.after_sentencing.description')
+
+            .app-home-link-with-description
+              = link_to t('home.after_closed.look_up_case.link'),
+                'https://webportal.courts.oregon.gov/portal/Home/Dashboard/29',
+                target: '_blank',
+                class: 'app-typography--body-1'
+              .app-typography--body-2= t('home.after_closed.look_up_case.description')
+
+    .app-header
+      .app-container.app-container--subhero.app-container--centered
+        .row
+          .col.s8.offset-s2
+            %h3.app-typography--display-2= t('home.other_questions')
+
+          .col.s4.offset-s4
+            .app-button-group
+              = render_component 'button', stretch: true, dark: true, to: faqs_path do
+                = t('home.read_faqs')
+              = render_component 'button', stretch: true, dark: true, to: 'mailto:team@casecompanion.org' do
+                = t('home.contact_us')
+
+    .app-header
+      .app-container.app-container--subhero.app-container--centered
         .row
           .col.s10.offset-s1
-            .app-button-group
-              = render_component 'button', to: offenders_path, solid: true do
-                = t('home.cta')
-                &rarr;
-
-              = render_component 'button', to: faqs_path, transparent: true do
-                = t('home.secondary_cta')
-
-
-    .app-header--subhero
-      .app-container
-        .row
-          .col.s10.offset-s1.m5.offset-m1
+            %h3.app-typography--display-2= t('home.about_site')
             %p.app-typography--body-1
               - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org', target: '_blank')
               = raw(t('home.description', cfa_link: cfa_link, product_name: product_name))
 
-          .col.s10.offset-s1.m5
-            = image_tag 'partner_logos.png', class: 'app-header__logos'
-
-    .app-header--subhero
-      .app-container
-        .row
-          .col.s10.offset-s1.m3.offset-m1
-            = image_tag 'img_faq_icons.png', class: 'app-header__logos'
-
-          .col.s10.offset-s1.m6.offset-m1
-            %p.app-typography--body-1
-              = t('home.faqs')
-            = link_to t('home.faqs_link'), faqs_path, class: 'app-typography--body-1'
+          .col.s8.offset-s2
+            = image_tag 'img_partner_seals.png', width: '100%'
 
     %main.app-container
       - if flash[:info]

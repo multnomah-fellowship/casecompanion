@@ -23,15 +23,15 @@
           = render_component 'button', submit: f, stretch: true, solid: true do
             = t('beta_signups.focus_cta')
 
-.app-header--subhero.app-header--subhero-no-bottom-padding
-  .app-container
+.app-header
+  .app-container.app-container--subhero
     .row
       .col.s10.offset-s1
         %h2.app-typography--header-1= t('beta_signups.screenshot_header')
         = image_tag 'img_landing_page_browser.png', class: 'app-beta-signups__screenshot'
 
-.app-header--subhero
-  .app-container
+.app-header
+  .app-container.app-container--subhero
     .row
       .col.s10.offset-s1.m5.offset-m1
         %p.app-typography--body-1

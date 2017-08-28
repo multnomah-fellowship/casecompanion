@@ -9,26 +9,41 @@ $system-sans-serif: -apple-system, BlinkMacSystemFont,
 $typography-size-body-1: 19px;
 
 %app-typography--display-1 {
-  color: $color-text;
   font-family: $system-sans-serif;
-  font-size: 36px;
+  font-size: 44px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 48px;
   margin-bottom: 24px;
 }
 
+%app-typography--display-2 {
+  font-family: $system-sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 48px;
+  margin-bottom: 20px;
+}
+
+%app-typography--display-3 {
+  font-family: $system-sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
 %app-typography--header-1 {
-  color: $color-text;
   font-family: $system-sans-serif;
   font-size: 24px;
   font-weight: bold;
+  letter-spacing: .6px;
   line-height: 30px;
   margin-bottom: 16px;
 }
 
 %app-typography--header-2 {
-  color: $color-text;
   font-family: $system-sans-serif;
   font-size: 19px;
   font-weight: bold;
@@ -37,7 +52,6 @@ $typography-size-body-1: 19px;
 }
 
 %app-typography--header-3 {
-  color: $color-text;
   font-family: $system-sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -54,14 +68,12 @@ $typography-size-body-1: 19px;
 }
 
 %app-typography--body-1 {
-  color: $color-text;
   font-family: $system-sans-serif;
   font-size: $typography-size-body-1;
   line-height: 28px;
 }
 
 %app-typography--body-2 {
-  color: $color-text;
   font-family: $system-sans-serif;
   font-size: 16px;
   line-height: 24px;
