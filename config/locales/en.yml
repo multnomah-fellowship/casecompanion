@@ -383,23 +383,33 @@ en:
       header: |
         The time after arrest can be hectic. Here’s what to expect and where to get support:
 
-        <strong>Within 48 - 72 hrs of reporting a crime</strong>
+        <strong>Reporting a Crime </strong>
         Prosecutors will review evidence and make a charging decision.
 
-        <strong>Within 3 days of reporting the crime</strong>
-        You’ll receive a call from an advocate about a scheduled arraignment. An arraignment is a hearing for the District Attorney to officially press charges. As a victim, you have the right to attend but can choose not to.
+        When a crime is initially reported to law enforcement, an officer is sent to the crime scene to find out what happened. An arrest may be made at that time. The officer will gather evidence and write a report that will be sent to the district attorney&#39;s office with a type of charge indicated on the report. The office of the District Attorney assigns the report to one of the deputy district attorneys. The report is evaluated to determine if there is enough evidence to file charges. At this time one of three things will occur:
 
-        <strong>Within 7 days of reporting the crime</strong>
-        In felony cases, a Grand Jury will be scheduled. You may receive a subpoena to testify as a witness, which shows the date, time, and location in our office where they are expected to appear and testify.
+        <ol>
+          <li>No charges are filed due to lack of evidence;</li>
+          <li>Further investigation is required and law enforcement is asked to obtain the information;</li>
+          <li>or Charges are filed in a document called an information or complaint.</li>
+        </ol>
 
-        The offender will not be present at the grand jury. It will be you along with the prosecutor and any other witnesses in the case.
+        <strong>Grand Jury (if the charge is a felony) </strong>
+        A grand jury is a panel of seven people. The grand jury listens to the witnesses presented by the district attorney's office and based on that evidence, may indict the defendant if five of the jurors concur. The defendant or the defendant's attorney are not present during the grand jury process. If the grand jury panel determines, based upon the witnesses' testimony, a felony crime has been committed, the defendant is indicted. There are several times a defendant may be brought before the court after a crime is committed, including:
 
-        <strong>Within about 30 days of reporting the crime</strong>
-        Trial is scheduled. You may be subpoenaed to testify as a witness through mail.
+        <strong>Early and Final Resolution Conference</strong>
+        At the arraignment hearing, the court will set a date for an early resolution conference. At this conference meeting, the defendant and attorney meet with a deputy district attorney before the presiding judge to review the pre-trial offer prepared by the district attorney's office and attempt to resolve this matter. If a resolution is not met, a final resolution conference will be scheduled. If an agreement is not reached at either resolution conference, the court will set the case for trial.
+        If the defendant enters a plea at the resolution hearing, the court may proceed to sentencing, unless the victim would like to attend the sentencing. The court would then set over (postpone) the sentencing to give the victim the opportunity to speak to the defendant and the judge about the impact of this crime. If the victim is not comfortable appearing in court, a written victim impact statement may be provided and read into the record in open court.
 
-        <a href="http://mcda.us/index.php/appearing-in-court/trial-process/" target="_blank">What to expect from the trial process</a>
-        <br />
-        <a href="http://mcda.us/index.php/appearing-in-court/witness-information/" target="_blank">What to expect as a witness</a>
+        <strong>Trial</strong>
+        Subpoenas are issued to anyone who will be testifying in the trial. If the trial is called off or postponed, witnesses will be notified by the district attorney's office. If you do not receive a phone call from the district attorney's office, please call the phone number on the subpoena to verify if the trial is still going forward. Because there are so many cases in the court system and only a certain number of trial days, a trial may be reset multiple times.
+        Trials can be heard before either a jury, or a judge. Many times witnesses are not allowed to come into the courtroom until they testify. Trials are open to the public.
+
+        <strong>Sentencing</strong>
+
+        Sentencing may occur quickly if a Pre-Sentence Investigation (PSI) is not ordered. If the judge requires a pre-sentence investigation, a sentencing date will be scheduled after a conviction or change of plea hearing. Victims are encouraged to use this time to write a victim impact statement to the judge (whether or not they can be present at sentencing) explaining how the crime has affected them. Victims have a right to be heard at sentencing, either in person, through a representative of the district attorney's office, or in writing.
+
+
 
       dropdowns:
         how_notified:
