@@ -56,7 +56,10 @@ RSpec.describe 'Rights selection flow' do
     post '/rights/confirmation', params: {
       rights_flow: {
         'electronic_signature_checked' => '1',
-        'electronic_signature_name' => 'Tom Example',
+
+        # assert that it accepts a slightly messy signature, as we have seen
+        # iPads want to type:
+        'electronic_signature_name' => 'Tom example ',
       },
     }
     follow_redirect!

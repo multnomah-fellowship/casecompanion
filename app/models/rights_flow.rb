@@ -84,7 +84,7 @@ class RightsFlow
         errors.add(:electronic_signature_checked, 'must be checked')
       end
 
-      unless electronic_signature_name == "#{first_name} #{last_name}"
+      unless electronic_signature_name.strip.casecmp("#{first_name} #{last_name}").zero?
         errors.add(:electronic_signature_name, "must match \"#{first_name} #{last_name}\"")
       end
     end
