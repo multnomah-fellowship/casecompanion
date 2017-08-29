@@ -547,7 +547,6 @@ $focus-form-overlap-height: 120px;
 }
 
 .app-field-attachment {
-  background-color: $color-focus;
   border: 2px solid $color-divider;
   border-top-style: none;
   margin-top: -$app-field-margin-bottom;
@@ -559,6 +558,10 @@ $focus-form-overlap-height: 120px;
     margin-right: auto;
     width: column-width(6);
   }
+}
+
+.app-field-attachment--active {
+  background-color: $color-focus;
 }
 
 /*

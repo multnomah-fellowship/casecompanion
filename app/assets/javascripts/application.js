@@ -84,6 +84,8 @@ window.App = (function() {
   };
 
   const initializeSignatureField = function() {
+    // When the "By checking this box[...]" box is checked, we want to select
+    // the text field by default.
     const handleSignatureChecked = function(e) {
       const $attachmentField = $('#rights_flow_electronic_signature_name');
 
@@ -92,7 +94,18 @@ window.App = (function() {
       }
     };
 
+    // When the signature "Type your name" field is selected, we want to turn
+    // the form attachment's background blue.
+    const handleSignatureFieldSelected = function(e) {
+      const $attachmentContainer = $(e.target).closest('.app-field-attachment');
+      const isSelected = e.type == "select";
+
+      $attachmentContainer.toggleClass('app-field-attachment--active', isSelected);
+    };
+
     $(document).on('change', '#rights_flow_electronic_signature_checked', handleSignatureChecked);
+    $(document).on('select', '#rights_flow_electronic_signature_name', handleSignatureFieldSelected);
+    $(document).on('blur', '#rights_flow_electronic_signature_name', handleSignatureFieldSelected);
   };
 
   const initializeReveals = function() {
