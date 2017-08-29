@@ -46,6 +46,6 @@
 
       .app-field-attachment
         .input-field
-          = f.text_field :electronic_signature_name, autocomplete: 'off'
+          = f.text_field :electronic_signature_name, autocomplete: 'off', autocorrect: 'off'
           = f.label :electronic_signature_name, t('rights_flow.confirmation.signature_field_label')
           %span.app-input-field-caption= t('rights_flow.confirmation.signature_field_caption')

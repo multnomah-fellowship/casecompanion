@@ -12,12 +12,12 @@
 .row
   .col.s5.offset-s1
     .input-field
-      = f.text_field :first_name, autocomplete: 'off'
+      = f.text_field :first_name, autocomplete: 'off', autocorrect: 'off'
       = f.label :first_name, 'First Name'
 
   .col.s5
     .input-field
-      = f.text_field :last_name, autocomplete: 'off'
+      = f.text_field :last_name, autocomplete: 'off', autocorrect: 'off'
       = f.label :last_name, 'Last Name'
 
 .row
