@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+exec ssh app@dcjvp-prda -t "/bin/bash -c 'env \$(cat \$HOME/shared/.psqlenv) psql'"
