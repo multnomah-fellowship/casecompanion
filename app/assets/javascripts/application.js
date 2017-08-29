@@ -83,6 +83,18 @@ window.App = (function() {
     }
   };
 
+  const initializeSignatureField = function() {
+    const handleSignatureChecked = function(e) {
+      const $attachmentField = $('#rights_flow_electronic_signature_name');
+
+      if ($(e.target).is(':checked')) {
+        $attachmentField.select();
+      }
+    };
+
+    $(document).on('change', '#rights_flow_electronic_signature_checked', handleSignatureChecked);
+  };
+
   const initializeReveals = function() {
     const handleReveal = function(e) {
       e.preventDefault();
@@ -124,6 +136,8 @@ window.App = (function() {
       initializeReveals();
 
       initializeButtonSpinners();
+
+      initializeSignatureField();
 
       // In case the user hits the back button and there are pre-filled values
       // on the previous page:
