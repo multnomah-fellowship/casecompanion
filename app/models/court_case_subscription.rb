@@ -6,11 +6,6 @@ class CourtCaseSubscription < ActiveRecord::Base
   has_many :checked_rights, class_name: 'Right', dependent: :destroy
 
   validates :case_number, presence: true
-  validate :ensure_contact_information
-
-  def ensure_contact_information
-    user.present? || email.present? || phone_number.present?
-  end
 
   def rights_hash
     Hash[Right::RIGHTS.values.map { |right| [right, false] }]

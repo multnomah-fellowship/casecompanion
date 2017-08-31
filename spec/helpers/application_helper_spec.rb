@@ -17,6 +17,11 @@ describe ApplicationHelper do
   end
 
   describe '#format_phone' do
+    it 'return nil if nil is given' do
+      expect(helper.format_phone(nil)).to be_nil
+      expect(helper.format_phone('')).to be_nil
+    end
+
     it 'formats a phone number as intended' do
       expect(helper.format_phone('+11234567890')).to eq('(123) 456-7890')
     end

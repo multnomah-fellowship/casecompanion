@@ -52,3 +52,6 @@ Style/ClassAndModuleChildren:
 
 Lint/IneffectiveAccessModifier:
   Enabled: false
+
+Lint/UnneededDisable:
+  Enabled: false

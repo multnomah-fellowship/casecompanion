@@ -65,8 +65,6 @@ class RightsFlow
       unless court_case_subscription_id.present?
         errors.add(:first_name, :blank) unless first_name.present?
         errors.add(:last_name, :blank) unless last_name.present?
-        errors.add(:email, :blank) unless email.present?
-        errors.add(:phone_number, :blank) unless phone_number.present?
         errors.add(:case_number, :blank) unless case_number.present?
         errors.add(:advocate_email, :blank) unless advocate_email.present?
       end

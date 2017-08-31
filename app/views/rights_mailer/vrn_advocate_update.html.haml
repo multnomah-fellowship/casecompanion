@@ -15,11 +15,11 @@ Case details:
 
   %li
     Phone Number:
-    #{format_phone(@subscription.phone_number)}
+    #{format_phone(@subscription.phone_number) || 'Not Provided'}
 
   %li
     Email Address:
-    #{@subscription.email}
+    #{@subscription.email.presence || 'Not Provided'}
 
   %li
     Case Number:
