@@ -1,6 +1,7 @@
 {
   "name": "casecompanion",
   "scripts": {
+    "postdeploy": "bin/rails db:schema:load"
   },
   "env": {
     "APP_DOMAIN": {
