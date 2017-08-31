@@ -94,9 +94,11 @@ class RightsController < ApplicationController
   def send_rights_confirmation_email(subscription_id)
     subscription = CourtCaseSubscription.find(subscription_id)
 
-    RightsMailer
-      .vrn_receipt(subscription)
-      .deliver_now
+    if subscription.email.present?
+      RightsMailer
+        .vrn_receipt(subscription)
+        .deliver_now
+    end
 
     RightsMailer
       .vrn_advocate_update(subscription)
