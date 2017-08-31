@@ -26,16 +26,24 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     expect(response.body).to include('How can we reach you?')
 
-    post '/rights/create_account', params: {
-      rights_flow: {
-        'first_name' => 'Tom',
-        'last_name' => 'Example',
-        'email' => 'tom@example.com',
-        'phone_number' => '330 555 1234',
-        'case_number' => '1000000',
-        'advocate_email' => FAKE_ADVOCATE_EMAIL,
-      },
+    valid_rights_flow_params = {
+      'first_name' => 'Tom',
+      'last_name' => 'Example',
+      'email' => 'tom@example.com',
+      'phone_number' => '330 555 1234',
+      'case_number' => '1000000',
+      'advocate_email' => FAKE_ADVOCATE_EMAIL,
     }
+
+    # Attempt to proceed with a missing required field, to assert that it does
+    # not let you proceed.
+    post '/rights/create_account', params: {
+      rights_flow: valid_rights_flow_params.except('case_number'),
+    }
+    expect(response.body).to include(I18n.t('rights_flow.create_account.header'))
+    expect(response.body).to include("Case number can't be blank")
+
+    post '/rights/create_account', params: { rights_flow: valid_rights_flow_params }
     follow_redirect!
     expect(response.body).to include(I18n.t('rights_flow.confirmation.header'))
 

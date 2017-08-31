@@ -136,6 +136,11 @@ en:
       preamble:
         There are additional rights in some special cases.
       field_header: Rights in special situations
+    create_account:
+      preamble: |
+        Last step, almost done!
+        Tell us about you so we can save your request.
+      header: How can we reach you?
     confirmation:
       preamble: Review and submit. If the information is correct, type your name below and hit Submit. To edit, hit Back.
       header: "You've selected the following:"
