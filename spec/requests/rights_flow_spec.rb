@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'Rights selection flow' do
   include_context 'with fake advocate'
 
@@ -26,24 +27,16 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     expect(response.body).to include('How can we reach you?')
 
-    valid_rights_flow_params = {
-      'first_name' => 'Tom',
-      'last_name' => 'Example',
-      'email' => 'tom@example.com',
-      'phone_number' => '330 555 1234',
-      'case_number' => '1000000',
-      'advocate_email' => FAKE_ADVOCATE_EMAIL,
-    }
-
-    # Attempt to proceed with a missing required field, to assert that it does
-    # not let you proceed.
     post '/rights/create_account', params: {
-      rights_flow: valid_rights_flow_params.except('case_number'),
+      rights_flow: {
+        'first_name' => 'Tom',
+        'last_name' => 'Example',
+        'email' => 'tom@example.com',
+        'phone_number' => '330 555 1234',
+        'case_number' => '1000000',
+        'advocate_email' => FAKE_ADVOCATE_EMAIL,
+      },
     }
-    expect(response.body).to include(I18n.t('rights_flow.create_account.header'))
-    expect(response.body).to include("Case number can't be blank")
-
-    post '/rights/create_account', params: { rights_flow: valid_rights_flow_params }
     follow_redirect!
     expect(response.body).to include(I18n.t('rights_flow.confirmation.header'))
 
@@ -54,12 +47,6 @@ RSpec.describe 'Rights selection flow' do
       .to include(I18n.t('rights.flag_k'))
     expect(response.body)
       .not_to include(I18n.t('rights.flag_c'))
-
-    # Check that it confirms my contact info
-    expect(response.body).to include('Tom Example')
-    expect(response.body).to include('tom@example.com')
-    expect(response.body).to include('(330) 555-1234')
-    expect(response.body).to include('1000000')
 
     post '/rights/confirmation', params: {
       rights_flow: {
@@ -84,11 +71,6 @@ RSpec.describe 'Rights selection flow' do
       .to include('A-DDA to assert and enforce Victim Rights' => false)
     expect(last_subscription.rights_hash)
       .to include('C-Talk with DDA before a Plea Agreement' => false)
-
-    expect(last_subscription.email)
-      .to eq('tom@example.com')
-    expect(last_subscription.advocate_email)
-      .to eq(FAKE_ADVOCATE_EMAIL)
   end
 
   it 'clears the session after ending the flow' do
@@ -154,5 +136,90 @@ RSpec.describe 'Rights selection flow' do
   it 'redirects you back to the start when going to and end page' do
     get '/rights/confirmation'
     expect(response).to redirect_to('/rights/who_assert')
+  end
+
+  describe 'the create_account flow step' do
+    before do
+      get '/rights'
+      follow_redirect!
+      post '/rights/who_assert', params: {}
+      follow_redirect!
+      post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
+      follow_redirect!
+      post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
+      follow_redirect!
+      post '/rights/in_special_cases'
+      follow_redirect!
+    end
+
+    let(:valid_account_params) do
+      {
+        'first_name' => 'Tom',
+        'last_name' => 'Example',
+        'email' => 'tom@example.com',
+        'phone_number' => '330 555 1234',
+        'case_number' => '1000000',
+        'advocate_email' => FAKE_ADVOCATE_EMAIL,
+      }
+    end
+
+    subject do
+      post '/rights/create_account', params: { rights_flow: account_params }
+      follow_redirect!
+    end
+
+    context 'with valid account params' do
+      let(:account_params) { valid_account_params }
+
+      it 'confirms the correct account details' do
+        subject
+        expect(response.body).to include('Tom Example')
+        expect(response.body).to include('tom@example.com')
+        expect(response.body).to include('(330) 555-1234')
+        expect(response.body).to include('1000000')
+      end
+
+      it 'persists the account details' do
+        subject
+        post '/rights/confirmation', params: {
+          rights_flow: {
+            'electronic_signature_checked' => '1',
+
+            # assert that it accepts a slightly messy signature, as we have seen
+            # iPads want to type:
+            'electronic_signature_name' => 'Tom example ',
+          },
+        }
+        follow_redirect!
+
+        last_subscription = CourtCaseSubscription.last
+        expect(last_subscription.email)
+          .to eq('tom@example.com')
+        expect(last_subscription.advocate_email)
+          .to eq(FAKE_ADVOCATE_EMAIL)
+      end
+    end
+
+    context 'without a phone number or email' do
+      let(:account_params) { valid_account_params.without('phone_number', 'email') }
+
+      it 'persists the account details' do
+        subject
+        post '/rights/confirmation', params: {
+          rights_flow: {
+            'electronic_signature_checked' => '1',
+
+            # assert that it accepts a slightly messy signature, as we have seen
+            # iPads want to type:
+            'electronic_signature_name' => 'Tom example ',
+          },
+        }
+        follow_redirect!
+
+        last_subscription = CourtCaseSubscription.last
+        expect(last_subscription.email).to be_blank
+        expect(last_subscription.phone_number).to be_blank
+      end
+    end
   end
 end
