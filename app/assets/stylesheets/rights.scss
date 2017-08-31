@@ -2,4 +2,9 @@
   margin-top: 40px;
   margin-bottom: 0;
   line-height: 50px;
+
+  // The column with the "next" button
+  > .col:last-child {
+    text-align: right;
+  }
 }

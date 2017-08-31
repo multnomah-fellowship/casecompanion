@@ -13,12 +13,12 @@
     = yield :rights_button_footer
 
   .row.app-row--rights-buttons
-    .col.s7.offset-s1.l8.offset-l1
+    .col.s5.offset-s1.l7.offset-l1
       - if @flow.previous_step
         = link_to 'Back', right_path(@flow.previous_step)
 
-    .col.s3.l2
-      = render_component 'button', stretch: true, submit: f do
+    .col.s5.l3
+      = render_component 'button', submit: f do
         - if @flow.finished?
           Submit
         - elsif @flow.current_page == RightsFlow.first_step
