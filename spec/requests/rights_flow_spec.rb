@@ -201,7 +201,12 @@ RSpec.describe 'Rights selection flow' do
     end
 
     context 'without a phone number or email' do
-      let(:account_params) { valid_account_params.without('phone_number', 'email') }
+      let(:account_params) do
+        valid_account_params.merge(
+          'phone_number' => '',
+          'email' => '',
+        )
+      end
 
       it 'persists the account details' do
         subject

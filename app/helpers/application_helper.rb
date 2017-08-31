@@ -19,7 +19,7 @@ module ApplicationHelper
 
   # Given a phone number like '+11234567890', returns '(123) 456-7890'
   def format_phone(phone_number)
-    return if phone_number.nil?
+    return if phone_number.blank?
 
     local_number = phone_number
       .gsub(/^\+1/, '')
