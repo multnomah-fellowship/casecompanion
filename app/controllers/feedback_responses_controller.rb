@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class FeedbackResponsesController < ApplicationController
-  DEFAULT_PAGE = 'vrn-confirmation'
-
   layout 'focused'
 
   def show
@@ -15,7 +13,7 @@ class FeedbackResponsesController < ApplicationController
                   FeedbackResponse.find(params[:previous_feedback_id])
                 else
                   FeedbackResponse.create(
-                    page: params[:page].presence || DEFAULT_PAGE,
+                    page: params[:page].presence || params[:utm_campaign],
                     value: params[:type],
                     utm_attribution: UtmAttribution.new_from_params(params),
                   )

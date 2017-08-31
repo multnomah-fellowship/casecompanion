@@ -1,11 +1,11 @@
 - content_for :header do
-  - if @feedback.page == 'vrn-confirmation'
+  - if vrn_receipt?(@feedback)
     %p= t('feedback_responses.header')
   - else
     = render_component 'logo'
 
 - content_for :footer do
-  - if @feedback.page == 'vrn-confirmation'
+  - if vrn_receipt?(@feedback)
     = image_tag 'seal_DA.png', width: '60', height: '61', class: 'app-feedback-footer__logo'
     = simple_format(t('feedback_responses.footer'), class: 'app-feedback-footer__text')
   - else
@@ -23,7 +23,7 @@
     %p.app-typography--body-1
       Thanks again!
 
-    - if @feedback.page == 'vrn-confirmation'
+    - if vrn_receipt?(@feedback)
       %h2.app-typography--header-2 Want to help make this email better?
 
       %p.app-typography--body-1
