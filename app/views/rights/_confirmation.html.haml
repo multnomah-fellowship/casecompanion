@@ -24,9 +24,15 @@
     %p
       #{@flow.first_name} #{@flow.last_name}
       %br
-      #{@flow.email}
+      - if @flow.email.present?
+        = @flow.email
+      - else
+        %em No Email Provided
       %br
-      #{format_phone(@flow.phone_number) if @flow.phone_number}
+      - if @flow.phone_number.present?
+        = format_phone(@flow.phone_number)
+      - else
+        %em No Phone Number Provided
 
     %p
       = t('rights_flow.confirmation.case_info')
