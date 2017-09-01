@@ -60,4 +60,10 @@ module FeedbackResponsesHelper
       raw('&larr; Go Back')
     end
   end
+
+  # If the email is a VRN receipt, we want to render different header/footer.
+  def vrn_receipt?(feedback)
+    feedback.page == 'vrn-confirmation' || # legacy name
+      feedback.page == 'vrn_receipt' # from: RightsMailer#vrn_receipt
+  end
 end

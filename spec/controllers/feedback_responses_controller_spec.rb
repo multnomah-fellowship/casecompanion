@@ -28,9 +28,20 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       expect { subject }.to(change { FeedbackResponse.count }.by(1))
     end
 
-    it 'without a specific page defaults to "vrn-confirmation"' do
+    it 'without a specific page defaults to nil' do
       subject
-      expect(FeedbackResponse.last.page).to eq('vrn-confirmation')
+      expect(response.body).to include(I18n.t('footer.powered_by_html'))
+      expect(FeedbackResponse.last.page).to be_nil
+    end
+
+    describe 'when giving feedback about the digital VRN receipt email' do
+      let(:params) { super().merge(utm_campaign: 'vrn_receipt') }
+
+      it 'creates a feedback response with that page and renders the email version' do
+        subject
+        expect(response.body).to include(I18n.t('feedback_responses.header'))
+        expect(FeedbackResponse.last.page).to eq('vrn_receipt')
+      end
     end
 
     describe 'when giving feedback about a specific page' do
