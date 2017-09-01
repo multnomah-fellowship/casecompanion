@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
         'request.remote_ip' => request.remote_ip,
         'request.remote_addr' => request.remote_addr,
         'x-forwarded-for' => request.headers['X-Forwarded-For'],
+        PossiblyFakeRequestIpMiddleware::KEY => request.env[PossiblyFakeRequestIpMiddleware::KEY],
       ))
     end
 
