@@ -25,9 +25,12 @@ Case details:
     Case Number:
     #{@subscription.case_number}
 
-The following rights are selected:
-%ul
-  - @subscription.checked_rights.each do |right|
-    %li= right.name
+- if @subscription.checked_rights.any?
+  The following rights are selected:
+  %ul
+    - @subscription.checked_rights.each do |right|
+      %li= right.name
+- else
+  The victim did not select any rights listed on the VRN form.
 
 If you believe there has been an error in this email, please report it to #{link_to 'team@casecompanion.org', 'mailto:team@casecompanion.org'}.
