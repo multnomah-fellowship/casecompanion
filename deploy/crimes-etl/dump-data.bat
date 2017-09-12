@@ -15,4 +15,6 @@ sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.s
 
 sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.sql,queries\03_VRN.sql -o vrns.csv -s "^" -W
 
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.sql,queries\04_CASE_INFO.sql -o cases.csv -s "^" -W
+
 pause

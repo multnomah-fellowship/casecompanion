@@ -18,6 +18,7 @@ ssh $ssh_destination "mkdir -p ${datadir}"
 
 scp ./victims.csv "$ssh_destination:${datadir}"
 scp ./vrns.csv "$ssh_destination:${datadir}"
+scp ./cases.csv "$ssh_destination:${datadir}"
 scp ./import-data.sh "$ssh_destination:${datadir}"
 scp ./crimes-schema.sql "$ssh_destination:${datadir}"
 

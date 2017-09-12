@@ -55,3 +55,9 @@ CREATE TABLE vrns (
     flag_desc character varying(63) NOT NULL
 );
 
+DROP TABLE IF EXISTS cases;
+CREATE TABLE cases (
+    id numeric NOT NULL,
+    da_case_number numeric NOT NULL,
+    advoate character varying(100)
+);
