@@ -468,8 +468,11 @@ $focus-form-overlap-height: 120px;
 /*
  * RIGHTS FLOW
  */
-.app-row--rights-checks-container {
-  min-height: 450px;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .app-row--rights-checks-container {
+    // On iPads, position the "Next" button at the bottom of the screen always.
+    min-height: 450px;
+  }
 }
 
 /*
