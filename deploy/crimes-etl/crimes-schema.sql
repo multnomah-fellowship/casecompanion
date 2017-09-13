@@ -37,7 +37,7 @@ CREATE TABLE victims (
     phone_ext character varying(30),
     phone_update_date timestamp without time zone,
     phone_remark text,
-    address_remark character varying(86),
+    address_remark text,
     court_case_nbr character varying(9),
     da_case_nbr numeric NOT NULL,
     first_advocate_code character varying(9),
@@ -51,7 +51,6 @@ DROP TABLE IF EXISTS vrns;
 CREATE TABLE vrns (
     case_id_nbr numeric NOT NULL,
     person_id_nbr numeric NOT NULL,
-    result_desc character varying(34) NOT NULL,
     flag_desc character varying(63) NOT NULL
 );
 
