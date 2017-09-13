@@ -44,7 +44,9 @@ CREATE TABLE victims (
     sec_advocate_code character varying(7),
     email character varying(50),
     confidential_indicator boolean,
-    issued_case_court_nbr character varying(9)
+    person_update_date timestamp without time zone,
+    person_create_date timestamp without time zone,
+    case_update_date timestamp without time zone
 );
 
 DROP TABLE IF EXISTS vrns;

@@ -20,7 +20,7 @@
     advocate_phone as "Advocate Phone Number",
     advocate_email as "Advocate Email",
     da_case_nbr as "DA Case Number",
-    issued_case_court_nbr as "Court Case Number"
+    court_case_nbr as "Court Case Number"
   FROM (
     SELECT
       victims.person_id_nbr,
@@ -51,7 +51,7 @@
       advocates.email as advocate_email,
       advocates.phone_1 as advocate_phone,
       victims.da_case_nbr,
-      victims.issued_case_court_nbr,
+      victims.court_case_nbr,
       array_agg(substring(flag_desc from 0 for 2)) as selected_flags
     FROM vrns
     INNER JOIN victims
@@ -60,10 +60,9 @@
     LEFT OUTER JOIN advocates
       ON victims.first_advocate_code = advocates.crimes_id
     WHERE
-      victims.email is NOT NULL
-      AND victims.first_name is NOT NULL
+      victims.first_name is NOT NULL
       AND flag_desc IS NOT NULL
       AND victims.update_date > '2017-07-20'
     GROUP BY victims.person_id_nbr, victims.case_id_nbr, victims.first_name, victims.last_name, victims.email,
-      advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, issued_case_court_nbr
+      advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, court_case_nbr
   ) q
