@@ -63,6 +63,8 @@
       victims.first_name is NOT NULL
       AND flag_desc IS NOT NULL
       AND victims.update_date > '2017-07-20'
+      -- This comment is uncommented conditionally by ./copy-and-process.sh:
+      -- AND victims.email IS NOT NULL
     GROUP BY victims.person_id_nbr, victims.case_id_nbr, victims.first_name, victims.last_name, victims.email,
       advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, court_case_nbr
   ) q

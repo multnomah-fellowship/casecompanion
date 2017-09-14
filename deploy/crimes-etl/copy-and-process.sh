@@ -1,5 +1,6 @@
 #!/bin/bash
 # Usage: ./copy-and-process.sh
+#          -e    Require an email for every result.
 # Run this script on dameta (using MobaXterm) after running `dump-data.bat`.
 #
 # Note: You will have to change the username and SSH login credentials to use
@@ -13,6 +14,18 @@ ssh_destination="app@dcjvp-prda"
 queryfile=$(mktemp)
 shared_folder='\\tsclient\REMOTE\' # Shared folder from Remote Desktop
 trap "rm $queryfile" EXIT
+email_only=false
+
+while getopts ":e" opt; do
+  case $opt in
+    e)
+      email_only=true
+      ;;
+    \?)
+      echo "Invalid option: $OPTARG"
+      ;;
+  esac
+done
 
 ssh $ssh_destination "mkdir -p ${datadir}"
 
@@ -28,6 +41,10 @@ ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) ${datadir}/import-dat
 echo "COPY(" >>$queryfile
 cat ./queries/q-dump-processed-csv.sql >>$queryfile
 echo ") TO STDOUT CSV DELIMITER ',' HEADER;" >>$queryfile
+
+if [ $email_only ]; then
+  sed -i'' -e 's/-- AND victims.email IS NOT NULL/AND victims.email IS NOT NULL/' $queryfile
+fi
 
 echo "Running query $(cat $queryfile)"
 
