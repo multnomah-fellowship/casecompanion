@@ -1,6 +1,7 @@
 #!/bin/bash
 # Usage: ./copy-and-process.sh
 #          -e    Require an email for every result.
+#          -d    Remove Digital VRN recipients from the dump.
 # Run this script on dameta (using MobaXterm) after running `dump-data.bat`.
 #
 # Note: You will have to change the username and SSH login credentials to use
@@ -15,11 +16,15 @@ queryfile=$(mktemp)
 shared_folder='\\tsclient\REMOTE\' # Shared folder from Remote Desktop
 trap "rm $queryfile" EXIT
 email_only=false
+remove_digital_vrns=false
 
 while getopts ":e" opt; do
   case $opt in
     e)
       email_only=true
+      ;;
+    d)
+      remove_digital_vrns=true
       ;;
     \?)
       echo "Invalid option: $OPTARG"
@@ -29,11 +34,15 @@ done
 
 ssh $ssh_destination "mkdir -p ${datadir}"
 
-scp ./victims.csv "$ssh_destination:${datadir}"
-scp ./vrns.csv "$ssh_destination:${datadir}"
-scp ./cases.csv "$ssh_destination:${datadir}"
-scp ./import-data.sh "$ssh_destination:${datadir}"
-scp ./crimes-schema.sql "$ssh_destination:${datadir}"
+if [ $remove_digital_vrns ]; then
+  dump_query="COPY (SELECT case_number, email FROM court_case_subscriptions) TO STDOUT CSV DELIMITER ',' HEADER;"
+  echo $dump_query | ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) psql casecompanion" digital_vrns.csv
+fi
+
+# Copy all used files to the host where it will run, so there is no dev/prod
+# difference.
+files=(victims.csv vrns.csv cases.csv import-data.sh digital_vrns.csv crimes-schema.sql)
+scp "${files[@]}" "$ssh_destination:${datadir}"
 
 ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) psql crimes < ${datadir}/crimes-schema.sql'"
 ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) ${datadir}/import-data.sh ${datadir}'"

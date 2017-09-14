@@ -64,3 +64,9 @@ CREATE TABLE cases (
     prosecutor_last_name character varying(100),
     prosecutor_first_name character varying(100)
 );
+
+DROP TABLE IF EXISTS digital_vrns;
+CREATE TABLE digital_vrns (
+  case_number character varying(100) NOT NULL,
+  email character varying(200) NOT NULL
+);

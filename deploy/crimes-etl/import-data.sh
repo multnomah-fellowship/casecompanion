@@ -35,6 +35,7 @@ fixfile() {
 
 fixfile "${path}/victims.csv"
 fixfile "${path}/vrns.csv"
+fixfile "${path}/digital_vrns.csv"
 fixfile "${path}/cases.csv"
 
 echo "Downloading Advocate contact spreadsheet..."
@@ -50,3 +51,4 @@ cat "${path}/victims.csv" | psql crimes -c "COPY victims FROM STDIN (FORMAT csv,
 cat "${path}/vrns.csv" | psql crimes -c "COPY vrns FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/advocates.csv" | psql crimes -c "COPY advocates FROM STDIN (FORMAT csv, DELIMITER ',', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/cases.csv" | psql crimes -c "COPY cases FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
+cat "${path}/digital_vrns.csv" | psql crimes -c "COPY digital_vrns FROM STDIN (FORMAT csv, DELIMITER ',', HEADER, NULL 'NULL', QUOTE E'\b')"
