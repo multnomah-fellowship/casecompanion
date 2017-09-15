@@ -39,12 +39,15 @@ class RightsController < ApplicationController
   def preview
     return head :not_found unless params[:format] == 'pdf'
 
+    fake_created_at = Time.now
     subscription = CourtCaseSubscription.new(
       case_number: '1000000',
       email: 'person@example.com',
       first_name: 'Duncan',
       last_name: 'Doodlebear', # (sp?)
       phone_number: '(503) 555-1234',
+      created_at: fake_created_at,
+      updated_at: fake_created_at,
       checked_rights: [
         Right.new(name: Right::RIGHTS[:flag_a]),
         Right.new(name: Right::RIGHTS[:flag_b]),

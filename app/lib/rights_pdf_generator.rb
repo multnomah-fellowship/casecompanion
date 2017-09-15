@@ -19,7 +19,7 @@ class RightsPdfGenerator
     pdf.font 'Times-Roman'
 
     pdf.bounding_box [300, pdf.cursor], width: 200 do
-      pdf.text "Date: #{current_date}"
+      pdf.text "Date: #{created_at_date}"
       pdf.move_down LINE_HEIGHT - pdf.font_size
 
       pdf.text "DA#: #{@subscription.case_number}"
@@ -66,7 +66,7 @@ class RightsPdfGenerator
 
     # "Date" field and label
     pdf.bounding_box [220, pdf.cursor], width: 200 do
-      pdf.text current_date
+      pdf.text created_at_date
       pdf.line [0, pdf.cursor], [200, pdf.cursor]
       pdf.stroke
       pdf.move_down 2
@@ -102,7 +102,7 @@ class RightsPdfGenerator
 
   private
 
-  def current_date
-    Time.now.in_time_zone(TIME_ZONE).to_date.strftime('%m/%d/%Y')
+  def created_at_date
+    @subscription.created_at.in_time_zone(TIME_ZONE).to_date.strftime('%m/%d/%Y')
   end
 end

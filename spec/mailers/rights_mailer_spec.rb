@@ -6,7 +6,7 @@ RSpec.describe RightsMailer, type: :mailer do
   include_context 'with fake advocate'
 
   let(:subscription) do
-    CourtCaseSubscription.new(
+    CourtCaseSubscription.create(
       first_name: 'Mary',
       last_name: 'Jones',
       email: 'mary@example.com',
