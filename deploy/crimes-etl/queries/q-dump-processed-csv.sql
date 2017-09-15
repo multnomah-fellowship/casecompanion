@@ -57,14 +57,28 @@
     INNER JOIN victims
       ON victims.person_id_nbr = vrns.person_id_nbr
       AND victims.case_id_nbr = vrns.case_id_nbr
+    -- This comment is uncommented conditionally by the -d flag of ./copy-and-process.sh
+    -- UNCOMMENT: -d flag
+    -- LEFT OUTER JOIN digital_vrns
+    --   ON digital_vrns.case_number::varchar = da_case_nbr::varchar
+    --  AND digital_vrns.email = victims.email
+    -- END UNCOMMENT: -d flag
     LEFT OUTER JOIN advocates
       ON victims.first_advocate_code = advocates.crimes_id
     WHERE
       victims.first_name is NOT NULL
       AND flag_desc IS NOT NULL
       AND victims.update_date > '2017-07-20'
-      -- This comment is uncommented conditionally by ./copy-and-process.sh:
+      -- This comment is uncommented conditionally by the -e flag of ./copy-and-process.sh:
+      -- UNCOMMENT: -e flag
       -- AND victims.email IS NOT NULL
+      -- END UNCOMMENT: -e flag
+
+      -- This comment is uncommented conditionally by the -d flag of ./copy-and-process.sh
+      -- UNCOMMENT: -d flag
+      -- AND digital_vrns.case_number IS NULL
+      -- AND digital_vrns.email IS NULL
+      -- END UNCOMMENT: -d flag
     GROUP BY victims.person_id_nbr, victims.case_id_nbr, victims.first_name, victims.last_name, victims.email,
       advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, court_case_nbr
   ) q

@@ -18,7 +18,18 @@ trap "rm $queryfile" EXIT
 email_only=false
 remove_digital_vrns=false
 
-while getopts ":e" opt; do
+uncomment() {
+  # e.g. uncomment queries/q-something.sql "-e"
+
+  filename=$1
+  flag=$2
+
+  sed -i'' -e "/UNCOMMENT: ${flag} flag/,/END UNCOMMENT/s/^\([ ]*\)-- /\1/" $filename
+  sed -i'' -e "/UNCOMMENT: ${flag} flag/d" $filename
+  sed -i'' -e "/END UNCOMMENT: ${flag} flag/d" $filename
+}
+
+while getopts ":ed" opt; do
   case $opt in
     e)
       email_only=true
@@ -34,9 +45,9 @@ done
 
 ssh $ssh_destination "mkdir -p ${datadir}"
 
-if [ $remove_digital_vrns ]; then
+if [ $remove_digital_vrns == "true" ]; then
   dump_query="COPY (SELECT case_number, email FROM court_case_subscriptions) TO STDOUT CSV DELIMITER ',' HEADER;"
-  echo $dump_query | ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) psql casecompanion" digital_vrns.csv
+  echo $dump_query | ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) psql'" >digital_vrns.csv
 fi
 
 # Copy all used files to the host where it will run, so there is no dev/prod
@@ -51,8 +62,12 @@ echo "COPY(" >>$queryfile
 cat ./queries/q-dump-processed-csv.sql >>$queryfile
 echo ") TO STDOUT CSV DELIMITER ',' HEADER;" >>$queryfile
 
-if [ $email_only ]; then
-  sed -i'' -e 's/-- AND victims.email IS NOT NULL/AND victims.email IS NOT NULL/' $queryfile
+if [ $email_only == "true" ]; then
+  uncomment "$queryfile" "-e"
+fi
+
+if [ $remove_digital_vrns == "true" ]; then
+  uncomment "$queryfile" "-d"
 fi
 
 echo "Running query $(cat $queryfile)"
