@@ -60,7 +60,8 @@ DROP TABLE IF EXISTS cases;
 CREATE TABLE cases (
     id numeric NOT NULL,
     da_case_number numeric NOT NULL,
-    advoate character varying(100),
+    court_case_number character varying(20),
+    advocate character varying(100),
     prosecutor_last_name character varying(100),
     prosecutor_first_name character varying(100)
 );
