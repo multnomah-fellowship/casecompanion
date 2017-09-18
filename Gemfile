@@ -75,7 +75,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'tiny_tds'
+  gem 'tiny_tds', '~> 2.1.0.pre'
   gem 'activerecord-sqlserver-adapter'
 end
 
