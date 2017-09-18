@@ -32,7 +32,7 @@ Other optional environment variables that are used for configuration include:
 ## installation
 ```bash
 # install ruby 2.4.0 (or whatever version is specified in .ruby-version)
-brew install rbenv
+brew install rbenv freetds
 rbenv install
 gem install bundler
 

@@ -75,6 +75,8 @@ end
 
 group :production do
   gem 'pg'
+  gem 'tiny_tds'
+  gem 'activerecord-sqlserver-adapter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
