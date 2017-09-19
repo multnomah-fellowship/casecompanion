@@ -61,6 +61,7 @@ group :development do
   # Rails's development dependencies
   gem 'listen', '~> 3.0.5'
   gem 'pry'
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -74,9 +75,9 @@ group :development do
 end
 
 group :production do
+  gem 'activerecord-sqlserver-adapter'
   gem 'pg'
   gem 'tiny_tds', '~> 2.1.0.pre'
-  gem 'activerecord-sqlserver-adapter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
