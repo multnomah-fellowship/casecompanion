@@ -49,10 +49,10 @@
             %h3.app-typography--header-1= t('home.after_reporting.header')
 
             .app-home-link-with-description
-              = link_to t('home.after_reporting.find_status.link'),
-                faqs_path(anchor: 'police-departments'),
+              = link_to t('home.after_reporting.what_happens.link'),
+                faqs_path(anchor: 'what-happens-after-reporting-a-crime'),
                 class: 'app-typography--body-1'
-              .app-typography--body-2= t('home.after_reporting.find_status.description')
+              .app-typography--body-2= t('home.after_reporting.what_happens.description')
 
         .row.app-row--left-line-dot
           .col.s8.offset-s2
@@ -63,7 +63,7 @@
               .app-typography--body-2= t('home.after_charges.request_rights.description')
 
             .app-home-link-with-description
-              = link_to t('home.after_charges.during_prosecution.link'), faqs_path(anchor: 'before-and-during-trial'),
+              = link_to t('home.after_charges.during_prosecution.link'), faqs_path(anchor: 'what-happens-during-prosecution-and-trial'),
                 class: 'app-typography--body-1'
               .app-typography--body-2= t('home.after_charges.during_prosecution.description')
 
@@ -84,7 +84,7 @@
 
             .app-home-link-with-description
               = link_to t('home.after_closed.after_sentencing.link'),
-                faqs_path(anchor: 'post-sentencing-overview'),
+                faqs_path(anchor: 'what-happens-after-sentencing'),
                 class: 'app-typography--body-1'
               .app-typography--body-2= t('home.after_closed.after_sentencing.description')
 
