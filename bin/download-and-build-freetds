@@ -15,7 +15,7 @@ trap "rm -rf ${build_dir}" EXIT
 mkdir -p "${prefix}"
 prefix="$(cd ${prefix}; pwd)"
 curl -s -o- ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz |
-  tar xf - -C "${build_dir}" --strip-components=1
+  tar xzf - -C "${build_dir}" --strip-components=1
 
 pushd "${build_dir}"
 ./configure --prefix=${prefix}
