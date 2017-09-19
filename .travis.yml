@@ -17,7 +17,7 @@ env:
   global:
   - VRN_UPDATE_EMAIL_ADDRESS=test@example.com
   - APP_DOMAIN=localhost
-  - FREETDS_DIR=vendor/freetds
+  - FREETDS_DIR="${TRAVIS_BUILD_DIR}/vendor/freetds"
 notifications:
   slack:
     on_success: change
