@@ -11,9 +11,9 @@ en:
     timeline_header: Useful links each step of the way
     after_reporting:
       header: After reporting the crime
-      find_status:
-        link: Find the status of the investigation
-        description: Find and call your local police department. The detective will be able to help.
+      what_happens:
+        link: What happens after reporting a crime
+        description: Learn more about the investigation. Find your local police department.
     after_charges:
       header: After the District Attorney files charges
       request_rights:
@@ -367,10 +367,11 @@ en:
     menu:
       header_1: What happens next
       section_1:
-        item_1: During prosecution and trial
-        item_2: Post-sentencing overview
-        item_3: If offender on probation
-        item_4: If offender in jail/prison
+        item_1: What happens after reporting a crime
+        item_2: What happens during prosecution and trial
+        item_3: What happens after sentencing
+        item_4: If offender on probation
+        item_5: If offender in jail/prison
       header_2: Victims’ Rights
       section_2:
         item_1: Victims’ Rights
@@ -384,20 +385,58 @@ en:
         item_2: All justice system services
 
     ###########################################################################
-    trial_overview:
+
+    after_reporting:
       header: |
-        The time after arrest can be hectic. Here’s what to expect and where to get support:
-
-        <strong>Reporting a Crime </strong>
-        Prosecutors will review evidence and make a charging decision.
-
         When a crime is initially reported to law enforcement, an officer is sent to the crime scene to find out what happened. An arrest may be made at that time. The officer will gather evidence and write a report that will be sent to the district attorney&#39;s office with a type of charge indicated on the report. The office of the District Attorney assigns the report to one of the deputy district attorneys. The report is evaluated to determine if there is enough evidence to file charges. At this time one of three things will occur:
 
-        <ol>
-          <li>No charges are filed due to lack of evidence;</li>
-          <li>Further investigation is required and law enforcement is asked to obtain the information;</li>
-          <li>or Charges are filed in a document called an information or complaint.</li>
-        </ol>
+        <ul>
+          <li>No charges are filed due to lack of evidence; or</li>
+          <li>Further investigation is required and law enforcement is asked to obtain the information; or</li>
+          <li>Charges are filed in a document called an information or complaint.</li>
+        </ul>
+
+      dropdowns:
+        whats_the_status:
+          title: What's the status of the investigation?
+          body: |
+            You can find the status of the investigation or request a copy of a police report by calling a police department.
+
+            <strong>Multnomah County Police Departments</strong>
+
+            Gresham Police
+            (503) 618-2318
+
+            Fairview Police
+            (503) 674-6200
+
+            Portland Police
+            (503) 823-3333
+
+            <strong>City of Portland Police Department Records Division</strong>
+
+            Troutdale Police
+            (503) 665-6129
+
+            Fairview Police
+            503-674-6200 (police records)
+
+            <strong>Tri-County Sheriff’s Offices</strong>
+
+            Clackamas County Sheriff
+            (503) 655-8218
+
+            Multnomah County Sheriff
+            (503) 255-3600
+
+            Washington County Sheriff
+            (503) 629-0111
+
+    ###########################################################################
+
+    trial_overview:
+      header: |
+        Once charges are filed by the District Attorney, prosecution begins.
 
         <strong>Grand Jury (if the charge is a felony) </strong>
         A grand jury is a panel of seven people. The grand jury listens to the witnesses presented by the district attorney's office and based on that evidence, may indict the defendant if five of the jurors concur. The defendant or the defendant's attorney are not present during the grand jury process. If the grand jury panel determines, based upon the witnesses' testimony, a felony crime has been committed, the defendant is indicted. There are several times a defendant may be brought before the court after a crime is committed, including:
@@ -468,8 +507,6 @@ en:
             234 SW Kendall Ct.
             Troutdale OR 97060
             503-988-7300
-
-            Other Police and Sheriff’s Departments Contacts
         what_info_entitled:
           title: What other information am I entitled to?
           # TODO: Clarify language around the sexual assault rights.
@@ -748,8 +785,10 @@ en:
         <strong>Legal Help</strong>
         Legal Aid Services of Oregon
         (503) 224-4086
+
         National Organization for Victim Assistance
         (202) 232-6682
+
         National Crime Victims’ Center
         (800) 394-2255
 
@@ -759,41 +798,15 @@ en:
 
         Multnomah County Department of Community Justice
         (503) 988-3701
+
         Multnomah District  Attorney’s Office  - Victim’s Assistance Program
         (503) 988-3222
+
         Multnomah County Small Claims Court
         (503) 988-3022
 
         Oregon Crime Victims’ Compensation Program - Adults and Juveniles
         (503) 378-5348
+
         Multnomah County Circuit Court and Family Law Center
         (503) 988-3943
-
-        <strong id="police-departments">Multnomah County Police Departments</strong>
-
-        Gresham Police
-        (503) 618-2318
-
-        Fairview Police
-        (503) 674-6200
-
-        Portland Police
-        (503) 823-3333
-
-        <strong>City of Portland Police Department Records Division</strong>
-
-        Troutdale Police
-        (503) 665-6129
-        Fairview Police
-        503-674-6200 (police records)
-
-        <strong>Tri-County Sheriff’s Offices</strong>
-
-        Clackamas County Sheriff
-        (503) 655-8218
-
-        Multnomah County Sheriff
-        (503) 255-3600
-
-        Washington County Sheriff
-        (503) 629-0111
