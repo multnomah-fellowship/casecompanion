@@ -24,7 +24,8 @@ cp variables.json.example variables.json
 
 # 5. Run packer!
 # this will build locally in Docker (great for testing without AWS lag):
-packer build -var-file variables.json packer-docker.json
+make docker
+
 # or, this will build an actual AMI on AWS:
-packer build -var-file variables.json packer.json
+make ami
 ```
