@@ -7,7 +7,7 @@ rvm:
 - 2.4.1
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get install -y freetds
+- sudo apt-get install -y freetds-dev
 script: bundle exec rspec
 after_success:
 - bundle exec codeclimate-test-reporter
