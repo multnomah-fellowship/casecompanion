@@ -111,6 +111,12 @@
         state: link
       become: true
 
+    - name: Install latest version of FreeTDS library
+      script: ../../bin/download-and-build-freetds /
+      args:
+        creates: /etc/freetds.conf
+      become: true
+
 # 6. Add application code and deploy folder structure
 - hosts: all
   become: true
