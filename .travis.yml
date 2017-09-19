@@ -5,6 +5,9 @@ addons:
     repo_token: aaac6425dc45e7af413ba245b019fc76b5a7802cbb793c37eac4a42e779a11a6
 rvm:
 - 2.4.1
+before_install:
+- sudo apt-get -qq update
+- sudo apt-get install -y freetds
 script: bundle exec rspec
 after_success:
 - bundle exec codeclimate-test-reporter
