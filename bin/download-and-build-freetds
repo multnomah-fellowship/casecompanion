@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+prefix=${1:-""}
+
+if [ -z "${prefix}" ]; then
+  echo "Usage: ${0} [prefix]"
+  exit 1
+fi
+
+set -x
+build_dir=$(mktemp -d)
+trap "rm -rf ${build_dir}" EXIT
+
+mkdir -p "${prefix}"
+prefix="$(cd ${prefix}; pwd)"
+curl -s -o- ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz |
+  tar xf - -C "${build_dir}" --strip-components=1
+
+pushd "${build_dir}"
+./configure --prefix=${prefix}
+make
+make install
