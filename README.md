@@ -1,5 +1,7 @@
-# myadvocate ![Build Status](https://travis-ci.org/multnomah-fellowship/myadvocate.svg?branch=master)
-Prototype for CfA multnomah fellowship
+# casecompanion ![Build Status](https://travis-ci.org/multnomah-fellowship/casecompanion.svg?branch=master)
+The first public website designed and built for victims of crime regardless of where they are in the justice system.
+
+A product of the CfA Multnomah County Fellowship team.
 
 * [View Live Site](https://casecompanion.org)
 * [View Staging Site](https://staging.casecompanion.org)
