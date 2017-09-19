@@ -8,6 +8,11 @@ if [ -z "${prefix}" ]; then
   exit 1
 fi
 
+if [ -f "${prefix}/etc/freetds.conf" ]; then
+  echo "INFO: ${prefix}/etc/freetds.conf exists... skipping installation of FreeTDS"
+  exit
+fi
+
 set -x
 build_dir=$(mktemp -d)
 trap "rm -rf ${build_dir}" EXIT
