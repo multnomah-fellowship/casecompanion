@@ -46,7 +46,9 @@ CREATE TABLE victims (
     confidential_indicator boolean,
     person_update_date timestamp without time zone,
     person_create_date timestamp without time zone,
-    case_update_date timestamp without time zone
+    case_update_date timestamp without time zone,
+    dda_first_name character varying(40),
+    dda_last_name character varying(40)
 );
 
 DROP TABLE IF EXISTS vrns;

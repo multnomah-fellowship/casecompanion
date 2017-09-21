@@ -20,7 +20,8 @@
     advocate_phone as "Advocate Phone Number",
     advocate_email as "Advocate Email",
     da_case_nbr as "DA Case Number",
-    court_case_nbr as "Court Case Number"
+    court_case_nbr as "Court Case Number",
+    dda_name as "DDA Name"
   FROM (
     SELECT
       victims.person_id_nbr,
@@ -52,6 +53,7 @@
       advocates.phone_1 as advocate_phone,
       victims.da_case_nbr,
       victims.court_case_nbr,
+      concat(victims.dda_first_name, ' ', victims.dda_last_name)
       array_agg(substring(flag_desc from 0 for 2)) as selected_flags
     FROM vrns
     INNER JOIN victims
@@ -80,5 +82,6 @@
       -- AND digital_vrns.email IS NULL
       -- END UNCOMMENT: -d flag
     GROUP BY victims.person_id_nbr, victims.case_id_nbr, victims.first_name, victims.last_name, victims.email,
-      advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, court_case_nbr
+      advocate_first_name, advocate_last_name, advocate_email, advocate_phone, da_case_nbr, court_case_nbr,
+      dda_first_name, dda_last_name
   ) q
