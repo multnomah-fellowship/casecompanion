@@ -103,6 +103,12 @@ class RightsController < ApplicationController
         .deliver_now
     end
 
+    if subscription.dda_email.present?
+      RightsMailer
+        .vrn_dda_update(subscription)
+        .deliver_now
+    end
+
     RightsMailer
       .vrn_advocate_update(subscription)
       .deliver_now

@@ -13,6 +13,8 @@ RSpec.describe RightsMailer, type: :mailer do
       phone_number: '415-555-1234',
       case_number: '17CR1234',
       advocate_email: FAKE_ADVOCATE_EMAIL,
+      dda_email: 'some.dda@example.com',
+      created_at: 1.week.ago,
       checked_rights: [
         Right.new(name: 'A-DDA to assert and enforce Victim Rights'),
         Right.new(name: 'B-Notified in advance of Critical Stage Proceedings'),
@@ -37,6 +39,15 @@ RSpec.describe RightsMailer, type: :mailer do
 
     it 'renders' do
       expect(subject.subject).to include('Victim Rights Updated')
+      expect(subject.body.encoded).to include(subscription.email)
+    end
+  end
+
+  describe 'vrn_dda_update' do
+    subject { described_class.vrn_dda_update(subscription) }
+
+    it 'renders' do
+      expect(subject.subject).to include("DA##{subscription.case_number}")
       expect(subject.body.encoded).to include(subscription.email)
     end
   end
