@@ -48,3 +48,9 @@
         options_for_select(AdvocateList.name_and_emails, @flow.advocate_email),
         include_blank: true
       = f.label :advocate_email
+
+.row
+  .col.s5.offset-s1
+    .input-field
+      = f.text_field :dda_email, type: 'email'
+      = f.label :dda_email, 'Attorney Email'

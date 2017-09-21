@@ -10,6 +10,10 @@ class RightsMailerPreview < ActionMailer::Preview
     RightsMailer.vrn_advocate_update(sample_subscription)
   end
 
+  def vrn_dda_update
+    RightsMailer.vrn_dda_update(sample_subscription)
+  end
+
   private
 
   def sample_subscription
@@ -18,8 +22,10 @@ class RightsMailerPreview < ActionMailer::Preview
       last_name: 'Jones',
       email: 'mary@example.com',
       phone_number: '415-555-1234',
-      case_number: '17CR1234',
+      case_number: '1000000',
       advocate_email: AdvocateList.name_and_emails.first.last,
+      dda_email: 'some.dda@example.com',
+      created_at: 1.hour.ago,
       checked_rights: [
         Right.new(name: 'A-DDA to assert and enforce Victim Rights'),
         Right.new(name: 'B-Notified in advance of Critical Stage Proceedings'),

@@ -18,19 +18,37 @@ class RightsMailer < ApplicationMailer
     @subscription = court_case_subscription
 
     remove_feedback_section!
-
-    pdf_name = %W[
-      VRN
-      #{@subscription.case_number}
-      #{@subscription.first_name}
-      #{@subscription.last_name}
-    ].join('-') + '.pdf'
-
-    attachments[pdf_name] = RightsPdfGenerator.new(@subscription).generate.data
+    generate_and_attach_pdf(@subscription)
 
     mail(
       to: Rails.application.config.vrn_update_email_address,
       subject: "Victim Rights Updated: #{@subscription.first_name} #{@subscription.last_name}",
     )
+  end
+
+  def vrn_dda_update(court_case_subscription)
+    @subscription = court_case_subscription
+    return unless @subscription.dda_email.present?
+
+    remove_feedback_section!
+    generate_and_attach_pdf(@subscription)
+
+    mail(
+      to: @subscription.dda_email,
+      subject: "VRN for Case DA##{@subscription.case_number}",
+    )
+  end
+
+  private
+
+  def generate_and_attach_pdf(subscription)
+    pdf_name = %W[
+      VRN
+      #{subscription.case_number}
+      #{subscription.first_name}
+      #{subscription.last_name}
+    ].join('-') + '.pdf'
+
+    attachments[pdf_name] = RightsPdfGenerator.new(subscription).generate.data
   end
 end

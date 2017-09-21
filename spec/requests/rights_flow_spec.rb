@@ -35,6 +35,7 @@ RSpec.describe 'Rights selection flow' do
         'phone_number' => '330 555 1234',
         'case_number' => '1000000',
         'advocate_email' => FAKE_ADVOCATE_EMAIL,
+        'dda_email' => 'tom+dda@example.com',
       },
     }
     follow_redirect!
@@ -97,6 +98,7 @@ RSpec.describe 'Rights selection flow' do
         'phone_number' => '330 555 1234',
         'case_number' => '1000000',
         'advocate_email' => FAKE_ADVOCATE_EMAIL,
+        'dda_email' => 'tom+dda@example.com',
       },
     }
     follow_redirect!
@@ -160,6 +162,7 @@ RSpec.describe 'Rights selection flow' do
         'phone_number' => '330 555 1234',
         'case_number' => '1000000',
         'advocate_email' => FAKE_ADVOCATE_EMAIL,
+        'dda_email' => 'tom+dda@example.com',
       }
     end
 
@@ -197,6 +200,8 @@ RSpec.describe 'Rights selection flow' do
           .to eq('tom@example.com')
         expect(last_subscription.advocate_email)
           .to eq(FAKE_ADVOCATE_EMAIL)
+        expect(last_subscription.dda_email)
+          .to eq('tom+dda@example.com')
       end
     end
 

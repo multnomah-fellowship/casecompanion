@@ -35,6 +35,7 @@ class RightsFlow
     completed_step
     electronic_signature_checked
     electronic_signature_name
+    dda_email
   ].freeze
 
   # The ordered steps of the flow, all of which will be the `id` in the route
@@ -67,6 +68,7 @@ class RightsFlow
         errors.add(:last_name, :blank) unless last_name.present?
         errors.add(:case_number, :blank) unless case_number.present?
         errors.add(:advocate_email, :blank) unless advocate_email.present?
+        errors.add(:dda_email, :blank) unless dda_email.present?
       end
 
       if case_number.present?
@@ -123,6 +125,7 @@ class RightsFlow
       email: email,
       phone_number: phone_number,
       advocate_email: advocate_email,
+      dda_email: dda_email,
     )
 
     if subscription.persisted? &&
