@@ -112,7 +112,7 @@
       become: true
 
     - name: Install latest version of FreeTDS library
-      script: ../../bin/download-and-build-freetds /
+      script: ../../bin/download-and-build-freetds /usr
       args:
         creates: /etc/freetds.conf
       become: true
