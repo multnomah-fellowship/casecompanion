@@ -23,12 +23,13 @@
       comment: "CaseCompanion Application"
     become: true
 
-  # 2. Create a "tdooner" user with my SSH key
+  # 2. Create a developer users
   - name: Create developer users
     user:
       name: "{{ item }}"
       groups: app,sudo
       append: true
+      shell: /bin/bash
     with_items:
       - tdooner
       - joleary
@@ -122,6 +123,7 @@
     ruby_version: "{{ lookup('file', '../../.ruby-version') }}"
     home_directory: '/home/{{ user }}'
     deploy_to: '{{ home_directory }}'
+    # TODO: this needs to be removed from the .bashrc to allow for ruby version upgrades
     gem_home: '{{ home_directory }}/.rbenv/versions/{{ ruby_version }}'
     rails_env: production
     # TODO: Set `/home/app/shared/bundle` as the bundle path
