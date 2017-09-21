@@ -2,7 +2,7 @@
 
 .app-logo {
   color: $color-logo;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .app-logo__beta {
@@ -11,9 +11,13 @@
 }
 
 .app-logo--single-color {
-  color: rgba(#fff, 0.8);
+  color: #2d3029;
 
   .app-logo__beta {
     color: inherit;
   }
+}
+
+.app-header__subtitle {
+	color: #2d3029;
 }

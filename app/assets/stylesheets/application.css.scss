@@ -342,28 +342,23 @@ $app-container-top-padding: 40px;
 
 .app-header__subtitle {
   @extend %app-typography--caption;
-
-  margin-top: 8px;
-  color: rgba(#fff, 0.4);
+  font-weight: 600;
 }
 
 .app-header__headline {
   @extend %app-typography--display-1;
-
-  color: #fff;
+  @extend %app-typygraphy--hero;
   margin: 120px 0 60px;
 }
 
 .app-header__subhead-1 {
   @extend %app-typography--display-3;
-
-  color: #fff;
+  @extend %app-typygraphy--hero;
 }
 
 .app-header__subhead-2 {
   @extend %app-typography--body-1;
-
-  color: #fff;
+  @extend %app-typygraphy--hero;
 }
 
 .app-header__logos {
