@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831224008) do
+ActiveRecord::Schema.define(version: 20170921185207) do
 
   create_table "ahoy_messages", force: :cascade do |t|
     t.string   "token"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170831224008) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "advocate_email"
+    t.string   "dda_email"
     t.index ["user_id"], name: "index_court_case_subscriptions_on_user_id"
   end
 
