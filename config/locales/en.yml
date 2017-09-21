@@ -179,18 +179,20 @@ en:
     saydyie: 'Saydyie DeRosia'
     saydyie_title: 'Victim Services Coordinator, Oregon Department of Corrections'
     how_date_change: 'How might the release date date change?'
+    notification_dropdown_title: "What's the difference?"
+    probation_notification_difference: |
+      VINE is an automated notification system. VINE will call, text, and/or email you if there is a change in custody status. For example, VINE can notify you if the person on probation is taken into custody or changes probation officers.
+
+      The Department of Community Justice can call you with information about any court hearings for probation violations. A common reason for a court hearing is when someone on probation violates a term of their supervision–such as by failing a drug test. If there is a hearing, you have the legal right to attend.
+    prison_notification_difference: |
+      VINE is an automated notification system. For example, VINE will call, text, and/or email you if there is a change in custody status. This includes when an inmate is released from prison or is moved between prisons.
+
+      The Oregon Parole Board can notify you at least 90 days prior to an inmate's release and help you get a No Contact order added to an inmate's conditions of Post-Prison Supervision.
     probation_faq_1_title: 'What are the terms of supervision?'
     probation_faq_1: |
       There are a <a href="https://multco.us/dcj-adult/probation-parole-and-post-prison-supervision/standard-conditions-adult-probation-parole" target="_blank">set of general conditions of supervision</a> that apply in almost every case.
 
       Sometimes there are special conditions of supervision that also apply (such as no-contact orders). To find out if a no-contact order applies in your case, you can call the Parole/Probation Officer.
-    probation_faq_2_title: 'How can I be notified about updates?'
-    probation_faq_2: |
-      <strong>Probation Status Updates</strong>
-      You can <a href="https://www.vinelink.com/#/home/site/38000" target="_blank">sign up for VINE notifications</a> to find out about any changes in supervision (for example, if the offender moves to another county) or if the offender is arrested.
-
-      <strong>Probation Violation Hearings</strong>
-      You can also <a href="https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification" target="_blank">sign up for Probation Violation hearing notification</a> to be informed if there is a probation violation hearing. If there is a hearing, you have the legal right to attend.
 
     probation_who_ppo_title: |
       Parole/Probation Officer, Department of Community Justice<br>
