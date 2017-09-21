@@ -53,7 +53,7 @@
       advocates.phone_1 as advocate_phone,
       victims.da_case_nbr,
       victims.court_case_nbr,
-      concat(victims.dda_first_name, ' ', victims.dda_last_name)
+      concat(victims.dda_first_name, ' ', victims.dda_last_name) as dda_name,
       array_agg(substring(flag_desc from 0 for 2)) as selected_flags
     FROM vrns
     INNER JOIN victims
