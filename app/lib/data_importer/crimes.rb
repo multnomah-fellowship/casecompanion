@@ -3,15 +3,10 @@
 module DataImporter
   # All the models and query logic for CRIMES queries.
   class Crimes
-    module Models
-      class Case < DataImporter::Connections::Crimes
-        self.primary_key = 'CASE_ID_NBR'
-        self.table_name = 'CASE_MAIN'
-      end
-    end
-
     def self.case_list
-      Models::Case.first(5)
+      DataImporter::Connections::Crimes.execute(<<-SQL).to_a
+        SELECT * FROM "CASE_MAIN"
+      SQL
     end
   end
 end
