@@ -92,15 +92,12 @@ CREATE TABLE closed_charge_victims (
   jail_qty_susp numeric,
   jail_qty_susp_unit character varying(1),
   person_id_nbr numeric NOT NULL,
-  first_name character varying(13) NOT NULL,
-  last_name character varying(19) NOT NULL,
   dda_first_name character varying(11),
   dda_last_name character varying(10),
   probation boolean,
-  court_nbr character varying(9),
-  oregon_sid_nbr numeric,
+  court_nbr character varying(9) NOT NULL,
   form_name character varying(18) NOT NULL,
-  case_person_nbr numeric,
+  case_person_nbr numeric NOT NULL,
   sentence_nbr numeric NOT NULL,
   sentence_desc character varying(25) NOT NULL,
   case_update_date timestamp without time zone,
@@ -131,5 +128,8 @@ CREATE TABLE closed_charge_victims (
   victim_phone_area_code numeric NOT NULL,
   victim_phone numeric NOT NULL,
   sentence_type character varying(4) NOT NULL,
-  email character varying(50)
+  email character varying(50),
+  last_name character varying(19) NOT NULL,
+  first_name character varying(13) NOT NULL,
+  oregon_sid_nbr numeric
 )
