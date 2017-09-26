@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 
 # Dependencies we have added to Rails
 gem 'ahoy_email'
+gem 'delayed_job_active_record'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'flipper'
 gem 'haml'
