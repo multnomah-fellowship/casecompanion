@@ -87,4 +87,4 @@ ssh $ssh_destination "/bin/bash -c 'cat $queryfile | env \$(cat shared/.psqlenv)
 scp "$ssh_destination:/tmp/output-*-${today}.csv" .
 ssh $ssh_destination "rm /tmp/output-*-${today}.csv"
 
-cp "output-*-${today}.csv" "$shared_folder"
+cp output-*-${today}.csv "$shared_folder"
