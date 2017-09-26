@@ -9,6 +9,7 @@ if [ -z "$path" -o ! -d "$path" ]; then
   exit 1
 fi
 
+# Fix files exported with SQL Server idiosyncracies
 fixfile() {
   file=$1
   echo "Fixing file ${file}..."
@@ -37,6 +38,7 @@ fixfile "${path}/victims.csv"
 fixfile "${path}/vrns.csv"
 fixfile "${path}/digital_vrns.csv"
 fixfile "${path}/cases.csv"
+fixfile "${path}/closed_charge_victims.csv"
 
 echo "Downloading Advocate contact spreadsheet..."
 curl 'https://docs.google.com/spreadsheets/d/1kDpMM3Ls44NuPUkluSo6dUwMTseSGLS3K1GqteYxisY/pub?gid=0&single=true&output=csv' \
@@ -51,4 +53,5 @@ cat "${path}/victims.csv" | psql crimes -c "COPY victims FROM STDIN (FORMAT csv,
 cat "${path}/vrns.csv" | psql crimes -c "COPY vrns FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/advocates.csv" | psql crimes -c "COPY advocates FROM STDIN (FORMAT csv, DELIMITER ',', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/cases.csv" | psql crimes -c "COPY cases FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
+cat "${path}/closed_charge_victims.csv" | psql crimes -c "COPY closed_charge_victims FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/digital_vrns.csv" | psql crimes -c "COPY digital_vrns FROM STDIN (FORMAT csv, DELIMITER ',', HEADER, NULL 'NULL', QUOTE E'\b')"

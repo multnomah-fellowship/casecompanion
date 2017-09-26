@@ -17,6 +17,7 @@ shared_folder='\\tsclient\REMOTE\' # Shared folder from Remote Desktop
 trap "rm $queryfile" EXIT
 email_only=false
 remove_digital_vrns=false
+files=(victims.csv vrns.csv cases.csv import-data.sh digital_vrns.csv crimes-schema.sql)
 
 uncomment() {
   # e.g. uncomment queries/q-something.sql "-e"
@@ -52,12 +53,12 @@ fi
 
 # Copy all used files to the host where it will run, so there is no dev/prod
 # difference.
-files=(victims.csv vrns.csv cases.csv import-data.sh digital_vrns.csv crimes-schema.sql)
 scp "${files[@]}" "$ssh_destination:${datadir}"
 
 ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) psql crimes < ${datadir}/crimes-schema.sql'"
 ssh $ssh_destination "bash -c 'env \$(cat shared/.psqlenv) ${datadir}/import-data.sh ${datadir}'"
 
+# Run the first CSV export (VRN confirmation):
 echo "COPY(" >>$queryfile
 cat ./queries/q-dump-processed-csv.sql >>$queryfile
 echo ") TO STDOUT CSV DELIMITER ',' HEADER;" >>$queryfile
@@ -71,12 +72,19 @@ if [ $remove_digital_vrns == "true" ]; then
 fi
 
 echo "Running query $(cat $queryfile)"
-
 scp $queryfile $ssh_destination:/tmp/
-
 ssh $ssh_destination "/bin/bash -c 'cat $queryfile | env \$(cat shared/.psqlenv) psql crimes > \"/tmp/output-victims-${today}.csv\"'"
 
-scp "$ssh_destination:/tmp/output-victims-${today}.csv" .
-ssh $ssh_destination "rm /tmp/output-victims-${today}.csv"
+# Run the second CSV export (DCJ hand-off):
+echo "COPY(" >$queryfile
+cat ./queries/q-dump-dcj-csv.sql >>$queryfile
+echo ") TO STDOUT CSV DELIMITER ',' HEADER;" >>$queryfile
+echo "Running query $(cat $queryfile)"
+scp $queryfile $ssh_destination:/tmp/
+ssh $ssh_destination "/bin/bash -c 'cat $queryfile | env \$(cat shared/.psqlenv) psql crimes > \"/tmp/output-dcj-${today}.csv\"'"
 
-cp "output-victims-${today}.csv" "$shared_folder"'output-victims-'${today}'.csv'
+# Copy output files back to original location, and leave no trace.
+scp "$ssh_destination:/tmp/output-*-${today}.csv" .
+ssh $ssh_destination "rm /tmp/output-*-${today}.csv"
+
+cp "output-*-${today}.csv" "$shared_folder"
