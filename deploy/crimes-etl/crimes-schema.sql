@@ -131,5 +131,10 @@ CREATE TABLE closed_charge_victims (
   email character varying(50),
   last_name character varying(19) NOT NULL,
   first_name character varying(13) NOT NULL,
-  oregon_sid_nbr numeric
+  oregon_sid_nbr numeric,
+  offender_dob timestamp without time zone,
+  restitution_type character varying(4),
+  amount numeric,
+  award_designation character varying(9),
+  flag_b character varying(5)
 )
