@@ -60,3 +60,4 @@ cat "${path}/all_victims.csv" | psql crimes -c "COPY all_victims FROM STDIN (FOR
 cat "${path}/defendants.csv" | psql crimes -c "COPY defendants FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/probation_sentences.csv" | psql crimes -c "COPY probation_sentences FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
 cat "${path}/restitution_sentences.csv" | psql crimes -c "COPY restitution_sentences FROM STDIN (FORMAT csv, DELIMITER '^', HEADER, NULL 'NULL', QUOTE E'\b')"
+cat "${path}/digital_vrns.csv" | psql crimes -c "COPY digital_vrns FROM STDIN (FORMAT csv, DELIMITER ',', HEADER, NULL 'NULL', QUOTE E'\b')"
