@@ -9,7 +9,11 @@ cd C:\Users\doonert\casecompanion\deploy\crimes-etl
 
 sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\00_SETUP.sql
 
-sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01_TMP_TABLES.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01a_TMP_VRN.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01b_TMP_RESTITUTION.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01c_TMP_PROBATION.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01d_TMP_VICTIM_INFO.sql
+sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\01e_TMP_DEFENDANT_INFO.sql
 
 sqlcmd -S "dacry2.mcda.mccj.local\mssql$dada2" -d Crimsadl -i queries\q-before.sql,queries\02_VICTIM_NAME.sql -o victims.csv -s "^" -W
 
