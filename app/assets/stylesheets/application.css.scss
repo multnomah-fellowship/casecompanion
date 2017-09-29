@@ -269,7 +269,7 @@ $app-container-top-padding: 40px;
   &::before {
     display: block;
     content: ' ';
-    border-left: 3px solid $color-divider;
+    border-left: 2px solid $color-divider;
     height: 100%;
     position: absolute;
     top: 0;
@@ -279,8 +279,8 @@ $app-container-top-padding: 40px;
 
 .app-container--subhero {
   background-color: #fff;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   // Add a border for the not-first sections
   & ~ & {
@@ -408,8 +408,9 @@ $focus-form-overlap-height: 120px;
     position: absolute;
     left: unquote("calc(" + column-width(1.5) + " - 7px)");
     top: 28px;
-    border-radius: 8px;
-    border: 8px solid $color-text;
+    border-radius: 50px;
+    border: 2px solid #ffffff;
+    background: $color-text;
   }
 }
 
@@ -438,7 +439,6 @@ $focus-form-overlap-height: 120px;
 .app-button-group {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 
   > .app-button:not(:last-child) {
     margin-bottom: 20px;
@@ -474,7 +474,7 @@ $focus-form-overlap-height: 120px;
  * HOME PAGE
  */
 .app-home-link-with-description {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /*
