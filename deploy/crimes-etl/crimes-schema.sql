@@ -74,71 +74,66 @@ CREATE TABLE digital_vrns (
   email character varying(200) NOT NULL
 );
 
-DROP TABLE IF EXISTS closed_charge_victims;
-CREATE TABLE closed_charge_victims (
-  case_id_nbr numeric NOT NULL,
-  case_nbr numeric NOT NULL,
-  charge_nbr numeric NOT NULL,
-  charge_id_nbr numeric NOT NULL,
-  sentence_id_nbr numeric NOT NULL,
-  postprison_qty boolean,
-  postprison_qty_unit boolean,
-  probation_type_code character varying(4) NOT NULL,
-  probation_type character varying(44) NOT NULL,
-  total_prob_qty numeric,
-  total_prob_qty_unit character varying(1),
-  prob_jail_qty numeric,
-  prob_jail_qty_unit character varying(1),
-  jail_qty_susp numeric,
-  jail_qty_susp_unit character varying(1),
-  person_id_nbr numeric NOT NULL,
-  dda_first_name character varying(11),
-  dda_last_name character varying(10),
-  probation boolean,
-  court_nbr character varying(9) NOT NULL,
-  form_name character varying(18) NOT NULL,
-  case_person_nbr numeric NOT NULL,
-  sentence_nbr numeric NOT NULL,
-  sentence_desc character varying(25) NOT NULL,
-  case_update_date timestamp without time zone,
-  probation_create_date timestamp without time zone,
-  charge_update_date timestamp without time zone,
-  update_date timestamp without time zone,
-  commence_when character varying(2),
-  commence_date timestamp without time zone,
-  prob_consecutive_charge character varying(11),
-  prob_concurrent_charge character varying(80),
-  prob_consecutive_case boolean,
-  prob_concurrent_case character varying(98),
-  jail_consecutive_charge numeric,
-  jail_concurrent_charge character varying(21),
-  jail_consecutive_case boolean,
-  jail_concurrent_case character varying(19),
-  prob_credit character varying(4),
-  prob_credit_value character varying(50),
-  victim_person_id_nbr numeric NOT NULL,
-  victim_person_type character varying(7) NOT NULL,
-  victim_first_name character varying(12),
-  victim_last_name character varying(49) NOT NULL,
-  victim_address_prefix character varying(2),
-  victim_address character varying(23),
-  victim_address_unit character varying(5),
-  victim_address_2 boolean,
-  victim_address_suffix character varying(4),
-  victim_address_city character varying(16),
-  victim_address_state character varying(2),
-  victim_address_zipcode numeric,
-  victim_address_confidential boolean NOT NULL,
-  victim_phone_area_code numeric NOT NULL,
-  victim_phone numeric NOT NULL,
-  sentence_type character varying(4) NOT NULL,
-  email character varying(50),
-  last_name character varying(19) NOT NULL,
-  first_name character varying(13) NOT NULL,
-  oregon_sid_nbr numeric,
-  offender_dob timestamp without time zone,
-  restitution_type character varying(4),
-  amount numeric,
-  award_designation character varying(9),
-  flag_b character varying(5)
-)
+DROP TABLE IF EXISTS all_victims;
+CREATE TABLE all_victims (
+    case_id_nbr numeric NOT NULL,
+    person_id_nbr numeric NOT NULL,
+    case_person_type character varying(7) NOT NULL,
+    last_name character varying(49) NOT NULL,
+    first_name character varying(14),
+    middle_name character varying(20),
+    address_nbr numeric,
+    prefix character varying(2),
+    address character varying(25),
+    suffix character varying(4),
+    unit character varying(5),
+    city character varying(16),
+    state character varying(2),
+    zipcode numeric,
+    area_code numeric,
+    phone numeric,
+    phone_ext character varying(6),
+    email character varying(50),
+    flag_b character varying(5),
+    sex character varying(7)
+);
+
+DROP TABLE IF EXISTS defendants;
+CREATE TABLE defendants (
+    case_id_nbr numeric NOT NULL,
+    person_id_nbr numeric NOT NULL,
+    case_person_type character varying(9) NOT NULL,
+    last_name character varying(20) NOT NULL,
+    first_name character varying(13) NOT NULL,
+    middle_name character varying(19),
+    dob timestamp without time zone,
+    oregon_sid_nbr character varying(10),
+    dda_last_name character varying(10),
+    dda_first_name character varying(11),
+    court_case_nbr character varying(10),
+    da_case_nbr numeric NOT NULL,
+    sex character varying(7) NOT NULL
+);
+
+DROP TABLE IF EXISTS probation_sentences;
+CREATE TABLE probation_sentences (
+    case_id_nbr numeric NOT NULL,
+    offender_person_id_nbr numeric NOT NULL,
+    probation_id_nbr numeric NOT NULL,
+    charge_state character varying(9) NOT NULL,
+    sentence_id_nbr numeric NOT NULL,
+    charge_id_nbr numeric NOT NULL,
+    total_prob_qty numeric NOT NULL,
+    total_prob_qty_unit character varying(1) NOT NULL,
+    probation_type character varying(4) NOT NULL
+);
+
+DROP TABLE IF EXISTS restitution_sentences;
+CREATE TABLE restitution_sentences (
+    case_id_nbr numeric NOT NULL,
+    victim_person_id_nbr numeric NOT NULL,
+    offender_person_id_nbr numeric NOT NULL,
+    amount numeric NOT NULL,
+    restitution_type character varying(4) NOT NULL,
+    create_date timestamp without time zone
+);
