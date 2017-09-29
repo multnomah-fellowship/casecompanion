@@ -17,7 +17,7 @@ shared_folder='\\tsclient\REMOTE\' # Shared folder from Remote Desktop
 trap "rm $queryfile" EXIT
 email_only=false
 remove_digital_vrns=false
-files=(victims.csv vrns.csv cases.csv closed_charge_victims.csv import-data.sh digital_vrns.csv crimes-schema.sql)
+files=(victims.csv vrns.csv cases.csv all_victims.csv defendants.csv probation_sentences.csv restitution_sentences.csv import-data.sh digital_vrns.csv crimes-schema.sql)
 
 uncomment() {
   # e.g. uncomment queries/q-something.sql "-e"
