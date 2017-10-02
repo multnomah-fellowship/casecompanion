@@ -192,6 +192,14 @@ strong {
   margin-bottom: 4px;
 }
 
+.app-p-with-list-and-hanging-indent {
+  margin-left: 20px;
+
+  ul > li {
+    list-style-type: disc;
+  }
+}
+
 .app-footer {
   @extend %app-typography--body-2;
 

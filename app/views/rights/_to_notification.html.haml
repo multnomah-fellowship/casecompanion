@@ -2,7 +2,9 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2= t('rights_flow.to_notification.field_header')
 
-    = faq_format(t('rights_flow.to_notification.preamble'))
+    = faq_format(t('rights_flow.to_notification.preamble'),
+      html_tag: 'div',
+      html_class: 'app-p-with-list-and-hanging-indent')
 
 %section.row
 
