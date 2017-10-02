@@ -13,7 +13,9 @@ RSpec.describe FaqsHelper, type: :helper do
   end
 
   describe '#faq_format' do
-    subject { helper.faq_format(item) }
+    let(:kwargs) { {} }
+
+    subject { helper.faq_format(item, **kwargs) }
 
     context 'with a multi-line FAQ item' do
       let(:item) { <<-ITEM.strip_heredoc }
@@ -46,6 +48,26 @@ RSpec.describe FaqsHelper, type: :helper do
       it 'does not include <br>s between HTML tags' do
         doc = Nokogiri::HTML(subject)
         expect(doc.css('ul > br').length).to eq(0)
+      end
+    end
+
+    context 'passing an HTML class' do
+      let(:item) { 'foo bar baz' }
+      let(:kwargs) { { html_class: 'test-some-class' } }
+
+      it 'uses that class' do
+        doc = Nokogiri::HTML(subject)
+        expect(doc.css('p')[0]['class']).to eq('test-some-class')
+      end
+    end
+
+    context 'passing an HTML tag' do
+      let(:item) { 'foo bar baz' }
+      let(:kwargs) { { html_tag: 'div' } }
+
+      it 'uses that tag' do
+        doc = Nokogiri::HTML(subject)
+        expect(doc.css('body > div')[0]).not_to be_nil
       end
     end
   end

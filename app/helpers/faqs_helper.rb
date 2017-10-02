@@ -20,8 +20,14 @@ module FaqsHelper
   #
   # @param body A trusted string, from I18n locale file
   # @return String An html_safe string to output.
-  def faq_format(body)
+  def faq_format(body, html_class: nil, html_tag: nil)
+    html_options = {}
+    html_options[:class] = html_class if html_class
+
+    options = { sanitize: false }
+    options[:wrapper_tag] = html_tag if html_tag
+
     body_without_whitespace = body.gsub(/>\s+</, '><')
-    raw(simple_format(body_without_whitespace, {}, sanitize: false))
+    raw(simple_format(body_without_whitespace, html_options, **options))
   end
 end
