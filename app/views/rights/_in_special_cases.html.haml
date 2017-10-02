@@ -2,7 +2,8 @@
   .col.s10.offset-s1
     %h2.app-typography--header-2= t('rights_flow.in_special_cases.field_header')
 
-    = faq_format(t('rights_flow.in_special_cases.preamble'))
+    = faq_format(t('rights_flow.in_special_cases.preamble'),
+      html_class: 'app-p-with-list-and-hanging-indent')
 
 %section.row
 .row.app-row--rights-checks-container
