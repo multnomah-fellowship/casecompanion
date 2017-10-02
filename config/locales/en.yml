@@ -115,9 +115,11 @@ en:
         Every crime victim in Oregon has legal rights. Many victims' rights are automatic, although you may need to tell someone you want to receive them. Use this form to tell the Multnomah County District Attorney which rights you'd like to receive.
 
         There are three sections. We'll walk you through each of:
-          - Rights to notification
-          - Right to restitution
-          - Rights in special circumstances
+        <ol>
+          <li>Rights to notification</li>
+          <li>Right to restitution</li>
+          <li>Rights in special circumstances</li>
+        </ol>
 
       field_header: Who's asserting my rights?
       flag_a_false:
