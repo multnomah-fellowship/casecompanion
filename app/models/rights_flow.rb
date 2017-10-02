@@ -181,7 +181,12 @@ class RightsFlow
   end
 
   def self.from_cookie(cookie)
-    new(**JSON.parse(Zlib::Inflate.inflate(Base64.decode64(cookie))).symbolize_keys)
+    attributes =
+      JSON.parse(Zlib::Inflate.inflate(Base64.decode64(cookie)))
+        .slice(*FIELDS) # handle removal of a field
+        .symbolize_keys
+
+    new(**attributes)
   rescue
     nil
   end

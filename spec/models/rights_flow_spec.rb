@@ -79,6 +79,23 @@ describe RightsFlow do
       expect(RightsFlow.from_cookie(flow.to_cookie))
         .to eq(flow)
     end
+
+    context 'when the cookie contains a removed field' do
+      before do
+        allow_any_instance_of(RightsFlow)
+          .to(receive(:flow_attributes))
+          .and_wrap_original do |method, *args|
+            method.call(*args).merge(previous_field_name: 'previous-field-value')
+          end
+
+        # temporarily add a new field
+        @flow_cookie = RightsFlow.new(**random_field_values).to_cookie
+      end
+
+      it 'serializes/unserializes correctly' do
+        expect(RightsFlow.from_cookie(@flow_cookie)).not_to be_nil
+      end
+    end
   end
 
   describe '#previous_step' do
