@@ -62,6 +62,8 @@ class RightsFlow
   # rubocop:disable Metrics/AbcSize
   def validate!
     case current_page
+    when 'to_notification'
+      self.flag_d = flag_b
     when 'create_account'
       unless court_case_subscription_id.present?
         errors.add(:first_name, :blank) unless first_name.present?

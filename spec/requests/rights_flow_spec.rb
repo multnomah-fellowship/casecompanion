@@ -134,6 +134,40 @@ RSpec.describe 'Rights selection flow' do
     expect(response).to redirect_to('/rights/who_assert')
   end
 
+  context 'when checking flag_b' do
+    let(:params_notification) { super().tap { |params| params[:rights_flow]['flag_b'] = '1' } }
+
+    before do
+      get '/rights'
+      follow_redirect!
+      post '/rights/who_assert', params: {}
+      follow_redirect!
+      post '/rights/to_notification', params: params_notification
+      follow_redirect!
+      post '/rights/to_financial_assistance', params: params_financial
+      follow_redirect!
+      post '/rights/in_special_cases', params: params_special
+      follow_redirect!
+      post '/rights/create_account', params: params_create_account
+      follow_redirect!
+    end
+
+    subject do
+      post '/rights/confirmation', params: params_confirm
+      follow_redirect!
+    end
+
+    it 'persists flag_d as well when the user checks flag_b' do
+      subject
+
+      last_subscription = CourtCaseSubscription.last
+      expect(last_subscription.rights_hash)
+        .to include('B-Notified in advance of Critical Stage Proceedings' => true)
+      expect(last_subscription.rights_hash)
+        .to include('D-Notified in advance of Release Hrgs' => true)
+    end
+  end
+
   describe 'the create_account flow step' do
     before do
       get '/rights'
