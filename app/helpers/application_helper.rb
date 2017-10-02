@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   # Reorders a name if it contains a comma. E.g. given "Smith, Joe" will return
   # "Joe Smith"
@@ -127,5 +128,12 @@ module ApplicationHelper
     else
       I18n.t('product_name')
     end
+  end
+
+  def inspectlet_record?
+    return false if ENV['ENABLE_INSPECTLET'].blank?
+    return false if params[:utm_campaign].blank?
+
+    true
   end
 end

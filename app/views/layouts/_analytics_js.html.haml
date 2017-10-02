@@ -5,7 +5,7 @@
     distinct_id: session[:distinct_id],
   ).html_safe};
 
-- if ENV['ENABLE_INSPECTLET']
+- if inspectlet_record?
   :javascript
     window.__insp = window.__insp || [];
     __insp.push(['wid', 1199690806]);
