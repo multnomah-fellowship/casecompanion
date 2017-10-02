@@ -6,28 +6,11 @@ require 'rails_helper'
 RSpec.describe 'Rights selection flow' do
   include_context 'with fake advocate'
 
-  it 'maintains the state across the entire session' do
-    get '/rights'
-    follow_redirect!
-    expect(response.body).to include(I18n.t('rights_flow.new_header_html'))
-
-    post '/rights/who_assert', params: {}
-    follow_redirect!
-    expect(response.body).to include('critical stage')
-
-    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
-    follow_redirect!
-    expect(response.body).to include('restitution')
-
-    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
-    follow_redirect!
-    expect(response.body).to include('sex offense proceedings')
-
-    post '/rights/in_special_cases'
-    follow_redirect!
-    expect(response.body).to include('How can we reach you?')
-
-    post '/rights/create_account', params: {
+  let(:params_notification) { { rights_flow: { 'flag_b' => '1' } } }
+  let(:params_financial) { { rights_flow: { 'flag_k' => '1' } } }
+  let(:params_special) { { rights_flow: {} } }
+  let(:params_create_account) do
+    {
       rights_flow: {
         'first_name' => 'Tom',
         'last_name' => 'Example',
@@ -38,6 +21,40 @@ RSpec.describe 'Rights selection flow' do
         'dda_email' => 'tom+dda@example.com',
       },
     }
+  end
+  let(:params_confirm) do
+    {
+      rights_flow: {
+        'electronic_signature_checked' => '1',
+        # assert that it accepts a slightly messy signature, as we have seen
+        # iPads want to type:
+        'electronic_signature_name' => 'Tom example ',
+      },
+    }
+  end
+
+  it 'maintains the state across the entire session' do
+    get '/rights'
+    follow_redirect!
+    expect(response.body).to include(I18n.t('rights_flow.new_header_html'))
+
+    post '/rights/who_assert', params: {}
+    follow_redirect!
+    expect(response.body).to include('critical stage')
+
+    post '/rights/to_notification', params: params_notification
+    follow_redirect!
+    expect(response.body).to include('restitution')
+
+    post '/rights/to_financial_assistance', params: params_financial
+    follow_redirect!
+    expect(response.body).to include('sex offense proceedings')
+
+    post '/rights/in_special_cases', params: params_special
+    follow_redirect!
+    expect(response.body).to include('How can we reach you?')
+
+    post '/rights/create_account', params: params_create_account
     follow_redirect!
     expect(response.body).to include(I18n.t('rights_flow.confirmation.header'))
 
@@ -49,15 +66,7 @@ RSpec.describe 'Rights selection flow' do
     expect(response.body)
       .not_to include(I18n.t('rights.flag_c'))
 
-    post '/rights/confirmation', params: {
-      rights_flow: {
-        'electronic_signature_checked' => '1',
-
-        # assert that it accepts a slightly messy signature, as we have seen
-        # iPads want to type:
-        'electronic_signature_name' => 'Tom example ',
-      },
-    }
+    post '/rights/confirmation', params: params_confirm
     follow_redirect!
 
     # The latest subscription should have flags A, B, K...
@@ -81,34 +90,19 @@ RSpec.describe 'Rights selection flow' do
     post '/rights/who_assert', params: {}
     follow_redirect!
 
-    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
+    post '/rights/to_notification', params: params_notification
     follow_redirect!
 
-    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
+    post '/rights/to_financial_assistance', params: params_financial
     follow_redirect!
 
-    post '/rights/in_special_cases'
+    post '/rights/in_special_cases', params: params_special
     follow_redirect!
 
-    post '/rights/create_account', params: {
-      rights_flow: {
-        'first_name' => 'Tom',
-        'last_name' => 'Example',
-        'email' => 'tom@example.com',
-        'phone_number' => '330 555 1234',
-        'case_number' => '1000000',
-        'advocate_email' => FAKE_ADVOCATE_EMAIL,
-        'dda_email' => 'tom+dda@example.com',
-      },
-    }
+    post '/rights/create_account', params: params_create_account
     follow_redirect!
 
-    post '/rights/confirmation', params: {
-      rights_flow: {
-        'electronic_signature_checked' => '1',
-        'electronic_signature_name' => 'Tom Example',
-      },
-    }
+    post '/rights/confirmation', params: params_confirm
     follow_redirect!
     expect(response.body).to include(I18n.t('rights_flow.done.focus_header'))
 
@@ -123,9 +117,9 @@ RSpec.describe 'Rights selection flow' do
     follow_redirect!
     post '/rights/who_assert', params: {}
     follow_redirect!
-    post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
+    post '/rights/to_notification', params: params_notification
     follow_redirect!
-    post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
+    post '/rights/to_financial_assistance', params: params_financial
     follow_redirect!
 
     # then try to skip ahead
@@ -146,34 +140,20 @@ RSpec.describe 'Rights selection flow' do
       follow_redirect!
       post '/rights/who_assert', params: {}
       follow_redirect!
-      post '/rights/to_notification', params: { rights_flow: { 'flag_b' => '1' } }
+      post '/rights/to_notification', params: params_notification
       follow_redirect!
-      post '/rights/to_financial_assistance', params: { rights_flow: { 'flag_k' => '1' } }
+      post '/rights/to_financial_assistance', params: params_financial
       follow_redirect!
-      post '/rights/in_special_cases'
+      post '/rights/in_special_cases', params: params_special
       follow_redirect!
-    end
-
-    let(:valid_account_params) do
-      {
-        'first_name' => 'Tom',
-        'last_name' => 'Example',
-        'email' => 'tom@example.com',
-        'phone_number' => '330 555 1234',
-        'case_number' => '1000000',
-        'advocate_email' => FAKE_ADVOCATE_EMAIL,
-        'dda_email' => 'tom+dda@example.com',
-      }
     end
 
     subject do
-      post '/rights/create_account', params: { rights_flow: account_params }
+      post '/rights/create_account', params: params_create_account
       follow_redirect!
     end
 
     context 'with valid account params' do
-      let(:account_params) { valid_account_params }
-
       it 'confirms the correct account details' do
         subject
         expect(response.body).to include('Tom Example')
@@ -184,15 +164,7 @@ RSpec.describe 'Rights selection flow' do
 
       it 'persists the account details' do
         subject
-        post '/rights/confirmation', params: {
-          rights_flow: {
-            'electronic_signature_checked' => '1',
-
-            # assert that it accepts a slightly messy signature, as we have seen
-            # iPads want to type:
-            'electronic_signature_name' => 'Tom example ',
-          },
-        }
+        post '/rights/confirmation', params: params_confirm
         follow_redirect!
 
         last_subscription = CourtCaseSubscription.last
@@ -206,24 +178,18 @@ RSpec.describe 'Rights selection flow' do
     end
 
     context 'without a phone number or email' do
-      let(:account_params) do
-        valid_account_params.merge(
-          'phone_number' => '',
-          'email' => '',
-        )
+      let(:params_create_account) do
+        super().tap do |params|
+          params[:rights_flow].merge!(
+            'phone_number' => '',
+            'email' => '',
+          )
+        end
       end
 
       it 'persists the account details' do
         subject
-        post '/rights/confirmation', params: {
-          rights_flow: {
-            'electronic_signature_checked' => '1',
-
-            # assert that it accepts a slightly messy signature, as we have seen
-            # iPads want to type:
-            'electronic_signature_name' => 'Tom example ',
-          },
-        }
+        post '/rights/confirmation', params: params_confirm
         follow_redirect!
 
         last_subscription = CourtCaseSubscription.last
