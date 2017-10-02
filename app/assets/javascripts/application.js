@@ -23,7 +23,10 @@
 //= require_tree .
 
 const analytics = {
-  trackView: function() {
+  trackView: function(e) {
+    const url = e.target.URL;
+
+    ga('send', 'pageview', url);
     mixpanel.track('pageview');
   },
 
