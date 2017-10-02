@@ -15,6 +15,9 @@ module FaqsHelper
     item[:text].downcase.scan(/\w+/).first(10).join('-')
   end
 
+  # Format a string with HTML lines adjoined so it doesn't end up with <br />s
+  # between.
+  #
   # @param body A trusted string, from I18n locale file
   # @return String An html_safe string to output.
   def faq_format(body)

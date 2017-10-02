@@ -123,19 +123,24 @@ en:
       flag_a_false:
         Let me choose for myself
     to_notification:
-      preamble:
-        You have the right (upon request) to be notified in advance of critical
-        stage hearings. You'll receive a letter in the mail. Often, we'll give
-        you a phone call as well when it's short notice.
-      field_header: Right to notification
+      field_header: 1. Right to notification
+      preamble: |
+        We'll give you a call before a critical stage hearing. You have a choice to attend or not to attend. Critical stages include (but not limited to):
+
+        <ul>
+          <li>Release Hearings</li>
+          <li>Plea Hearings</li>
+          <li>Sentencing</li>
+        </ul>
+
     to_financial_assistance:
+      field_header: 2. Right to financial compensation
       preamble:
-        You have the right to financial compensation. Restitution is ordered by the judge at the time of sentencing.
-      field_header: Right to financial compensation
+        Restitution is ordered by the judge at the time of sentencing. Did you suffer financial losses as a result of the crime? Check this box so the DA knows to follow up with you.
     in_special_cases:
+      field_header: 3. Rights in special situations
       preamble:
         There are additional rights in some special cases.
-      field_header: Rights in special situations
     create_account:
       preamble: |
         Last step, almost done!
