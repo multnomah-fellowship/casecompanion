@@ -13,12 +13,21 @@ Prototype for CfA multnomah fellowship
 Make sure to export the following environment variables:
 
 * `APP_DOMAIN` (e.g. `casecocmpanion.org`. This domain must have valid TLS!)
+* `VRN_UPDATE_EMAIL_ADDRESS` (e.g. 'tom@example.com') - Destination mailbox for
+    VRNs coming out of the digital VRN flow.
+* `DCJ_BAXTER_API_KEY` - Required to search probation records.
 
 To send email you will additionally need the following settings:
 
 * `SMTP_HOSTNAME` (e.g. 'smtp.mailgun.org')
 * `SMTP_USERNAME` (e.g. 'postmaster@casecompanion.org')
 * `SMTP_PASSWORD` (e.g. '12345')
+
+Other optional environment variables that are used for configuration include:
+
+* `GOOGLE_ANALYTICS_SITE_ID` (e.g. 'UA-XXXXXXXXXX-Y')
+* `MIXPANEL_TOKEN` (e.g. 'abcdef123.......')
+* `ENABLE_INSPECTLET` (e.g. 'true')
 
 ## installation
 ```bash
