@@ -2,11 +2,15 @@
 
 require 'tiny_tds'
 
-# This class contains the logic for a series of queries against the CRIMES case
-# tracking database SQL Server replica. Although a Rails-idiomatic approach
-# would be to model the data with ActiveRecord, we can't use
-# activerecord-sqlserver-adapter here because the SQL Server version is too old
-# (2000) and the version of the adapter that supports it was made for Rails 2.3.
+# This class contains the logic for importing data from the CRIMES case
+# tracking database SQL Server into a local replica. Complex queries may then be
+# run against the local replica, for instance the generation of CSVs to upload
+# into mailchimp.
+#
+# Although a Rails-idiomatic approach would be to model the data with
+# ActiveRecord, we can't use activerecord-sqlserver-adapter here because the SQL
+# Server version is too old (2000) and the version of the adapter that supports
+# it was made for Rails 2.3.
 #
 # So hence this class, which contains the raw connection and results processing
 # logic.
@@ -32,7 +36,12 @@ class CrimesImporter
   #     tds_version=7.1&dataserver=localhost:2612%5Cmssql%24dada2
   #
   # (make sure to URL encode your username, password, and query string params)
-  def initialize(url: ENV['CRIMES_DATABASE_URL'], logger: Logger.new($stderr))
+  #
+  # @param String url
+  # @param Logger logger
+  # @param LocalCrimesInPostgres destination An object supporting methods used
+  #   to load and dump data.
+  def initialize(url: ENV['CRIMES_DATABASE_URL'], logger: Logger.new($stderr), destination:)
     resolver = ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver.new({})
     config = resolver.resolve(url)
 
@@ -40,6 +49,15 @@ class CrimesImporter
 
     @client = TinyTds::Client.new(**config.symbolize_keys)
     @logger = logger
+    @destination = destination
+  rescue => ex
+    raise StandardError, <<-ERROR.strip_heredoc
+      Could not connect to CRIMES (#{ex.message}). Run
+
+        bin/rails crimes_import:help_connecting
+
+      for more debug help.
+    ERROR
   end
 
   def drop_temp_tables
@@ -50,7 +68,7 @@ class CrimesImporter
       @logger.info "Dropping table #{table_name}"
 
       begin
-        @client.execute("DROP TABLE #{table_name};").do
+        execute_file_or_query("DROP TABLE #{table_name};")
       rescue => ex
         raise ex unless ex.message.match?(/it does not exist in the system catalog/)
       end
@@ -75,7 +93,7 @@ class CrimesImporter
     }.each do |index_name, create_statement|
       @logger.info "Creating index (if it doesn't exist): #{index_name}"
 
-      @client.execute(<<-SQL)
+      execute_file_or_query(<<-SQL)
         IF NOT EXISTS (SELECT * FROM sysindexes WHERE name = '#{index_name}') BEGIN
         #{create_statement}
         END
@@ -84,23 +102,77 @@ class CrimesImporter
   end
   # rubocop:disable Metrics/LineLength
 
-  # TODO: break this into two parts -- one that creates the tmp tables (01*.sql
-  # files) and one that dumps the results to CSV
-  def import_all
-    %w[
-      deploy/crimes-etl/queries/01a_TMP_VRN.sql
-      deploy/crimes-etl/queries/01b_TMP_RESTITUTION.sql
-      deploy/crimes-etl/queries/01c_TMP_PROBATION.sql
-      deploy/crimes-etl/queries/01d_TMP_VICTIM_INFO.sql
-      deploy/crimes-etl/queries/01e_TMP_DEFENDANT_INFO.sql
-      deploy/crimes-etl/queries/02_VICTIM_NAME.sql
-      deploy/crimes-etl/queries/03_VRN.sql
-      deploy/crimes-etl/queries/04_CASE_INFO.sql
+  def create_temp_tables
+    [
+      Pathname.new('deploy/crimes-etl/queries/01a_TMP_VRN.sql'),
+      Pathname.new('deploy/crimes-etl/queries/01b_TMP_RESTITUTION.sql'),
+      Pathname.new('deploy/crimes-etl/queries/01c_TMP_PROBATION.sql'),
+      Pathname.new('deploy/crimes-etl/queries/01d_TMP_VICTIM_INFO.sql'),
+      Pathname.new('deploy/crimes-etl/queries/01e_TMP_DEFENDANT_INFO.sql'),
     ].each do |query_file|
-      query = File.read(File.expand_path(File.join('../../', query_file)))
-
-      @logger.info "Executing query in #{File.basename(query_file)}..."
-      @client.execute(query)
+      execute_file_or_query(query_file)
     end
+  end
+
+  # TODO: actually wire this up to import into a local database
+  def import_all
+    @destination.load_schema_file!(Rails.root.join('deploy', 'crimes-etl', 'crimes-schema.sql'))
+
+    {
+      Pathname.new('deploy/crimes-etl/queries/02_VICTIM_NAME.sql') => 'victims',
+      Pathname.new('deploy/crimes-etl/queries/03_VRN.sql') => 'vrns',
+      Pathname.new('deploy/crimes-etl/queries/04_CASE_INFO.sql') => 'cases',
+      'SELECT DISTINCT * FROM CFA_TOM_DEFENDANT_INFO' => 'defendants',
+      'SELECT DISTINCT * FROM CFA_TOM_VICTIM_INFO' => 'all_victims',
+      'SELECT DISTINCT * FROM CFA_TOM_PROBATION' => 'probation_sentences',
+      'SELECT DISTINCT * FROM CFA_TOM_RESTITUTION' => 'restitution_sentences',
+    }.each do |query_file_or_string, import_table|
+      # The columns in the results must match the columns in the schema
+      # created from crimes-schema.sql
+      case query_file_or_string
+      when Pathname
+        @destination.import_into_table(import_table) do |table|
+          execute_file_or_query(query_file_or_string) do |result|
+            table << result.values
+          end
+        end
+
+      when String
+        @destination.import_into_table(import_table) do |table|
+          execute_file_or_query(query_file_or_string) do |result|
+            table << result.values
+          end
+        end
+      end
+    end
+  end
+
+  private
+
+  def execute_file_or_query(query_file_or_string, &block)
+    query = case query_file_or_string
+            when Pathname
+              @logger.debug "Executing query in #{File.basename(query_file_or_string)}"
+
+              load_file(query_file_or_string)
+            when String
+              @logger.debug "Executing query #{query_file_or_string.truncate(40)}"
+
+              query_file_or_string
+            else
+              raise 'Unexpected input to #exceute_file_or_query (must be Pathname or String)'
+            end
+
+    result = @client.execute(query)
+
+    if block_given?
+      result.each(&block)
+    else
+      result.do
+    end
+  end
+
+  def load_file(filename)
+    File.read(Rails.root.join(filename))
   end
 end
