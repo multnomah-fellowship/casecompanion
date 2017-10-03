@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   resources :faqs, only: %i[show index]
 
+  resources :mailchimp_csvs, only: %i[show]
+
   resource :styleguide, only: %i[show]
 
   resource :sessions, only: %i[new create destroy]

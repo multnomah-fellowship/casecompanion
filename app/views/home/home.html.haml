@@ -9,9 +9,8 @@
     .col.s11.offset-s1
       Admin Options:
       %ul
-        %li Foo
-        %li Bar
-        %li Baz
+        - MailchimpCsvGenerator::CSVS.keys.each do |key|
+          %li= link_to "Download #{key.titleize} Mailchimp CSV", mailchimp_csv_path(key)
 
 .row
   .col.s11.offset-s1

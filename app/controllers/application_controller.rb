@@ -43,4 +43,12 @@ class ApplicationController < ActionController::Base
 
     @mixpanel ||= MixpanelTrackerWrapper.from_request(request)
   end
+
+  def require_admin!
+    return if @current_user.try(:is_admin)
+
+    flash[:error] = 'You are not authorized to see that page.'
+
+    redirect_to root_path
+  end
 end
