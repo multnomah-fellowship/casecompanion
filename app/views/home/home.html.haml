@@ -4,9 +4,15 @@
     %p
       You are logged in.
 
-    %h3.app-typography--header-2 Court Case Subscriptions (#{link_to 'Edit', edit_user_path(@current_user)})
-    %ul
-      - @subscriptions.each do |subscription|
-        = link_to subscription.case_number, subscription_path(subscription)
+- if @current_user.is_admin?
+  .row
+    .col.s11.offset-s1
+      Admin Options:
+      %ul
+        %li Foo
+        %li Bar
+        %li Baz
 
+.row
+  .col.s11.offset-s1
     = link_to 'Log Out', sessions_path, method: :delete

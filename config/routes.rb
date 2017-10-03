@@ -25,8 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :court_case_subscriptions, as: :subscription, only: %i[show]
-
   resources :faqs, only: %i[show index]
 
   resource :styleguide, only: %i[show]
