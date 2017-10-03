@@ -7,6 +7,12 @@ namespace :users do
 
     puts 'Administrator Email: '
     email = $stdin.gets.strip
+    user_exists = User.where(email: email).exists?
+
+    if user_exists
+      puts 'Warning: User already exists. Press enter to continue.'
+      $stdin.gets
+    end
 
     password_confirmed = false
 
@@ -18,13 +24,13 @@ namespace :users do
       password_confirmed = $stdin.noecho(&:gets).strip == password
     end
 
-    user = User.create(
-      email: email,
-      password: password,
-    )
+    user = User
+      .where(email: email)
+      .first_or_initialize
+      .update_attributes(password: password, is_admin: true)
 
     if user
-      puts 'User creation succeeded!'
+      puts "User #{user_exists ? 'modification' : 'creation'} succeeded!"
     else
       puts 'User creation failed :('
     end

@@ -30,9 +30,7 @@ Rails.application.routes.draw do
   resource :styleguide, only: %i[show]
 
   resource :sessions, only: %i[new create destroy]
-  resources :users, only: %i[edit update] do
-    resources :court_case_subscriptions, only: %i[create destroy]
-  end
+  resources :users, only: %i[edit update]
 
   get '/t/:tracking_id', to: 'home#set_tracking'
 
