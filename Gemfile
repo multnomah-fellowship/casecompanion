@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 
-# Dependencies we have added to Rails
+# Dependencies we have added
 gem 'ahoy_email'
 gem 'delayed_job_active_record'
 gem 'dotenv-rails'
@@ -36,6 +36,7 @@ gem 'prawn'
 gem 'premailer-rails'
 gem 'sentry-raven'
 gem 'sitemap_generator'
+gem 'whenever'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
