@@ -7,6 +7,7 @@
 
 # Example:
 #
+set :path, '/home/app/current'
 set :output, File.expand_path("../../log/#{ENV['RAILS_ENV'] || 'development'}.log", __FILE__)
 
 every 24.hours, at: '10:00', on: %i[db] do # 3 AM PDT = 10:00 UTC
