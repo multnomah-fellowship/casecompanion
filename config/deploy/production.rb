@@ -4,7 +4,7 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-server 'dcjvp-prda', user: 'app', roles: %w[web worker]
+server 'dcjvp-prda', user: 'app', roles: %w[web worker db]
 server 'dcjvp-prdb', user: 'app', roles: %w[web]
 
 set :systemd_worker_role, 'worker'
