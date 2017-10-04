@@ -15,6 +15,10 @@ set :branch, ENV['BRANCH'] && ENV['BRANCH'].length ? ENV['BRANCH'] : 'master'
 # TODO: Make Ansible use Capistrano's default
 set :repo_path, -> { "#{fetch(:deploy_to)}/scm" }
 
+set :linked_files, %w[config/database.yml .env]
+
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -28,12 +32,6 @@ set :repo_path, -> { "#{fetch(:deploy_to)}/scm" }
 
 # Default value for :pty is false
 # set :pty, true
-
-# Default value for :linked_files is []
-# append :linked_files, "config/database.yml", "config/secrets.yml"
-
-# Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
