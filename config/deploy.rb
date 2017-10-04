@@ -16,7 +16,7 @@ set :branch, ENV['BRANCH'] && ENV['BRANCH'].length ? ENV['BRANCH'] : 'master'
 set :repo_path, -> { "#{fetch(:deploy_to)}/scm" }
 
 set :linked_files, %w[config/database.yml .env]
-set :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
+set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets]
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
