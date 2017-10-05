@@ -23,6 +23,8 @@ if ENV['RAILS_ENV'] == 'test'
   SimpleCov.start 'rails'
 end
 
+require 'rspec-html-matchers'
+
 RSpec.configure do |config|
   # has_tag matcher
   config.include RSpecHtmlMatchers
