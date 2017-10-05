@@ -47,6 +47,14 @@ en:
     faqs: How do I get a restraining order? How do I get a copy of the police report? What happens next?
     faqs_link: See Frequently Asked Questions
 
+  home_logged_in:
+    email_description:
+      # These keys match the names in MailchimpCsvGenerator::CSVS
+      vrn_receipt:
+        Includes victims and victim-witnesses who have been updated in CRIMES between %{start} and %{end}.
+      dcj_handoff:
+        Includes victims of cases with a probation sentence created in CRIMES between %{start} and %{end}.
+
   beta_signups:
     focus_header: 'Get information online. Sign up for early access:'
     focus_label: Email Address

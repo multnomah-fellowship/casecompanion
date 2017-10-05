@@ -12,7 +12,11 @@ class HomeController < ApplicationController
   def home
     return redirect_to root_path unless @current_user
 
-    @subscriptions = CourtCaseSubscription.where(user: @current_user)
+    return unless @current_user.is_admin?
+
+    # Admin-only stuff:
+    local_crimes = LocalCrimesInPostgres.new
+    @data_ranges = local_crimes.data_range
   end
 
   def set_tracking

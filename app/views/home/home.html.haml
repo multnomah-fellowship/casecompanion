@@ -8,9 +8,11 @@
   .row
     .col.s11.offset-s1
       Admin Options:
-      %ul
-        - MailchimpCsvGenerator::CSVS.keys.each do |key|
-          %li= link_to "Download #{key.titleize} Mailchimp CSV", mailchimp_csv_path(key)
+      - MailchimpCsvGenerator::CSVS.keys.each do |key|
+        - range = @data_ranges.fetch(key)
+        %p= link_to "Download #{key.titleize} Mailchimp CSV", mailchimp_csv_path(key)
+        %p
+          = t("home_logged_in.email_description.#{key}", start: range.min.to_date, end: range.max.to_date)
 
 .row
   .col.s11.offset-s1
