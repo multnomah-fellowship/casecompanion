@@ -21,7 +21,7 @@ namespace :crimes_import do
   end
 
   desc 'Drop and recreate the temporary tables without exporting anything locally'
-  task recreate_temp_tables: :drop_temp_tables do
+  task recreate_temp_tables: %i[drop_temp_tables create_indices] do
     Rails.logger.info('Creating temporary tables...')
     @importer.create_temp_tables
   end
