@@ -37,13 +37,14 @@ namespace :crimes_import do
   task help_connecting: :environment do
     next if Rails.env.production? # It's only meant to be helpful in development
 
-    puts <<-INFO
+    puts <<-INFO.strip_heredoc
       This script will help you try to debug connection problems to CRIMES
       assuming you are connecting through an SSH tunnel to set up connections
       like so:
 
       Local Machine --(RDP)--> Windows ---(TCP)---> CRIMES
                     <--(SSH)--
+
     INFO
 
     # Verify configuration of CRIMES_DATABASE_URL
@@ -51,6 +52,10 @@ namespace :crimes_import do
     begin
       unless ENV['CRIMES_DATABASE_URL'].present?
         raise 'Empty or undefined value for CRIMES_DATABASE_URL'
+      end
+
+      unless ENV['LOCAL_CRIMES_DATABASE_URL'].present?
+        raise 'Empty or undefined value for LOCAL_CRIMES_DATABASE_URL'
       end
 
       resolver = ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver.new({})
@@ -110,7 +115,19 @@ namespace :crimes_import do
     end
 
     # Finally, check if the connection is successful.
-    CrimesImporter.new
+    destination = nil
+    begin
+      destination = LocalCrimesInPostgres.new
+    rescue => ex
+      puts <<-ERROR.strip_heredoc
+      There was an error connecting to the LOCAL_CRIMES_DATABASE_URL:
+
+      #{ex.message}
+      ERROR
+      next
+    end
+
+    CrimesImporter.new(destination: destination)
     puts 'Connection successful!'
   end
 end
