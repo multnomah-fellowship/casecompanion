@@ -13,7 +13,7 @@ module Haml::Filters::Styleguide
       #{text.indent(4)}
 EXAMPLE
 
-    parsed = Haml::Parser.new(code.strip, compiler.options).parse
+    parsed = Haml::Parser.new(compiler.options).call(code.strip)
     compiler.compile(parsed)
   end
 end

@@ -56,15 +56,15 @@ RSpec.describe 'Rights selection flow' do
 
     post '/rights/create_account', params: params_create_account
     follow_redirect!
-    expect(response.body).to include(I18n.t('rights_flow.confirmation.header'))
+    expect(response.body).to have_tag('p', text: I18n.t('rights_flow.confirmation.header'))
 
     # Check that it confirms the correct rights
     expect(response.body)
-      .to include(I18n.t('rights.flag_b'))
+      .to have_tag('li', text: I18n.t('rights.flag_b'))
     expect(response.body)
-      .to include(I18n.t('rights.flag_k'))
+      .to have_tag('li', text: I18n.t('rights.flag_k'))
     expect(response.body)
-      .not_to include(I18n.t('rights.flag_c'))
+      .not_to have_tag('li', text: I18n.t('rights.flag_c'))
 
     post '/rights/confirmation', params: params_confirm
     follow_redirect!
@@ -104,7 +104,7 @@ RSpec.describe 'Rights selection flow' do
 
     post '/rights/confirmation', params: params_confirm
     follow_redirect!
-    expect(response.body).to include(I18n.t('rights_flow.done.focus_header'))
+    expect(response.body).to have_tag('h2', text: I18n.t('rights_flow.done.focus_header'))
 
     # simulate clicking the browser back button
     get '/rights/create_account'

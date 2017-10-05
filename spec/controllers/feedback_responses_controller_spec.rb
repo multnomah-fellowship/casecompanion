@@ -39,7 +39,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
 
       it 'creates a feedback response with that page and renders the email version' do
         subject
-        expect(response.body).to include(I18n.t('feedback_responses.header'))
+        expect(response.body).to have_tag('p', text: I18n.t('feedback_responses.header'))
         expect(FeedbackResponse.last.page).to eq('vrn_receipt')
       end
     end
@@ -93,7 +93,7 @@ RSpec.describe FeedbackResponsesController, type: :controller do
       it 'returns success' do
         subject
         expect(response).to have_http_status(:success)
-        expect(response.body).to include(I18n.t('feedback_responses.header'))
+        expect(response.body).to have_tag('p', text: I18n.t('feedback_responses.header'))
       end
     end
   end

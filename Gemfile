@@ -12,7 +12,7 @@ end
 gem 'autoprefixer-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -27,7 +27,7 @@ gem 'ahoy_email'
 gem 'delayed_job_active_record'
 gem 'dotenv-rails'
 gem 'flipper'
-gem 'haml'
+gem 'haml', '> 5.0.0'
 gem 'inline_svg'
 gem 'materialize-sass'
 gem 'mixpanel-ruby'
@@ -44,6 +44,7 @@ group :development, :test do
 
   # Coverage and Test libraries
   gem 'codeclimate-test-reporter'
+  gem 'rspec-html-matchers'
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'spring-commands-rspec'
