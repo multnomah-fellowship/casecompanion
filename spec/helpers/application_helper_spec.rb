@@ -113,7 +113,7 @@ describe ApplicationHelper do
 
   # this tests the partial based flow - the non-nested layout flow.
   describe '#render_component with an avatar_list_item' do
-    let(:options) { { image: 'foo.jpg', name: 'Foo', caption: 'Bar bar baz' } }
+    let(:options) { { image: 'pam.jpg', name: 'Foo', caption: 'Bar bar baz' } }
 
     subject { helper.render_component('avatar_list_item', options) }
 
