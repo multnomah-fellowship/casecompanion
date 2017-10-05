@@ -125,7 +125,8 @@ CREATE TABLE probation_sentences (
     charge_id_nbr numeric NOT NULL,
     total_prob_qty numeric NOT NULL,
     total_prob_qty_unit character varying(1) NOT NULL,
-    probation_type character varying(4) NOT NULL
+    probation_type character varying(4) NOT NULL,
+    create_date timestamp without time zone
 );
 
 DROP TABLE IF EXISTS restitution_sentences;
