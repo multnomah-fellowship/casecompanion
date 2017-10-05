@@ -45,7 +45,7 @@ class CrimesImporter
     resolver = ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver.new({})
     config = resolver.resolve(url)
 
-    config['timeout'] ||= 300 # seconds
+    config['timeout'] ||= 600 # seconds
 
     @client = TinyTds::Client.new(**config.symbolize_keys)
     @logger = logger
