@@ -39,8 +39,7 @@ $color-text-error: map-get($colors, yellow-dark);
 
 // button component
 $color-button: map-get($colors, green-dark);
-$color-button-solid: map-get($colors, green-light);
-$color-button-solid-dark: map-get($colors, green-dark);
+$color-button-solid: map-get($colors, green-dark);
 
 // footer partial
 $color-footer: map-get($colors, grey-light);
