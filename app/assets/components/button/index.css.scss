@@ -19,9 +19,12 @@
   color: $color-button;
   cursor: pointer;
   display: inline-block;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: .15px;
+  line-height: 22px;
   padding: 12px 40px;
   text-decoration: none;
+  text-transform: uppercase;
   transition: width .5s ease;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -39,11 +42,12 @@
 
 .app-button--solid {
   background-color: $color-button-solid;
-  border: none;
+  border: 3px solid $color-button-solid-hover;
   color: #fff;
 
   &:hover {
     background-color: $color-button-solid-hover;
+    border-color: $color-button-solid-hover;
     color: #fff;
   }
 }
