@@ -38,8 +38,10 @@ $color-header-3: map-get($colors, green-dark);
 $color-text-error: map-get($colors, yellow-dark);
 
 // button component
-$color-button: $color-text;
-$color-button-solid: map-get($colors, green-dark);
+$color-button: map-get($colors, blue); // $link-color
+$color-button-hover: $color-text;
+$color-button-solid: map-get($colors, green-light);
+$color-button-solid-hover: map-get($colors, green-dark);
 
 // footer partial
 $color-footer: map-get($colors, grey-light);

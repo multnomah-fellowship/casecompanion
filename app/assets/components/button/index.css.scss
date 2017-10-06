@@ -26,6 +26,11 @@
   vertical-align: middle;
   -webkit-appearance: none;
 
+  &:hover {
+    border-color: $color-button-hover;
+    color: $color-button-hover;
+  }
+
   > .material-icons {
     font-size: inherit;
     vertical-align: text-bottom;
@@ -36,6 +41,11 @@
   background-color: $color-button-solid;
   border: none;
   color: #fff;
+
+  &:hover {
+    background-color: $color-button-solid-hover;
+    color: #fff;
+  }
 }
 
 .app-button--stretch {
