@@ -14,7 +14,7 @@
   @extend %app-typography--body-2;
 
   background-color: #fff;
-  border: 1px solid $color-button;
+  border: 3px solid $color-button;
   border-radius: 40px;
   color: $color-button;
   cursor: pointer;
@@ -30,12 +30,6 @@
     font-size: inherit;
     vertical-align: text-bottom;
   }
-}
-
-.app-button--dark {
-  border-color: $color-text;
-  border-width: 3px;
-  color: $color-text;
 }
 
 .app-button--solid {
