@@ -19,7 +19,7 @@
   -# spacer
 
 .row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     = image_tag emoji_image_path(@feedback), width: '60'
 
     %h1.app-typography--header-2= t("feedback_responses.#{@feedback.value}.header")
@@ -33,7 +33,7 @@
   .row
     -# spacer
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       .input-field
         - thing_key = vrn_receipt?(@feedback) ? 'thing_email' : 'thing_page'
         = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
@@ -46,7 +46,7 @@
   .row
     -# spacer
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = render_component 'button', submit: f do
         Submit
   .row

@@ -2,7 +2,7 @@
 
 = form_for :offender, url: offender_jurisdiction_path(:oregon) do |f|
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = link_to t('offender_search.back'), offenders_path
 
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
@@ -10,12 +10,12 @@
 
   - if @search_error
     .row.app-row--error
-      .col.s10.offset-s1
+      .col.s10.offset-s1.m8.offset-m2
         = mixpanel_track_message :error, @search_error
         = @search_error
 
   %section.row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       %h3.app-typography--header-2= t('offender_search.by_name')
 
   .row
@@ -31,7 +31,7 @@
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
 
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = link_to 'Search by SID number', '#reveal-search-by-sid', class: 'app-reveal'
 
   %section.row.hide#reveal-search-by-sid
@@ -46,6 +46,6 @@
   %section.row
 
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = render_component 'button', spinner: true, submit: f do
         = t('offender_search.search')

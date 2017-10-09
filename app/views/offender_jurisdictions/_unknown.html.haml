@@ -2,14 +2,14 @@
 
 = form_for :offender, url: offender_jurisdiction_path(:unknown) do |f|
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = link_to t('offender_search.back'), offenders_path
 
       %h2.app-typography--header-1= t('offender_search.title')
 
   - if @search_error
     .row.app-row--error
-      .col.s10.offset-s1
+      .col.s10.offset-s1.m8.offset-m2
         = mixpanel_track_message :error, @search_error
         = @search_error
 
@@ -31,6 +31,6 @@
   %section.row
 
   .row
-    .col.s10.offset-s1
+    .col.s10.offset-s1.m8.offset-m2
       = render_component 'button', spinner: true, submit: f do
         = t('offender_search.search')

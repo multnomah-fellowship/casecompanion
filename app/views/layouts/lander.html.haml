@@ -15,7 +15,7 @@
     %header.app-header.app-header--lander
       .app-container
         .row
-          .col.s10.offset-s1
+          .col.s10.offset-s1.m8.offset-m2
             = link_to root_path, class: 'app-header__link' do
               %h1.app-header__title--splash= render_component 'logo', variant: :single_color
 
@@ -30,7 +30,7 @@
     - if content_for?(:focus_form)
       .app-container.app-header__focus-form
         .row
-          .col.s10.offset-s1
+          .col.s10.offset-s1.m8.offset-m2
             = content_for :focus_form
 
     = yield

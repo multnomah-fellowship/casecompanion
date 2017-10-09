@@ -1,5 +1,5 @@
 %section.row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     %h2.app-typography--header-1 Offender Public Information
 
 - case @offender[:jurisdiction].to_sym
@@ -9,7 +9,7 @@
   = render 'offenders/info_probation'
 
 %section.row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     %h2.app-typography--header-2 Notifications
 
     - case @offender[:jurisdiction].to_sym
@@ -19,7 +19,7 @@
       = render 'offenders/notifications_probation'
 
 %section.row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     %h2.app-typography--header-2 Frequently Asked Questions
 
     - case @offender[:jurisdiction].to_sym

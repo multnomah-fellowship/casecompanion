@@ -1,5 +1,5 @@
 .row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     %h1.app-typography--header-1
       = t('rights_flow.new_header_html', new: emphasized_text('New'))
 
@@ -13,7 +13,7 @@
     = yield :rights_button_footer
 
   .row.app-row--rights-buttons
-    .col.s5.offset-s1.l7.offset-l1
+    .col.s5.offset-s1.l5.offset-l2
       - if @flow.previous_step
         = link_to 'Back', right_path(@flow.previous_step)
 

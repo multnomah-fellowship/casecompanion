@@ -2,11 +2,11 @@
 - po_email = locals[:po_email]
 
 %section.row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     %h2.app-typography--header-2 Who can I talk to?
 
 .row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     = render_component 'avatar_list_item',
       caption: raw(t('offender.probation_who_ppo_title', phone: po_phone, email: po_email)),
       name: "#{locals[:po_first]} #{locals[:po_last]}"
@@ -16,7 +16,7 @@
         = faq_format(t('offender.probation_who_ppo_what_about', name: locals[:po_first]))
 
 .row
-  .col.s10.offset-s1
+  .col.s10.offset-s1.m8.offset-m2
     = render_component 'avatar_list_item',
       image: image_path('chelsea.jpg'),
       caption: raw(t('offender.probation_who_call.caption')),

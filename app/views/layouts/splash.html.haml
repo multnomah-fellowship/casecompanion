@@ -111,13 +111,13 @@
     .app-header
       .app-container.app-container--subhero.app-container--centered
         .row
-          .col.s10.offset-s1
+          .col.s10.offset-s1.m8.offset-m2
             %h3.app-typography--display-2= t('home.about_site')
             %p.app-typography--body-1
               - cfa_link = link_to('Code for America', 'https://www.codeforamerica.org', target: '_blank')
               = raw(t('home.description', cfa_link: cfa_link, product_name: product_name))
 
-          .col.s10.offset-s1
+          .col.s10.offset-s1.m8.offset-m2
             = image_tag 'img_partner_seals.png', width: '100%'
 
     %main.app-container
