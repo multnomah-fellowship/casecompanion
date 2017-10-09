@@ -58,6 +58,10 @@ body, html {
 
 a {
   text-decoration: underline;
+
+  &:hover {
+    color: $link-hover-color;
+  }
 }
 
 input, label {

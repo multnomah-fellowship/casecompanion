@@ -56,6 +56,7 @@ $secondary-color: $primary-color;
 $success-color: #f00; // TODO is this used anywhere?
 $error-color: #f00; // TODO is this used anywhere?
 $link-color: map-get($colors, blue);
+$link-hover-color: map-get($colors, blue-multnomah);
 
 $card-link-color: $link-color;
 $input-border-color: $color-text;
