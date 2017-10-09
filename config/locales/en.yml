@@ -182,7 +182,6 @@ en:
     textus: Text us at %{phone_number}
 
   offender:
-    contact_info: "%{name}'s contact information"
     what_talk_about: 'What can I talk to %{name} about?'
     robyn: 'Robyn Masella'
     robyn_title_with_contact: |
