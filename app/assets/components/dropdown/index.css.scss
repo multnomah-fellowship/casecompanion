@@ -2,7 +2,6 @@
 @import "typography";
 
 .app-dropdown {
-
   border: 1px solid $color-page-border;
   color: $color-text;
   display: block;
@@ -11,6 +10,8 @@
 
   &:not(.app-dropdown__hidden):hover {
     background-color: $color-hover;
+    border-color: $color-page-border;
+    cursor: pointer;
   }
 
   > i {

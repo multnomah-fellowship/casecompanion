@@ -57,9 +57,11 @@ body, html {
 }
 
 a {
-  text-decoration: underline;
+  border-bottom: 1px solid $link-color;
+  text-decoration: none;
 
   &:hover {
+    border-bottom-color: $link-hover-color;
     color: $link-hover-color;
   }
 }
@@ -75,13 +77,6 @@ strong {
 
 .app-color-primary {
   color: map-get($colors, primary);
-}
-
-.app-button-link {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-decoration: none;
 }
 
 .app-feature-flagged {
@@ -337,6 +332,7 @@ $app-container-top-padding: 40px;
 
 .app-header__link {
   display: inline-block;
+  border-bottom: none;
   text-decoration: none;
 }
 
