@@ -57,11 +57,11 @@ body, html {
 }
 
 a {
-  border-bottom: 1px solid $link-color;
+  border-bottom: 1px solid currentColor;
   text-decoration: none;
 
   &:hover {
-    border-bottom-color: $link-hover-color;
+    border-bottom-color: currentColor;
     color: $link-hover-color;
   }
 }
