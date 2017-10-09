@@ -734,7 +734,9 @@ en:
 
       who_to_call:
         - name: "Offender's Parole/Probation Officer"
-          phone: <a href="/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
+          phone: |
+            Department of Community Justice<br>
+            <a href="/offenders/dcj" target="_blank">Lookup the Parole/Probation Officer</a>
 
     ###########################################################################
 
