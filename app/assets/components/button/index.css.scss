@@ -14,14 +14,13 @@
   @extend %app-typography--body-2;
 
   background-color: #fff;
-  border: 3px solid $color-button;
+  border: 2px solid $color-button;
   border-radius: 40px;
   color: $color-button;
   cursor: pointer;
   display: inline-block;
   font-weight: 500;
   letter-spacing: .15px;
-  line-height: 22px;
   padding: 12px 40px;
   text-decoration: none;
   text-transform: uppercase;
@@ -42,7 +41,7 @@
 
 .app-button--solid {
   background-color: $color-button-solid;
-  border: 3px solid $color-button-solid-hover;
+  border: 2px solid $color-button-solid-hover;
   color: #fff;
 
   &:hover {
