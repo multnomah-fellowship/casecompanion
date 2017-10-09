@@ -5,22 +5,9 @@
 .row
   .col.s10.offset-s1
     = render_component 'avatar_list_item',
-      caption: t('offender.robyn_title'),
+      caption: t('offender.robyn_title_with_contact').html_safe,
       name: t('offender.robyn'),
       image: image_path('robyn.jpg')
-
-    = render_component 'dropdown', title: t('offender.contact_info', name: 'Robyn') do
-      %ul.app-contact-list
-        %li
-          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon phone
-            %span.app-contact-list__primary-description
-              (503) 945-0907
-        %li
-          = link_to 'mailto:DLParoleBoardVictimNotify@doc.state.or.us', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon email
-            %span.app-contact-list__primary-description
-              DLParoleBoardVictimNotify@doc.state.or.us
 
     = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
       .app-faq-item
@@ -29,22 +16,9 @@
 .row
   .col.s10.offset-s1
     = render_component 'avatar_list_item',
-      caption: t('offender.saydyie_title'),
+      caption: t('offender.saydyie_title_with_contact').html_safe,
       image: image_path('saydyie.jpg'),
       name: t('offender.saydyie')
-
-    = render_component 'dropdown', title: t('offender.contact_info', name: 'Saydyie') do
-      %ul.app-contact-list
-        %li
-          = link_to 'tel:503-945-0907', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon phone
-            %span.app-contact-list__primary-description
-              (503) 934-1113
-        %li
-          = link_to 'mailto:VictimServicesProgram@doc.state.or.us', class: 'app-contact-list__link' do
-            %i.material-icons.app-contact-list__icon email
-            %span.app-contact-list__primary-description
-              VictimServicesProgram@doc.state.or.us
 
     = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
       %p 
