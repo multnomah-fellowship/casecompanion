@@ -608,10 +608,16 @@ en:
         - name: 'Saydyie DeRosia'
           header: 'For questions about state prison'
           image: saydyie.jpg
-          phone: '(503) 934-1113'
+          phone: |
+            Victim Services Coordinator, Oregon Department of Corrections<br>
+            (503) 934-1113<br>
+            <a href="mailto:VictimServicesProgram@doc.state.or.us" target="_blank">VictimServicesProgram@doc.state.or.us</a>
         - name: 'Chelsea Penning'
           header: 'For questions about county jail'
-          phone: '(503) 988-2737'
+          phone: |
+            Victims' Specialist, Department of Community Justice<br>
+            (503) 988-2737<br>
+            <a href="mailto:chelsea.penning@multco.us" target="_blank">chelsea.penning@multco.us</a>
           image: chelsea.jpg
 
     ###########################################################################
@@ -676,7 +682,10 @@ en:
 
       who_to_call:
         - name: 'Chelsea Penning'
-          phone: '(503) 988-2737'
+          phone: |
+            Victims' Specialist, Department of Community Justice<br>
+            (503) 988-2737<br>
+            <a href="mailto:chelsea.penning@multco.us" target="_blank">chelsea.penning@multco.us</a>
           image: chelsea.jpg
 
     ###########################################################################
