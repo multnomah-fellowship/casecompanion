@@ -330,22 +330,26 @@ $app-container-top-padding: 40px;
   background-color: $primary-color;
 }
 
-.app-header__link {
-  display: inline-block;
+.app-header__title {
+  @extend %app-typography--caption;
+
+  border-bottom: none;
+  color: $color-logo;
+  margin: 20px 0 0;
+  text-align: center;
+  width: 100%
+}
+
+.app-header__logo {
   border-bottom: none;
   text-decoration: none;
 }
 
-.app-header__title {
-  @extend %app-typography--caption;
-
-  color: $color-logo;
-  margin: 20px 0 0;
-}
-
 .app-header__title--splash {
   @extend .app-header__title;
+
   color: rgba(255, 255, 255, 0.8);
+  text-align: left;
 }
 
 .app-header__subtitle {

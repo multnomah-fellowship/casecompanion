@@ -15,20 +15,10 @@
     %header.app-header
       .app-container
         .row
-          .col.s10.offset-s1{ class: ('m6' if feature_enabled?(:log_in)) }
-            = link_to root_path, class: 'app-header__link' do
-              %h1.app-header__title= render_component 'logo'
-          - if feature_enabled?(:log_in)
-            .col.s12.m6.app-feature-flagged
-              - if @current_user
-                = link_to edit_user_path(@current_user), class: 'app-header__link' do
-                  .app-header__title= @current_user.email
-                &middot;
-                = link_to sessions_path, method: :delete, class: 'app-header__link' do
-                  %div.app-header__title Log Out
-              - else
-                = link_to new_sessions_path, class: 'app-header__link' do
-                  .app-header__title Log In
+          .col.s10.offset-s1.m8.offset-m2
+            %h1.app-header__title
+              = link_to root_path, class: 'app-header__logo' do
+                = render_component 'logo'
 
     %main.app-container--main
       - if content_for?(:pre_main_focus)

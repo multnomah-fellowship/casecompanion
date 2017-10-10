@@ -15,21 +15,9 @@
       .app-container
         .row
           .col.s8.offset-s2.m4.offset-m2
-            = link_to root_path, class: 'app-header__link' do
+            = link_to root_path do
               %h1.app-header__title--splash= render_component 'logo', variant: :single_color
             .app-header__subtitle formerly MyAdvocate
-
-          - if feature_enabled?(:log_in)
-            .col.s10.m4.offset-m1.app-feature-flagged
-              - if @current_user
-                = link_to '#', class: 'app-header__link' do
-                  .app-header__title--splash= @current_user.email
-                &middot;
-                = link_to sessions_path, method: :delete, class: 'app-header__link' do
-                  %div.app-header__title--splash Log Out
-              - else
-                = link_to new_sessions_path, class: 'app-header__link' do
-                  .app-header__title--splash Log In
 
       .app-container
         .row
