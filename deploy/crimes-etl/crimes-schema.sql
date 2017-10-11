@@ -22,7 +22,7 @@ CREATE TABLE victims (
     update_date timestamp without time zone,
     address_type character varying(6),
     address character varying(100),
-    unit character varying(5),
+    unit character varying(20),
     suffix character varying(4),
     city character varying(100),
     state character varying(2),
