@@ -1,4 +1,4 @@
-%h1.app-typography--header-1{ id: faq_slug(faq_item) }= faq_item[:text]
+%h1.app-typography--header-1= faq_item[:text]
 
 - title_key = "faqs.#{faq_item[:faq]}.title"
 - if I18n.exists?(title_key)

@@ -27,6 +27,7 @@
 
 @import "typography";
 @import "colors";
+@import "grid";
 @import "materialize/components/variables"; // include after the other mixins have overridden variables
 
 @import "materialize/components/global";
@@ -35,12 +36,6 @@
 @import "materialize/components/forms/forms";
 @import "materialize/components/dropdown";
 
-@function column-width($cols) {
-  @return unquote((100 / ($num-cols / $cols)) + "%");
-}
-
-$app-column-outer-width: unquote("calc(" + (100 / $num-cols) + "% + " +
-  ($gutter-width / 2) + ")");
 $app-field-margin-bottom: 20px;
 
 body, html {
@@ -205,8 +200,6 @@ strong {
   border-top: 1px solid $color-footer-border;
   background-color: $color-footer;
   overflow: auto;
-  padding-top: 60px;
-  padding-bottom: 60px;
 }
 
 .app-footer__feedback-list li {
@@ -219,21 +212,31 @@ strong {
   @extend %app-typography--caption;
 
   line-height: 24px;
+  margin: 40px 0;
+
+  @media #{$large-and-up} {
+    margin-top: 0;
+  }
 }
 
 .app-container {
-  max-width: 940px;
+  max-width: $app-outer-width;
 }
 
-$app-container-top-padding: 40px;
+@media #{$medium-and-up} {
+  .app-container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 640px;
+  }
+}
+
 .app-container--main {
   @extend .app-container;
 
   background-color: #fff;
   border: 1px solid $color-page-border;
-  border-top-style: none;
-  padding-top: $app-container-top-padding;
-  padding-bottom: 40px;
+  margin-top: 30px;
   margin-bottom: 36px;
 }
 
@@ -256,7 +259,7 @@ $app-container-top-padding: 40px;
   border-width: 1px;
   display: flex;
   justify-content: center;
-  padding: 24px $app-column-outer-width;
+  padding: 24px column-width(1);
 }
 
 .app-container--focused__footer {
@@ -298,15 +301,6 @@ $app-container-top-padding: 40px;
 .app-container--centered {
   text-align: center;
 }
-
-@media(min-width: 640px) {
-  .app-container {
-    margin-left: auto;
-    margin-right: auto;
-    min-width: 640px;
-  }
-}
-
 
 .app-header {
   background-color: #fff;
@@ -409,6 +403,29 @@ $focus-form-overlap-height: 120px;
   position: relative;
 }
 
+$app-row-margin: 60px;
+.app-row {
+  margin: 60px 0;
+  padding: 0 map-get($app-outer-padding, small);
+
+  @media #{$medium-and-up} {
+    padding: 0 map-get($app-outer-padding, medium);
+  }
+
+  @media #{$large-and-up} {
+    padding: 0 map-get($app-outer-padding, large);
+  }
+}
+
+.app-row--large {
+  margin: 80px 0;
+}
+
+.app-row--with-separator {
+  border-top: 4px solid $color-divider;
+  padding-top: 60px;
+}
+
 .app-row--left-line-dot {
   position: relative;
 
@@ -426,23 +443,24 @@ $focus-form-overlap-height: 120px;
   }
 }
 
-.app-cell--error {
-  background-color: $color-error;
-  padding: 1em;
-}
-
 .app-row--error {
   background-color: $color-error;
   color: $color-text-error;
-  margin-bottom: -40px;
-  padding: 32px 0;
+  margin-bottom: -$app-row-margin;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.app-cell--error {
+  background-color: $color-error;
+  padding: 1em;
 }
 
 .app-vertical-spacer {
   height: 80px;
 }
 
-@media(min-width: 640px) {
+@media #{$medium-and-up} {
   .app-vertical-spacer {
     height: 160px;
   }
@@ -475,7 +493,7 @@ $focus-form-overlap-height: 120px;
 /*
  * RIGHTS FLOW
  */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media #{$medium-only} {
   .app-row--rights-checks-container {
     // On iPads, position the "Next" button at the bottom of the screen always.
     min-height: 450px;
@@ -572,7 +590,7 @@ $focus-form-overlap-height: 120px;
 /*
  * CUSTOM TABLE STYLES
  */
-$table-gutter: $app-column-outer-width;
+$table-gutter: column-width(1);
 .app-table {
   @extend %app-typography--body-2;
 
@@ -611,11 +629,6 @@ $table-gutter: $app-column-outer-width;
   border-bottom: 2px solid $color-divider;
 }
 
-.app-table--full-bleed {
-  margin-left: -($gutter-width / 2);
-  margin-right: -($gutter-width / 2);
-}
-
 .app-table--rows-clickable {
   > tbody > tr:hover {
     cursor: pointer;
@@ -634,9 +647,7 @@ section.row:not(:first-child) {
 .app-container--pre-main-focus {
   background-color: $color-focus;
   border-bottom: 2px solid $color-divider;
-  margin-bottom: 32px;
-  margin-top: -$app-container-top-padding;
-  padding: 52px 0 32px;
+  overflow: auto;
   text-align: center;
 }
 
@@ -671,13 +682,17 @@ section.row:not(:first-child) {
   @extend %app-typography--body-1;
 
   height: auto;
-  margin-bottom: $app-field-margin-bottom;
   padding: 28px 36px 28px 72px;
+  margin-bottom: $app-field-margin-bottom;
 }
 
 .app-checkbox-with-label {
   transition: background-color .25s, border .25s;
   width: 100%;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   input:not(:checked) + & {
     background-color: #fff;

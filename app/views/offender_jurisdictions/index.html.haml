@@ -1,11 +1,11 @@
 - content_for :page_title, t('offender_search.title')
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %h1.app-typography--header-1= t('offender_search.title')
 
-%section.row
-  .col.s10.offset-s1.m6.offset-m3
+.row.app-row.app-row--with-separator
+  .col.s12.m6.offset-m3
     .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:oregon), stretch: true do
         In Prison

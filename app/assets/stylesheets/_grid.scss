@@ -1,0 +1,42 @@
+/*
+  The "outer width" is the width of the white container div. It includes 10
+  columns and 9 gutters -- with the desktop size of the grid, this corresponds
+  to:
+
+    10 col * (66px / col) + 9 gutters * (24px / gutter) = 876px
+
+  To calculate the "outer padding", we are calculating the value that
+  corresponds to (#1 + #2) and (#4 + #5) as we look at the "columns" contained
+  in the white container div (left to right):
+
+  1. 1 "column" of padding
+  2. 1/2 a gutter-width
+  3. 8 "column"s of inner content (this becomes the inner 12 column grid)
+  4. 1/2 a gutter-width
+  5. 1 "column" of padding
+
+  (the other half of the gutters is provided by the inner grid)
+
+  "Column" is in quotes because we're not actually using the grid system for
+  this since it is a fixed-width grid and materialize is a dynamic-width grid.
+
+  So, to calculate it out, on desktop:
+    gutter width = 24px
+    outer column width = 66px
+    outer padding = (outer column width) + (gutter width / 2)
+                  = 78px
+
+  For medium, and small screens, I eyeballed a value that looked good.
+*/
+$app-outer-width: 876px;
+$app-outer-padding: (
+  large: 78px,
+  medium: 40px,
+  small: 24px
+);
+
+$gutter-width: 48px; // materialize override
+
+@function column-width($cols) {
+  @return unquote((100 / ($num-cols / $cols)) + "%");
+}

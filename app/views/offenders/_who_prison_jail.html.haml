@@ -1,33 +1,32 @@
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %h2.app-typography--header-2 Who can I talk to?
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
-    = render_component 'avatar_list_item',
-      caption: t('offender.robyn_title_with_contact').html_safe,
-      name: t('offender.robyn'),
-      image: image_path('robyn.jpg')
+  .col.s12
+    .app-offender-contact-container
+      = render_component 'avatar_list_item',
+        caption: t('offender.robyn_title_with_contact').html_safe,
+        name: t('offender.robyn'),
+        image: image_path('robyn.jpg')
 
-    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
-      .app-faq-item
-        = faq_format(t('offender.prison_jail_who_robyn_what_about'))
+      = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Robyn') do
+        .app-faq-item
+          = faq_format(t('offender.prison_jail_who_robyn_what_about'))
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
-    = render_component 'avatar_list_item',
-      caption: t('offender.saydyie_title_with_contact').html_safe,
-      image: image_path('saydyie.jpg'),
-      name: t('offender.saydyie')
+    .app-offender-contact-container
+      = render_component 'avatar_list_item',
+        caption: t('offender.saydyie_title_with_contact').html_safe,
+        image: image_path('saydyie.jpg'),
+        name: t('offender.saydyie')
 
-    = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
-      %p 
-        = link_to 'https://www.oregon.gov/doc/OMR/Pages/religious_services/victims_services/victim_issues.aspx#Facilitated_Dialogue_Program', :target => "_blank" do
-          Facilitated Dialogue Program
-      %p General public information about the offender
-      %p General information regarding misconducts the offender has received
-      %p Programs offered and general information on if the inmate is participating in programming
-      %p Location and institution movement of the offender
-      %p Resources for victims and victim family members
-      %p Questions about VINE
+      = render_component 'dropdown', title: t('offender.what_talk_about', name: 'Saydyie') do
+        %p 
+          = link_to 'https://www.oregon.gov/doc/OMR/Pages/religious_services/victims_services/victim_issues.aspx#Facilitated_Dialogue_Program', :target => "_blank" do
+            Facilitated Dialogue Program
+        %p General public information about the offender
+        %p General information regarding misconducts the offender has received
+        %p Programs offered and general information on if the inmate is participating in programming
+        %p Location and institution movement of the offender
+        %p Resources for victims and victim family members
+        %p Questions about VINE
 

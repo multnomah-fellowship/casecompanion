@@ -2,12 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.app-offender-info-container {
+  margin-bottom: 20px;
+}
+
 .app-offender-method-container {
   margin-bottom: 40px;
   overflow: auto;
 }
 
-.app-offender-notification-method {
-  float: left;
-  width: 50%;
+.app-offender-contact-container {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
+
+

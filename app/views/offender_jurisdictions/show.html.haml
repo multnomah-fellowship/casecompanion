@@ -11,7 +11,7 @@
     - query = "#{search_params[:first_name]} #{search_params[:last_name]}"
     - bold_query = content_tag(:strong, query)
 
-    .col.s10.offset-s1.hide-on-large-only
+    .col.s12.hide-on-large-only
       %p.app-typography--body-2
         = raw(t('offender_search.num_results', num: @grouped_results.total_results, name: bold_query))
 
@@ -38,12 +38,12 @@
             %i.material-icons keyboard_arrow_right
 
 
-    .col.s10.offset-s1.hide-on-med-and-down
+    .col.s12.hide-on-med-and-down
       %p.app-typography--body-2
         = raw(t('offender_search.num_results', num: @grouped_results.total_results, name: bold_query))
 
-    .col.s12.hide-on-med-and-down
-      %table.app-table.app-table--full-bleed
+    .hide-on-med-and-down
+      %table.app-table
         %thead
           %tr
             %th SID

@@ -1,51 +1,48 @@
 - content_for :page_title, t('offender_search.oregon_title')
 
 = form_for :offender, url: offender_jurisdiction_path(:oregon) do |f|
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row
+    .col.s12
       = link_to t('offender_search.back'), offenders_path
 
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
         in: emphasized_text('in prison')))
 
   - if @search_error
-    .row.app-row--error
-      .col.s10.offset-s1.m8.offset-m2
+    .row.app-row.app-row--error
+      .col.s12
         = mixpanel_track_message :error, @search_error
         = @search_error
 
-  %section.row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row.app-row--with-separator
+    .col.s12
       %h3.app-typography--header-2= t('offender_search.by_name')
 
-  .row
-    .col.s10.offset-s1.m5.offset-m1
+    .col.s12.m5
       .input-field
         = f.text_field :first_name, value: search_params[:first_name]
         = f.label :first_name, t('offender_search.first_name.label'),
           class: ('active' if search_params[:first_name].present?)
 
-    .col.s10.offset-s1.m5
+    .col.s12.m5
       .input-field
         = f.text_field :last_name, value: search_params[:last_name]
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
 
-    .col.s10.offset-s1.m8.offset-m2
+    .col.s12
       = link_to 'Search by SID number', '#reveal-search-by-sid', class: 'app-reveal'
 
-  %section.row.hide#reveal-search-by-sid
-    .col.s10.offset-s1.m11.offset-m1
+  .row.app-row.app-row--with-separator.hide#reveal-search-by-sid
+    .col.s12
       %h3.app-typography--header-2= t('offender_search.by_sid')
 
-    .col.s10.offset-s1.m5.offset-m1
+    .col.s12.m5
       .input-field
         = f.text_field :sid
         = f.label :sid, t('offender_search.sid.label')
 
-  %section.row
-
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row.app-row--with-separator
+    .col.s12
       = render_component 'button', spinner: true, submit: f do
         = t('offender_search.search')

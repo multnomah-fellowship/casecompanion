@@ -1,7 +1,7 @@
 - selected_no_rights = sorted_right_flags.none? { |key| @flow.right_selected?(key) }
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %p
       = t('rights_flow.confirmation.preamble')
 
@@ -17,8 +17,8 @@
 
     %p= link_to t('rights_flow.confirmation.edit_link'), right_path('to_notification')
 
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %p= t('rights_flow.confirmation.contact_info')
 
     %p
@@ -43,15 +43,12 @@
 
     %p= link_to t('rights_flow.confirmation.edit_link'), right_path('create_account')
 
-- content_for :rights_button_footer do
-  .row
-    -# spacer
-  .row
-    .col.s10.offset-s1.m8.offset-m2
-      = f.check_box_with_label :electronic_signature_checked, t('rights_flow.confirmation.signature_field_text')
+.row.app-row
+  .col.s12
+    = f.check_box_with_label :electronic_signature_checked, t('rights_flow.confirmation.signature_field_text')
 
-      .app-field-attachment
-        .input-field
-          = f.text_field :electronic_signature_name, autocomplete: 'off', autocorrect: 'off'
-          = f.label :electronic_signature_name, t('rights_flow.confirmation.signature_field_label')
-          %span.app-input-field-caption= t('rights_flow.confirmation.signature_field_caption')
+    .app-field-attachment
+      .input-field
+        = f.text_field :electronic_signature_name, autocomplete: 'off', autocorrect: 'off'
+        = f.label :electronic_signature_name, t('rights_flow.confirmation.signature_field_label')
+        %span.app-input-field-caption= t('rights_flow.confirmation.signature_field_caption')

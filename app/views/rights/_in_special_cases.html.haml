@@ -1,29 +1,16 @@
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %h2.app-typography--header-2= t('rights_flow.in_special_cases.field_header')
 
     = faq_format(t('rights_flow.in_special_cases.preamble'),
       html_class: 'app-p-with-list-and-hanging-indent')
 
-%section.row
-.row.app-row--rights-checks-container
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator.app-row--rights-checks-container
+  .col.s12
     = f.check_box_with_label :flag_c, t('rights.flag_c')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_f, t('rights.flag_f')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_g, t('rights.flag_g')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_h, t('rights.flag_h')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_i, t('rights.flag_i')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_j, t('rights.flag_j')
-
-  .col.s10.offset-s1.m8.offset-m2
     = f.check_box_with_label :flag_m, t('rights.flag_m')

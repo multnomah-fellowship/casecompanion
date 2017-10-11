@@ -1,5 +1,5 @@
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %h1.app-typography--header-1
       = t('rights_flow.new_header_html', new: emphasized_text('New'))
 
@@ -9,15 +9,12 @@
   - if RightsFlow::PAGES.include?(params[:id])
     = render partial: params[:id], locals: { f: f }
 
-  %section.row
-    = yield :rights_button_footer
-
-  .row.app-row--rights-buttons
-    .col.s5.offset-s1.l5.offset-l2
+  .row.app-row.app-row--with-separator.app-row--rights-buttons
+    .col.s6
       - if @flow.previous_step
         = link_to 'Back', right_path(@flow.previous_step)
 
-    .col.s5.l3
+    .col.s6
       = render_component 'button', submit: f do
         - if @flow.finished?
           Submit

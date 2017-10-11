@@ -1,29 +1,28 @@
 - content_for :page_title, t('offender_search.dcj_title')
 
 = form_for :offender, url: offender_jurisdiction_path(:dcj) do |f|
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row
+    .col.s12
       = link_to t('offender_search.back'), offenders_path
 
       %h2.app-typography--header-1= raw(t('offender_search.title_jurisdiction',
         in: emphasized_text('on probation or parole')))
 
   - if @search_error
-    .row.app-row--error
-      .col.s10.offset-s1.m8.offset-m2
+    .row.app-row.app-row--error
+      .col.s12
         = mixpanel_track_message :error, @search_error
         = @search_error
 
-  %section.row
-    .col.s10.offset-s1.m5.offset-m1
+  .row.app-row.app-row--with-separator
+    .col.s12.m5
       .input-field
         = f.text_field :last_name
         = f.label :last_name, t('offender_search.last_name.label')
 
-  = f.dob_select_field :dob
+    = f.dob_select_field :dob
 
-  %section.row
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row.app-row--with-separator
+    .col.s12
       = render_component 'button', spinner: true, submit: f do
         = t('offender_search.search')

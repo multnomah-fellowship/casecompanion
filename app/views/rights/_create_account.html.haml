@@ -1,39 +1,36 @@
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     = simple_format(t('rights_flow.create_account.preamble'))
 
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %h2.app-typography--header-2= t('rights_flow.create_account.header')
 
-.row
-  .col.s4.offset-s2
+  .col.s6
     .input-field
       = f.text_field :first_name, autocomplete: 'off', autocorrect: 'off'
       = f.label :first_name, 'First Name'
 
-  .col.s4
+  .col.s6
     .input-field
       = f.text_field :last_name, autocomplete: 'off', autocorrect: 'off'
       = f.label :last_name, 'Last Name'
 
-.row
-  .col.s4.offset-s2
+  .col.s6
     .input-field
       = f.text_field :email, type: 'email'
       = f.label :email, 'Email Address'
 
-  .col.s4
+  .col.s6
     .input-field
       = f.text_field :phone_number, type: 'tel'
       = f.label :phone_number, 'Phone Number'
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %h2.app-typography--header-2 What's the case number?
 
-.row
-  .col.s4.offset-s2
+  .col.s6
     .input-field
       = f.text_field :case_number, type: 'number'
       = f.label :case_number, 'Case Number'
@@ -42,15 +39,14 @@
       'http://mcda.us/index.php/case-information/case-status/',
       class: 'app-typography--caption', target: '_blank'
 
-  .col.s4
+  .col.s6
     .input-field
       = f.select :advocate_email,
         options_for_select(AdvocateList.name_and_emails, @flow.advocate_email),
         include_blank: true
       = f.label :advocate_email
 
-.row
-  .col.s4.offset-s2
+  .col.s6
     .input-field
       = f.text_field :dda_email, type: 'email'
       = f.label :dda_email, 'Attorney Email'

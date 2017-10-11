@@ -1,7 +1,7 @@
 %section.app-footer
   .app-container
-    .row
-      .col.s10.l4.offset-s1.offset-l2
+    .row.app-row
+      .col.s12.l6
         %h3.app-typography--header-2= t('footer.title')
 
         %ul.app-footer__feedback-list
@@ -10,15 +10,10 @@
           %li= link_to 'No', feedback_response_path(type: :thumbs_down, page: current_path), target: '_blank'
           %li= link_to 'Yes, but', feedback_response_path(type: :yes_but, page: current_path), target: '_blank'
 
-      .hide-on-large-only
-        .row
-          -# spacer
-
-      .col.s10.l4.offset-s1
+      .col.s12.l6
         %p.app-footer__powered-by
           = render_component 'logo'
           = t('footer.powered_by_html')
 
-    .row
-      .col.s10.offset-s1.m8.offset-m2
+      .col.s12
         %span.app-footer__powered-by= t('footer.disclaimer')

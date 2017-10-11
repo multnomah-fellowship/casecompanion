@@ -1,5 +1,5 @@
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %h2.app-typography--header-1 Offender Public Information
 
 - case @offender[:jurisdiction].to_sym
@@ -8,18 +8,18 @@
 - when :dcj
   = render 'offenders/info_probation'
 
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %h2.app-typography--header-2 Notifications
 
-    - case @offender[:jurisdiction].to_sym
-    - when :oregon
-      = render 'offenders/notifications_prison_jail'
-    - when :dcj
-      = render 'offenders/notifications_probation'
+  - case @offender[:jurisdiction].to_sym
+  - when :oregon
+    = render 'offenders/notifications_prison_jail'
+  - when :dcj
+    = render 'offenders/notifications_probation'
 
-%section.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row.app-row--with-separator
+  .col.s12
     %h2.app-typography--header-2 Frequently Asked Questions
 
     - case @offender[:jurisdiction].to_sym

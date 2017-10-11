@@ -13,13 +13,8 @@
       = render_component 'logo'
       = t('footer.powered_by_html')
 
-.row
-  -# spacer
-.row
-  -# spacer
-
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     = image_tag emoji_image_path(@feedback), width: '60'
 
     %h1.app-typography--header-2= t("feedback_responses.#{@feedback.value}.header")
@@ -28,12 +23,8 @@
       = image_tag emoji_image_path(@feedback, size: :small, invert: true), width: '18'
 
 = form_for @feedback do |f|
-  .row
-    -# spacer
-  .row
-    -# spacer
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row
+    .col.s12
       .input-field
         - thing_key = vrn_receipt?(@feedback) ? 'thing_email' : 'thing_page'
         = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
@@ -41,15 +32,7 @@
         = f.text_field :body, 'data-length': 200, autofocus: true
         %span.app-input-field-caption= t('feedback_responses.field_caption')
 
-  .row
-    -# spacer
-  .row
-    -# spacer
-  .row
-    .col.s10.offset-s1.m8.offset-m2
+  .row.app-row
+    .col.s12
       = render_component 'button', submit: f do
         Submit
-  .row
-    -# spacer
-  .row
-    -# spacer

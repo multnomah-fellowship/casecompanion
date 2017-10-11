@@ -1,13 +1,15 @@
 - dcj_form = 'https://multco.us/dcj/victims-services/webform/crime-victims-request-hearing-notification'
 
-.app-offender-method-container
-  .app-offender-notification-method
+.col.s12.m6
+  .app-offender-method-container
     %h3.app-typography--caption-above Status Notifications
     = link_to 'Sign up with VINE', vine_path(@offender[:sid]), target: '_blank'
 
-  .app-offender-notification-method
+.col.s12.m6
+  .app-offender-method-container
     %h3.app-typography--caption-above Probation Violation Notifications
     = link_to 'Sign up with the Department of Community Justice', dcj_form, target: '_blank'
 
-= render_component 'dropdown', title: t('offender.notification_dropdown_title') do
-  = faq_format(t('offender.probation_notification_difference'))
+.col.s12
+  = render_component 'dropdown', title: t('offender.notification_dropdown_title') do
+    = faq_format(t('offender.probation_notification_difference'))

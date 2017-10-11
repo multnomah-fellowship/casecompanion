@@ -1,9 +1,8 @@
 - content_for :pre_main_focus do
-  .row
+  .row.app-row.app-row--large
     .col.s12
       = image_tag 'emoji_thumbs_up.png', width: '64'
 
-  .row
     .col.s12.m6.offset-m3
       - if @flow.just_created?
         %h2.app-typography--header-1= t('rights_flow.done.focus_header')
@@ -12,11 +11,11 @@
         %h2.app-typography--header-1= t('rights_flow.done.focus_header_changed')
         %p= t('rights_flow.done.focus_subheader_changed')
 
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     %h2.app-typography--header-2= t('rights_flow.done.next')
 
-  .col.s10.offset-s1.m8.offset-m2
+  .col.s12
     -# TODO: This should depend on the rights selected. Then move this into I18n
     %p
       You will get a letter and/or a phone call of critical stage hearings. You
@@ -41,9 +40,6 @@
       %p.app-typography--caption
         You can also do this later.
 
-.row
-  -# spacer
-
-.row
-  .col.s10.offset-s1.m8.offset-m2
+.row.app-row
+  .col.s12
     = link_to 'Back to Home Page', root_path

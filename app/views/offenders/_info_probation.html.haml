@@ -1,30 +1,18 @@
-.row.hide-on-med-and-down
-  .col.m5.offset-m1
-    .app-typography--caption-above SID
-    %span.app-typography--body-1= @offender[:sid]
-  .col.m5
-    .app-typography--caption-above Offender Name
-    %span.app-typography--body-1
-      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
-- if @offender[:supervision_expiration_date]
-  .row.hide-on-med-and-down
-    .col.m5.offset-m1
-      .app-typography--caption-above Supervision End Date
-      %span.app-typography--body-1
-        = @offender[:supervision_expiration_date].to_date.strftime('%m/%d/%Y')
+.row.app-row
+  .col.m6
+    .app-offender-info-container
+      .app-typography--caption-above SID
+      %span.app-typography--body-1= @offender[:sid]
 
-.row.hide-on-large-only
-  .col.s10.offset-s1.m8.offset-m2
-    .app-typography--caption-above SID
-    %span.app-typography--body-1= @offender[:sid]
-.row.hide-on-large-only
-  .col.s10.offset-s1.m8.offset-m2
-    .app-typography--caption-above Offender Name
-    %span.app-typography--body-1
-      = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
-- if @offender[:supervision_expiration_date]
-  .row.hide-on-large-only
-    .col.s10.offset-s1.m8.offset-m2
-      .app-typography--caption-above Supervision End Date
+  .col.m6
+    .app-offender-info-container
+      .app-typography--caption-above Offender Name
       %span.app-typography--body-1
-        = @offender[:supervision_expiration_date].to_date.strftime('%m/%d/%Y')
+        = @offender.include?(:name) ? @offender[:name] : "#{@offender[:first]} #{@offender[:last]}"
+
+  - if @offender[:supervision_expiration_date]
+    .col.m6
+      .app-offender-info-container
+        .app-typography--caption-above Supervision End Date
+        %span.app-typography--body-1
+          = @offender[:supervision_expiration_date].to_date.strftime('%m/%d/%Y')

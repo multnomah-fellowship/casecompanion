@@ -1,12 +1,14 @@
-.app-offender-method-container
-  .app-offender-notification-method
+.col.s12.m6
+  .app-offender-method-container
     %h3.app-typography--caption-above Status Notifications
     = link_to 'Sign up with VINE', vine_path(@offender[:sid])
 
-  .app-offender-notification-method
+.col.s12.m6
+  .app-offender-method-container
     %h3.app-typography--caption-above Release Notifications
     - pps_form = 'https://www.oregon.gov/BOPPPS/docs/Fillable%20Forms/Victim%20Request%20for%20Notification.pdf'
     = link_to 'Sign up with the Oregon Parole Board', pps_form, target: '_blank'
 
-= render_component 'dropdown', title: t('offender.notification_dropdown_title') do
-  = faq_format(t('offender.prison_notification_difference'))
+.col.s12
+  = render_component 'dropdown', title: t('offender.notification_dropdown_title') do
+    = faq_format(t('offender.prison_notification_difference'))
