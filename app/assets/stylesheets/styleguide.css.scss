@@ -1,14 +1,25 @@
 @import "colors";
 
+.app-layout--styleguide {
+  &, & > body {
+    background-color: $color-page-background;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .styleguide-container {
+  background-color: #fff;
   margin: auto;
+  overflow: auto;
   width: 960px;
 }
 
 .styleguide-code {
   border-left: 2px solid #000;
   margin-bottom: 20px;
-  padding: 0 16px;
+  overflow: auto;
+  padding: 12px 26px;
 }
 
 .styleguide-sample {

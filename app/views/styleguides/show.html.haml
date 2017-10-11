@@ -1,108 +1,113 @@
-%h1 Typography
+.row.app-row
+  .col.s12
+    %h1.app-typography--header-1 Typography
 
-.app-typography--display-1{ contenteditable: true }
-  Display 1
-.app-typography--display-2{ contenteditable: true }
-  Display 2
-.app-typography--display-3{ contenteditable: true }
-  Display 3
-.app-typography--header-1{ contenteditable: true }
-  Header 1
-.app-typography--header-2{ contenteditable: true }
-  Header 2
-.app-typography--header-3{ contenteditable: true }
-  Header 3
-%p.app-typography--body-1{ contenteditable: true }
-  Body 1
-%p.app-typography--body-2{ contenteditable: true }
-  Body 2
-.app-typography--caption{ contenteditable: true }
-  Caption
+    .app-typography--display-1{ contenteditable: true }
+      Display 1
+    .app-typography--display-2{ contenteditable: true }
+      Display 2
+    .app-typography--display-3{ contenteditable: true }
+      Display 3
+    .app-typography--header-1{ contenteditable: true }
+      Header 1
+    .app-typography--header-2{ contenteditable: true }
+      Header 2
+    .app-typography--header-3{ contenteditable: true }
+      Header 3
+    %p.app-typography--body-1{ contenteditable: true }
+      Body 1
+    %p.app-typography--body-2{ contenteditable: true }
+      Body 2
+    .app-typography--caption{ contenteditable: true }
+      Caption
 
-%h1 Form Styling
-We have some custom form styling.
+.row.app-row.app-row--with-separator
+  .col.s12
+    %h1.app-typography--header-1 Form Styling
+    We have some custom form styling.
 
-%h2 Check box with label
-:styleguide
-  = form_for '#' do |f|
-    = f.check_box_with_label 'attr', 'This is some text'
+    %h2.app-typography--header-2 Check box with label
+    :styleguide
+      = form_for '#' do |f|
+        = f.check_box_with_label 'attr', 'This is some text'
 
-%h2 Input field attachment
-:styleguide
-  = form_for '#' do |f|
-    = f.check_box_with_label 'some_attribute', 'This field has an attachment'
-    .app-field-attachment
-      This goes below the form field
+    %h2.app-typography--header-2 Input field attachment
+    :styleguide
+      = form_for '#' do |f|
+        = f.check_box_with_label 'some_attribute', 'This field has an attachment'
+        .app-field-attachment
+          This goes below the form field
 
-%h1 Custom List Styling
-We have a checklist styling:
+    %h2.app-typography--header-2 Custom List Styling
+    We have a checklist styling:
 
-:styleguide
-  %ul
-    %li.app-list-check Something that is checked
-    %li.app-list-check Other checked thing
-    %li.app-list-check One more check
+    :styleguide
+      %ul
+        %li.app-list-check Something that is checked
+        %li.app-list-check Other checked thing
+        %li.app-list-check One more check
 
-%h1 Components
+.row.app-row.app-row--with-separator
+  .col.s12
+    %h1.app-typography--header-1 Components
 
-%h2 Dropdown
-:styleguide
-  .row
-    .col.s6
+    %h2.app-typography--header-2 Dropdown
+    :styleguide
       = render_component 'dropdown', title: 'Dropdown Title' do
         Body here!
       = render_component 'dropdown', title: 'Dropdown Title 2' do
         Body here!
-      = render_component 'dropdown', title: 'This is a dropdown with a very very long Title lorem ipsum dolor sit amet' do
+      = render_component 'dropdown',
+        title: 'This is a dropdown with a very very long title lorem ipsum dolor sit amet lorem ipsum dolor sit amet' do
         Body here!
 
-%h2 Button
-%p Here is a button:
-:styleguide
-  = render_component 'button' do
-    Search
-  = render_component 'button', solid: true do
-    Look Up Status &rarr;
+    %h2.app-typography--header-2 Button
+    %p Here is a button:
+    :styleguide
+      = render_component 'button' do
+        Search
+      = render_component 'button', solid: true do
+        Look Up Status &rarr;
 
-%p
-  Pass the form helper as the "submit" option to make the button submit the
-  form:
-:styleguide
-  = form_for :something, method: :get do |f|
-    = render_component 'button', submit: f do
-      Button text here
+    %p
+      Pass the form helper as the "submit" option to make the button submit the
+      form:
+    :styleguide
+      = form_for :something, method: :get do |f|
+        = render_component 'button', submit: f do
+          Button text here
 
-%p Button with a material icon:
-:styleguide
-  = render_component 'button' do
-    Button
-    %i.material-icons keyboard_arrow_right
+    %p Button with a material icon:
+    :styleguide
+      = render_component 'button' do
+        Button
+        %i.material-icons keyboard_arrow_right
 
-%p Button that turns into a spinner when clicked
-:styleguide
-  = render_component 'button', to: '#', spinner: true do
-    Button Text
-  = render_component 'button', to: '#', loading: true do
-    Button Text
+    %p Button that turns into a spinner when clicked
+    :styleguide
+      = render_component 'button', to: '#', spinner: true do
+        Button Text
+      = render_component 'button', to: '#', loading: true do
+        Button Text
 
-%h2 Avatar List Item
-:styleguide
-  = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
-  = render_component 'avatar_list_item', image: image_url('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'
-  %p Three Line Example:
-  = render_component 'avatar_list_item', name: 'Tom', caption: raw('Fellow, Code for America<br>(330) 555-1234')
+    %h2.app-typography--header-2 Avatar List Item
+    :styleguide
+      = render_component 'avatar_list_item', image: image_url('pam.jpg'), name: 'Pam', caption: 'Fellow, Code for America'
+      = render_component 'avatar_list_item', image: image_url('tom.jpg'), name: 'Tom', caption: 'Fellow, Code for America'
+      %p Three Line Example:
+      = render_component 'avatar_list_item', name: 'Tom', caption: raw('Fellow, Code for America<br>(330) 555-1234')
 
-%h2 Logo
-:styleguide
-  %div
-    = render_component 'logo'
-  %div{ style: 'background-color: #2f6296' }
-    = render_component 'logo', variant: :single_color
+    %h2.app-typography--header-2 Logo
+    :styleguide
+      %div
+        = render_component 'logo'
+      %div{ style: 'background-color: #2f6296' }
+        = render_component 'logo', variant: :single_color
 
-%h2 Timeline
-:styleguide
-  = render_component 'timeline'
+    %h2.app-typography--header-2 Timeline
+    :styleguide
+      = render_component 'timeline'
 
-%h2 Progress Bar
-:styleguide
-  = render_component 'progress_bar', chunks: 3, filled: 1
+    %h2.app-typography--header-2 Progress Bar
+    :styleguide
+      = render_component 'progress_bar', chunks: 3, filled: 1
