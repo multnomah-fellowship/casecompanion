@@ -177,6 +177,12 @@ strong {
   margin-bottom: 4px;
 }
 
+// Use this class if the section adds enough margin/padding and you don't want
+// any additional margin on the heading.
+.app-typography--section-heading {
+  margin-top: 0;
+}
+
 .app-p-with-list-and-hanging-indent {
   margin-left: 22px;
 
@@ -393,10 +399,14 @@ $app-row-margin: 60px;
   overflow: auto;
 }
 
-.app-footer__feedback-list li {
-  display: inline-block;
-  float: left;
-  min-width: 85px;
+.app-footer__feedback-list {
+  margin: 24px 0 0; // body-2 line-height
+
+  li {
+    display: inline-block;
+    float: left;
+    min-width: 85px;
+  }
 }
 
 .app-footer__powered-by {
