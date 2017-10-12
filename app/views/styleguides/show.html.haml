@@ -23,6 +23,14 @@
 
 .row.app-row.app-row--with-separator
   .col.s12
+    %h1.app-typography--header-1 Form Styling
+
+    %p
+      Surround inputs and selects with
+      :escaped
+        <div class='app-input-field'>
+      in order to have them styled correctly.
+
     :styleguide
       = form_for '#' do |f|
         .app-input-field
@@ -37,8 +45,7 @@
           = f.check_box 'attr3'
           = f.label 'attr3', 'Checkbox'
 
-    %h1.app-typography--header-1 Form Styling
-    We have some custom form styling.
+    %p We have some custom form styling.
 
     %h2.app-typography--header-2 Check box with label
     :styleguide
