@@ -1,39 +1,40 @@
 $colors: (
   primary: #4990e2,
-  accent: #009789,
 
-  grey-lighter: #f9f9f9,
-  grey-light: #f5f5f5,
-  grey-lightish: #e2e2e2,
-  grey-dark: #182e45,
-  grey-dark-translucent: rgba(#182e45, 0.4),
+  grey-background: #f8f8f8,
+  grey-footer: #efefef, // TODO: find this one in the styleguide
 
   green-light: #5ab24e,
   green-multnomah: #4a883c,
 
-  blue-multnomah: #2f6296,
+  navy: #182e45,
+  navy-lowcontrast: rgba(#182e45, .54),
+  navy-soft: rgba(#182e45, .34),
+  navy-superlight: rgba(#182e45, .11),
+
   blue: #206fbf,
-  blue-light: #1481ef,
-  blue-lighter: #f1f4f8,
+  blue-highlight: #f2f8fe,
+  blue-multnomah: #2f6296,
+  blue-superlight: rgba(#2f6296, 0.06),
 
   yellow-light: #fdf5e0,
   yellow-dark: #d9c822,
 );
 
 // layout colors
-$color-page-background: map-get($colors, grey-lighter);
-$color-page-border: map-get($colors, grey-lightish);
+$color-page-background: map-get($colors, grey-background);
+$color-page-border: map-get($colors, navy-superlight);
 $color-logo: map-get($colors, blue-multnomah);
-$color-hover: map-get($colors, blue-lighter);
-$color-focus: map-get($colors, blue-lighter);
+$color-hover: map-get($colors, blue-highlight);
+$color-focus: map-get($colors, blue-highlight);
 $color-table-hover: $color-hover;
-$color-divider: map-get($colors, grey-light);
+$color-divider: map-get($colors, navy-superlight);
 $color-accent: map-get($colors, green-multnomah);
 $color-error: map-get($colors, yellow-light);
 
 // typography colors
-$color-text: map-get($colors, grey-dark);
-$color-text-caption: map-get($colors, grey-dark-translucent);
+$color-text: map-get($colors, navy);
+$color-text-caption: map-get($colors, navy-lowcontrast);
 $color-header-3: map-get($colors, green-multnomah);
 $color-text-error: map-get($colors, yellow-dark);
 
@@ -44,8 +45,8 @@ $color-button-solid: map-get($colors, green-light);
 $color-button-solid-hover: map-get($colors, green-multnomah);
 
 // footer partial
-$color-footer: map-get($colors, grey-light);
-$color-footer-border: #dedede;
+$color-footer: map-get($colors, navy-superlight);
+$color-footer-border: map-get($colors, navy-superlight);
 
 // materialize definitions so we don't have to import the colors rules:
 $primary-color: map-get($colors, blue-multnomah);
