@@ -601,9 +601,9 @@ input[type="checkbox"] {
 }
 
 .app-card--result__label {
+  color: $color-text-caption;
   display: inline-block;
   width: 100px;
-  color: map-get($colors, grey-dark);
 }
 
 /*
