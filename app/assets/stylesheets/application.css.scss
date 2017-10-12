@@ -34,6 +34,7 @@
 @import "materialize/components/grid";
 @import "materialize/components/typography";
 @import "materialize/components/dropdown";
+@import "font-awesome";
 
 $app-field-margin-bottom: 20px;
 
@@ -536,7 +537,7 @@ input[type="checkbox"] {
 .app-select-container__icon {
   position: absolute;
   top: calc(50% - .5em);
-  right: 8px;
+  right: 12px;
 }
 
 /*
@@ -558,8 +559,8 @@ input[type="checkbox"] {
   position: relative;
 
   &::before {
-    font-family: 'Material Icons';
-    content: 'check';
+    font-family: FontAwesome;
+    content: '\f00c';
     position: absolute;
     left: 16px;
   }

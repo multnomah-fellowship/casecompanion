@@ -35,7 +35,7 @@
               = result[:dob]
           = render_component 'button', to: offender_path(result[:jurisdiction], result[:sid]) do
             View offender
-            %i.material-icons keyboard_arrow_right
+            = fa_icon 'angle-right'
 
 
     .col.s12.hide-on-med-and-down

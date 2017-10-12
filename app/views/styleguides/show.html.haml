@@ -88,7 +88,8 @@
       = render_component 'button' do
         Search
       = render_component 'button', solid: true do
-        Look Up Status &rarr;
+        Look Up Status
+        = fa_icon 'arrow-right'
 
     %p
       Pass the form helper as the "submit" option to make the button submit the
@@ -98,11 +99,11 @@
         = render_component 'button', submit: f do
           Button text here
 
-    %p Button with a material icon:
+    %p Button with a FontAwesome icon:
     :styleguide
       = render_component 'button' do
         Button
-        %i.material-icons keyboard_arrow_right
+        = fa_icon 'angle-right'
 
     %p Button that turns into a spinner when clicked
     :styleguide

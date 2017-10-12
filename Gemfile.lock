@@ -118,6 +118,8 @@ GEM
     ffi (1.9.18)
     ffi (1.9.18-x64-mingw32)
     flipper (0.10.2)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     haml (5.0.3)
@@ -366,6 +368,7 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails
   flipper
+  font-awesome-rails
   haml (> 5.0.0)
   inline_svg
   jbuilder (~> 2.5)

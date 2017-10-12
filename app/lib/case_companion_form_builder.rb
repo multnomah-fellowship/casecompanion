@@ -29,7 +29,7 @@ class CaseCompanionFormBuilder < ActionView::Helpers::FormBuilder
     <<-HTML.html_safe
     <div class='app-select-container'>
       #{tag_itself}
-      <i class='material-icons app-select-container__icon'>keyboard_arrow_down</i>
+      <i class='fa fa-angle-down app-select-container__icon'></i>
     </div>
     #{error_if_any(method)}
     HTML
