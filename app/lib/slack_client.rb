@@ -22,38 +22,6 @@ class SlackClient
     @disabled = previous_disabled
   end
 
-  def post_beta_signup_message(beta_signup)
-    return { error: 'No Webhook Specified' } unless @hook_url.present?
-
-    attribution_fields =
-      beta_signup.utm_attribution
-        .try(:slice, *UtmAttribution::FIELDS)
-        .try(:find_all) { |_k, v| v.present? }
-        .try(:map) { |k, v| { title: k, value: v, short: true } }
-        .to_a
-
-    beta_signup_attachment = {
-      attachments: [
-        {
-          fallback: "New beta signup: #{beta_signup.email}",
-          color: '#2f6296', # color: multnomah-blue
-          pretext: 'New Beta Signup!',
-          fields: [
-            {
-              title: 'Email',
-              value: beta_signup.email,
-              short: true,
-            },
-          ] + attribution_fields,
-          footer: @app_name,
-          ts: beta_signup.created_at.to_i,
-        },
-      ],
-    }
-
-    send_message(beta_signup_attachment)
-  end
-
   def post_feedback_message(feedback)
     return { error: 'No Webhook Specified' } unless @hook_url.present?
 
