@@ -650,21 +650,10 @@ $table-gutter: column-width(1);
   border-bottom: 2px solid $color-divider;
 }
 
-.app-table--rows-clickable {
-  > tbody > tr:hover {
-    cursor: pointer;
-  }
-}
-
 /**
  * MATERIALIZE OVERRIDES & CUSTOMIZATIONS
  */
 // Use <section class="row"> to get a top-border and extra top spacing.
-section.row:not(:first-child) {
-  margin-top: 40px;
-  border-top: 4px solid $color-divider;
-}
-
 .app-container--pre-main-focus {
   background-color: $color-focus;
   border-bottom: 2px solid $color-divider;
