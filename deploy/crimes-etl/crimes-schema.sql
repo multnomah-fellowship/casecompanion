@@ -86,7 +86,7 @@ CREATE TABLE all_victims (
     prefix character varying(2),
     address character varying(25),
     suffix character varying(4),
-    unit character varying(5),
+    unit character varying(20),
     city character varying(16),
     state character varying(2),
     zipcode numeric,
