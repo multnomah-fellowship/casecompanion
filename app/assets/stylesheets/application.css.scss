@@ -438,7 +438,8 @@ $app-row-margin: 60px;
   input[type="text"],
   input[type="tel"],
   input[type="email"],
-  input[type="number"] {
+  input[type="number"],
+  input[type="password"] {
     border: 2px solid $color-divider;
     outline: none;
     height: 3rem;
