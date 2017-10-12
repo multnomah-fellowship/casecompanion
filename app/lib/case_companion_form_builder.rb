@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
+class CaseCompanionFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 
   def check_box(method, options = {}, checked_value = '1', unchecked_value = '0')

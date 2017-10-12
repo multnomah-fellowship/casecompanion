@@ -25,7 +25,7 @@ module MyAdvocate
 
     config.mixpanel_token = ENV['MIXPANEL_TOKEN']
 
-    config.action_view.default_form_builder = 'MyAdvocateFormBuilder'
+    config.action_view.default_form_builder = 'CaseCompanionFormBuilder'
 
     # Update the <input> tag for a field when it has errors based on the class
     # names that Materialize.css expects to see.
