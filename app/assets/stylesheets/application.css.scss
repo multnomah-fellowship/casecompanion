@@ -665,15 +665,6 @@ $table-gutter: column-width(1);
   color: $color-text-caption;
 }
 
-// This rule overrides the Materialize CSS rules for checkbox labels.
-[type="checkbox"] + .app-checkbox-with-label {
-  @extend %app-typography--body-1;
-
-  height: auto;
-  padding: 28px 36px 28px 72px;
-  margin-bottom: $app-field-margin-bottom;
-}
-
 .app-checkbox-with-label {
   transition: background-color .25s, border .25s;
   width: 100%;
@@ -683,9 +674,14 @@ $table-gutter: column-width(1);
   }
 
   // Unchecked
+  // This rule overrides the above CSS rules for checkbox labels.
   input[type="checkbox"] + & {
+    @extend %app-typography--body-1;
     background-color: #fff;
     border: 2px solid $color-divider;
+    height: auto;
+    margin-bottom: $app-field-margin-bottom;
+    padding: 28px 36px 28px 72px;
 
     &.invalid {
       border-color: $input-error-color;
