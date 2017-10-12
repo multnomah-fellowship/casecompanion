@@ -418,16 +418,6 @@ $app-row-margin: 60px;
   padding: 1em;
 }
 
-.app-vertical-spacer {
-  height: 80px;
-}
-
-@media #{$medium-and-up} {
-  .app-vertical-spacer {
-    height: 160px;
-  }
-}
-
 .app-button-group {
   display: flex;
   flex-direction: column;
