@@ -718,3 +718,8 @@ $table-gutter: column-width(1);
     }
   }
 }
+
+// Rails Overrides:
+.turbolinks-progress-bar {
+  background-color: $primary-color;
+}
