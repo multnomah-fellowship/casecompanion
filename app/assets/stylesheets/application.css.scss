@@ -532,16 +532,6 @@ input[type="checkbox"] {
 }
 
 /*
- * RIGHTS FLOW
- */
-@media #{$medium-only} {
-  .app-row--rights-checks-container {
-    // On iPads, position the "Next" button at the bottom of the screen always.
-    min-height: 450px;
-  }
-}
-
-/*
  * HOME PAGE
  */
 .app-home-link-with-description {
