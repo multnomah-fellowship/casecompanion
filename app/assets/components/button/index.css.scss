@@ -28,7 +28,8 @@
   vertical-align: middle;
   -webkit-appearance: none;
 
-  &:hover {
+  &:not(.app-button--loading):hover,
+  &:not(.app-button--loading):focus {
     border-color: $color-button-hover;
     color: $color-button-hover;
   }
