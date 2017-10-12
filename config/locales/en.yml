@@ -87,6 +87,7 @@ en:
         # attribute name for purposes of error messages and such.
         advocate_email: 'Advocate Name'
         electronic_signature_name: 'Signature'
+        dda_email: 'Attorney Email'
 
   rights:
     flag_a:

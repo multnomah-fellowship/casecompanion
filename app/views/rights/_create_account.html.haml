@@ -7,46 +7,46 @@
     %h2.app-typography--header-2= t('rights_flow.create_account.header')
 
   .col.s6
-    .input-field
-      = f.text_field :first_name, autocomplete: 'off', autocorrect: 'off'
+    .app-input-field
       = f.label :first_name, 'First Name'
+      = f.text_field :first_name, autocomplete: 'off', autocorrect: 'off'
 
   .col.s6
-    .input-field
-      = f.text_field :last_name, autocomplete: 'off', autocorrect: 'off'
+    .app-input-field
       = f.label :last_name, 'Last Name'
+      = f.text_field :last_name, autocomplete: 'off', autocorrect: 'off'
 
   .col.s6
-    .input-field
-      = f.text_field :email, type: 'email'
+    .app-input-field
       = f.label :email, 'Email Address'
+      = f.text_field :email, type: 'email'
 
   .col.s6
-    .input-field
-      = f.text_field :phone_number, type: 'tel'
+    .app-input-field
       = f.label :phone_number, 'Phone Number'
+      = f.text_field :phone_number, type: 'tel'
 
 .row.app-row.app-row--with-separator
   .col.s12
     %h2.app-typography--header-2 What's the case number?
 
   .col.s6
-    .input-field
-      = f.text_field :case_number, type: 'number'
+    .app-input-field
       = f.label :case_number, 'Case Number'
+      = f.text_field :case_number, type: 'number'
 
     = link_to 'Look up the Case Number',
       'http://mcda.us/index.php/case-information/case-status/',
       class: 'app-typography--caption', target: '_blank'
 
   .col.s6
-    .input-field
+    .app-input-field
+      = f.label :advocate_email
       = f.select :advocate_email,
         options_for_select(AdvocateList.name_and_emails, @flow.advocate_email),
         include_blank: true
-      = f.label :advocate_email
 
   .col.s6
-    .input-field
-      = f.text_field :dda_email, type: 'email'
+    .app-input-field
       = f.label :dda_email, 'Attorney Email'
+      = f.text_field :dda_email, type: 'email'

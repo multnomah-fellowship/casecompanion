@@ -15,13 +15,24 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
     super(method, tag_value, options)
   end
 
-  def label(method, text = nil, options = {}, &block)
-    if @object.try(:errors).is_a?(ActiveModel::Errors) && @object.errors.include?(method)
-      options['data-error'] = @object.errors.full_messages_for(method).first
-      add_class!(options, 'active')
-    end
+  def text_field(method, options = {})
+    "#{super(method, options)} #{error_if_any(method)}".html_safe
+  end
 
+  def label(method, text = nil, options = {}, &block)
     super(method, text, options, &block)
+  end
+
+  def select(method, choices = nil, options = {}, html_options = {}, &block)
+    tag_itself = super(method, choices, options, html_options, &block)
+
+    <<-HTML.html_safe
+    <div class='app-select-container'>
+      #{tag_itself}
+      <i class='material-icons app-select-container__icon'>keyboard_arrow_down</i>
+    </div>
+    #{error_if_any(method)}
+    HTML
   end
 
   def hidden_attribution_fields
@@ -39,20 +50,22 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
     fields_for(method) do |f|
       <<-HTML.html_safe
           <div class='col s12'>
-            #{f.label(:month, 'Date of Birth')}
+            <div class='app-input-field'>
+              #{f.label(:month, 'Date of Birth')}
+            </div>
           </div>
           <div class='col s3 m2'>
-            <div class='input-field app-input-field--no-label'>
+            <div class='app-input-field app-input-field--no-label'>
               #{f.text_field(:month, placeholder: 'MM')}
             </div>
           </div>
           <div class='col s3 m2'>
-            <div class='input-field app-input-field--no-label'>
+            <div class='app-input-field app-input-field--no-label'>
               #{f.text_field(:day, placeholder: 'DD')}
             </div>
           </div>
           <div class='col s4 m2'>
-            <div class='input-field app-input-field--no-label'>
+            <div class='app-input-field app-input-field--no-label'>
               #{f.text_field(:year, placeholder: 'YYYY')}
             </div>
           </div>
@@ -72,5 +85,16 @@ class MyAdvocateFormBuilder < ActionView::Helpers::FormBuilder
   def add_class!(options, *new_classes)
     options[:class] ||= ''
     options[:class] = (options[:class].split(/\s+/) | new_classes).join(' ')
+  end
+
+  def error_if_any(method)
+    return unless @object.try(:errors).is_a?(ActiveModel::Errors) &&
+        @object.errors.include?(method)
+
+    <<-ERROR.strip_heredoc
+      <div class='app-input-field-caption app-input-field-caption--invalid'>
+        #{@object.errors.full_messages_for(method).first}
+      </div>
+    ERROR
   end
 end

@@ -17,9 +17,7 @@
 //= require materialize/jquery.easing.1.4
 //= require materialize/velocity.min
 //= require materialize/global
-//= require materialize/forms
 //= require materialize/character_counter
-//= require materialize/dropdown
 //= require_tree .
 
 const analytics = {
@@ -157,7 +155,6 @@ window.App = (function() {
 
       // In case the user hits the back button and there are pre-filled values
       // on the previous page:
-      Materialize.updateTextFields();
 
       $(document).on('click', 'tr[data-href]', handleTableClick);
     },
@@ -169,13 +166,10 @@ window.App = (function() {
       // Since turbolinks effectively turns this site into a single-page app,
       // any event listeners created here for elements on this page should be
       // removed on `onPageOffload`.
-      $('select').material_select();
-
       analytics.trackView(e);
     },
 
     onPageOffload: function() {
-      $('select').material_select('destroy');
     }
   };
 })();

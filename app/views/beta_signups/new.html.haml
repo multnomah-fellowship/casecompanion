@@ -6,9 +6,9 @@
 
     .row
       .col.s12.m6
-        .input-field
-          = f.text_field :email, type: 'email', class: 'validate'
+        .app-input-field
           = f.label :email, t('beta_signups.focus_label')
+          = f.text_field :email, type: 'email', class: 'validate'
 
           %span.app-input-field-caption= t('beta_signups.focus_caption')
 

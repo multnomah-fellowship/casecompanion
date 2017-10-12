@@ -3,15 +3,13 @@
     .col.s12
       %h2.app-typography--header-1 Log In
 
-      .input-field
+      .app-input-field
+        = f.label :email, 'Email'
         = f.text_field :email
-        = f.label :email do
-          Email
 
-      .input-field
+      .app-input-field
+        = f.label :password, 'Password'
         = f.password_field :password
-        = f.label :password do
-          Password
 
       = render_component 'button', submit: f do
         Login

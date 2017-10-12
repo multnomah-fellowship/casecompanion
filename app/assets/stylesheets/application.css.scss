@@ -33,7 +33,6 @@
 @import "materialize/components/global";
 @import "materialize/components/grid";
 @import "materialize/components/typography";
-@import "materialize/components/forms/forms";
 @import "materialize/components/dropdown";
 
 $app-field-margin-bottom: 20px;
@@ -476,6 +475,110 @@ $app-row-margin: 60px;
 }
 
 /*
+ * APP FORM STYLING (<input>)
+ */
+.app-input-field {
+  label {
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"] {
+    border: 2px solid $color-divider;
+    outline: none;
+    height: 3rem;
+    padding-left: .5rem;
+    transition: all .3s;
+    width: 100%;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+
+    &.invalid {
+      border-color: $color-text-error;
+    }
+  }
+
+  select {
+    @extend %app-typography--body-2;
+
+    appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 2px solid $color-divider;
+    height: 3rem;
+    padding-left: .5rem;
+    width: 100%;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+
+    &.invalid {
+      border-color: $color-text-error;
+    }
+  }
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+
+  & + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+    user-select: none;
+  }
+
+  & + label:before,
+  & + label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid $radio-empty-color;
+    border-radius: 1px;
+    margin-top: 2px;
+  }
+
+  &:checked + label:before {
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 12px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: $radio-border;
+    border-bottom: $radio-border;
+    transform: rotate(40deg);
+    backface-visibility: hidden;
+    transform-origin: 100% 100%;
+  }
+}
+
+.app-select-container {
+  position: relative;
+}
+
+.app-select-container__icon {
+  position: absolute;
+  top: calc(50% - .5em);
+  right: 8px;
+}
+
+/*
  * APP HERO
  */
 .app-hero {
@@ -535,14 +638,11 @@ $app-row-margin: 60px;
 
 .app-input-field-caption {
   @extend %app-typography--caption;
-
   font-size: 14px;
-  position: relative;
-  bottom: 18px;
+}
 
-  label.invalid ~ & {
-    display: none;
-  }
+.app-input-field-caption--invalid {
+  color: $color-text-error;
 }
 
 .app-field-attachment {
@@ -550,13 +650,6 @@ $app-row-margin: 60px;
   border-top-style: none;
   margin-top: -$app-field-margin-bottom;
   padding: 2rem 1rem;
-
-  > .input-field {
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: column-width(6);
-  }
 }
 
 .app-field-attachment--active {
@@ -653,28 +746,6 @@ section.row:not(:first-child) {
 
 .character-counter {
   color: $color-text-caption;
-  position: relative;
-  bottom: 16px;
-}
-
-.select-wrapper {
-  & ~ label {
-    display: block;
-    width: 100%;
-  }
-
-  & ~ label.active {
-    top: 12px;
-  }
-
-  &.invalid ~ label:after {
-    content: attr(data-error);
-    color: $input-error-color;
-    display: block;
-    position: absolute;
-    top: 60px;
-    opacity: 1;
-  }
 }
 
 // This rule overrides the Materialize CSS rules for checkbox labels.
@@ -694,42 +765,43 @@ section.row:not(:first-child) {
     margin-bottom: 0;
   }
 
-  input:not(:checked) + & {
+  // Unchecked
+  input[type="checkbox"] + & {
     background-color: #fff;
     border: 2px solid $color-divider;
+
+    &.invalid {
+      border-color: $input-error-color;
+    }
+
+    // Check Icon:
+    &::before {
+      top: 31px;
+      left: 36px;
+    }
+
+    // Checkbox Border:
+    &::after {
+      top: 31px;
+      left: 36px;
+      transition: initial !important;
+    }
   }
 
-  input:not(:checked) + &.invalid {
-    border-color: $input-error-color;
-  }
-
-  input:checked + & {
+  // Checked styles
+  input[type="checkbox"]:checked + & {
     background-color: $color-focus;
     border: 2px solid $color-text;
-  }
 
-  // Check icon:
-  &:before {
-    transition: initial !important;
-
-    input:not(:checked) + & {
-      top: (32px + 10px) !important;
-      left: (36px + 6px) !important;
+    &::before {
+      border-bottom-color: #fff;
+      border-right-color: #fff;
+      top: 33px;
+      left: 37px;
+      z-index: 1;
     }
 
-    input:checked + & {
-      top: 32px !important;
-      left: (36px + 1px) !important;
-    }
-  }
-
-  // Check box border:
-  &:after {
-    top: 32px !important;
-    left: 36px !important;
-    transition: initial !important;
-
-    input:checked + & {
+    &::after {
       background-color: $color-text !important;
       border-color: $color-text !important;
     }

@@ -15,16 +15,16 @@
 
   .row.app-row.app-row--with-separator
     .col.s12.m6
-      .input-field
-        = f.text_field :first_name, value: search_params[:first_name]
+      .app-input-field
         = f.label :first_name, t('offender_search.first_name.label'),
           class: ('active' if search_params[:first_name].present?)
+        = f.text_field :first_name, value: search_params[:first_name]
 
     .col.s12.m6
-      .input-field
-        = f.text_field :last_name, value: search_params[:last_name]
+      .app-input-field
         = f.label :last_name, t('offender_search.last_name.label'),
           class: ('active' if search_params[:last_name].present?)
+        = f.text_field :last_name, value: search_params[:last_name]
 
     = f.dob_select_field :dob
 

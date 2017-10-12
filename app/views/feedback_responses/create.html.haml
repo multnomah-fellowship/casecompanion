@@ -25,7 +25,7 @@
 = form_for @feedback do |f|
   .row.app-row
     .col.s12
-      .input-field
+      .app-input-field
         - thing_key = vrn_receipt?(@feedback) ? 'thing_email' : 'thing_page'
         = f.label :body, t("feedback_responses.#{@feedback.value}.field_label",
           thing: t("feedback_responses.#{thing_key}"))

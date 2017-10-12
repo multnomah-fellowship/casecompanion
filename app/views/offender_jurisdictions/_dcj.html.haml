@@ -16,9 +16,9 @@
 
   .row.app-row.app-row--with-separator
     .col.s12.m5
-      .input-field
-        = f.text_field :last_name
+      .app-input-field
         = f.label :last_name, t('offender_search.last_name.label')
+        = f.text_field :last_name
 
     = f.dob_select_field :dob
 
