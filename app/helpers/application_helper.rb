@@ -123,11 +123,7 @@ module ApplicationHelper
   end
 
   def product_name
-    if Rails.application.config.app_domain.match?(/myadvocateoregon/i)
-      I18n.t('old_product_name')
-    else
-      I18n.t('product_name')
-    end
+    I18n.t('product_name')
   end
 
   def inspectlet_record?

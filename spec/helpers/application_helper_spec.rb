@@ -144,14 +144,6 @@ describe ApplicationHelper do
       end
     end
 
-    describe 'for MyAdvocate' do
-      let(:app_domain) { 'myadvocateoregon.org' }
-
-      it 'is MyAdvocate' do
-        expect(subject).to eq('My Advocate')
-      end
-    end
-
     describe 'when the app domain is casecompanion.org' do
       let(:app_domain) { 'casecompanion.org' }
 
