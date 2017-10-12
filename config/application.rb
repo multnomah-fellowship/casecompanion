@@ -14,7 +14,7 @@ Raven.configure do |config|
   config.silence_ready = Rails.env.development? || Rails.env.test?
 end
 
-module MyAdvocate
+module CaseCompanion
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
