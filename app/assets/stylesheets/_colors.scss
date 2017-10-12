@@ -9,7 +9,7 @@ $colors: (
   grey-dark-translucent: rgba(#182e45, 0.4),
 
   green-light: #5ab24e,
-  green-dark: #4a883c,
+  green-multnomah: #4a883c,
 
   blue-multnomah: #2f6296,
   blue: #206fbf,
@@ -28,20 +28,20 @@ $color-hover: map-get($colors, blue-lighter);
 $color-focus: map-get($colors, blue-lighter);
 $color-table-hover: $color-hover;
 $color-divider: map-get($colors, grey-light);
-$color-accent: map-get($colors, green-dark);
+$color-accent: map-get($colors, green-multnomah);
 $color-error: map-get($colors, yellow-light);
 
 // typography colors
 $color-text: map-get($colors, grey-dark);
 $color-text-caption: map-get($colors, grey-dark-translucent);
-$color-header-3: map-get($colors, green-dark);
+$color-header-3: map-get($colors, green-multnomah);
 $color-text-error: map-get($colors, yellow-dark);
 
 // button component
 $color-button: map-get($colors, blue); // $link-color
 $color-button-hover: $color-text;
 $color-button-solid: map-get($colors, green-light);
-$color-button-solid-hover: map-get($colors, green-dark);
+$color-button-solid-hover: map-get($colors, green-multnomah);
 
 // footer partial
 $color-footer: map-get($colors, grey-light);
