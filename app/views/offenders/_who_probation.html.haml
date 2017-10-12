@@ -7,13 +7,23 @@
 
   .col.s12
     .app-offender-contact-container
-      = render_component 'avatar_list_item',
-        caption: raw(t('offender.probation_who_ppo_title', phone: po_phone, email: po_email)),
-        name: "#{locals[:po_first]} #{locals[:po_last]}"
 
-      = render_component 'dropdown', title: t('offender.what_talk_about', name: locals[:po_first]) do
-        .app-faq-item
-          = faq_format(t('offender.probation_who_ppo_what_about', name: locals[:po_first]))
+      - if locals[:po_first] == 'Reduced' && locals[:po_last] = 'Supervision Team'
+        = render_component 'avatar_list_item',
+          caption: raw(t('offender.probation_who_ppo_title_reduced', phone: po_phone, email: po_email)),
+          name: "#{locals[:po_first]} #{locals[:po_last]}"
+
+        = render_component 'dropdown', title: t('offender.what_talk_about_reduced') do
+          .app-faq-item
+            = faq_format(t('offender.probation_who_ppo_what_about_reduced', name: locals[:po_first]))
+      - else
+        = render_component 'avatar_list_item',
+          caption: raw(t('offender.probation_who_ppo_title', phone: po_phone, email: po_email)),
+          name: "#{locals[:po_first]} #{locals[:po_last]}"
+
+        = render_component 'dropdown', title: t('offender.what_talk_about', name: locals[:po_first]) do
+          .app-faq-item
+            = faq_format(t('offender.probation_who_ppo_what_about', name: locals[:po_first]))
 
     .app-offender-contact-container
       = render_component 'avatar_list_item',

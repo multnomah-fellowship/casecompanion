@@ -159,6 +159,7 @@ en:
 
   offender:
     what_talk_about: 'What can I talk to %{name} about?'
+    what_talk_about_reduced: 'What can I talk to the Reduced Supervision team about?'
     robyn: 'Robyn Masella'
     robyn_title_with_contact: |
       Victims Specialist, Board of Parole & Post-Prison Supervision<br>
@@ -191,17 +192,31 @@ en:
       Parole/Probation Officer, Department of Community Justice<br>
       %{phone}<br>
       <a href="mailto:%{email}" target="_blank">%{email}</a>
+    probation_who_ppo_title_reduced: |
+      %{phone}<br>
+      <a href="mailto:%{email}" target="_blank">%{email}</a>
     probation_who_ppo_what_about: |
       As a parole/probation officer, %{name} can talk to you about offender information and answer questions including:
 
       <ul>
-        <li>What are the conditions of supervision? What do they mean to me?
-        <li>Whereabouts is the offender living? What areas should I avoid to avoid contact?
-        <li>Is the offender compliant with the conditions?
-        <li>What state of mind is the offender in?
-        <li>Is the offender making restitution payments?
-        <li>Is the offender compliant with treatment conditions?
-        <li>Other safety or general questions you might have
+        <li>What are the conditions of supervision? What do they mean to me?</li>
+        <li>Whereabouts is the offender living? What areas should I avoid to avoid conta</li>ct?
+        <li>Is the offender compliant with the conditions?</li>
+        <li>What state of mind is the offender in?</li>
+        <li>Is the offender making restitution payments?</li>
+        <li>Is the offender compliant with treatment conditions?</li>
+        <li>Other safety or general questions you might have</li>
+      </ul>
+    probation_who_ppo_what_about_reduced: |
+      The <a href="https://multco.us/dcj-adult/rst" target="_blank">Reduced Supervision Team</a> can help you find the offender's probation officer.
+
+      You can talk with them about:
+       <ul>
+        <li>What are the conditions of supervision? What do they mean to me?</li>
+        <li>Is the offender making restitution payments?</li>
+        <li>Concerns about the offender traveling</li>
+        <li>Is the offender compliant with treatment conditions?</li>
+        <li>Other safety or general questions you might have</li>
       </ul>
 
     probation_who_call:
