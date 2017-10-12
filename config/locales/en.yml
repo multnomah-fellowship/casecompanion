@@ -37,7 +37,7 @@ en:
         description: Look up the online court records after sentencing to find the sentencing documents. You can also see if restitution was issued.
     other_questions: Other Questions?
     read_faqs: Read all FAQs
-    contact_us: Contact Us
+    email_us: Email Us
     about_site: About this Website
     description: |
       %{product_name} is a public website for victims of crime in Multnomah County,
