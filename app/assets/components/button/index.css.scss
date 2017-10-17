@@ -28,8 +28,8 @@
   vertical-align: middle;
   -webkit-appearance: none;
 
-  &:not(.app-button--loading):hover,
-  &:not(.app-button--loading):focus {
+  &:hover,
+  &:focus {
     border-color: $color-button-hover;
     color: $color-button-hover;
   }
@@ -44,7 +44,8 @@
   border: 2px solid $color-button-solid-hover;
   color: #fff;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $color-button-solid-hover;
     border-color: $color-button-solid-hover;
     color: #fff;
@@ -68,4 +69,10 @@
   padding: 0px;
   width: 50px;
   text-indent: -1000px; // hide all text
+
+  &:hover,
+  &:focus {
+    border-color: $color-button;
+    color: $color-button;
+  }
 }
