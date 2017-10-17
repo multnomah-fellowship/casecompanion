@@ -15,7 +15,7 @@
         = link_to 'Back', right_path(@flow.previous_step)
 
     .col.s6
-      = render_component 'button', submit: f do
+      = render_component 'button', solid: true, submit: f do
         - if @flow.finished?
           Submit
         - elsif @flow.current_page == RightsFlow.first_step
