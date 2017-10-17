@@ -622,12 +622,12 @@ input[type="checkbox"] {
 /*
  * CUSTOM TABLE STYLES
  */
-$table-gutter: column-width(1);
+$table-gutter: map-get($app-outer-padding, large) + $gutter-width / 2;
 .app-table {
   @extend %app-typography--body-2;
 
   margin-top: 20px;
-  border-top: 4px solid $color-divider;
+  border-bottom: 2px solid $color-divider;
   border-collapse: collapse;
 
   th:first-child, td:first-child {
@@ -657,8 +657,23 @@ $table-gutter: column-width(1);
 }
 
 .app-table__row--bordered {
-  border-top: 2px solid $color-divider;
-  border-bottom: 2px solid $color-divider;
+  border-top: 1px solid $color-divider;
+  border-bottom: 1px solid $color-divider;
+}
+
+.app-table--full-bleed {
+  margin-left: -#{map-get($app-outer-padding, small)};
+  width: calc(100% + 2 * #{map-get($app-outer-padding, small)});
+
+  @media #{$medium-and-up} {
+    margin-left: -#{map-get($app-outer-padding, medium)};
+    width: calc(100% + 2 * #{map-get($app-outer-padding, medium)});
+  }
+
+  @media #{$large-and-up} {
+    margin-left: -#{map-get($app-outer-padding, large)};
+    width: calc(100% + 2 * #{map-get($app-outer-padding, large)});
+  }
 }
 
 /**

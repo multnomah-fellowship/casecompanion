@@ -7,7 +7,7 @@
   = render 'offender_jurisdictions/unknown'
 
 - if @results.present?
-  .row
+  .row.app-row
     - query = "#{search_params[:first_name]} #{search_params[:last_name]}"
     - bold_query = content_tag(:strong, query)
 
@@ -43,7 +43,7 @@
         = raw(t('offender_search.num_results', num: @grouped_results.total_results, name: bold_query))
 
     .hide-on-med-and-down
-      %table.app-table
+      %table.app-table.app-table--full-bleed
         %thead
           %tr
             %th SID
