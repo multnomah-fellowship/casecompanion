@@ -50,9 +50,7 @@ class CaseCompanionFormBuilder < ActionView::Helpers::FormBuilder
     fields_for(method) do |f|
       <<-HTML.html_safe
           <div class='col s12'>
-            <div class='app-input-field'>
-              #{f.label(:month, 'Date of Birth')}
-            </div>
+            #{f.label(:month, 'Date of Birth')}
           </div>
           <div class='col s3 m2'>
             <div class='app-input-field app-input-field--no-label'>

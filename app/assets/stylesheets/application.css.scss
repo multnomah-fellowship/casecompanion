@@ -57,9 +57,13 @@ a {
   }
 }
 
-input, label {
+input {
   @extend %app-typography--body-2;
   line-height: 1.5;
+}
+
+label {
+  font-size: 14px;
 }
 
 strong {
@@ -439,9 +443,7 @@ $app-row-margin: 60px;
  * APP FORM STYLING (<input>)
  */
 .app-input-field {
-  label {
-    font-size: 14px;
-  }
+  margin-bottom: 32px;
 
   input[type="text"],
   input[type="tel"],
