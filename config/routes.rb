@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :digital_vrns, only: %i[index show]
+    resource :crimes_import_status, only: %i[show]
   end
 
   resources :rights, only: %i[show index create destroy], id: Regexp.union(RightsFlow::PAGES) do

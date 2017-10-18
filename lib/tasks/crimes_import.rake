@@ -4,33 +4,49 @@ namespace :crimes_import do
   task importer: :environment do
     Rails.logger = Logger.new($stderr) if Rails.env.development?
 
+    @destination = LocalCrimesInPostgres.new
+    @status_updater = CrimesImportStatusUpdater.new(destination: @destination)
+
     @importer = CrimesImporter.new(
       logger: Rails.logger,
-      destination: LocalCrimesInPostgres.new,
+      destination: @destination,
     )
+
+    @importer.drop_and_recreate_local!
   end
 
   task drop_temp_tables: :importer do
     Rails.logger.info('Dropping temporary tables...')
-    @importer.drop_temp_tables
+
+    @status_updater.track_status('drop_temp_tables') do
+      @importer.drop_temp_tables
+    end
   end
 
   task create_indices: :importer do
     Rails.logger.info('Creating indices...')
-    @importer.create_indices
+
+    @status_updater.track_status('create_indices') do
+      @importer.create_indices
+    end
   end
 
   desc 'Drop and recreate the temporary tables without exporting anything locally'
   task recreate_temp_tables: %i[drop_temp_tables create_indices] do
     Rails.logger.info('Creating temporary tables...')
-    @importer.create_temp_tables
+
+    @status_updater.track_status('recreate_temp_tables') do
+      @importer.create_temp_tables
+    end
   end
 
   desc 'Import all data into local database'
   task import_all: %i[recreate_temp_tables] do
     Rails.logger.info('Beginning import...')
 
-    @importer.import_all
+    @status_updater.track_status('import_all') do
+      @importer.import_all
+    end
   end
 
   # DEBUGGING INFO:

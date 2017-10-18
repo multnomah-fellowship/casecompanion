@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS crimes_import_status;
+CREATE TABLE crimes_import_status (
+  step text,
+  status text,
+  start_time timestamp without time zone not null,
+  end_time timestamp without time zone not null
+);
+
 DROP TABLE IF EXISTS advocates;
 CREATE TABLE advocates (
     crimes_id character varying(9) NOT NULL,

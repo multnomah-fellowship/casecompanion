@@ -17,6 +17,14 @@ class LocalCrimesInPostgres
       user: config['username'],
       password: config['password'],
     )
+
+    @client.prepare('status_update', <<-SQL)
+      INSERT INTO crimes_import_status (step, status, start_time, end_time) VALUES ($1, $2, $3, $4);
+    SQL
+  end
+
+  def close
+    @client.close
   end
 
   def data_range
@@ -59,6 +67,17 @@ class LocalCrimesInPostgres
         yield row.encode('utf-8', invalid: :replace, undef: :replace)
       end
     end
+  end
+
+  def save_status_update(step_name, status, start_time, end_time)
+    @client.exec_prepared('status_update', [step_name, status, start_time, end_time])
+  end
+
+  def status_updates
+    @client.exec(<<-SQL).to_a
+      SELECT * FROM crimes_import_status
+      ORDER BY end_time ASC
+    SQL
   end
 
   # Private Class

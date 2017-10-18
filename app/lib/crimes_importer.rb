@@ -60,6 +60,10 @@ class CrimesImporter
     ERROR
   end
 
+  def drop_and_recreate_local!
+    @destination.load_schema_file!(Rails.root.join('deploy', 'crimes-etl', 'crimes-schema.sql'))
+  end
+
   def drop_temp_tables
     %w[
       CFA_TOM_VRN CFA_TOM_PROBATION CFA_TOM_RESTITUTION CFA_TOM_VICTIM_LATEST_ADDRESS
@@ -114,10 +118,7 @@ class CrimesImporter
     end
   end
 
-  # TODO: actually wire this up to import into a local database
   def import_all
-    @destination.load_schema_file!(Rails.root.join('deploy', 'crimes-etl', 'crimes-schema.sql'))
-
     {
       Pathname.new('deploy/crimes-etl/queries/02_VICTIM_NAME.sql') => 'victims',
       Pathname.new('deploy/crimes-etl/queries/03_VRN.sql') => 'vrns',

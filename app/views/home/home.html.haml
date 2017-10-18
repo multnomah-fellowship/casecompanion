@@ -9,12 +9,16 @@
     .col.s12
       Admin Options:
       - MailchimpCsvGenerator::CSVS.keys.each do |key|
-        - range = @data_ranges.fetch(key)
-        %p= link_to "Download #{key.titleize} Mailchimp CSV", mailchimp_csv_path(key)
-        %ul.browser-default
-          %li= t("home_logged_in.email_description.#{key}", start: range.min.to_date, end: range.max.to_date)
+        - range = @data_ranges[key]
+        - if range && range.min && range.max
+          %p= link_to "Download #{key.titleize} Mailchimp CSV", mailchimp_csv_path(key)
+          %ul.browser-default
+            %li= t("home_logged_in.email_description.#{key}", start: range.min.to_date, end: range.max.to_date)
+        - else
+          %p There was an error importing #{key.titleize} data.
 
       %p= link_to 'Download VRN Confirmation PDFs', admin_digital_vrns_path
+      %p= link_to 'CRIMES import debug info', admin_crimes_import_status_path
 
 .row.app-row
   .col.s12

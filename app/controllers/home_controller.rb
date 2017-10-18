@@ -10,13 +10,19 @@ class HomeController < ApplicationController
   end
 
   def home
-    return redirect_to root_path unless @current_user
-
-    return unless @current_user.is_admin?
+    return redirect_to root_path unless @current_user.is_admin?
 
     # Admin-only stuff:
-    local_crimes = LocalCrimesInPostgres.new
-    @data_ranges = local_crimes.data_range
+    @data_ranges = {}
+
+    begin
+      local_crimes = LocalCrimesInPostgres.new
+      @data_ranges = local_crimes.data_range
+    rescue => ex
+      Raven.capture_exception(ex)
+    ensure
+      local_crimes.close
+    end
   end
 
   def set_tracking
