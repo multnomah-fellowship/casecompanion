@@ -2,6 +2,18 @@
 
 require 'rails_helper'
 
+SAMPLE_DCJ_RESULT = {
+  jurisdiction: :dcj,
+  first: 'John',
+  last: 'Smith',
+  sid: '1000000',
+  dob: Date.parse('2017-01-01'),
+  po_first: 'Jim',
+  po_last: 'Roberts',
+  supervision_expiration_date: '2017-12-22',
+  po_email: 'jim.roberts@example.com',
+}.freeze
+
 describe OffenderJurisdictionsController do
   render_views
 
@@ -36,6 +48,54 @@ describe OffenderJurisdictionsController do
       it 'redirects to the offender show page' do
         subject
         expect(response).to redirect_to(offender_path(:oregon, params[:offender][:sid]))
+      end
+    end
+
+    describe 'with search (DCJ)' do
+      let(:search_year) { '1990' }
+      let(:params) do
+        {
+          offender: {
+            last_name: 'Dooner',
+            dob: {
+              year: search_year,
+              month: '01',
+              day: '01',
+            },
+          },
+          jurisdiction: 'dcj',
+        }
+      end
+      let(:results) { SAMPLE_DCJ_RESULT }
+
+      before do
+        allow_any_instance_of(DcjClient).to receive(:search_for_offender)
+          .and_return(results)
+      end
+
+      it 'renders the results' do
+        subject
+        expect(response.body).to include(results[:sid].to_s)
+      end
+
+      describe 'when searching for a short year in the future' do
+        let(:search_year) { '67' } # Fix this after 2067
+
+        it 'normalizes the year in the 1900s' do
+          expect_any_instance_of(DcjClient).to receive(:search_for_offender)
+            .with(hash_including(dob: have_attributes(year: 1967)))
+          subject
+        end
+      end
+
+      describe 'when searching for a short year in the recent past' do
+        let(:search_year) { '01' } # Fix this in 2020
+
+        it 'normalizes the year in the 2000s' do
+          expect_any_instance_of(DcjClient).to receive(:search_for_offender)
+            .with(hash_including(dob: have_attributes(year: 2001)))
+          subject
+        end
       end
     end
 

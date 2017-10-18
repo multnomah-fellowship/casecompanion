@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/AbcSize
+
 class OffenderJurisdictionsController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
@@ -118,9 +120,22 @@ class OffenderJurisdictionsController < ApplicationController
   end
 
   def search_dcj
+    offender_dob_year = offender_params[:dob][:year].to_i
+
+    if offender_dob_year < 100 # "67" for "1967"
+      offender_dob_year +=
+        if offender_dob_year < Date.today.year % 100
+          # if the short year is in the recent past, use current century
+          2000
+        else
+          # if the short year is in the future, use previous century
+          1900
+        end
+    end
+
     offender_dob = begin
                      Date.new(
-                       offender_params[:dob][:year].to_i,
+                       offender_dob_year,
                        offender_params[:dob][:month].to_i,
                        offender_params[:dob][:day].to_i,
                      )
