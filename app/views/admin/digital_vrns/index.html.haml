@@ -1,0 +1,19 @@
+.row.app-row
+  .col.s12
+    = link_to 'Back', home_path
+    %h2.app-typography--header-2 Download VRN confirmation PDFs
+
+.row.app-row
+  %table.app-table.app-table--full-bleed
+    %thead
+      %tr
+        %th Case Number
+        %th Victim Name
+        %th
+
+    %tbody
+      - @vrns.each do |vrn|
+        %tr
+          %td= vrn.case_number
+          %td #{vrn.first_name} #{vrn.last_name}
+          %td= link_to 'Download VRN', admin_digital_vrn_path(vrn)

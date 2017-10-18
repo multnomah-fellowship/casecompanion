@@ -42,13 +42,8 @@ class RightsMailer < ApplicationMailer
   private
 
   def generate_and_attach_pdf(subscription)
-    pdf_name = %W[
-      VRN
-      #{subscription.case_number}
-      #{subscription.first_name}
-      #{subscription.last_name}
-    ].join('-') + '.pdf'
+    pdf = RightsPdfGenerator.new(subscription).generate
 
-    attachments[pdf_name] = RightsPdfGenerator.new(subscription).generate.data
+    attachments[pdf.filename] = pdf.data
   end
 end

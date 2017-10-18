@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/feedback/:type' => 'feedback_responses#create', as: :feedback_response
   patch '/feedback/:id' => 'feedback_responses#update'
 
+  namespace :admin do
+    resources :digital_vrns, only: %i[index show]
+  end
+
   resources :rights, only: %i[show index create destroy], id: Regexp.union(RightsFlow::PAGES) do
     collection do
       post '/:id', to: 'rights#update'

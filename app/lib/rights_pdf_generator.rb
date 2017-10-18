@@ -100,6 +100,15 @@ class RightsPdfGenerator
     self
   end
 
+  def filename
+    %W[
+      VRN
+      #{@subscription.case_number}
+      #{@subscription.first_name}
+      #{@subscription.last_name}
+    ].join('-') + '.pdf'
+  end
+
   private
 
   def created_at_date
