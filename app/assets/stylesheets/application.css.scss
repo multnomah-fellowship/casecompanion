@@ -647,12 +647,18 @@ $table-gutter: map-get($app-outer-padding, large) + $gutter-width / 2;
     border-bottom: 2px solid $color-divider;
   }
 
-  tbody:hover {
+  tbody tr:hover {
     background-color: $color-table-hover;
   }
 
   tr[data-href] {
     cursor: pointer;
+  }
+}
+
+.app-table--group-rows {
+  tbody:hover {
+    background-color: $color-table-hover;
   }
 }
 
