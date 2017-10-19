@@ -17,10 +17,6 @@ class LocalCrimesInPostgres
       user: config['username'],
       password: config['password'],
     )
-
-    @client.prepare('status_update', <<-SQL)
-      INSERT INTO crimes_import_status (step, status, start_time, end_time) VALUES ($1, $2, $3, $4);
-    SQL
   end
 
   def close
@@ -70,6 +66,7 @@ class LocalCrimesInPostgres
   end
 
   def save_status_update(step_name, status, start_time, end_time)
+    prepare_queries
     @client.exec_prepared('status_update', [step_name, status, start_time, end_time])
   end
 
@@ -78,6 +75,18 @@ class LocalCrimesInPostgres
       SELECT * FROM crimes_import_status
       ORDER BY end_time ASC
     SQL
+  end
+
+  private
+
+  def prepare_queries
+    return if @_queries_prepared
+
+    @client.prepare('status_update', <<-SQL)
+      INSERT INTO crimes_import_status (step, status, start_time, end_time) VALUES ($1, $2, $3, $4);
+    SQL
+
+    @_queries_prepared = true
   end
 
   # Private Class
