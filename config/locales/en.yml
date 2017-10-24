@@ -841,3 +841,17 @@ en:
 
         Multnomah County Circuit Court and Family Law Center
         (503) 988-3943
+
+  email_layout:
+    da_name: "Rod\u00a0Underhill,\u00a0District\u00a0Attorney"
+    vap_name: Victim Assistance Program
+    vap_phone: (503) 988-3222
+    vap_url: www.mcda.us
+    footer_feedback_title: Was this email useful?
+    footer_feedback_yes: Yes
+    footer_feedback_no: No
+    footer_feedback_yes_but: Yes, but
+    footer_address: Our mailing address
+    footer_address_name: Code for America
+    footer_address_address: 155 9th St.
+    footer_address_citystate: San Francisco, CA 94103

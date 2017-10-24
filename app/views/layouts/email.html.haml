@@ -10,12 +10,12 @@
             = image_tag 'seal_DA.png', class: 'email--seal-img'
           %td
             %p.email--seal__title
-              Rod&nbsp;Underhill,&nbsp;District&nbsp;Attorney
+              = t('email_layout.da_name')
 
             %ul.email--contact-details-list-small
-              %li Victim Assistance Program
-              %li (503) 988-3222
-              %li www.mcda.us
+              %li= t('email_layout.vap_name')
+              %li= t('email_layout.vap_phone')
+              %li= t('email_layout.vap_url')
 
   %tr
     %td.email--outer-cell
@@ -27,20 +27,21 @@
         %table.email--feedback
           %tr
             %td{ colspan: 3 }
-              %h2 Was this email useful?
+              %h2= t('email_layout.footer_feedback_title')
           %tr
             %td{ width: '33%' }
               = link_to feedback_response_url('thumbs_up'), class: 'email--feedback-link' do
-                %p Yes
+                %p= t('email_layout.footer_feedback_yes')
             %td{ width: '33%' }
               = link_to feedback_response_url('thumbs_down'), class: 'email--feedback-link' do
-                %p No
+                %p= t('email_layout.footer_feedback_no')
             %td{ width: '33%' }
               = link_to feedback_response_url('yes_but'), class: 'email--feedback-link' do
-                %p Yes, but
+                %p= t('email_layout.footer_feedback_yes_but')
 
-      %h6.email--footer-our-address Our mailing address is:
+      %h6.email--footer-our-address= t('email_layout.footer_address')
+
       %ul.email--footer-our-address-list
-        %li Code for America
-        %li 155 9th St.
-        %li San Francisco, CA 94103
+        %li= t('email_layout.footer_address_name')
+        %li= t('email_layout.footer_address_address')
+        %li= t('email_layout.footer_address_citystate')
