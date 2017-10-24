@@ -19,8 +19,9 @@ cp variables.json.example variables.json
 #   https://www.packer.io/docs/builders/amazon.html#specifying-amazon-credentials
 #   then, put the variables in `variables.json`
 
-# 4. Get the Ansible secrets file and password from Tom/LastPass
+# 4. Get the Ansible secrets file and password from Tom
 # copy it into deploy/create-ami/secrets.yml
+# put the decryption password in `variables.json` from step 3 under "ansible_vault_password".
 
 # 5. Run packer!
 # this will build locally in Docker (great for testing without AWS lag):
