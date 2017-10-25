@@ -158,6 +158,9 @@ en:
     textus: Text us at %{phone_number}
 
   offender:
+    search_prison: In Prison
+    search_probation: On Probation or Parole
+    search_unknown: Not Sure
     what_talk_about: 'What can I talk to %{name} about?'
     what_talk_about_reduced: 'What can I talk to the Reduced Supervision team about?'
     robyn: 'Robyn Masella'

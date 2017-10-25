@@ -8,12 +8,12 @@
   .col.s12.m6.offset-m3
     .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:oregon), stretch: true do
-        In Prison
+        = t('offender.search_prison')
 
     .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:dcj), stretch: true do
-        On Probation or Parole
+        = t('offender.search_probation')
 
     .app__search-button-holder
       = render_component 'button', to: offender_jurisdiction_path(:unknown), stretch: true do
-        Not Sure
+        = t('offender.search_unknown')
