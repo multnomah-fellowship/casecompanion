@@ -30,3 +30,14 @@ make docker
 # or, this will build an actual AMI on AWS:
 make ami
 ```
+
+# Updating an application secret
+To change the value of an application secret, first edit the Ansible vault locally and then deploy the change by building a new AMI and reprovisioning the servers using the new AMI.
+
+The command to edit the vault locally is (in the deploy/create-ami directory):
+
+```bash
+ansible-vault edit --vault-password-file ./.ansible_vault_password.py secrets.yml
+```
+
+If you don't have the secrets.yml file, you will need to get it from the current maintainer of the application.
