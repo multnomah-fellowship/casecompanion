@@ -42,7 +42,7 @@ class AttorneyManagerImporter
     config['timeout'] ||= 900 # seconds
 
     @client = TinyTds::Client.new(**config.symbolize_keys)
-    @logger = Rails.logger
+    @logger = logger
     @destination = destination
   end
 
