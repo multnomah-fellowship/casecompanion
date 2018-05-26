@@ -77,3 +77,16 @@ bin/rake mailchimp_csvs:generate
 ```
 
 ...which will output mailchimp CSVs in you local `tmp` directory.
+
+## Setting up a deploy node
+In order to deploy the application, or use live data from CRIMES/Attorney Manager, you will have to set up a deploy node.
+
+1. Install git for windows
+2. Install ruby for windows (RubyInstaller)
+3. Add this to `.ssh/config`:
+
+```
+Host dcjvp-*
+User tdooner
+IdentityFile ~/.ssh/id_rsa_myadvocate_prod
+```
