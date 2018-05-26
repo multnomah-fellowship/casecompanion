@@ -54,6 +54,17 @@ class SqlTableLogger < Logger
     @client.exec_prepared('insert_row', [format_severity(severity), message])
   end
 
+  # Within the passed block, capture anything logged to Rails.logger
+  def capture_rails_logger(&block)
+    original = Rails.logger.dup
+
+    Rails.logger.extend(ActiveSupport::Logger.broadcast(self))
+
+    block.call
+  ensure
+    Rails.logger = original
+  end
+
   private
 
   def format_query(query)

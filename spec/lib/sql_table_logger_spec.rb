@@ -35,4 +35,24 @@ RSpec.describe SqlTableLogger do
     expect(fake_rails_output.string).to include('testing logger')
     expect(logger.lines).to include(hash_including('level' => 'INFO', 'body' => 'testing logger'))
   end
+
+  describe '#capture_rails_logger' do
+    it 'captures output to Rails.logger in block' do
+      logger.capture_rails_logger do
+        Rails.logger.info 'Rails.logger info line'
+      end
+
+      expect(logger.lines).to include(hash_including('level' => 'INFO', 'body' => 'Rails.logger info line'))
+    end
+
+    it 'does not keep capturing after block' do
+      logger.capture_rails_logger do
+        # do nothing
+      end
+
+      log_line = 'Rails.logger after line'
+      Rails.logger.info log_line
+      expect(logger.lines).not_to include(hash_including('level' => 'INFO', 'body' => log_line))
+    end
+  end
 end
