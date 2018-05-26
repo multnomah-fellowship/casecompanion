@@ -22,7 +22,7 @@ class SqlTableLogger < Logger
       user: config['username'],
       password: config['password'],
     )
-    @client.prepare('insert_row', format_query(TABLE_INSERT_QUERY))
+    @prepared = false
   end
 
   def lines
@@ -39,6 +39,11 @@ class SqlTableLogger < Logger
   end
 
   def add(severity, message = nil, progname = nil)
+    unless @prepared
+      @client.prepare('insert_row', format_query(TABLE_INSERT_QUERY))
+      @prepared = true
+    end
+
     # the superclass's add method is a hot mess, copy a few pieces of its logic
     # here:
     if message.nil?
