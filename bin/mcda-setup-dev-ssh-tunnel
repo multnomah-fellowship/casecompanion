@@ -10,22 +10,22 @@ vpn_ip=$(netstat -p tcp | grep ':3389' | awk '{ print $3 }' | cut -d':' -f1)
 # If multiple clients are RDPing into the VM host at the same time, the
 # user will need to tell us which one they are.
 if [ $(echo "$vpn_ip" | wc -l) -gt 1 ]; then
-	echo "Multiple connected IPs detected. Choose one:"
-	i=1
-	for ip in $vpn_ip; do
-		echo "${i}. ${ip}"
-		i=$(($i + 1))
-	done
-	echo -n "Which? > "
-	read choice
-	vpn_ip=$(echo "$vpn_ip" | tail -n +"$choice" | head -n1)
+  echo "Multiple connected IPs detected. Choose one:"
+  i=1
+  for ip in $vpn_ip; do
+    echo "${i}. ${ip}"
+    i=$(($i + 1))
+  done
+  echo -n "Which? > "
+  read choice
+  vpn_ip=$(echo "$vpn_ip" | tail -n +"$choice" | head -n1)
 fi
 
 echo "SSH-ing into IP $vpn_ip"
 
 if [ ${1:-"new"} == "old" ]; then
-	echo "CONNECTING TO OLD CRIMES"
-	exec ssh -v -R2612:dacry2.mcda.mccj.local:2612 Tom@$vpn_ip
+  echo "CONNECTING TO OLD CRIMES"
+  exec ssh -v -R2612:dacry2.mcda.mccj.local:2612 Tom@$vpn_ip
 else
-	exec ssh -v -R51123:MCDA-AMSQLDEV:51123 Tom@$vpn_ip
+  exec ssh -v -R51123:MCDA-AMSQLDEV:51123 Tom@$vpn_ip
 fi
