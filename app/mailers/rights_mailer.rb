@@ -15,6 +15,10 @@ class RightsMailer < ApplicationMailer
   end
 
   def vrn_advocate_update(court_case_subscription)
+    unless Rails.application.config.vrn_update_email_address.present?
+      raise 'Error: Need to set VRN_UPDATE_EMAIL_ADDRESS'
+    end
+
     @subscription = court_case_subscription
 
     remove_feedback_section!
