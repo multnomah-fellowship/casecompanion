@@ -7,7 +7,7 @@ addons:
   code_climate:
     repo_token: aaac6425dc45e7af413ba245b019fc76b5a7802cbb793c37eac4a42e779a11a6
 rvm:
-- 2.4.1
+- 2.5.0
 before_install:
 - bin/download-and-build-freetds vendor/freetds
 script: bundle exec rspec
