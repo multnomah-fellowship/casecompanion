@@ -15,6 +15,8 @@ A product of the CfA Multnomah County Fellowship team.
 Make sure to export the following environment variables:
 
 * `APP_DOMAIN` (e.g. `casecocmpanion.org`. This domain must have valid TLS!)
+* `DATABASE_URL` (e.g. `postgresql://localhost/`. The database name will be
+    overridden per environment in the `config/database.yml` file.)
 * `VRN_UPDATE_EMAIL_ADDRESS` (e.g. 'tom@example.com') - Destination mailbox for
     VRNs coming out of the digital VRN flow.
 * `DCJ_BAXTER_API_KEY` - Required to search probation records.
