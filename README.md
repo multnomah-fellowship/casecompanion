@@ -64,7 +64,9 @@ development environment, and what the value should be in production:
 
 1. `bin/rake crimes_import:help_connecting` will help you set up a development
    environment
-2. The comments in `app/lib/crimes_importer.rb` have examples of how to do this.
+2. To create a connection from your development machine to CRIMES (through Remote Desktop + SSH), use the
+   `bin/mcda-setup-dev-ssh-tunnel` script.
+3. The comments in `app/lib/crimes_importer.rb` have documentation to tie it all together.
 
 Once the data is imported into a local database, you can use it, for example, with:
 
