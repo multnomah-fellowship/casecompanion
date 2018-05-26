@@ -6,18 +6,23 @@ cache:
 addons:
   code_climate:
     repo_token: aaac6425dc45e7af413ba245b019fc76b5a7802cbb793c37eac4a42e779a11a6
+services:
+  - postgresql
 rvm:
-- 2.5.0
+  - 2.5.0
 before_install:
-- bin/download-and-build-freetds vendor/freetds
+  - bin/download-and-build-freetds vendor/freetds
+before_script:
+  - bin/rails db:test:prepare
 script: bundle exec rspec
 after_success:
-- bundle exec codeclimate-test-reporter
+  - bundle exec codeclimate-test-reporter
 env:
   global:
   - VRN_UPDATE_EMAIL_ADDRESS=test@example.com
   - APP_DOMAIN=localhost
   - FREETDS_DIR="${TRAVIS_BUILD_DIR}/vendor/freetds"
+  - DATABASE_URL=postgresql://travis@localhost
 notifications:
   slack:
     on_success: change
