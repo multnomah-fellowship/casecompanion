@@ -24,7 +24,7 @@ gem 'turbolinks', '~> 5'
 
 # Dependencies we have added
 gem 'ahoy_email'
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '>= 4.1.3'
 gem 'dotenv-rails'
 gem 'flipper'
 gem 'font-awesome-rails'
