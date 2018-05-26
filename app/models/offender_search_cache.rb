@@ -8,6 +8,6 @@ class OffenderSearchCache < ActiveRecord::Base
   default_scope { where('updated_at > ?', AGE_LIMIT.ago) }
 
   def self.purge_all!
-    update_all(updated_at: AGE_LIMIT - 1)
+    update_all(updated_at: AGE_LIMIT.ago - 1)
   end
 end
