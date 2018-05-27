@@ -2,7 +2,7 @@
 
 namespace :attorney_manager do
   task importer: :environment do
-    @logger = SqlTableLogger.new(ENV['LOCAL_ATTORNEY_MANAGER_DATABASE_URL'], 'import_log')
+    @logger = SqlTableLogger.new(ENV['LOCAL_ATTORNEY_MANAGER_DATABASE_URL'], 'attorney_manager_import_log')
     @logger.reset!
     @logger.capture_rails_logger do
       @destination = LocalAttorneyManagerInPostgres.new

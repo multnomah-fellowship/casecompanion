@@ -1,0 +1,8 @@
+.row.app-row
+  .col.s12
+    = link_to home_path do
+      &larr; Back to Home
+
+    %h1.app-typography--header-1 Attorney Manager Import Status
+    %pre
+      = @lines.map { |l| l['body'] }.join("\n")

@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     rescue => ex
       Raven.capture_exception(ex)
     ensure
-      local_crimes.close
+      local_crimes.close if local_crimes
     end
   end
 
