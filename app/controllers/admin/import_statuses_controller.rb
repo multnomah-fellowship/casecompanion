@@ -36,9 +36,8 @@ class Admin::ImportStatusesController < ApplicationController
     minute = root[10..11].to_i
     second = root[12..13].to_i
 
-    DateTime
-      .new(year, month, day, hour, minute, second)
-      .localtime
+    Time.zone
+      .local(year, month, day, hour, minute, second)
       .strftime('%A %B %-d, %Y at %-I:%M %P')
   rescue
     return 'Unknown'
