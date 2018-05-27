@@ -3,6 +3,14 @@
     = link_to home_path do
       &larr; Back to Home
 
+    %h1.app-typography--header-1 Code Information
+    %p
+      %b Revision:
+      = @revision
+    %p
+      %b Deployed At:
+      = @deploy_time
+
     %h1.app-typography--header-1 Attorney Manager Import Status
     -if @lines.present?
       %p
