@@ -27,6 +27,8 @@ module CaseCompanion
 
     config.action_view.default_form_builder = 'CaseCompanionFormBuilder'
 
+    config.time_zone = 'Pacific Time (US & Canada)'
+
     # Update the <input> tag for a field when it has errors based on the class
     # names that Materialize.css expects to see.
     config.action_view.field_error_proc = proc do |html_tag, _instance|

@@ -4,5 +4,13 @@
       &larr; Back to Home
 
     %h1.app-typography--header-1 Attorney Manager Import Status
-    %pre
-      = @lines.map { |l| l['body'] }.join("\n")
+    -if @lines.present?
+      %p
+        Log begins at
+        %em= format_log_time(@lines[0]['datetime'])
+      %blockquote
+        %pre
+          = @lines.map { |l| l['body'] }.join("\n")
+    - else
+      %p
+        No log file available.

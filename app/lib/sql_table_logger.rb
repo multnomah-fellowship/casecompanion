@@ -4,11 +4,12 @@ class SqlTableLogger < Logger
   TABLE_READ_QUERY = 'SELECT * FROM %{table_name}'
   TABLE_CREATE_QUERY = <<-SQL
   CREATE TABLE %{table_name} (
+    datetime timestamp without time zone,
     level character varying(5) not null,
     body text
   );
   SQL
-  TABLE_INSERT_QUERY = 'INSERT INTO %{table_name} (level, body) VALUES ($1, $2)'
+  TABLE_INSERT_QUERY = 'INSERT INTO %{table_name} (datetime, level, body) VALUES ($1, $2, $3)'
 
   def initialize(url, table_name)
     resolver = ActiveRecord::ConnectionAdapters::ConnectionSpecification::Resolver.new({})
@@ -51,7 +52,7 @@ class SqlTableLogger < Logger
     end
 
     # write the row
-    @client.exec_prepared('insert_row', [format_severity(severity), message])
+    @client.exec_prepared('insert_row', [Time.now.utc, format_severity(severity), message])
   end
 
   # Within the passed block, capture anything logged to Rails.logger
