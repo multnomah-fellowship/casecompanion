@@ -23,9 +23,14 @@ fi
 
 echo "SSH-ing into IP $vpn_ip"
 
+ssh_user=Tom
+ssh_options="-v "
+ssh_options+="-o ServerAliveInterval=120 "
 if [ ${1:-"new"} == "old" ]; then
   echo "CONNECTING TO OLD CRIMES"
-  exec ssh -v -R2612:dacry2.mcda.mccj.local:2612 Tom@$vpn_ip
+  ssh_options+="-R2612:dacry2.mcda.mccj.local:2612"
+  exec ssh $ssh_options $ssh_user@$vpn_ip
 else
-  exec ssh -v -R51123:MCDA-AMSQLDEV:51123 Tom@$vpn_ip
+  ssh_options+="-R51123:MCDA-AMSQLDEV:51123"
+  exec ssh $ssh_options -R51123:MCDA-AMSQLDEV:51123 $ssh_user@$vpn_ip
 fi
